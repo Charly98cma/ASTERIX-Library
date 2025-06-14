@@ -3,8 +3,8 @@
  * @brief Definition of item 015 of CAT 021, and related functions and values
  */
 
-#ifndef cat021_item015_H
-#define cat021_item015_H
+#ifndef CAT021_ITEM015_H
+#define CAT021_ITEM015_H
 
 #include <stdint.h>
 #include "visibility.h"
@@ -51,4 +51,4 @@ void print_cat021_item015(const cat021_item015 *item);
 }
 #endif
 
-#endif /* cat021_item015_H */
+#endif /* CAT021_ITEM015_H */

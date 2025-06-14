@@ -3,8 +3,8 @@
  * @brief Definition of item 020 of CAT 021, and related functions and values
  */
 
-#ifndef cat021_item010_H
-#define cat021_item010_H
+#ifndef CAT021_ITEM010_H
+#define CAT021_ITEM010_H
 
 #include <stdint.h>
 
@@ -47,4 +47,4 @@ ASTERIX_API void print_cat021_item010(const cat021_item010 *item);
 }
 #endif
 
-#endif /* cat021_item010_H */
+#endif /* CAT021_ITEM010_H */
