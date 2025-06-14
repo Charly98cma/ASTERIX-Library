@@ -51,6 +51,6 @@ uint8_t get_item010_SIC(const item010 * item)
 void print_cat021_item010(const item010 *item)
 {
     printf("Item 010 - Data Source Identification\n");
-    printf("  SAC = %d\n"  , get_item010_SAC(item));
+    printf("  SAC = %d\n", get_item010_SAC(item));
     printf("  SIC = %d\n", get_item010_SIC(item));
 }
