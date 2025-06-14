@@ -41,14 +41,14 @@ uint8_t get_item010_SIC(const item010 * item)
  ******************************************************************************/
 
 /**
- * @brief Print the contents of CAT 021 / Item 008.
+ * @brief Print the contents of CAT 021 / Item 010.
  *
  * This function prints the values of the main byte.
  * It is useful for debugging and inspection.
  *
- * @param item Pointer to a cat021_item008 structure.
+ * @param item Pointer to a cat021_item010 structure.
  */
-void print_cat021_item008(const item010 *item)
+void print_cat021_item010(const item010 *item)
 {
     printf("Item 010 - Data Source Identification\n");
     printf("  SAC = %d\n"  , get_item010_SAC(item));

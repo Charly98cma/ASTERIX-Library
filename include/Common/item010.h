@@ -52,7 +52,7 @@ typedef struct item010 {
 ASTERIX_API uint8_t get_item010_SAC(const item010 * item);
 ASTERIX_API uint8_t get_item010_SIC(const item010 * item);
 
-ASTERIX_API void print_cat021_item008(const item010 *item);
+ASTERIX_API void print_cat021_item010(const item010 *item);
 
 #ifdef __cplusplus
 }
