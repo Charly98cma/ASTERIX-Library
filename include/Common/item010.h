@@ -3,8 +3,8 @@
  * @brief Definition of Item 010 and SAC/SIC values
  */
 
-#ifndef item010_H
-#define item010_H
+#ifndef COMMON_ITEM010_H
+#define COMMON_ITEM010_H
 
 #include <stdint.h>
 #include "visibility.h"
@@ -58,4 +58,4 @@ ASTERIX_API void print_cat021_item010(const item010 *item);
 }
 #endif
 
-#endif /* item010_H */
+#endif /* COMMON_ITEM010_H */
