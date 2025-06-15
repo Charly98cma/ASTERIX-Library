@@ -222,27 +222,27 @@ uint16_t set_cat021_item070_code(cat021_item070 * item, uint16_t code)
     D = GET_BITS(code,  1, MASK_03_BITS); // D4 0 D2 D1
 
     // Clear field
-    item->raw = 0;
+    (item)->raw = 0;
 
     // Insert each octal number in its position
-    SET_BITS(&(item->raw), (A >> 3), MASK_01_BITS, 12); // A4
-    SET_BITS(&(item->raw), (A >> 1), MASK_01_BITS, 11); // A2
-    SET_BITS(&(item->raw), (A >> 0), MASK_01_BITS, 10); // A1
+    SET_BITS(&((item)->raw), (A >> 3), MASK_01_BITS, 12); // A4
+    SET_BITS(&((item)->raw), (A >> 1), MASK_01_BITS, 11); // A2
+    SET_BITS(&((item)->raw), (A >> 0), MASK_01_BITS, 10); // A1
 
-    SET_BITS(&(item->raw), (B >> 3), MASK_01_BITS,  9); // B4
-    SET_BITS(&(item->raw), (B >> 1), MASK_01_BITS,  8); // B2
-    SET_BITS(&(item->raw), (B >> 0), MASK_01_BITS,  7); // B1
+    SET_BITS(&((item)->raw), (B >> 3), MASK_01_BITS,  9); // B4
+    SET_BITS(&((item)->raw), (B >> 1), MASK_01_BITS,  8); // B2
+    SET_BITS(&((item)->raw), (B >> 0), MASK_01_BITS,  7); // B1
 
-    SET_BITS(&(item->raw), (C >> 3), MASK_01_BITS,  6); // C4
-    SET_BITS(&(item->raw), (C >> 1), MASK_01_BITS,  5); // C2
-    SET_BITS(&(item->raw), (C >> 0), MASK_01_BITS,  4); // C1
+    SET_BITS(&((item)->raw), (C >> 3), MASK_01_BITS,  6); // C4
+    SET_BITS(&((item)->raw), (C >> 1), MASK_01_BITS,  5); // C2
+    SET_BITS(&((item)->raw), (C >> 0), MASK_01_BITS,  4); // C1
 
-    SET_BITS(&(item->raw), (D >> 3), MASK_01_BITS,  3); // D4
-    SET_BITS(&(item->raw), (D >> 1), MASK_01_BITS,  2); // D2
-    SET_BITS(&(item->raw), (D >> 0), MASK_01_BITS,  1); // D1
+    SET_BITS(&((item)->raw), (D >> 3), MASK_01_BITS,  3); // D4
+    SET_BITS(&((item)->raw), (D >> 1), MASK_01_BITS,  2); // D2
+    SET_BITS(&((item)->raw), (D >> 0), MASK_01_BITS,  1); // D1
 
     // Returns a copy of the setted value for safety checks
-    return item->raw;
+    return (item)->raw;
 }
 
 /*******************************************************************************

@@ -45,6 +45,8 @@ typedef struct cat021_item015 {
 
 ASTERIX_API uint8_t get_cat021_item015_SI(const cat021_item015 * item);
 
+ASTERIX_API void set_cat021_item015_SI(cat021_item015 * item, uint8_t value);
+
 void print_cat021_item015(const cat021_item015 *item);
 
 #ifdef __cplusplus

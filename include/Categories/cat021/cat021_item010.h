@@ -39,6 +39,9 @@ typedef item010 cat021_item010;
 ASTERIX_API uint8_t get_cat021_item010_SAC(const cat021_item010 * item);
 ASTERIX_API uint8_t get_cat021_item010_SIC(const cat021_item010 * item);
 
+ASTERIX_API void set_cat021_item010_SAC(cat021_item010 * item, uint8_t sac_value);
+ASTERIX_API void set_cat021_item010_SIC(cat021_item010 * item, uint8_t sic_value);
+
 ASTERIX_API void print_cat021_item010(const cat021_item010 *item);
 
 #ifdef __cplusplus

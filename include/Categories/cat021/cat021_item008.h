@@ -99,6 +99,14 @@ ASTERIX_API uint8_t get_cat021_item008_CDTI(const cat021_item008 * item);
 ASTERIX_API uint8_t get_cat021_item008_NTCAS(const cat021_item008 * item);
 ASTERIX_API uint8_t get_cat021_item008_SA(const cat021_item008 * item);
 
+ASTERIX_API void set_cat021_item008_RA(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_TC(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_TS(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_ARV(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_CDTI(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_NTCAS(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_SA(cat021_item008 * item, uint8_t value);
+
 ASTERIX_API void print_cat021_item008(const cat021_item008 *item);
 
 #ifdef __cplusplus

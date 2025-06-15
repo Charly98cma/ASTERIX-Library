@@ -20,8 +20,14 @@
  */
 uint8_t get_cat021_item020_ECAT(const cat021_item020 * item)
 {
-    return ((item)->raw & MASK_08_BITS);
+    return GET_BITS((item)->raw, 1, MASK_08_BITS);
 }
+
+/*******************************************************************************
+ * Setters
+ ******************************************************************************/
+
+
 
 /*******************************************************************************
  * Other Functions
@@ -38,5 +44,5 @@ uint8_t get_cat021_item020_ECAT(const cat021_item020 * item)
 void print_cat021_item020(const cat021_item020 *item)
 {
     printf("Category 021 / Item 020 - Emitter Category\n");
-    printf("  ECAT: %d\n", get_cat021_item020_ECAT(item));  
+    printf("  ECAT: %d\n\n", get_cat021_item020_ECAT(item));  
 }
