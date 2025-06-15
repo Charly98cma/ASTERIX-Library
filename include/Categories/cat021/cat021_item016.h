@@ -61,6 +61,8 @@ typedef struct cat021_item016 {
 
 ASTERIX_API uint8_t get_cat021_item016_RP(const cat021_item016 * item);
 
+ASTERIX_API void set_cat021_item016_RP(cat021_item016 * item, uint8_t value);
+
 ASTERIX_API void print_cat021_item016(const cat021_item016 *item);
 
 ASTERIX_API double get_cat021_item016_RP_seconds(const cat021_item016 * item);
