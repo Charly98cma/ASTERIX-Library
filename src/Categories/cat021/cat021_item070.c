@@ -18,7 +18,7 @@
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of A4
  */
-uint8_t get_cat021_item070_A4(cat021_item070 * item)
+uint8_t get_cat021_item070_A4(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 12, MASK_01_BITS); 
 }
@@ -31,7 +31,7 @@ uint8_t get_cat021_item070_A4(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of A2
  */
-uint8_t get_cat021_item070_A2(cat021_item070 * item)
+uint8_t get_cat021_item070_A2(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 11, MASK_01_BITS); 
 }
@@ -44,7 +44,7 @@ uint8_t get_cat021_item070_A2(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of A1
  */
-uint8_t get_cat021_item070_A1(cat021_item070 * item)
+uint8_t get_cat021_item070_A1(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 10, MASK_01_BITS); 
 }
@@ -57,7 +57,7 @@ uint8_t get_cat021_item070_A1(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of B4
  */
-uint8_t get_cat021_item070_B4(cat021_item070 * item)
+uint8_t get_cat021_item070_B4(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 9, MASK_01_BITS); 
 }
@@ -70,7 +70,7 @@ uint8_t get_cat021_item070_B4(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of B2
  */
-uint8_t get_cat021_item070_B2(cat021_item070 * item)
+uint8_t get_cat021_item070_B2(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 8, MASK_01_BITS); 
 }
@@ -83,7 +83,7 @@ uint8_t get_cat021_item070_B2(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of B1
  */
-uint8_t get_cat021_item070_B1(cat021_item070 * item)
+uint8_t get_cat021_item070_B1(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 7, MASK_01_BITS); 
 }
@@ -96,7 +96,7 @@ uint8_t get_cat021_item070_B1(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of C4
  */
-uint8_t get_cat021_item070_C4(cat021_item070 * item)
+uint8_t get_cat021_item070_C4(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 6, MASK_01_BITS); 
 }
@@ -109,7 +109,7 @@ uint8_t get_cat021_item070_C4(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of C2
  */
-uint8_t get_cat021_item070_C2(cat021_item070 * item)
+uint8_t get_cat021_item070_C2(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 5, MASK_01_BITS); 
 }
@@ -122,7 +122,7 @@ uint8_t get_cat021_item070_C2(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of C1
  */
-uint8_t get_cat021_item070_C1(cat021_item070 * item)
+uint8_t get_cat021_item070_C1(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 4, MASK_01_BITS); 
 }
@@ -135,7 +135,7 @@ uint8_t get_cat021_item070_C1(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of D4
  */
-uint8_t get_cat021_item070_D4(cat021_item070 * item)
+uint8_t get_cat021_item070_D4(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 3, MASK_01_BITS); 
 }
@@ -148,7 +148,7 @@ uint8_t get_cat021_item070_D4(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of D2
  */
-uint8_t get_cat021_item070_D2(cat021_item070 * item)
+uint8_t get_cat021_item070_D2(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 2, MASK_01_BITS); 
 }
@@ -161,7 +161,7 @@ uint8_t get_cat021_item070_D2(cat021_item070 * item)
  * @param item Pointer to cat021_item070 structure.
  * @return uint8_t Value of D1
  */
-uint8_t get_cat021_item070_D1(cat021_item070 * item)
+uint8_t get_cat021_item070_D1(const cat021_item070 * item)
 {
     return GET_BITS((item)->raw, 1, MASK_01_BITS); 
 }
