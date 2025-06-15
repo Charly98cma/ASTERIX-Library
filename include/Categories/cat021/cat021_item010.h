@@ -7,10 +7,8 @@
 #define CAT021_ITEM010_H
 
 #include <stdint.h>
-
-#include "constants.h"
-#include "item010.h"
 #include "visibility.h"
+#include "item010.h"
 
 #ifdef __cplusplus
 extern "C" {

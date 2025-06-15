@@ -7,8 +7,6 @@
 #define CAT021_ITEM016_H
 
 #include <stdint.h>
-
-#include "constants.h"
 #include "visibility.h"
 
 #ifdef __cplusplus
@@ -63,7 +61,7 @@ typedef struct cat021_item016 {
 
 ASTERIX_API uint8_t get_cat021_item016_RP(const cat021_item016 * item);
 
-void print_cat021_item016(const cat021_item016 *item);
+ASTERIX_API void print_cat021_item016(const cat021_item016 *item);
 
 ASTERIX_API double get_cat021_item016_RP_seconds(const cat021_item016 * item);
 

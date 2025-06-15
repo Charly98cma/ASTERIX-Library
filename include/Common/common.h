@@ -17,12 +17,6 @@ extern "C" {
  * MACROS
  ******************************************************************************/
 
-/**
- * Max. length of the whole ASTERIX message set to avoid fragmentation during
- * transmission over ethernet
- */
-#define MAX_MESSAGE_LEN     1400
-
 /*******************************************************************************
  * Structures and types
  ******************************************************************************/

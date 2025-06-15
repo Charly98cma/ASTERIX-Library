@@ -3,8 +3,8 @@
  * @brief Definition of item 040 of CAT 021, and related functions and values
  */
 
-#ifndef cat021_item040_H
-#define cat021_item040_H
+#ifndef CAT021_ITEM040_H
+#define CAT021_ITEM040_H
 
 #include <stdint.h>
 #include "visibility.h"
@@ -361,11 +361,10 @@ ASTERIX_API uint8_t get_cat021_item040_ext4_MBC_EP(const cat021_item040_ext4 *it
 ASTERIX_API uint8_t get_cat021_item040_ext4_MBC_VAL(const cat021_item040_ext4 *item);
 ASTERIX_API uint8_t get_cat021_item040_ext4_FX(const cat021_item040_ext4 *item);
 
-ASTERIX_API void print_cat021_item040(const cat021_item040 *item)
-
+ASTERIX_API void print_cat021_item040(const cat021_item040 *item);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* cat021_item040_H */
+#endif /* CAT021_ITEM040_H */

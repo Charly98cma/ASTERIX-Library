@@ -9,6 +9,16 @@
 #include <stdlib.h>
 
 /*******************************************************************************
+ * Useful values
+ ******************************************************************************/
+
+/**
+ * Max. length of the whole ASTERIX message set to avoid fragmentation during
+ * transmission over ethernet
+ */
+#define MAX_MESSAGE_LEN     1400
+
+/*******************************************************************************
  * POWERS OF 2
  ******************************************************************************/
 #define P2_0        (1U << 0)               ///< 2^0  = 1
@@ -73,37 +83,114 @@
 /*******************************************************************************
  * BIT MASKS
  ******************************************************************************/
-#define MASK_01_BITS   0x00000001U          ///< 1 bits mask
-#define MASK_02_BITS   0x00000003U          ///< 2 bits mask
-#define MASK_03_BITS   0x00000007U          ///< 3 bits mask
-#define MASK_04_BITS   0x0000000FU          ///< 4 bits mask
-#define MASK_05_BITS   0x0000001FU          ///< 5 bits mask
-#define MASK_06_BITS   0x0000003FU          ///< 6 bits mask
-#define MASK_07_BITS   0x0000007FU          ///< 7 bits mask
-#define MASK_08_BITS   0x000000FFU          ///< 8 bits mask
-#define MASK_09_BITS   0x000001FFU          ///< 9 bits mask
-#define MASK_10_BITS   0x000003FFU          ///< 10 bits mask
-#define MASK_11_BITS   0x000007FFU          ///< 11 bits mask
-#define MASK_12_BITS   0x00000FFFU          ///< 12 bits mask
-#define MASK_13_BITS   0x00001FFFU          ///< 13 bits mask
-#define MASK_14_BITS   0x00003FFFU          ///< 14 bits mask
-#define MASK_15_BITS   0x00007FFFU          ///< 15 bits mask
-#define MASK_16_BITS   0x0000FFFFU          ///< 16 bits mask
-#define MASK_17_BITS   0x0001FFFFU          ///< 17 bits mask
-#define MASK_18_BITS   0x0003FFFFU          ///< 18 bits mask
-#define MASK_19_BITS   0x0007FFFFU          ///< 19 bits mask
-#define MASK_20_BITS   0x000FFFFFU          ///< 20 bits mask
-#define MASK_21_BITS   0x001FFFFFU          ///< 21 bits mask
-#define MASK_22_BITS   0x003FFFFFU          ///< 22 bits mask
-#define MASK_23_BITS   0x007FFFFFU          ///< 23 bits mask
-#define MASK_24_BITS   0x00FFFFFFU          ///< 24 bits mask
-#define MASK_25_BITS   0x01FFFFFFU          ///< 25 bits mask
-#define MASK_26_BITS   0x03FFFFFFU          ///< 26 bits mask
-#define MASK_27_BITS   0x07FFFFFFU          ///< 27 bits mask
-#define MASK_28_BITS   0x0FFFFFFFU          ///< 28 bits mask
-#define MASK_29_BITS   0x1FFFFFFFU          ///< 29 bits mask
-#define MASK_30_BITS   0x3FFFFFFFU          ///< 30 bits mask
-#define MASK_31_BITS   0x7FFFFFFFU          ///< 31 bits mask
-#define MASK_32_BITS   0xFFFFFFFFU          ///< 32 bits mask
+#define MASK_01_BITS    0x00000001U          ///< 1 bits mask
+#define MASK_02_BITS    0x00000003U          ///< 2 bits mask
+#define MASK_03_BITS    0x00000007U          ///< 3 bits mask
+#define MASK_04_BITS    0x0000000FU          ///< 4 bits mask
+#define MASK_05_BITS    0x0000001FU          ///< 5 bits mask
+#define MASK_06_BITS    0x0000003FU          ///< 6 bits mask
+#define MASK_07_BITS    0x0000007FU          ///< 7 bits mask
+#define MASK_08_BITS    0x000000FFU          ///< 8 bits mask
+#define MASK_09_BITS    0x000001FFU          ///< 9 bits mask
+#define MASK_10_BITS    0x000003FFU          ///< 10 bits mask
+#define MASK_11_BITS    0x000007FFU          ///< 11 bits mask
+#define MASK_12_BITS    0x00000FFFU          ///< 12 bits mask
+#define MASK_13_BITS    0x00001FFFU          ///< 13 bits mask
+#define MASK_14_BITS    0x00003FFFU          ///< 14 bits mask
+#define MASK_15_BITS    0x00007FFFU          ///< 15 bits mask
+#define MASK_16_BITS    0x0000FFFFU          ///< 16 bits mask
+#define MASK_17_BITS    0x0001FFFFU          ///< 17 bits mask
+#define MASK_18_BITS    0x0003FFFFU          ///< 18 bits mask
+#define MASK_19_BITS    0x0007FFFFU          ///< 19 bits mask
+#define MASK_20_BITS    0x000FFFFFU          ///< 20 bits mask
+#define MASK_21_BITS    0x001FFFFFU          ///< 21 bits mask
+#define MASK_22_BITS    0x003FFFFFU          ///< 22 bits mask
+#define MASK_23_BITS    0x007FFFFFU          ///< 23 bits mask
+#define MASK_24_BITS    0x00FFFFFFU          ///< 24 bits mask
+#define MASK_25_BITS    0x01FFFFFFU          ///< 25 bits mask
+#define MASK_26_BITS    0x03FFFFFFU          ///< 26 bits mask
+#define MASK_27_BITS    0x07FFFFFFU          ///< 27 bits mask
+#define MASK_28_BITS    0x0FFFFFFFU          ///< 28 bits mask
+#define MASK_29_BITS    0x1FFFFFFFU          ///< 29 bits mask
+#define MASK_30_BITS    0x3FFFFFFFU          ///< 30 bits mask
+#define MASK_31_BITS    0x7FFFFFFFU          ///< 31 bits mask
+#define MASK_32_BITS    0xFFFFFFFFU          ///< 32 bits mask
 
+/*******************************************************************************
+ * BIT MASKS
+ ******************************************************************************/
+
+#define MASK_BIT_00     P2_0        ///< Mask of bit  0 
+#define MASK_BIT_01     P2_1        ///< Mask of bit  1 
+#define MASK_BIT_02     P2_2        ///< Mask of bit  2 
+#define MASK_BIT_03     P2_3        ///< Mask of bit  3 
+#define MASK_BIT_04     P2_4        ///< Mask of bit  4 
+#define MASK_BIT_05     P2_5        ///< Mask of bit  5 
+#define MASK_BIT_06     P2_6        ///< Mask of bit  6 
+#define MASK_BIT_07     P2_7        ///< Mask of bit  7 
+#define MASK_BIT_08     P2_8        ///< Mask of bit  8 
+#define MASK_BIT_09     P2_9        ///< Mask of bit  9 
+#define MASK_BIT_10     P2_10       ///< Mask of bit 10 
+#define MASK_BIT_11     P2_11       ///< Mask of bit 11 
+#define MASK_BIT_12     P2_12       ///< Mask of bit 12 
+#define MASK_BIT_13     P2_13       ///< Mask of bit 13 
+#define MASK_BIT_14     P2_14       ///< Mask of bit 14 
+#define MASK_BIT_15     P2_15       ///< Mask of bit 15 
+#define MASK_BIT_16     P2_16       ///< Mask of bit 16 
+#define MASK_BIT_17     P2_17       ///< Mask of bit 17 
+#define MASK_BIT_18     P2_18       ///< Mask of bit 18 
+#define MASK_BIT_19     P2_19       ///< Mask of bit 19 
+#define MASK_BIT_20     P2_20       ///< Mask of bit 20 
+#define MASK_BIT_21     P2_21       ///< Mask of bit 21 
+#define MASK_BIT_22     P2_22       ///< Mask of bit 22 
+#define MASK_BIT_23     P2_23       ///< Mask of bit 23 
+#define MASK_BIT_24     P2_24       ///< Mask of bit 24 
+#define MASK_BIT_25     P2_25       ///< Mask of bit 25 
+#define MASK_BIT_26     P2_26       ///< Mask of bit 26 
+#define MASK_BIT_27     P2_27       ///< Mask of bit 27 
+#define MASK_BIT_28     P2_28       ///< Mask of bit 28 
+#define MASK_BIT_29     P2_29       ///< Mask of bit 29 
+#define MASK_BIT_30     P2_30       ///< Mask of bit 30 
+#define MASK_BIT_31     P2_31       ///< Mask of bit 31 
+#define MASK_BIT_32     P2_32       ///< Mask of bit 32 
+
+/*******************************************************************************
+ * Additional functions
+ ******************************************************************************/
+
+/**
+ * @brief Read specific bits from a value applying a mask at a given position.
+ * 
+ * This macro extracts the desired bits from a given field by shifting the bits
+ * to the right and applying the provided mask. The bit positions are specified
+ * in a **1-based format** (bit 1 is the least significant bit).
+ * 
+ * This macro is portable and useful for accessing packed bit fields when direct
+ * structure access is not recommended due to endianness or compiler-specific layout.
+ * 
+ * @param value Value from which bits are to be extracted.
+ * @param pos Starting bit position (1-based, where bit 1 is the least significant bit).
+ * @param mask Bitmask to select the desired bits (unshifted).
+ * 
+ * @return The extracted bits from the given value, aligned to the least significant bits.
+ * 
+ * @note The macro assumes that `pos` starts from 1. If `pos` is 1, no shift is applied.
+ * 
+ * @example
+ * // Example: Reading bits 7-5 (3 bits) from a value
+ * uint8_t raw = 0b10110010;
+ * uint8_t result = GET_BITS(raw, 6, 0x07); // Reads bits 7,6,5 -> Expected result: 0b101
+ */
+#define GET_BITS(value, pos, mask) (((value) >> (pos-1)) & mask)
+
+/**
+ * @brief Macro to set desired bits on a given position in a target field by reference.
+ * 
+ * @param dst Pointer to the target variable.
+ * @param val Value to set.
+ * @param mask Mask for the bits to be set.
+ * @param pos Bit position (1-based, where 1 is the least significant bit).
+ */
+#define SET_BITS(dst, val, mask, pos) \
+    (*(dst)) |= (((val) & (mask)) << ((pos) - 1))
 #endif // CONSTANTS_H
