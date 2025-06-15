@@ -76,18 +76,18 @@ typedef struct cat021_item070
  * Function headers
  ******************************************************************************/
 
-uint8_t get_cat021_item070_A4(cat021_item070 * item);
-uint8_t get_cat021_item070_A2(cat021_item070 * item);
-uint8_t get_cat021_item070_A1(cat021_item070 * item);
-uint8_t get_cat021_item070_B4(cat021_item070 * item);
-uint8_t get_cat021_item070_B2(cat021_item070 * item);
-uint8_t get_cat021_item070_B1(cat021_item070 * item);
-uint8_t get_cat021_item070_C4(cat021_item070 * item);
-uint8_t get_cat021_item070_C2(cat021_item070 * item);
-uint8_t get_cat021_item070_C1(cat021_item070 * item);
-uint8_t get_cat021_item070_D4(cat021_item070 * item);
-uint8_t get_cat021_item070_D2(cat021_item070 * item);
-uint8_t get_cat021_item070_D1(cat021_item070 * item);
+uint8_t get_cat021_item070_A4(const cat021_item070 * item);
+uint8_t get_cat021_item070_A2(const cat021_item070 * item);
+uint8_t get_cat021_item070_A1(const cat021_item070 * item);
+uint8_t get_cat021_item070_B4(const cat021_item070 * item);
+uint8_t get_cat021_item070_B2(const cat021_item070 * item);
+uint8_t get_cat021_item070_B1(const cat021_item070 * item);
+uint8_t get_cat021_item070_C4(const cat021_item070 * item);
+uint8_t get_cat021_item070_C2(const cat021_item070 * item);
+uint8_t get_cat021_item070_C1(const cat021_item070 * item);
+uint8_t get_cat021_item070_D4(const cat021_item070 * item);
+uint8_t get_cat021_item070_D2(const cat021_item070 * item);
+uint8_t get_cat021_item070_D1(const cat021_item070 * item);
 
 ASTERIX_API uint16_t get_cat021_item070_code(cat021_item070 * item);
 
