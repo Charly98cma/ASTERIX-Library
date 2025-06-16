@@ -10,9 +10,7 @@
  * Getters
  ******************************************************************************/
 
-/*==============================*/
-/* Main Part Portable Getters   */
-/*==============================*/
+/* === MAIN BYTE === */
 
 /**
  * @brief Get the Address Type (ATP) from CAT 021 Item 040 Primary Subfield.
@@ -85,9 +83,7 @@ uint8_t get_cat021_item040_FX(const cat021_item040 *item)
     return (((item)->raw) & MASK_01_BITS); // Bit 0
 }
 
-/*==============================*/
-/* Extension 1 Portable Getters */
-/*==============================*/
+/* === FIRST EXTENSION === */
 
 /**
  * @brief Get the Differential Correction (DCR) from CAT 021 Item 040 First Extension.
@@ -188,9 +184,7 @@ uint8_t get_cat021_item040_ext1_FX(const cat021_item040_ext1 *item)
     return ((item)->raw) & MASK_01_BITS;
 }
 
-/*==============================*/
-/* Extension 2 Portable Getters */
-/*==============================*/
+/* === SECOND EXTENSION === */
 
 /**
  * @brief Get the List Lookup Check (LL) from CAT 021 Item 040 Second Extension.
@@ -289,9 +283,7 @@ uint8_t get_cat021_item040_ext2_FX(const cat021_item040_ext2 *item)
     return ((item)->raw) & MASK_01_BITS;
 }
 
-/*==============================*/
-/* Extension 3 Portable Getters */
-/*==============================*/
+/* === THIRD EXTENSION === */
 
 /**
  * @brief Get the raw Total Bits Corrected (TBC) from CAT 021 Item 040 Third Extension.
@@ -345,9 +337,7 @@ uint8_t get_cat021_item040_ext3_FX(const cat021_item040_ext3 *item)
     return ((item)->raw) & MASK_01_BITS;
 }
 
-/*==============================*/
-/* Extension 4 Portable Getters */
-/*==============================*/
+/* === FOURTH EXTENSION === */
 
 /**
  * @brief Get the raw Maximum Bits Corrected (MBC) from CAT 021 Item 040 Fourth Extension.
@@ -405,11 +395,399 @@ uint8_t get_cat021_item040_ext4_FX(const cat021_item040_ext4 *item)
  * Setters
  ******************************************************************************/
 
+/* === MAIN BYTE === */
 
+/**
+ * @brief Set the Address Type (ATP) in CAT 021 Item 040.
+ * 
+ * Modifies the ATP bits (bits 8-6) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040 structure.
+ * @param value New ATP value (0 to 7).
+ */
+void set_cat021_item040_ATP(cat021_item040 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_03_BITS, 6);
+}
+
+/**
+ * @brief Set the Altitude Reporting Capability (ARC) in CAT 021 Item 040.
+ * 
+ * Modifies the ARC bits (bits 5-4) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040 structure.
+ * @param value New ARC value (0 to 3).
+ */
+void set_cat021_item040_ARC(cat021_item040 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_02_BITS, 4);
+}
+
+/**
+ * @brief Set the Range Check (RC) in CAT 021 Item 040.
+ * 
+ * Modifies the RC bits (bit 3) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040 structure.
+ * @param value New RC value (0 or 1).
+ */
+void set_cat021_item040_RC(cat021_item040 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 3);
+}
+
+/**
+ * @brief Set the Report Type (RAB) in CAT 021 Item 040.
+ * 
+ * Modifies the RAB bits (bit 2) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040 structure.
+ * @param value New RAB value (0 or 1).
+ */
+void set_cat021_item040_RAB(cat021_item040 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 2);
+}
+
+/**
+ * @brief Set the Field Extension (FX) in CAT 021 Item 040.
+ * 
+ * Modifies the FX bits (bit 1) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040 structure.
+ * @param value New FX value (0 or 1).
+ */
+void set_cat021_item040_FX(cat021_item040 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 1);
+}
+
+/* === FIRST EXTENSION === */
+
+/**
+ * @brief Set the Differential Correction (DCR) in CAT 021 Item 040 First extension.
+ * 
+ * Modifies the DCR bits (bits X) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext1 structure.
+ * @param value New DCR value (0 or 1).
+ */
+void set_cat021_item040_ext1_DCR(cat021_item040_ext1 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 8);
+}
+
+/**
+ * @brief Set the Ground Bit Setting (GBS) in CAT 021 Item 040 First extension.
+ * 
+ * Modifies the GBS bits (bits X) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext1 structure.
+ * @param value New GBS value (0 or 1).
+ */
+void set_cat021_item040_ext1_GBS(cat021_item040_ext1 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 7);
+}
+
+/**
+ * @brief Set the Simulated Target (SIM) in CAT 021 Item 040 First extension.
+ * 
+ * Modifies the SIM bits (bits X) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext1 structure.
+ * @param value New SIM value (0 or 1).
+ */
+void set_cat021_item040_ext1_SIM(cat021_item040_ext1 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 6);
+}
+
+/**
+ * @brief Set the Test Target (TST) in CAT 021 Item 040 First extension.
+ * 
+ * Modifies the TST bits (bits X) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext1 structure.
+ * @param value New TST value (0 or 1).
+ */
+void set_cat021_item040_ext1_TST(cat021_item040_ext1 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 5);
+}
+
+/**
+ * @brief Set the Selected Altitude Available (SAA) in CAT 021 Item 040 First extension.
+ * 
+ * Modifies the SAA bits (bits X) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext1 structure.
+ * @param value New SAA value (0 or 1).
+ */
+void set_cat021_item040_ext1_SAA(cat021_item040_ext1 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 4);
+}
+
+/**
+ * @brief Set the Confidence Level (CL) in CAT 021 Item 040 First extension.
+ * 
+ * Modifies the CL bits (bits X) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext1 structure.
+ * @param value New CL value (0 to 3).
+ */
+void set_cat021_item040_ext1_CL(cat021_item040_ext1 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_02_BITS, 2);
+}
+
+/**
+ * @brief Set the Field Extension (FX) in CAT 021 Item 040 First extension.
+ * 
+ * Modifies the FX bits (bits X) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext1 structure.
+ * @param value New FX value (0 or 1).
+ */
+void set_cat021_item040_ext1_FX(cat021_item040_ext1 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 1);
+}
+
+/* === SECOND EXTENSION === */
+
+/**
+ * @brief Set the List Lookup Check (LLC) in CAT 021 Item 040 Second extension.
+ * 
+ * Modifies the LLC bits (bit 7) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext2 structure.
+ * @param value New LLC value (0 or 1).
+ */
+void set_cat021_item040_ext2_LLC(cat021_item040_ext2 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 7);
+}
+
+/**
+ * @brief Set the Independent Position Check (IPC) in CAT 021 Item 040 Second extension.
+ * 
+ * Modifies the IPC bits (bit 6) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext2 structure.
+ * @param value New IPC value (0 or 1).
+ */
+void set_cat021_item040_ext2_IPC(cat021_item040_ext2 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 6);
+}
+
+/**
+ * @brief Set the No-go Bit Status (NOGO) in CAT 021 Item 040 Second extension.
+ * 
+ * Modifies the NOGO bits (bit 5) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext2 structure.
+ * @param value New NOGO value (0 or 1).
+ */
+void set_cat021_item040_ext2_NOGO(cat021_item040_ext2 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 5);
+}
+
+/**
+ * @brief Set the Compact Position Reporting (CPR) in CAT 021 Item 040 Second extension.
+ * 
+ * Modifies the CPR bits (bit 4) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext2 structure.
+ * @param value New CPR value (0 or 1).
+ */
+void set_cat021_item040_ext2_CPR(cat021_item040_ext2 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 4);
+}
+
+/**
+ * @brief Set the Local Decoding Position Jump (LDPJ) in CAT 021 Item 040 Second extension.
+ * 
+ * Modifies the LDPJ bits (bit 3) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext2 structure.
+ * @param value New LDPJ value (0 or 1).
+ */
+void set_cat021_item040_ext2_LDPJ(cat021_item040_ext2 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 3);
+}
+
+/**
+ * @brief Set the Range Check (RCF) in CAT 021 Item 040 Second extension.
+ * 
+ * Modifies the RCF bits (bit 2) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext2 structure.
+ * @param value New RCF value (0 or 1).
+ */
+void set_cat021_item040_ext2_RCF(cat021_item040_ext2 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 2);
+}
+
+/**
+ * @brief Set the Field Extension (FX) in CAT 021 Item 040 Second extension.
+ * 
+ * Modifies the FX bits (bit 1) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext2 structure.
+ * @param value New FX value (0 or 1).
+ */
+void set_cat021_item040_ext2_FX(cat021_item040_ext2 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 1);
+}
+
+/* === THIRD EXTENSION === */
+
+/**
+ * @brief Set the Total Bits Corrected (TBC) in CAT 021 Item 040 Third extension.
+ * 
+ * Modifies the TBC bits (bits 8-2) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext3 structure.
+ * @param value New TBC value.
+ */
+void set_cat021_item040_ext3_TBC(cat021_item040_ext3 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_07_BITS, 2);
+}
+
+/**
+ * @brief Set the TBC Element populated (TBC_EP) in CAT 021 Item 040 Third extension.
+ * 
+ * Modifies the TBC_EP bits (bit 8) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext3 structure.
+ * @param value New TBC_EP value (0 or 1).
+ */
+void set_cat021_item040_ext3_TBC_EP(cat021_item040_ext3 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 8);
+}
+
+/**
+ * @brief Set the TBC Value (TBC_VAL) in CAT 021 Item 040 Third extension.
+ * 
+ * Modifies the TBC_VAL bits (bits 7-2) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext3 structure.
+ * @param value New TBC_VAL value.
+ */
+void set_cat021_item040_ext3_TBC_VAL(cat021_item040_ext3 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_06_BITS, 2);
+}
+
+/**
+ * @brief Set the Field Extension (FX) in CAT 021 Item 040 Third extension.
+ * 
+ * Modifies the FX bits (bit 1) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext3 structure.
+ * @param value New FX value (0 or 1).
+ */
+void set_cat021_item040_ext3_FX(cat021_item040_ext3 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 1);
+}
+
+/* === FOURTH EXTENSION === */
+
+/**
+ * @brief Set the Maximum Bits Corrected (MBC) in CAT 021 Item 040 Fourth extension.
+ * 
+ * Modifies the MBC bits (bits 8-2) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext4 structure.
+ * @param value New MBC value.
+ */
+void set_cat021_item040_ext4_MBC(cat021_item040_ext4 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_07_BITS, 2);
+}
+
+/**
+ * @brief Set the MBC Element populated (MBC_EP) in CAT 021 Item 040 Fourth extension.
+ * 
+ * Modifies the MBC_EP bits (bit 8) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext4 structure.
+ * @param value New MBC_EP value (0 or 1).
+ */
+void set_cat021_item040_ext4_MBC_EP(cat021_item040_ext4 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 8);
+}
+
+/**
+ * @brief Set the MBC Value (MBC_VAL) in CAT 021 Item 040 Fourth extension.
+ * 
+ * Modifies the MBC_VAL bits (bits 7-2) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext4 structure.
+ * @param value New MBC_VAL value.
+ */
+void set_cat021_item040_ext4_MBC_VAL(cat021_item040_ext4 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_06_BITS, 2);
+}
+
+/**
+ * @brief Set the Field Extension (FX) in CAT 021 Item 040 Fourth extension.
+ * 
+ * Modifies the FX bits (bit 1) using a safe bitmask operation.
+ * 
+ * @param item Pointer to cat021_item040_ext4 structure.
+ * @param value New FX value (0 or 1).
+ */
+void set_cat021_item040_ext4_FX(cat021_item040_ext4 *item, uint8_t value)
+{
+    SET_BITS(&(item->raw), value, MASK_01_BITS, 1);
+}
 
 /*******************************************************************************
  * Other Functions
  ******************************************************************************/
+
+/**
+ * @brief Count the number of extensions present in the CAT 021 Item 040.
+ * 
+ * Evaluates each FX bit to determine the number of present extensions.
+ * 
+ * @param item Pointer to the main cat021_item040 structure.
+ * 
+ * @return uint8_t Number of present extensions (0 to 4).
+ */
+uint8_t count_cat021_item040_extensions(const cat021_item040 *item)
+{
+    uint8_t counter = 0;
+    
+    if (get_cat021_item040_FX(item)) {
+        counter++;
+        if (get_cat021_item040_ext1_FX(&(item->ext1))) {
+            counter++;
+            if (get_cat021_item040_ext2_FX(&(item->ext2))) {
+                counter++;
+                if (get_cat021_item040_ext3_FX(&(item->ext3))) {
+                    counter++;
+                }
+            }
+        }
+    }
+
+    return counter;
+}
 
 /**
  * @brief Print the contents of CAT 021 / Item 040 including its extensions.

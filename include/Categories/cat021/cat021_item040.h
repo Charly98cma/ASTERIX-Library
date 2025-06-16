@@ -361,6 +361,36 @@ ASTERIX_API uint8_t get_cat021_item040_ext4_MBC_EP(const cat021_item040_ext4 *it
 ASTERIX_API uint8_t get_cat021_item040_ext4_MBC_VAL(const cat021_item040_ext4 *item);
 ASTERIX_API uint8_t get_cat021_item040_ext4_FX(const cat021_item040_ext4 *item);
 
+ASTERIX_API void set_cat021_item040_ATP(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ARC(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_RC(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_RAB(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_FX(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_DCR(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_GBS(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_SIM(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_TST(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_SAA(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_CL(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_FX(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_LLC(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_IPC(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_NOGO(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_CPR(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_LDPJ(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_RCF(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_FX(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext3_TBC(cat021_item040_ext3 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext3_TBC_EP(cat021_item040_ext3 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext3_TBC_VAL(cat021_item040_ext3 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext3_FX(cat021_item040_ext3 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext4_MBC(cat021_item040_ext4 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext4_MBC_EP(cat021_item040_ext4 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext4_MBC_VAL(cat021_item040_ext4 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext4_FX(cat021_item040_ext4 *item, uint8_t value);
+
+ASTERIX_API uint8_t count_cat021_item040_extensions(const cat021_item040 *item);
+
 ASTERIX_API void print_cat021_item040(const cat021_item040 *item);
 
 #ifdef __cplusplus
