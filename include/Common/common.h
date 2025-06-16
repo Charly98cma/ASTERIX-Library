@@ -39,6 +39,9 @@ typedef struct header {
  * Function headers
  ******************************************************************************/
 
+ASTERIX_API uint8_t  get_CAT(const uint8_t * data);
+ASTERIX_API uint16_t get_LEN(const uint8_t * data);
+
 ASTERIX_API uint8_t  get_header_CAT(const header * item);
 ASTERIX_API uint16_t get_header_LEN(const header * item);
 
