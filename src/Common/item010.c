@@ -37,6 +37,32 @@ uint8_t get_item010_SIC(const item010 * item)
 }
 
 /*******************************************************************************
+ * Setters
+ ******************************************************************************/
+
+/**
+ * @brief Set the System Area Code (SAC) into the raw field.
+ * 
+ * @param item Pointer to item010 structure.
+ * @param sac_value Value of the SAC
+ */
+void set_item010_SAC(item010 * item, uint8_t sac_value)
+{
+    SET_BITS(&(item->raw), sac_value, MASK_08_BITS, 9);
+}
+
+/**
+ * @brief Set the System Identification Code (SIC) into the raw field.
+ * 
+ * @param item Pointer to item010 structure.
+ * @param sic_value Value of the SIC
+ */
+void set_item010_SIC(item010 * item, uint8_t sic_value)
+{
+    SET_BITS(&(item->raw), sic_value, MASK_08_BITS, 1);
+}
+
+/*******************************************************************************
  * Other Functions
  ******************************************************************************/
 
@@ -51,6 +77,6 @@ uint8_t get_item010_SIC(const item010 * item)
 void print_cat021_item010(const item010 *item)
 {
     printf("Item 010 - Data Source Identification\n");
-    printf("  SAC = %d\n", get_item010_SAC(item));
-    printf("  SIC = %d\n", get_item010_SIC(item));
+    printf("  SAC = 0x%02X\n", get_item010_SAC(item));
+    printf("  SIC = 0x%02X\n", get_item010_SIC(item));
 }
