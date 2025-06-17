@@ -1,9 +1,9 @@
 /**
- * @file cat021_item071.c
- * @brief Implementation of the Category 21 Item 071 functions
+ * @file cat021_item072.c
+ * @brief Implementation of the Category 21 Item 072 functions
  */
 
-#include "cat021_item071.h"
+#include "cat021_item072.h"
 #include "constants.h"
 
 /*******************************************************************************
@@ -11,14 +11,14 @@
  ******************************************************************************/
 
  /**
- * @brief Get Time of Applicability for Position raw value from Cat 021 Item 071.
+ * @brief Get Time of Applicability for Velocity raw value from Cat 021 Item 072.
  *
  * Combines the 3 raw bytes into a 24-bit unsigned integer.
  *
- * @param item Pointer to cat021_item071 structure.
+ * @param item Pointer to cat021_item072 structure.
  * @return uint32_t Time in units of 1/128 s (0 = midnight).
  */
-uint32_t get_cat021_item071_TAP_raw(const cat021_item071 * item)
+uint32_t get_cat021_item072_TAV_raw(const cat021_item072 * item)
 {
     return ((uint32_t)item->raw[0] << 16) |
            ((uint32_t)item->raw[1] << 8)  |
@@ -26,17 +26,17 @@ uint32_t get_cat021_item071_TAP_raw(const cat021_item071 * item)
 }
 
 /**
- * @brief Get the Time of Applicability for Position in seconds (floating-point)
- *        from Cat 021 Item 071.
+ * @brief Get the Time of Applicability for Velocity in seconds (floating-point)
+ *        from Cat 021 Item 072.
  *
  * Divides the raw 1/128-s units by 128.0 to return seconds since midnight.
  *
- * @param item Pointer to cat021_item071_t structure.
+ * @param item Pointer to cat021_item072_t structure.
  * @return double Time in seconds (>= 0).
  */
-double get_cat021_item071_TAP_seconds(const cat021_item071 * item)
+double get_cat021_item072_TAV_seconds(const cat021_item072 * item)
 {
-    return get_cat021_item071_TAP_raw(item) * LSB_CAT021_ITEM071;
+    return get_cat021_item072_TAV_raw(item) * LSB_CAT021_ITEM072;
 }
 
 /*******************************************************************************
@@ -44,14 +44,14 @@ double get_cat021_item071_TAP_seconds(const cat021_item071 * item)
  ******************************************************************************/
 
  /**
- * @brief Set the Time of Applicability for Position raw value into Cat 021 Item 071.
+ * @brief Set the Time of Applicability for Velocity raw value into Cat 021 Item 072.
  *
  * Stores the 24-bit value into the raw array.
  *
- * @param item Pointer to cat021_item071 structure.
+ * @param item Pointer to cat021_item072 structure.
  * @param raw_value Raw 24-bit time value to store (units of 1/128 s).
  */
-void set_cat021_item071_TAP_raw(cat021_item071 * item, uint32_t raw_value)
+void set_cat021_item072_TAV_raw(cat021_item072 * item, uint32_t raw_value)
 {
     // First octet
     SET_BITS(&(item->raw[0]), (raw_value >> 16), MASK_08_BITS, 1);
@@ -62,14 +62,14 @@ void set_cat021_item071_TAP_raw(cat021_item071 * item, uint32_t raw_value)
 }
 
 /**
- * @brief Set the Time of Applicability for Position in seconds into Cat 021 Item 071.
+ * @brief Set the Time of Applicability for Velocity in seconds into Cat 021 Item 072.
  *
  * Converts the seconds value into 1/128-s units and stores as raw data.
  *
- * @param item Pointer to cat021_item071 structure.
+ * @param item Pointer to cat021_item072 structure.
  * @param seconds Time in seconds (will be converted to 1/128-s units).
  */
-void set_cat021_item071_TAP_seconds(cat021_item071 * item, double seconds)
+void set_cat021_item072_TAV_seconds(cat021_item072 * item, double seconds)
 {
     uint32_t raw_value = 0;
 
@@ -77,22 +77,22 @@ void set_cat021_item071_TAP_seconds(cat021_item071 * item, double seconds)
     if (seconds <= 0)
     {
         // Turn to raw format and round to nearest unit
-        raw_value = (uint32_t) ((seconds / LSB_CAT021_ITEM071) + 0.5);
+        raw_value = (uint32_t) ((seconds / LSB_CAT021_ITEM072) + 0.5);
     }
 
-    set_cat021_item071_TAP_raw(item, raw_value);
+    set_cat021_item072_TAV_raw(item, raw_value);
 }
 
 /**
- * @brief Print the contents of CAT021 Item 071 (Time of Applicability Position).
+ * @brief Print the contents of CAT021 Item 072 (Time of Applicability Velocity).
  * 
  * Prints both the raw value and the converted time in seconds.
  * 
- * @param item Pointer to cat021_item071_t structure.
+ * @param item Pointer to cat021_item072_t structure.
  */
-void print_cat021_item071(const cat021_item071 * item)
+void print_cat021_item072(const cat021_item072 * item)
 {
-    printf("Category 021 / Item 071 - Time of Applicability for Position\n");
-    printf("  TAP (raw) = 0x%02X\n", get_cat021_item071_TAP_raw(item));
-    printf("  TAP (seconds) = %d\n\n", get_cat021_item071_TAP_seconds(item));
+    printf("Category 021 / Item 072 - Time of Applicability for Velocity\n");
+    printf("  TAV (raw) = 0x%02X\n", get_cat021_item072_TAV_raw(item));
+    printf("  TAV (seconds) = %d\n\n", get_cat021_item072_TAV_seconds(item));
 }
