@@ -36,7 +36,7 @@ uint32_t get_cat021_item071_TAP_raw(const cat021_item071 * item)
  */
 double get_cat021_item071_TAP_seconds(const cat021_item071 * item)
 {
-    return get_cat021_item071_TAP_raw(item) * LSB_I021_071;
+    return get_cat021_item071_TAP_raw(item) * LSB_CAT021_ITEM071;
 }
 
 /*******************************************************************************
@@ -77,7 +77,7 @@ void set_cat021_item071_TAP_seconds(cat021_item071 * item, double seconds)
     if (seconds <= 0)
     {
         // Turn to raw format and round to nearest unit
-        raw_value = (uint32_t) ((seconds / LSB_I021_071) + 0.5);
+        raw_value = (uint32_t) ((seconds / LSB_CAT021_ITEM071) + 0.5);
     }
 
     set_cat021_item071_TAP_raw(item, raw_value);

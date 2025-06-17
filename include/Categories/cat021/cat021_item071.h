@@ -18,8 +18,10 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-/// @brief LSB of Time of Applicability for Position field of Cat 021 Item 071 
-#define LSB_I021_071                (double) (1/P2_7)       /// LSB = 1/2^7 sec
+/** 
+ * @brief LSB (1/128 s) Time of Applicability for Position of Cat 021 Item 071 
+ */
+#define LSB_CAT021_ITEM071                (double) (1/P2_7)
 
 /*******************************************************************************
  * Structures and Types
