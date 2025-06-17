@@ -31,7 +31,7 @@ uint32_t get_cat021_item072_TAV_raw(const cat021_item072 * item)
  *
  * Divides the raw 1/128-s units by 128.0 to return seconds since midnight.
  *
- * @param item Pointer to cat021_item072_t structure.
+ * @param item Pointer to cat021_item072 structure.
  * @return double Time in seconds (>= 0).
  */
 double get_cat021_item072_TAV_seconds(const cat021_item072 * item)

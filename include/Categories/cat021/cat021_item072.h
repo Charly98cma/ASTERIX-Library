@@ -19,7 +19,7 @@ extern "C" {
  ******************************************************************************/
 
 /** 
- * @brief LSB (1/128 s) Time of Applicability for Velocity of Cat 021 Item 072
+ * @brief LSB (1/128 s) Time of Applicability for Velocity
  */
 #define LSB_CAT021_ITEM072                (double) (1/P2_7)
 
