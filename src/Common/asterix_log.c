@@ -1,4 +1,4 @@
- /**
+/**
  * @file asterix_log.c
  * @brief Implementation of the logger
  */

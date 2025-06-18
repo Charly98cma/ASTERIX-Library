@@ -40,14 +40,44 @@ typedef struct cat021_item015 {
 } cat021_item015;
 
 /*******************************************************************************
- * Function headers
+ * Getters
  ******************************************************************************/
 
+/**
+ * @brief Get the Service Identification value (SI) from I021/015.
+ * 
+ * Portable access to the SI bit, independent of compiler and endianness.
+ * 
+ * @param item Pointer to cat021_item015 structure.
+ * @return uint8_t Value of SI
+ */
 ASTERIX_API uint8_t get_cat021_item015_SI(const cat021_item015 * item);
 
+/*******************************************************************************
+ * Setters
+ ******************************************************************************/
+
+/**
+ * @brief Set the Service Identification value (SI) into the raw field.
+ * 
+ * @param item Pointer to cat021_item015 structure.
+ * @param sic_value Value of the SI
+ */
 ASTERIX_API void set_cat021_item015_SI(cat021_item015 * item, uint8_t value);
 
-void print_cat021_item015(const cat021_item015 *item);
+/*******************************************************************************
+ * Other Functions
+ ******************************************************************************/
+
+/**
+ * @brief Print the contents of CAT 021 / Item 015.
+ *
+ * This function prints the values of the main byte.
+ * It is useful for debugging and inspection.
+ *
+ * @param item Pointer to a cat021_item015 structure.
+ */
+ASTERIX_API void print_cat021_item015(const cat021_item015 *item);
 
 #ifdef __cplusplus
 }

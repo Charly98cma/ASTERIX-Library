@@ -10,29 +10,11 @@
  * Getters
  ******************************************************************************/
 
-/**
- * @brief Get the Report Period value (RP) from I021/016.
- * 
- * Portable access to the RP bits, independent of compiler and endianness.
- * 
- * @param item Pointer to cat021_item016 structure.
- * @return uint8_t Value of RP
- */
-uint8_t get_cat021_item016_RP(const cat021_item016 * item)
+uint8_t get_cat021_item016_RP_raw(const cat021_item016 * item)
 {
     return GET_BITS((item)->raw, 1, MASK_08_BITS);
 }
 
-/**
- * @brief Get the Report Period value (RP) from I021/016 in seconds.
- * 
- * Converts the raw RP value to seconds.
- * 
- * Range: 0 … 127.5 seconds (value of 127.5 indicates 127.5 or more)
- * 
- * @param item Pointer to cat021_item016 structure.
- * @return double Report Period in seconds
- */
 double get_cat021_item016_RP_seconds(const cat021_item016 * item)
 {
     return get_cat021_item016_RP(item) * LSB_CAT021_ITEM016_RP;
@@ -42,29 +24,26 @@ double get_cat021_item016_RP_seconds(const cat021_item016 * item)
  * Setters
  ******************************************************************************/
 
-/**
- * @brief Set the Report Period (RP) into the raw field.
- * 
- * @param item Pointer to cat021_item016 structure.
- * @param sic_value Value of the RP
- */
-void set_cat021_item016_RP(cat021_item016 * item, uint8_t value)
+void set_cat021_item016_RP_raw(cat021_item016 * item, uint8_t raw_value)
 {
-    SET_BITS(&((item)->raw), (uint8_t) (value / LSB_CAT021_ITEM016_RP), MASK_08_BITS, 1);
+    SET_BITS(&((item)->raw), raw_value, MASK_08_BITS, 1);
+}
+
+void set_cat021_item016_RP_seconds(cat021_item016 * item, double seconds)
+{
+    uint8_t raw_value = 0;
+
+    // Change raw value to seconds rounding to nearest unit
+    if (seconds > 0)
+        raw_value = (uint8_t) (uint8_t) (seconds / LSB_CAT021_ITEM016_RP) + 0.5;
+
+    SET_BITS(&((item)->raw), raw_value, MASK_08_BITS, 1);
 }
 
 /*******************************************************************************
  * Other Functions
  ******************************************************************************/
 
-/**
- * @brief Print the contents of CAT 021 / Item 016.
- *
- * This function prints the values of the main byte.
- * It is useful for debugging and inspection.
- *
- * @param item Pointer to a cat021_item016 structure.
- */
 void print_cat021_item016(const cat021_item016 *item)
 {
     printf("Category 021 / Item 016 - Service Management\n");

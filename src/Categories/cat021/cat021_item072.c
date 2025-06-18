@@ -10,30 +10,13 @@
  * Getters
  ******************************************************************************/
 
- /**
- * @brief Get Time of Applicability for Velocity raw value from Cat 021 Item 072.
- *
- * Combines the 3 raw bytes into a 24-bit unsigned integer.
- *
- * @param item Pointer to cat021_item072 structure.
- * @return uint32_t Time in units of 1/128 s (0 = midnight).
- */
 uint32_t get_cat021_item072_TAV_raw(const cat021_item072 * item)
 {
-    return ((uint32_t)item->raw[0] << 16) |
-           ((uint32_t)item->raw[1] << 8)  |
-           ((uint32_t)item->raw[2]);
+    return (uint32_t) (((uint32_t)item->raw[0] << 16) |
+                       ((uint32_t)item->raw[1] <<  8) |
+                       ((uint32_t)item->raw[2]      ));
 }
 
-/**
- * @brief Get the Time of Applicability for Velocity in seconds (floating-point)
- *        from Cat 021 Item 072.
- *
- * Divides the raw 1/128-s units by 128.0 to return seconds since midnight.
- *
- * @param item Pointer to cat021_item072 structure.
- * @return double Time in seconds (>= 0).
- */
 double get_cat021_item072_TAV_seconds(const cat021_item072 * item)
 {
     return get_cat021_item072_TAV_raw(item) * LSB_CAT021_ITEM072;
@@ -43,53 +26,31 @@ double get_cat021_item072_TAV_seconds(const cat021_item072 * item)
  * Setters
  ******************************************************************************/
 
- /**
- * @brief Set the Time of Applicability for Velocity raw value into Cat 021 Item 072.
- *
- * Stores the 24-bit value into the raw array.
- *
- * @param item Pointer to cat021_item072 structure.
- * @param raw_value Raw 24-bit time value to store (units of 1/128 s).
- */
 void set_cat021_item072_TAV_raw(cat021_item072 * item, uint32_t raw_value)
 {
     // First octet
     SET_BITS(&(item->raw[0]), (raw_value >> 16), MASK_08_BITS, 1);
     // Second octet
-    SET_BITS(&(item->raw[1]), (raw_value >> 8), MASK_08_BITS, 1);
+    SET_BITS(&(item->raw[1]), (raw_value >>  8), MASK_08_BITS, 1);
     // Third octet
-    SET_BITS(&(item->raw[2]), (raw_value), MASK_08_BITS, 1);
+    SET_BITS(&(item->raw[2]), (raw_value      ), MASK_08_BITS, 1);
 }
 
-/**
- * @brief Set the Time of Applicability for Velocity in seconds into Cat 021 Item 072.
- *
- * Converts the seconds value into 1/128-s units and stores as raw data.
- *
- * @param item Pointer to cat021_item072 structure.
- * @param seconds Time in seconds (will be converted to 1/128-s units).
- */
 void set_cat021_item072_TAV_seconds(cat021_item072 * item, double seconds)
 {
     uint32_t raw_value = 0;
 
-    // If seconds is 0, skip conversion to raw format
+    // Turn to raw format and round to nearest unit if bigger than 0
     if (seconds <= 0)
-    {
-        // Turn to raw format and round to nearest unit
         raw_value = (uint32_t) ((seconds / LSB_CAT021_ITEM072) + 0.5);
-    }
 
     set_cat021_item072_TAV_raw(item, raw_value);
 }
 
-/**
- * @brief Print the contents of CAT021 Item 072 (Time of Applicability Velocity).
- * 
- * Prints both the raw value and the converted time in seconds.
- * 
- * @param item Pointer to cat021_item072_t structure.
- */
+/*******************************************************************************
+ * Other Functions
+ ******************************************************************************/
+
 void print_cat021_item072(const cat021_item072 * item)
 {
     printf("Category 021 / Item 072 - Time of Applicability for Velocity\n");

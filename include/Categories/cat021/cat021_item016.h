@@ -56,16 +56,64 @@ typedef struct cat021_item016 {
 } cat021_item016;
 
 /*******************************************************************************
- * Function Headers
+ * Getters
  ******************************************************************************/
 
-ASTERIX_API uint8_t get_cat021_item016_RP(const cat021_item016 * item);
+/**
+ * @brief Get the Report Period (RP) raw value from I021/016.
+ * 
+ * Portable access to the RP bits, independent of compiler and endianness.
+ * 
+ * @param item Pointer to cat021_item016 structure.
+ * @return uint8_t Value of RP
+ */
+ASTERIX_API uint8_t get_cat021_item016_RP_raw(const cat021_item016 * item);
 
-ASTERIX_API void set_cat021_item016_RP(cat021_item016 * item, uint8_t value);
-
-ASTERIX_API void print_cat021_item016(const cat021_item016 *item);
-
+/**
+ * @brief Get the Report Period value (RP) from I021/016 in seconds.
+ * 
+ * Converts the raw RP value to seconds.
+ * 
+ * Range: 0 … 127.5 seconds (value of 127.5 indicates 127.5 or more)
+ * 
+ * @param item Pointer to cat021_item016 structure.
+ * @return double Report Period in seconds
+ */
 ASTERIX_API double get_cat021_item016_RP_seconds(const cat021_item016 * item);
+
+/*******************************************************************************
+ * Setters
+ ******************************************************************************/
+
+/**
+ * @brief Set the Report Period (RP) raw value into the raw field.
+ * 
+ * @param item Pointer to cat021_item016 structure.
+ * @param sic_value Value of the RP in steps of 0.5 seconds
+ */
+ASTERIX_API void set_cat021_item016_RP_raw(cat021_item016 * item, uint8_t raw_value);
+
+/**
+ * @brief Set the Report Period (RP) valie in seconds into the raw field.
+ * 
+ * @param item Pointer to cat021_item016 structure.
+ * @param sic_value Value of the RP in seconds
+ */
+ASTERIX_API void set_cat021_item016_RP_seconds(cat021_item016 * item, double seconds);
+
+/*******************************************************************************
+ * Other Functions
+ ******************************************************************************/
+
+/**
+ * @brief Print the contents of CAT 021 / Item 016.
+ *
+ * This function prints the values of the main byte.
+ * It is useful for debugging and inspection.
+ *
+ * @param item Pointer to a cat021_item016 structure.
+ */
+ASTERIX_API void print_cat021_item016(const cat021_item016 *item);
 
 #ifdef __cplusplus
 }

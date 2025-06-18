@@ -88,25 +88,151 @@ typedef struct cat021_item008 {
 } cat021_item008;
 
 /*******************************************************************************
- * Function headers
+ * Getters
  ******************************************************************************/
 
+/**
+ * @brief Get the TCAS Resolution Advisory status (RA) from I021/008.
+ * 
+ * Portable access to the RA bit, independent of compiler and endianness.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @return uint8_t Value of RA (0: not active, 1: active)
+ */
 ASTERIX_API uint8_t get_cat021_item008_RA(const cat021_item008 * item);
+
+/**
+ * @brief Get the Target Trajectory Change Report Capability (TC) from I021/008.
+ * 
+ * Portable access to the TC bit, independent of compiler and endianness.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @return uint8_t Value of TC (0: no capability, 1: TC+0 reports only, 2: multiple TC reports, 3: reserved)
+ */
 ASTERIX_API uint8_t get_cat021_item008_TC(const cat021_item008 * item);
+
+/**
+ * @brief Get the Target State Report Capability (TS) from I021/008.
+ * 
+ * Portable access to the TS bit, independent of compiler and endianness.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @return uint8_t Value of TS (0: no capability, 1: capability supported)
+ */
 ASTERIX_API uint8_t get_cat021_item008_TS(const cat021_item008 * item);
+
+/**
+ * @brief Get the Air-Referenced Velocity Report Capability (ARV) from I021/008.
+ * 
+ * Portable access to the ARV bit, independent of compiler and endianness.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @return uint8_t Value of ARV (0: no capability. 1: capability supported)
+ */
 ASTERIX_API uint8_t get_cat021_item008_ARV(const cat021_item008 * item);
+
+/**
+ * @brief Get the Cockpit Display of Traffic Information airborne (CDTI) from I021/008.
+ * 
+ * Portable access to the CDTI bit, independent of compiler and endianness.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @return uint8_t Value of CDTI (0: not operational, 1: operational)
+ */
 ASTERIX_API uint8_t get_cat021_item008_CDTI(const cat021_item008 * item);
+
+/**
+ * @brief Get the Not TCAS System Status (NTCAS) from I021/008.
+ * 
+ * Portable access to the NTCAS bit, independent of compiler and endianness.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @return uint8_t Value of NTCAS (0: operational, 1: not operational)
+ */
 ASTERIX_API uint8_t get_cat021_item008_NTCAS(const cat021_item008 * item);
+
+/**
+ * @brief Get the Single Antenna (SA) from I021/008.
+ * 
+ * Portable access to the SA bit, independent of compiler and endianness.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @return uint8_t Value of SA (0: antenna diversity, 1: single antenna only)
+ */
 ASTERIX_API uint8_t get_cat021_item008_SA(const cat021_item008 * item);
 
+
+/*******************************************************************************
+ * Setters
+ ******************************************************************************/
+
+/**
+ * @brief Set the TCAS Resolution Advisory status (RA) into the raw field.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @param value Value of RA
+ */
 ASTERIX_API void set_cat021_item008_RA(cat021_item008 * item, uint8_t value);
+
+/**
+ * @brief Set the Target Trajectory Change Report Capability (TC) into the raw field.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @param value Value of TC
+ */
 ASTERIX_API void set_cat021_item008_TC(cat021_item008 * item, uint8_t value);
+
+/**
+ * @brief Set the Target State Report Capability (TS) into the raw field.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @param value Value of TS
+ */
 ASTERIX_API void set_cat021_item008_TS(cat021_item008 * item, uint8_t value);
+
+/**
+ * @brief Set the Air-Referenced Velocity Report Capability (ARV) into the raw field.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @param value Value of ARV
+ */
 ASTERIX_API void set_cat021_item008_ARV(cat021_item008 * item, uint8_t value);
+
+/**
+ * @brief Set the Cockpit Display of Traffic Information airborne (CDTI) into the raw field.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @param value Value of CDTI
+ */
 ASTERIX_API void set_cat021_item008_CDTI(cat021_item008 * item, uint8_t value);
+
+/**
+ * @brief Set the Not TCAS System Status (NTCAS) into the raw field.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @param value Value of NTCAS
+ */
 ASTERIX_API void set_cat021_item008_NTCAS(cat021_item008 * item, uint8_t value);
+
+/**
+ * @brief Set the Single Antenna (SA) into the raw field.
+ * 
+ * @param item Pointer to cat021_item008 structure.
+ * @param value Value of SA
+ */
 ASTERIX_API void set_cat021_item008_SA(cat021_item008 * item, uint8_t value);
 
+/*******************************************************************************
+ * Other Functions
+ ******************************************************************************/
+/**
+ * @brief Print the contents of CAT 021 / Item 008.
+ *
+ * This function prints the values of the main byte.
+ * It is useful for debugging and inspection.
+ *
+ * @param item Pointer to a cat021_item008 structure.
+ */
 ASTERIX_API void print_cat021_item008(const cat021_item008 *item);
 
 #ifdef __cplusplus
