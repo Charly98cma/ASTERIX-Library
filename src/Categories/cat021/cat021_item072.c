@@ -19,7 +19,7 @@ uint32_t get_cat021_item072_TAV_raw(const cat021_item072 * item)
 
 double get_cat021_item072_TAV_seconds(const cat021_item072 * item)
 {
-    return get_cat021_item072_TAV_raw(item) * LSB_CAT021_ITEM072;
+    return (double) get_cat021_item072_TAV_raw(item) * LSB_CAT021_ITEM072;
 }
 
 /*******************************************************************************
@@ -28,11 +28,8 @@ double get_cat021_item072_TAV_seconds(const cat021_item072 * item)
 
 void set_cat021_item072_TAV_raw(cat021_item072 * item, uint32_t raw_value)
 {
-    // First octet
     SET_BITS(&(item->raw[0]), (raw_value >> 16), MASK_08_BITS, 1);
-    // Second octet
     SET_BITS(&(item->raw[1]), (raw_value >>  8), MASK_08_BITS, 1);
-    // Third octet
     SET_BITS(&(item->raw[2]), (raw_value      ), MASK_08_BITS, 1);
 }
 
@@ -54,6 +51,6 @@ void set_cat021_item072_TAV_seconds(cat021_item072 * item, double seconds)
 void print_cat021_item072(const cat021_item072 * item)
 {
     printf("Category 021 / Item 072 - Time of Applicability for Velocity\n");
-    printf("  TAV (raw) = 0x%02X\n", get_cat021_item072_TAV_raw(item));
-    printf("  TAV (seconds) = %d\n\n", get_cat021_item072_TAV_seconds(item));
+    printf("  TAV (raw) = 0x%03X\n", get_cat021_item072_TAV_raw(item));
+    printf("  TAV (seconds) = %f\n\n", get_cat021_item072_TAV_seconds(item));
 }

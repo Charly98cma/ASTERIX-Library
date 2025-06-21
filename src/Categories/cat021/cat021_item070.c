@@ -70,24 +70,24 @@ uint8_t get_cat021_item070_D1(const cat021_item070 * item)
     return GET_BITS((item)->raw, 1, MASK_01_BITS); 
 }
 
-uint16_t get_cat021_item070_code(cat021_item070 * item)
+uint16_t get_cat021_item070_code(const cat021_item070 * item)
 {
     uint8_t A, B, C, D;
 
     // A OCTAL FORMAT = A4 0 A2 A1 
-    A = (get_cat021_item070_A4(item) << 3) |
+    A = (get_cat021_item070_A4(item) << 2) |
         (get_cat021_item070_A2(item) << 1) |
         (get_cat021_item070_A1(item));
     // B OCTAL FORMAT = B4 0 B2 B1 
-    B = (get_cat021_item070_B4(item) << 3) |
+    B = (get_cat021_item070_B4(item) << 2) |
         (get_cat021_item070_B2(item) << 1) |
         (get_cat021_item070_B1(item));
     // C OCTAL FORMAT = C4 0 C2 C1 
-    C = (get_cat021_item070_C4(item) << 3) |
+    C = (get_cat021_item070_C4(item) << 2) |
         (get_cat021_item070_C2(item) << 1) |
         (get_cat021_item070_C1(item));
     // D OCTAL FORMAT = D4 0 D2 D1 
-    D = (get_cat021_item070_D4(item) << 3) |
+    D = (get_cat021_item070_D4(item) << 2) |
         (get_cat021_item070_D2(item) << 1) |
         (get_cat021_item070_D1(item));
 
@@ -102,31 +102,24 @@ uint16_t set_cat021_item070_code(cat021_item070 * item, uint16_t code)
 {
     uint8_t A, B, C, D;
 
+    // TODO: Check code is in valid range
+    //if (!IN_RANGE(0, code, 07777)) return OP_FAIL;
+
     // Extract each octal number individually
-    A = GET_BITS(code, 10, MASK_03_BITS); // A4 0 A2 A1
-    B = GET_BITS(code,  7, MASK_03_BITS); // B4 0 B2 B1
-    C = GET_BITS(code,  4, MASK_03_BITS); // C4 0 C2 C1
-    D = GET_BITS(code,  1, MASK_03_BITS); // D4 0 D2 D1
+    // Number in binary => A4 A2 A1 B4 B2 B1 C4 C2 C1 D4 D2 D1
+    A = GET_BITS(code, 10, MASK_03_BITS); // A4 A2 A1
+    B = GET_BITS(code,  7, MASK_03_BITS); // B4 B2 B1
+    C = GET_BITS(code,  4, MASK_03_BITS); // C4 C2 C1
+    D = GET_BITS(code,  1, MASK_03_BITS); // D4 D2 D1
 
     // Clear field
     (item)->raw = 0;
 
     // Insert each octal number in its position
-    SET_BITS(&((item)->raw), (A >> 3), MASK_01_BITS, 12); // A4
-    SET_BITS(&((item)->raw), (A >> 1), MASK_01_BITS, 11); // A2
-    SET_BITS(&((item)->raw), (A >> 0), MASK_01_BITS, 10); // A1
-
-    SET_BITS(&((item)->raw), (B >> 3), MASK_01_BITS,  9); // B4
-    SET_BITS(&((item)->raw), (B >> 1), MASK_01_BITS,  8); // B2
-    SET_BITS(&((item)->raw), (B >> 0), MASK_01_BITS,  7); // B1
-
-    SET_BITS(&((item)->raw), (C >> 3), MASK_01_BITS,  6); // C4
-    SET_BITS(&((item)->raw), (C >> 1), MASK_01_BITS,  5); // C2
-    SET_BITS(&((item)->raw), (C >> 0), MASK_01_BITS,  4); // C1
-
-    SET_BITS(&((item)->raw), (D >> 3), MASK_01_BITS,  3); // D4
-    SET_BITS(&((item)->raw), (D >> 1), MASK_01_BITS,  2); // D2
-    SET_BITS(&((item)->raw), (D >> 0), MASK_01_BITS,  1); // D1
+    SET_BITS(&((item)->raw), A, MASK_03_BITS, 10); // A4 A2 A1
+    SET_BITS(&((item)->raw), B, MASK_03_BITS,  7); // B4 B2 B1
+    SET_BITS(&((item)->raw), C, MASK_03_BITS,  4); // C4 C2 C1
+    SET_BITS(&((item)->raw), D, MASK_03_BITS,  1); // D4 D2 D1
 
     // Returns a copy of the setted value for safety checks
     return (item)->raw;

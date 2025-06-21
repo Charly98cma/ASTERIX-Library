@@ -28,12 +28,10 @@ double get_cat021_item075_TMRV_seconds(const cat021_item075 * item)
 
 void set_cat021_item075_TMRV_raw(cat021_item075 * item, uint32_t raw_value)
 {
-    // First octet
+    // TODO: Check raw_values is in valid range
     SET_BITS(&(item->raw[0]), (raw_value >> 16), MASK_08_BITS, 1);
-    // Second octet
-    SET_BITS(&(item->raw[1]), (raw_value >> 8), MASK_08_BITS, 1);
-    // Third octet
-    SET_BITS(&(item->raw[2]), (raw_value), MASK_08_BITS, 1);
+    SET_BITS(&(item->raw[1]), (raw_value >>  8), MASK_08_BITS, 1);
+    SET_BITS(&(item->raw[2]), (raw_value      ), MASK_08_BITS, 1);
 }
 
 void set_cat021_item075_TMRV_seconds(cat021_item075 * item, double seconds)
@@ -53,7 +51,7 @@ void set_cat021_item075_TMRV_seconds(cat021_item075 * item, double seconds)
 
 void print_cat021_item075(const cat021_item075 * item)
 {
-    printf("Category 021 / Item 075 - Time of Message Reception for Position\n");
-    printf("  TMRV (raw) = 0x%02X\n", get_cat021_item075_TMRV_raw(item));
-    printf("  TMRV (seconds) = %d\n\n", get_cat021_item075_TMRV_seconds(item));
+    printf("Category 021 / Item 075 - Time of Message Reception for Velocity\n");
+    printf("  TMRV (raw) = 0x%03X\n", get_cat021_item075_TMRV_raw(item));
+    printf("  TMRV (seconds) = %f\n\n", get_cat021_item075_TMRV_seconds(item));
 }

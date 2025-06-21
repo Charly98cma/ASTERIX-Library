@@ -73,7 +73,7 @@ ASTERIX_API uint8_t get_cat021_item020_ECAT(const cat021_item020 * item);
  * @param item Pointer to cat021_item020 structure.
  * @param sic_value Value of ECAT
  */
-ASTERIX_API uint8_t set_cat021_item020_ECAT(cat021_item020 * item, uint8_t value);
+ASTERIX_API void set_cat021_item020_ECAT(cat021_item020 * item, uint8_t value);
 
 /*******************************************************************************
  * Other Functions

@@ -40,7 +40,6 @@ typedef struct cat021_item075 {
      * @brief Time of Message Reception for Velocity (TMRV)
      * 
      * Raw 3-bytes as received (LSB = 1/128 sec)
-     * 
      */
     uint8_t raw[3];
 } cat021_item075;
@@ -51,17 +50,17 @@ typedef struct cat021_item075 {
  ******************************************************************************/
 
 /**
- * @brief Get Time of Message Reception for Position raw value from Cat 021 Item 075.
+ * @brief Get Time of Message Reception for Velocity raw value from Cat 021 Item 075.
  *
  * Combines the 3 raw bytes into a 24-bit unsigned integer.
  *
  * @param item Pointer to cat021_item075 structure.
  * @return uint32_t Time in units of 1/128 s (0 = midnight).
  */
-ASTERIX_API uint32_t get_cat021_item075__raw(const cat021_item075 * item);
+ASTERIX_API uint32_t get_cat021_item075_raw(const cat021_item075 * item);
 
 /**
- * @brief Get the Time of Message Reception for Position in seconds (floating-point)
+ * @brief Get the Time of Message Reception for Velocity in seconds (floating-point)
  *        from Cat 021 Item 075.
  *
  * Divides the raw 1/128-s units by 128.0 to return seconds since midnight.
@@ -76,7 +75,7 @@ ASTERIX_API double get_cat021_item075_TMRV_seconds(const cat021_item075 * item);
  ******************************************************************************/
 
 /**
- * @brief Set the Time of Message Reception for Position raw value into Cat 021 Item 075.
+ * @brief Set the Time of Message Reception for Velocity raw value into Cat 021 Item 075.
  *
  * Stores the 24-bit value into the raw array.
  *
@@ -86,7 +85,7 @@ ASTERIX_API double get_cat021_item075_TMRV_seconds(const cat021_item075 * item);
 ASTERIX_API void set_cat021_item075_TMRV_raw(cat021_item075 * item, uint32_t raw_value);
 
 /**
- * @brief Set the Time of Message Reception for Position in seconds into Cat 021 Item 075.
+ * @brief Set the Time of Message Reception for Velocity in seconds into Cat 021 Item 075.
  *
  * Converts the seconds value into 1/128-s units and stores as raw data.
  *
@@ -100,7 +99,7 @@ ASTERIX_API void set_cat021_item075_TMRV_seconds(cat021_item075 * item, double s
  ******************************************************************************/
 
 /**
- * @brief Print the contents of CAT021 Item 075 (Time of Message Reception for Position).
+ * @brief Print the contents of CAT021 Item 075 (Time of Message Reception for Velocity).
  * 
  * Prints both the raw value and the converted time in seconds.
  * 

@@ -39,7 +39,6 @@ typedef struct cat021_item071 {
      * @brief Time of Applicability for Position
      * 
      * Raw 3-bytes as received (LSB = 1/128 sec)
-     * 
      */
     uint8_t raw[3];
 } cat021_item071;

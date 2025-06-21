@@ -18,6 +18,11 @@
  */
 #define MAX_MESSAGE_LEN     1400
 
+/* Value returned when the function finished sucessfully */
+#define OP_OK               0
+/* Value returned when the function failed */
+#define OP_FAIL             1
+
 /*******************************************************************************
  * POWERS OF 2
  ******************************************************************************/
@@ -175,11 +180,6 @@
  * @return The extracted bits from the given value, aligned to the least significant bits.
  * 
  * @note The macro assumes that `pos` starts from 1. If `pos` is 1, no shift is applied.
- * 
- * @example
- * // Example: Reading bits 7-5 (3 bits) from a value
- * uint8_t raw = 0b10110010;
- * uint8_t result = GET_BITS(raw, 6, 0x07); // Reads bits 7,6,5 -> Expected result: 0b101
  */
 #define GET_BITS(value, pos, mask) (((value) >> (pos-1)) & mask)
 
@@ -194,3 +194,14 @@
 #define SET_BITS(dst, val, mask, pos) \
     (*(dst)) |= (((val) & (mask)) << ((pos) - 1))
 #endif // CONSTANTS_H
+
+/**
+ * @brief Macro to check if the value is in the defines range
+ * 
+ * @param min Minimum value of the range
+ * @param val Value to check
+ * @param max Maximum value of the range.
+ * 
+ * @return True if the given value is in the range, False otherwhise
+ */
+#define IN_RANGE(min, val, max) ((min <= val) && (val <= max))

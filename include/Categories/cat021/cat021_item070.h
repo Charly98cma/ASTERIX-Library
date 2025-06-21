@@ -205,7 +205,7 @@ uint8_t get_cat021_item070_D1(const cat021_item070 * item);
  * @param item Pointer to cat021_item070 structure.
  * @return uint16_t Mode 3/A Code in Octal Representation
  */
-ASTERIX_API uint16_t get_cat021_item070_code(cat021_item070 * item);
+ASTERIX_API uint16_t get_cat021_item070_code(const cat021_item070 * item);
 
 /*******************************************************************************
  * Setters
@@ -218,10 +218,9 @@ ASTERIX_API uint16_t get_cat021_item070_code(cat021_item070 * item);
  * 
  * @param item Pointer to cat021_item070 structure.
  * @param code Mode 3/A code in octal (0000 to 7777)
- * @return uint16_t Final raw value
  */
-ASTERIX_API uint16_t set_cat021_item070_code(cat021_item070 * item,
-                                              uint16_t code);
+ASTERIX_API void set_cat021_item070_code(cat021_item070 * item,
+                                         uint16_t code);
 
 /*******************************************************************************
  * Other Functions

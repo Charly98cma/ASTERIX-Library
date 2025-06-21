@@ -51,37 +51,44 @@ uint8_t get_cat021_item008_SA(const cat021_item008 * item)
 
 void set_cat021_item008_RA(cat021_item008 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 8);
 }
 
 void set_cat021_item008_TC(cat021_item008 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_02_BITS, 6);
 }
 
 void set_cat021_item008_TS(cat021_item008 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 5);
 }
 
 void set_cat021_item008_ARV(cat021_item008 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 4);
 }
 
 void set_cat021_item008_CDTI(cat021_item008 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 3);
 }
 
 void set_cat021_item008_NTCAS(cat021_item008 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 2);
 }
 
 
 void set_cat021_item008_SA(cat021_item008 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 1);
 }
 

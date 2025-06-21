@@ -48,9 +48,9 @@ typedef struct cat021_item074 {
              * @brief Full Second Indication
              * 
              * = 3 - RESERVED |
-             * = 2 - TOMRp whole seconds = (Cat 021 Item 074) Whole seconds - 1 |
-             * = 1 - TOMRp whole seconds = (Cat 021 Item 074) Whole seconds + 1 |
-             * = 0 - TOMRp whole seconds = (Cat 021 Item 074) Whole seconds
+             * = 2 - TOMRp whole seconds = (Cat 021 Item 073) Whole seconds - 1 |
+             * = 1 - TOMRp whole seconds = (Cat 021 Item 073) Whole seconds + 1 |
+             * = 0 - TOMRp whole seconds = (Cat 021 Item 073) Whole seconds
              */
             uint32_t FSI        :2;
             /** 
@@ -72,7 +72,7 @@ typedef struct cat021_item074 {
  * @brief Get Full Second Indication (FSI) value from Cat 021 Item 074.
  *
  * @param item Pointer to cat021_item074 structure.
- * @return uint32_t FSI value (0: no addition, 1: +1 sec, 2: -1 sec, 3: Reserved).
+ * @return uint32_t FSI value (0: I021/073, 1: I021/073+1 sec, 2: I021/073-1 sec, 3: Reserved).
  */
 ASTERIX_API uint8_t get_cat021_item074_FSI(const cat021_item074 * item);
 
@@ -99,7 +99,7 @@ ASTERIX_API double get_cat021_item074_TMRP_HP_seconds(const cat021_item074 * ite
  ******************************************************************************/
 
 /**
- * @brief Set the Full Second Indication (FSI) value into Cat 021 Item 071.
+ * @brief Set the Full Second Indication (FSI) value into Cat 021 Item 074.
  *
  * @param item Pointer to cat021_item074 structure.
  * @param raw_value Raw 2-bit to store.
@@ -108,7 +108,7 @@ ASTERIX_API void set_cat021_item074_FSI(cat021_item074 * item, uint8_t raw_value
 
 /**
  * @brief Set the Time of Message Reception of Position–High Precision (TMRP_HP)
- *        raw value into Cat 021 Item 071.
+ *        raw value into Cat 021 Item 074.
  *
  * Stores the 30-bit value into the raw array.
  *
@@ -119,7 +119,7 @@ ASTERIX_API void set_cat021_item074_TMRP_HP_raw(cat021_item074 * item, uint32_t 
 
 /**
  * @brief Set the Time of Message Reception of Position–High Precision (TMRP_HP)
- *        value in seconds into Cat 021 Item 071.
+ *        value in seconds into Cat 021 Item 074.
  *
  * @param item Pointer to cat021_item074 structure.
  * @param seconds Time in seconds (will be converted to 1/2^30 second units)

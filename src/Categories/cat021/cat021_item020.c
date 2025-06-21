@@ -19,8 +19,9 @@ uint8_t get_cat021_item020_ECAT(const cat021_item020 * item)
  * Setters
  ******************************************************************************/
 
-uint8_t set_cat021_item020_ECAT(cat021_item020 * item, uint8_t value)
+void set_cat021_item020_ECAT(cat021_item020 * item, uint8_t value)
 {
+    // TODO: Check value and return OK/FAIL
     SET_BITS(&(item->raw), value, MASK_08_BITS, 1);
 }
 

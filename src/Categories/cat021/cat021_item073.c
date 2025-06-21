@@ -28,11 +28,9 @@ double get_cat021_item073_TMRP_seconds(const cat021_item073 * item)
 
 void set_cat021_item073_TMRP_raw(cat021_item073 * item, uint32_t raw_value)
 {
-    // First octet
+    // TODO: Check raw_value is in valid range
     SET_BITS(&(item->raw[0]), (raw_value >> 16), MASK_08_BITS, 1);
-    // Second octet
     SET_BITS(&(item->raw[1]), (raw_value >>  8), MASK_08_BITS, 1);
-    // Third octet
     SET_BITS(&(item->raw[2]), (raw_value      ), MASK_08_BITS, 1);
 }
 
@@ -54,6 +52,6 @@ void set_cat021_item073_TMRP_seconds(cat021_item073 * item, double seconds)
 void print_cat021_item073(const cat021_item073 * item)
 {
     printf("Category 021 / Item 073 - Time of Message Reception for Position\n");
-    printf("  TMRP (raw) = 0x%02X\n", get_cat021_item073_TMRP_raw(item));
-    printf("  TMRP (seconds) = %d\n\n", get_cat021_item073_TMRP_seconds(item));
+    printf("  TMRP (raw) = 0x%03X\n", get_cat021_item073_TMRP_raw(item));
+    printf("  TMRP (seconds) = %f\n\n", get_cat021_item073_TMRP_seconds(item));
 }
