@@ -17,7 +17,7 @@ uint8_t get_cat021_item016_RP_raw(const cat021_item016 * item)
 
 double get_cat021_item016_RP_seconds(const cat021_item016 * item)
 {
-    return get_cat021_item016_RP(item) * LSB_CAT021_ITEM016_RP;
+    return get_cat021_item016_RP_raw(item) * LSB_CAT021_ITEM016_RP;
 }
 
 /*******************************************************************************
