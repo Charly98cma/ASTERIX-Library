@@ -23,75 +23,6 @@ extern "C" {
  ******************************************************************************/
 
 /**
- * @typedef cat021_item040
- * @brief Category 021 / Item 040 - Target Report Descriptor
- */
-typedef struct cat021_item040 {
-    union {
-        /// @brief Raw octet as received (recommended for portable access)
-        uint8_t raw;
-
-        /**
-         * @note Bit-field layout is compiler and endianness dependent.
-         * Use raw field and provided macros for portable access.
-         */
- 
-        /// @brief Bit-field access (might be non-portable, use with caution)
-        struct {
-            /** 
-             * @brief Address Type
-             * 
-             * = 0 24-Bit ICAO address |
-             * = 1 Duplicate address |
-             * = 2 Surface vehicle address |
-             * = 3 Anonymous address |
-             * = 4-7 Reserved for future use
-             */
-            uint8_t ATP     :3;
-            /** 
-             * @brief Altitude Reporting Capability
-             * 
-             * = 0 25 ft |
-             * = 1 100 ft |
-             * = 2 Unknown |
-             * = 3 Invalid
-             */
-            uint8_t ARC     :2;
-            /** 
-             * @brief Range Check
-             * 
-             * = 0 Default |
-             * = 1 Range Check passed, pending CPR validation
-             */
-            uint8_t RC      :1;
-            /** 
-             * @brief Report Type
-             * 
-             * = 0 Report from target transponder |
-             * = 1 Report from field monitor (fixed transponder)
-             */
-            uint8_t RAB     :1;
-            /** 
-             * @brief Field Extension
-             * 
-             * = 0 End of item |
-             * = 1 Extension into first extension
-             */
-            uint8_t FX      :1;
-        };
-    };
-
-    /// @brief First extension subfield (1 byte)
-    cat021_item040_ext1 ext1;
-    /// @brief Second extension subfield (1 byte)
-    cat021_item040_ext2 ext2;
-    /// @brief Third extension subfield (1 byte)
-    cat021_item040_ext3 ext3;
-    /// @brief Fourth extension subfield (1 byte)
-    cat021_item040_ext4 ext4;
-} cat021_item040;
-
-/**
  * @typedef cat021_item040_ext1
  * @brief First extension of the Category 021 / Item 040
  */
@@ -329,6 +260,75 @@ typedef struct cat021_item040_ext4 {
         };
     };
 } cat021_item040_ext4;
+
+/**
+ * @typedef cat021_item040
+ * @brief Category 021 / Item 040 - Target Report Descriptor
+ */
+typedef struct cat021_item040 {
+    union {
+        /// @brief Raw octet as received (recommended for portable access)
+        uint8_t raw;
+
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+ 
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /** 
+             * @brief Address Type
+             * 
+             * = 0 24-Bit ICAO address |
+             * = 1 Duplicate address |
+             * = 2 Surface vehicle address |
+             * = 3 Anonymous address |
+             * = 4-7 Reserved for future use
+             */
+            uint8_t ATP     :3;
+            /** 
+             * @brief Altitude Reporting Capability
+             * 
+             * = 0 25 ft |
+             * = 1 100 ft |
+             * = 2 Unknown |
+             * = 3 Invalid
+             */
+            uint8_t ARC     :2;
+            /** 
+             * @brief Range Check
+             * 
+             * = 0 Default |
+             * = 1 Range Check passed, pending CPR validation
+             */
+            uint8_t RC      :1;
+            /** 
+             * @brief Report Type
+             * 
+             * = 0 Report from target transponder |
+             * = 1 Report from field monitor (fixed transponder)
+             */
+            uint8_t RAB     :1;
+            /** 
+             * @brief Field Extension
+             * 
+             * = 0 End of item |
+             * = 1 Extension into first extension
+             */
+            uint8_t FX      :1;
+        };
+    };
+
+    /// @brief First extension subfield (1 byte)
+    cat021_item040_ext1 ext1;
+    /// @brief Second extension subfield (1 byte)
+    cat021_item040_ext2 ext2;
+    /// @brief Third extension subfield (1 byte)
+    cat021_item040_ext3 ext3;
+    /// @brief Fourth extension subfield (1 byte)
+    cat021_item040_ext4 ext4;
+} cat021_item040;
 
 /*******************************************************************************
  * Getters
