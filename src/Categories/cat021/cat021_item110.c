@@ -67,7 +67,7 @@ uint8_t get_cat021_item110_ext2_NC(const cat021_item110_ext2 * item,
     return GET_BITS((item)->raw[TIP_BYTE(index, 0)], 7, MASK_01_BITS);
 }
 
-uint8_t get_cat021_item110_ext2_TCPN(const cat021_item110_ext2 * item,
+uint8_t get_cat021_item110_ext2_TCP_NUM(const cat021_item110_ext2 * item,
                                      const uint8_t index)
 {
     return GET_BITS((item)->raw[TIP_BYTE(index, 0)], 1, MASK_06_BITS);
@@ -203,7 +203,7 @@ void set_cat021_item110_ext2_NC(cat021_item110_ext2 * item, const uint8_t index,
     SET_BITS(&((item)->raw[TIP_BYTE(index, 0)]), value, MASK_01_BITS, 7);
 }
 
-void set_cat021_item110_ext2_TCPN(cat021_item110_ext2 * item, const uint8_t index, uint8_t value)
+void set_cat021_item110_ext2_TCP_NUM(cat021_item110_ext2 * item, const uint8_t index, uint8_t value)
 {
     SET_BITS(&((item)->raw[TIP_BYTE(index, 0)]), value, MASK_01_BITS, 1);
 }
@@ -293,9 +293,9 @@ void print_cat021_item110(const cat021_item110 * item)
 
     if (get_cat021_item110_TIS(item))
     {
-        printf("  ext1_NAV = %d\n", get_cat021_item110_NAV(&(item)->ext1));
-        printf("  ext1_NVB = %d\n", get_cat021_item110_NVB(&(item)->ext1));
-        printf("  ext1_FX = %d\n", get_cat021_item110_FX(&(item)->ext1));
+        printf("  ext1_NAV = %d\n", get_cat021_item110_ext1_NAV(&(item)->ext1));
+        printf("  ext1_NVB = %d\n", get_cat021_item110_ext1_NVB(&(item)->ext1));
+        printf("  ext1_FX = %d\n", get_cat021_item110_ext1_FX(&(item)->ext1));
     }
 
     if (get_cat021_item110_TID(item))
