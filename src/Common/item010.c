@@ -38,10 +38,3 @@ void set_item010_SIC(item010 * item, uint8_t sic_value)
 /*******************************************************************************
  * Other Functions
  ******************************************************************************/
-
-void print_cat021_item010(const item010 *item)
-{
-    printf("Item 010 - Data Source Identification\n");
-    printf("  SAC = 0x%02X\n", get_item010_SAC(item));
-    printf("  SIC = 0x%02X\n", get_item010_SIC(item));
-}

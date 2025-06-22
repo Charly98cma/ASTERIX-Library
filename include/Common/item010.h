@@ -93,16 +93,6 @@ void set_item010_SIC(item010 * item, uint8_t sic_value);
  * Other Functions
  ******************************************************************************/
 
-/**
- * @brief Print the contents of CAT 021 / Item 010.
- *
- * This function prints the values of the main byte.
- * It is useful for debugging and inspection.
- *
- * @param item Pointer to a cat021_item010 structure.
- */
-ASTERIX_API void print_cat021_item010(const item010 *item);
-
 #ifdef __cplusplus
 }
 #endif
