@@ -6,8 +6,9 @@
 #ifndef CAT021_ITEM075_H
 #define CAT021_ITEM075_H
 
+#include <stdio.h>
 #include <stdint.h>
-#include "visibility.h"
+#include "Common/visibility.h"
 
 #ifdef __cplusplus
 extern "C" {

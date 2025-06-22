@@ -7,7 +7,7 @@
 #define COMMON_ITEM010_H
 
 #include <stdint.h>
-#include "visibility.h"
+#include "Common/visibility.h"
 
 #ifdef __cplusplus
 extern "C" {

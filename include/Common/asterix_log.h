@@ -7,7 +7,7 @@
 #define ASTERIX_LOG_H
 
 #include <stdio.h>
-#include "visibility.h"
+#include "Common/visibility.h"
 
 #ifdef __cplusplus
 extern "C" {

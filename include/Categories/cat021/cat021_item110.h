@@ -6,8 +6,9 @@
 #ifndef CAT021_ITEM110_H
 #define CAT021_ITEM110_H
 
+#include <stdio.h>
 #include <stdint.h>
-#include "visibility.h"
+#include "Common/visibility.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -273,7 +274,7 @@ ASTERIX_API uint8_t get_cat021_item110_ext2_NC(const cat021_item110_ext2 * item,
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint8_t get_cat021_item110_ext2_TCPN(const cat021_item110_ext2 * item, const uint8_t index);
+ASTERIX_API uint8_t get_cat021_item110_ext2_TCP_NUM(const cat021_item110_ext2 * item, const uint8_t index);
 
 /**
  * 
@@ -390,13 +391,13 @@ ASTERIX_API void set_cat021_item110_ext2_NC(cat021_item110_ext2 * item, const ui
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_cat021_item110_ext2_TCPN(cat021_item110_ext2 * item, const uint8_t index, uint8_t value);
+ASTERIX_API void set_cat021_item110_ext2_TCP_NUM(cat021_item110_ext2 * item, const uint8_t index, uint8_t value);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_cat021_item110_ext2_ALT(cat021_item110_ext2 * item, const uint8_t index, uint16_t value);
+ASTERIX_API void set_cat021_item110_ext2_ALT(cat021_item110_ext2 * item, const uint8_t index, double value);
 
 /**
  * 

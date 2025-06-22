@@ -3,8 +3,8 @@
  * @brief Implementation of the Category 21 Item 015 functions
  */
 
-#include "cat021_item015.h"
-#include "constants.h"
+#include "Categories/cat021/cat021_item015.h"
+#include "Common/constants.h"
 
 /*******************************************************************************
  * Getters

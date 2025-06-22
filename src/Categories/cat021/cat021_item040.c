@@ -3,8 +3,8 @@
  * @brief Implementation of the Category 21 Item 040 functions
  */
 
-#include "cat021_item040.h"
-#include "constants.h"
+#include "Categories/cat021/cat021_item040.h"
+#include "Common/constants.h"
 
 /*******************************************************************************
  * Getters
@@ -356,7 +356,7 @@ void print_cat021_item040(const cat021_item040 *item)
     printf("  ext1_TST = %d", get_cat021_item040_ext1_TST(&(item->ext1)));
     printf("  ext1_SAA = %d", get_cat021_item040_ext1_SAA(&(item->ext1)));
     printf("  ext1_CL = %d", get_cat021_item040_ext1_CL(&(item->ext1)));
-    printf("  ext1_FX = %d", get_cat021_item040_ext1_FX(&(item->ext1)));
+    printf("  ext1_FX = %d", get_cat021_item040_ext1_FX((cat021_item040_ext1 *) &(item->ext1)));
 
     if (!get_cat021_item040_ext1_FX(&(item->ext1))) return;
 

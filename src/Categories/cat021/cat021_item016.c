@@ -3,8 +3,8 @@
  * @brief Implementation of the Category 21 Item 016 functions
  */
 
-#include "cat021_item016.h"
-#include "constants.h"
+#include "Categories/cat021/cat021_item016.h"
+#include "Common/constants.h"
 
 /*******************************************************************************
  * Getters
@@ -47,6 +47,6 @@ void set_cat021_item016_RP_seconds(cat021_item016 * item, double seconds)
 void print_cat021_item016(const cat021_item016 *item)
 {
     printf("Category 021 / Item 016 - Service Management\n");
-    printf("  RP (raw): 0x%02X\n", get_cat021_item016_RP(item));
+    printf("  RP (raw): 0x%02X\n", get_cat021_item016_RP_raw(item));
     printf("  RP (seconds): %f\n\n", get_cat021_item016_RP_seconds(item));
 }
