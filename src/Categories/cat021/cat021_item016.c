@@ -33,9 +33,9 @@ void set_cat021_item016_RP_seconds(cat021_item016 * item, double seconds)
 {
     uint8_t raw_value = 0;
 
-    // Change raw value to seconds rounding to nearest unit
+    // Change from seconds to raw value, rounding to nearest unit
     if (seconds > 0)
-        raw_value = (uint8_t) (uint8_t) (seconds / LSB_CAT021_ITEM016_RP) + 0.5;
+        raw_value = (uint8_t) (seconds / LSB_CAT021_ITEM016_RP + 0.5);
 
     SET_BITS(&((item)->raw), raw_value, MASK_08_BITS, 1);
 }
