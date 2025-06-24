@@ -8,6 +8,10 @@
 
 #include <stdlib.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*******************************************************************************
  * Useful values
  ******************************************************************************/
@@ -193,7 +197,6 @@
  */
 #define SET_BITS(dst, val, mask, pos) \
     (*(dst)) |= (((val) & (mask)) << ((pos) - 1))
-#endif // CONSTANTS_H
 
 /**
  * @brief Macro to check if the value is in the defines range
@@ -205,3 +208,9 @@
  * @return True if the given value is in the range, False otherwhise
  */
 #define IN_RANGE(min, val, max) ((min <= val) && (val <= max))
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // CONSTANTS_H

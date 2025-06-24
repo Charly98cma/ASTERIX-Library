@@ -73,12 +73,12 @@ uint8_t get_cat021_item110_ext2_TCP_NUM(const cat021_item110_ext2 * item,
     return GET_BITS((item)->raw[TIP_BYTE(index, 0)], 1, MASK_06_BITS);
 }
 
-uint16_t get_cat021_item110_ext2_ALT(const cat021_item110_ext2 * item,
+int32_t get_cat021_item110_ext2_ALT(const cat021_item110_ext2 * item,
                                      const uint8_t index)
 {
-    uint16_t alt_raw = 
-        ((uint16_t) (GET_BITS((item)->raw[TIP_BYTE(index, 1)], 1, MASK_08_BITS) << 8) |
-         (uint16_t) (GET_BITS((item)->raw[TIP_BYTE(index, 2)], 1, MASK_08_BITS)     ));
+    int32_t alt_raw = 
+        ((int32_t) (GET_BITS((item)->raw[TIP_BYTE(index, 1)], 1, MASK_08_BITS) << 8) |
+         (int32_t) (GET_BITS((item)->raw[TIP_BYTE(index, 2)], 1, MASK_08_BITS)     ));
     return alt_raw * LSB_CAT021_ITEM110_ALT; 
 }
 

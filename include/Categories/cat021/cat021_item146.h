@@ -100,9 +100,9 @@ ASTERIX_API uint8_t get_cat021_item146_SRC(const cat021_item146 * item);
  * 
  * @param item Pointer to cat021_item146 structure
  * 
- * @return double altitude in feets
+ * @return int32_t altitude in feets
  */
-ASTERIX_API uint16_t get_cat021_item146_ALT(const cat021_item146 * item);
+ASTERIX_API int32_t get_cat021_item146_ALT(const cat021_item146 * item);
 
 /*******************************************************************************
  * Setters
@@ -133,7 +133,7 @@ ASTERIX_API void set_cat021_item146_SRC(cat021_item146 * item, uint8_t src);
  * @param item Pointer to cat021_item146 structure
  * @param value New ALT value (LSB = 25 ft)
  */
-ASTERIX_API void set_cat021_item146_ALT(cat021_item146 * item, double alt);
+ASTERIX_API void set_cat021_item146_ALT(cat021_item146 * item, int32_t alt);
 
 /*******************************************************************************
  * Other Functions

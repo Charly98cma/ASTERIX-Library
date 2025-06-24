@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
+#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -217,6 +218,8 @@ typedef struct cat021_item110 {
  * Getters
  ******************************************************************************/
 
+// TODO: Document each function
+
 /* =============================== MAIN  BYTE =============================== */
 
 /**
@@ -280,7 +283,7 @@ ASTERIX_API uint8_t get_cat021_item110_ext2_TCP_NUM(const cat021_item110_ext2 * 
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint16_t get_cat021_item110_ext2_ALT(const cat021_item110_ext2 * item, const uint8_t index);
+ASTERIX_API int32_t get_cat021_item110_ext2_ALT(const cat021_item110_ext2 * item, const uint8_t index);
 
 /**
  * 
@@ -298,7 +301,7 @@ ASTERIX_API double get_cat021_item110_ext2_LON(const cat021_item110_ext2 * item,
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint8_t get_cat021_item110_ext2_PT(const cat021_item110_ext2 * item, const uint8_t index);
+ASTERIX_API uint8_t get_cat021_item110_ext2_TYPE(const cat021_item110_ext2 * item, const uint8_t index);
 
 /**
  * 
@@ -333,6 +336,8 @@ ASTERIX_API double get_cat021_item110_ext2_TTR(const cat021_item110_ext2 * item,
 /*******************************************************************************
  * Setters
  ******************************************************************************/
+
+// TODO: Document each function
 
 /* =============================== MAIN  BYTE =============================== */
 

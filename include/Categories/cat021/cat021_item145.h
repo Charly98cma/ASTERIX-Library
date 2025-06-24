@@ -65,16 +65,16 @@ typedef struct cat021_item145 {
  * 
  * @return double flight level in steps of 0.25 FL's (see LSB)
  */
-ASTERIX_API double get_cat021_item145_FL_raw(const cat021_item145 * item);
+ASTERIX_API uint16_t get_cat021_item145_FL_raw(const cat021_item145 * item);
 
 /**
  * @brief Get the Flight Level (FL) from Cat 021 Item 145 
  * 
  * @param item Pointer to cat021_item145 structure
  * 
- * @return double flight levels
+ * @return int16_t flight levels
  */
-ASTERIX_API double get_cat021_item145_FL_feet(const cat021_item145 * item);
+ASTERIX_API int16_t get_cat021_item145_FL_feet(const cat021_item145 * item);
 
 /*******************************************************************************
  * Setters
@@ -97,8 +97,7 @@ ASTERIX_API void set_cat021_item145_FL_raw(cat021_item145 * item,
  * @param item Pointer to cat021_item145 structure
  * @param value New FL value (LSB = 0.25 FL)
  */
-ASTERIX_API void set_cat021_item145_FL_feet(cat021_item145 * item,
-                                            uint16_t fl);
+ASTERIX_API void set_cat021_item145_FL_feet(cat021_item145 * item, int16_t fl);
 
 /*******************************************************************************
  * Other Functions

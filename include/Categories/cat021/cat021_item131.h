@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
+#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -89,7 +90,7 @@ ASTERIX_API double get_cat021_item131_LON(const cat021_item131 * item);
  * @param item Pointer to cat021_item131 structure
  * @param lan New high-resolution latitude value in degrees's (see LSB)
  */
-ASTERIX_API double set_cat021_item131_LAT(cat021_item131 * item, double lat);
+ASTERIX_API void set_cat021_item131_LAT(cat021_item131 * item, double lat);
 
 /**
  * @brief Set the new Longitude in High-Resolution Position in WGS-84
@@ -98,7 +99,7 @@ ASTERIX_API double set_cat021_item131_LAT(cat021_item131 * item, double lat);
  * @param item Pointer to cat021_item131 structure
  * @param lan New high-resolution longitude value in degrees's (see LSB)
  */
-ASTERIX_API double set_cat021_item131_LON(cat021_item131 * item, double lon);
+ASTERIX_API void set_cat021_item131_LON(cat021_item131 * item, double lon);
 
 /*******************************************************************************
  * Other Functions

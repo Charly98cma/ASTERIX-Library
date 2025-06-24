@@ -186,7 +186,7 @@ typedef struct cat021_item090 {
  * Apart from the “PIC” item, all items are defined as per the respective link
  * technology protocol version (“MOPS version”, see I021/210).
  * 
- * @param item Pointer to cat021_item090 structure item Pointer to cat021_item090 structure
+ * @param item Pointer to cat021_item090 structure
  * @return uint8_t Value of NUCr or NACv (see MOPS Version and conversion table)
  */
 ASTERIX_API uint8_t get_cat021_item090_NUCr_NACv(const cat021_item090 * item);

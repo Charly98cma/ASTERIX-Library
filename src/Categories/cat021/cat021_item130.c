@@ -32,7 +32,7 @@ ASTERIX_API double get_cat021_item130_LON(const cat021_item130 * item)
  * Setters
  ******************************************************************************/
 
-ASTERIX_API double set_cat021_item130_LAT(cat021_item130 * item, double lat)
+ASTERIX_API void set_cat021_item130_LAT(cat021_item130 * item, double lat)
 {
     uint32_t lat_raw;
 
@@ -47,7 +47,7 @@ ASTERIX_API double set_cat021_item130_LAT(cat021_item130 * item, double lat)
     SET_BITS(&(item->raw[2]), (lat_raw      ), MASK_08_BITS, 1);
 }
 
-ASTERIX_API double set_cat021_item130_LON(cat021_item130 * item, double lon)
+ASTERIX_API void set_cat021_item130_LON(cat021_item130 * item, double lon)
 {
     uint32_t lon_raw;
 

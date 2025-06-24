@@ -65,7 +65,7 @@ typedef struct cat021_item140 {
  * 
  * @return double Geometric Height in steps of 6.26 feets (see LSB)
  */
-ASTERIX_API double get_cat021_item140_GH_raw(const cat021_item140 * item);
+ASTERIX_API uint16_t get_cat021_item140_GH_raw(const cat021_item140 * item);
 
 /**
  * @brief Get the Geometric Height (GH) from Cat 021 Item 140 
