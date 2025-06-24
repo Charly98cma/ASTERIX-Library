@@ -12,7 +12,7 @@
 
 ASTERIX_API uint8_t get_cat021_item132_MAM(const cat021_item132 * item)
 {
-    return GET_BITS((item)->raw, 1, MASK_08_BITS);
+    return GET_BITS((item)->raw, 1, MASK_08_BITS) * LSB_CAT021_ITEM132;
 }
 
 /*******************************************************************************
@@ -21,7 +21,7 @@ ASTERIX_API uint8_t get_cat021_item132_MAM(const cat021_item132 * item)
 
 ASTERIX_API uint8_t set_cat021_item132_MAM(cat021_item132 * item, uint8_t value)
 {
-    SET_BITS(&((item)->raw), value, MASK_08_BITS, 1);
+    SET_BITS(&((item)->raw), value * LSB_CAT021_ITEM132, MASK_08_BITS, 1);
 }
 
 /*******************************************************************************
