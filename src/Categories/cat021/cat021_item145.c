@@ -10,7 +10,7 @@
  * Getters
  ******************************************************************************/
 
-ASTERIX_API double get_cat021_item145_FL_raw(const cat021_item145 * item)
+ASTERIX_API uint16_t get_cat021_item145_FL_raw(const cat021_item145 * item)
 {
     return GET_BITS((item)->raw, 1, MASK_16_BITS);
 }
