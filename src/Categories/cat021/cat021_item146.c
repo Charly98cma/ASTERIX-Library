@@ -43,6 +43,7 @@ ASTERIX_API void set_cat021_item146_ALT(cat021_item146 * item, int32_t alt)
 {
     uint16_t alt_raw = 0;
 
+    // TODO: Check value is within valid range
     if (alt > 0)
         alt_raw = (uint16_t) ((alt / LSB_CAT021_ITEM146_ALT) + 0.5);
 

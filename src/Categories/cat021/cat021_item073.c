@@ -38,6 +38,8 @@ void set_cat021_item073_TMRP_seconds(cat021_item073 * item, double seconds)
 {
     uint32_t raw_value = 0;
 
+    // TODO: Check value is in valid range
+
     // Turn to raw format and round to nearest unit if bigger than 0
     if (seconds > 0)
         raw_value = (uint32_t) ((seconds / LSB_CAT021_ITEM073) + 0.5);

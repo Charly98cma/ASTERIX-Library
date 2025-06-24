@@ -26,12 +26,15 @@ double get_cat021_item016_RP_seconds(const cat021_item016 * item)
 
 void set_cat021_item016_RP_raw(cat021_item016 * item, uint8_t raw_value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), raw_value, MASK_08_BITS, 1);
 }
 
 void set_cat021_item016_RP_seconds(cat021_item016 * item, double seconds)
 {
     uint8_t raw_value = 0;
+
+    // TODO: Check value is in valid range
 
     // Change from seconds to raw value, rounding to nearest unit
     if (seconds > 0)

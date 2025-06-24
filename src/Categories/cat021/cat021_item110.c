@@ -154,16 +154,19 @@ double get_cat021_item110_ext2_TTR(const cat021_item110_ext2 * item,
 
 void set_cat021_item110_TIS(cat021_item110 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 8);
 }
 
 void set_cat021_item110_TID(cat021_item110 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 7);
 }
 
 void set_cat021_item110_FX(cat021_item110 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 1);
 }
 
@@ -172,16 +175,19 @@ void set_cat021_item110_FX(cat021_item110 * item, uint8_t value)
 
 void set_cat021_item110_ext1_NAV(cat021_item110_ext1 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 8);
 }
 
 void set_cat021_item110_ext1_NVB(cat021_item110_ext1 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 7);
 }
 
 void set_cat021_item110_ext1_FX(cat021_item110_ext1 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw), value, MASK_01_BITS, 1);
 }
 
@@ -190,27 +196,33 @@ void set_cat021_item110_ext1_FX(cat021_item110_ext1 * item, uint8_t value)
 
 void set_cat021_item110_ext2_REP(cat021_item110_ext2 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw[0]), value, MASK_08_BITS, 1);
 }
 
 void set_cat021_item110_ext2_TCA(cat021_item110_ext2 * item, const uint8_t index, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw[TIP_BYTE(index, 0)]), value, MASK_01_BITS, 8);
 }
 
 void set_cat021_item110_ext2_NC(cat021_item110_ext2 * item, const uint8_t index, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw[TIP_BYTE(index, 0)]), value, MASK_01_BITS, 7);
 }
 
 void set_cat021_item110_ext2_TCP_NUM(cat021_item110_ext2 * item, const uint8_t index, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw[TIP_BYTE(index, 0)]), value, MASK_01_BITS, 1);
 }
 
 void set_cat021_item110_ext2_ALT(cat021_item110_ext2 * item, const uint8_t index, double value)
 {
     uint16_t alt_raw;
+
+    // TODO: Check value is in valid range
 
     alt_raw = value / LSB_CAT021_ITEM110_ALT;
     SET_BITS(&((item)->raw[TIP_BYTE(index, 1)]), (alt_raw >> 8), MASK_08_BITS, 8);
@@ -220,6 +232,8 @@ void set_cat021_item110_ext2_ALT(cat021_item110_ext2 * item, const uint8_t index
 void set_cat021_item110_ext2_LAT(cat021_item110_ext2 * item, const uint8_t index, uint32_t value)
 {
     uint16_t lat_raw;
+
+    // TODO: Check value is in valid range
 
     lat_raw = value / LSB_CAT021_ITEM110_LAT;
     SET_BITS(&((item)->raw[TIP_BYTE(index, 3)]), (lat_raw >> 16), MASK_08_BITS, 16);
@@ -231,6 +245,8 @@ void set_cat021_item110_ext2_LON(cat021_item110_ext2 * item, const uint8_t index
 {
     uint16_t lon_raw;
 
+    // TODO: Check value is in valid range
+
     lon_raw = value / LSB_CAT021_ITEM110_LON;
     SET_BITS(&((item)->raw[TIP_BYTE(index, 6)]), (lon_raw >> 16), MASK_08_BITS, 16);
     SET_BITS(&((item)->raw[TIP_BYTE(index, 7)]), (lon_raw >>  8), MASK_08_BITS,  8);
@@ -238,31 +254,32 @@ void set_cat021_item110_ext2_LON(cat021_item110_ext2 * item, const uint8_t index
 }
 
 void set_cat021_item110_ext2_PT(cat021_item110_ext2 * item, const uint8_t index, uint8_t value)
-{
-    
+{    
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw[TIP_BYTE(index, 9)]), value, MASK_04_BITS, 5);
 }
 
 void set_cat021_item110_ext2_TD(cat021_item110_ext2 * item, const uint8_t index, uint8_t value)
 {
-
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw[TIP_BYTE(index, 9)]), value, MASK_02_BITS, 3);
 }
 
 void set_cat021_item110_ext2_TRA(cat021_item110_ext2 * item, const uint8_t index, uint8_t value)
 {
-
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw[TIP_BYTE(index, 9)]), value, MASK_01_BITS, 2);
 }
 
 void set_cat021_item110_ext2_TOA(cat021_item110_ext2 * item, const uint8_t index, uint8_t value)
 {
-
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw[TIP_BYTE(index, 9)]), value, MASK_01_BITS, 1);
 }
 
 void set_cat021_item110_ext2_TOV(cat021_item110_ext2 * item, const uint8_t index, uint32_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&((item)->raw[TIP_BYTE(index, 10)]), (value >> 16), MASK_08_BITS, 1);
     SET_BITS(&((item)->raw[TIP_BYTE(index, 11)]), (value >>  8), MASK_08_BITS, 1);
     SET_BITS(&((item)->raw[TIP_BYTE(index, 12)]), (value      ), MASK_08_BITS, 1);
@@ -271,6 +288,8 @@ void set_cat021_item110_ext2_TOV(cat021_item110_ext2 * item, const uint8_t index
 void set_cat021_item110_ext2_TTR(cat021_item110_ext2 * item, const uint8_t index, double value)
 {
     uint16_t ttr_raw;
+
+    // TODO: Check value is in valid range
 
     ttr_raw = value / LSB_CAT021_ITEM110_TTR;
     SET_BITS(&((item)->raw[TIP_BYTE(index, 13)]), (ttr_raw >> 8), MASK_08_BITS, 1);

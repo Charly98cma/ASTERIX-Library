@@ -34,11 +34,13 @@ double get_cat021_item074_TMRP_HP_seconds(const cat021_item074 * item)
 
  void set_cat021_item074_FSI(cat021_item074 * item, uint8_t raw_value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw[0]), raw_value, MASK_02_BITS, 7);
 }
 
 void set_cat021_item074_TMRP_HP_raw(cat021_item074 * item, uint32_t raw_value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw[0]), (raw_value >> 24), MASK_06_BITS, 1); // 1st octet
     SET_BITS(&(item->raw[1]), (raw_value >> 16), MASK_08_BITS, 1); // 2nd octet
     SET_BITS(&(item->raw[2]), (raw_value >>  8), MASK_08_BITS, 1); // 3rd octet
@@ -48,6 +50,8 @@ void set_cat021_item074_TMRP_HP_raw(cat021_item074 * item, uint32_t raw_value)
 void set_cat021_item074_TMRP_HP_seconds(cat021_item074 * item, double seconds)
 {
     uint32_t raw_value = 0;
+
+    // TODO: Check value is in valid range
 
     // Turn to raw format and round to nearest unit if bigger than 0
     if (seconds > 0)

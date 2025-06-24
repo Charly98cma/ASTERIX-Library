@@ -91,16 +91,19 @@ uint8_t get_cat021_item090_ext3_FX(const cat021_item090_ext3 * item)
 
 void set_cat021_item09_NUCrNACv(cat021_item090 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_03_BITS, 6);
 }
 
 void set_cat021_item09_NUCp_NIC(cat021_item090 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_04_BITS, 2);
 }
 
 void set_cat021_item09_FX(cat021_item090 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_01_BITS, 1);
 }
 
@@ -108,21 +111,25 @@ void set_cat021_item09_FX(cat021_item090 * item, uint8_t value)
 
 void set_cat021_item090_ext1_NICbaro(cat021_item090_ext1 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_01_BITS, 8);
 }
 
 void set_cat021_item090_ext1_SIL(cat021_item090_ext1 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_02_BITS, 6);
 }
 
 void set_cat021_item090_ext1_NACp(cat021_item090_ext1 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_04_BITS, 2);
 }
 
 void set_cat021_item090_ext1_FX(cat021_item090_ext1 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_01_BITS, 1);
 }
 
@@ -130,21 +137,25 @@ void set_cat021_item090_ext1_FX(cat021_item090_ext1 * item, uint8_t value)
 
 void set_cat021_item090_ext2_SILS(cat021_item090_ext2 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_01_BITS, 6);
 }
 
 void set_cat021_item090_ext2_SDA(cat021_item090_ext2 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_02_BITS, 4);
 }
 
 void set_cat021_item090_ext2_GVA(cat021_item090_ext2 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_02_BITS, 2);
 }
 
 void set_cat021_item090_ext2_FX(cat021_item090_ext2 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_02_BITS, 1);
 }
 
@@ -152,11 +163,13 @@ void set_cat021_item090_ext2_FX(cat021_item090_ext2 * item, uint8_t value)
 
 void set_cat021_item090_ext3_PIC(cat021_item090_ext3 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_04_BITS, 5);
 }
 
 void set_cat021_item090_ext3_FX(cat021_item090_ext3 * item, uint8_t value)
 {
+    // TODO: Check value is in valid range
     SET_BITS(&(item->raw), value, MASK_01_BITS, 1);
 }
 
