@@ -37,7 +37,7 @@ ASTERIX_API void set_cat021_item150_IM(cat021_item150 * item, uint8_t im)
     SET_BITS(&((item)->raw), im, MASK_01_BITS, 16);
 }
 
-ASTERIX_API void set_cat021_item150_FL_feet(cat021_item150 * item, double value)
+ASTERIX_API void set_cat021_item150_FL(cat021_item150 * item, double value)
 {
     uint16_t raw_value = 0;
 
@@ -57,7 +57,7 @@ ASTERIX_API void print_cat021_item150(const cat021_item150 * item)
 {
     uint8_t im = get_cat021_item150_IM(item);
 
-    printf("Category 021 / Item 148 - Air Speed\n");
+    printf("Category 021 / Item 150 - Air Speed\n");
     printf("  IM = %d\n", im);
     if (im == CAT021_ITEM150_IM_IAS)
         printf("  IAS = %f\n", get_cat021_item150_AIRSPD(item));

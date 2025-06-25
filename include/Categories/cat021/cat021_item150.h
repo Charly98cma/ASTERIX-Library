@@ -53,13 +53,13 @@ typedef struct cat021_item150 {
              * 
              * = 0: IAS | = 1: Mach
              */
-            uint16_t IM;
+            uint16_t IM         :1;
             /**
              * @brief Air Speed (IAS or MACH)
              * 
              * if IAS LSB = 2^-14 | if MACH LSB = 0.001
              */
-            uint16_t AIRSPD;
+            uint16_t AIRSPD     :15;
         };
     };
 } cat021_item150;
@@ -108,7 +108,7 @@ ASTERIX_API void set_cat021_item150_IM(cat021_item150 * item, uint8_t im);
  * @param item Pointer to cat021_item150 structure
  * @param value New Air Speed (IAS LSB = 1/ 2^14 NM/s, MACH LSB = 0.001)
  */
-ASTERIX_API void set_cat021_item150_FL_feet(cat021_item150 * item, double value);
+ASTERIX_API void set_cat021_item150_FL(cat021_item150 * item, double value);
 
 /*******************************************************************************
  * Other Functions
