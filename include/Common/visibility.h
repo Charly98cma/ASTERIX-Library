@@ -6,6 +6,10 @@
 #ifndef ASTERIX_VISIBILITY_H
 #define ASTERIX_VISIBILITY_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef _WIN32
     #ifdef ASTERIX_BUILD_DLL
         // When building the DLL
@@ -17,6 +21,10 @@
 #else
     // On Linux and macOS, we use GCC visibility
     #define ASTERIX_API __attribute__((visibility("default")))
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // ASTERIX_VISIBILITY_H

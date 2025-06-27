@@ -15,7 +15,6 @@
 extern "C" {
 #endif
 
-
 /*******************************************************************************
  * Macros
  ******************************************************************************/
@@ -31,7 +30,7 @@ extern "C" {
  * @typedef cat021_item131
  * @brief Category 021 Item 131 - High-Resolution Position in WGS-84 Co-ordinates
  * 
- *  High-Resolution Position in WGS-84 Co-ordinates
+ * High-Resolution Position in WGS-84 Co-ordinates
  */
 typedef struct cat021_item131 {
     union {

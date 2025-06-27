@@ -10,7 +10,7 @@
  * Getters
  ******************************************************************************/
 
-ASTERIX_API double get_cat021_item131_LAT(const cat021_item131 * item)
+double get_cat021_item131_LAT(const cat021_item131 * item)
 {
     uint32_t lat_raw = 
         (((uint32_t) GET_BITS((item)->raw[0], 1, MASK_08_BITS) << 24) |
@@ -21,7 +21,7 @@ ASTERIX_API double get_cat021_item131_LAT(const cat021_item131 * item)
     return (double) (lat_raw * LSB_CAT021_ITEM131_LAT);
 }
 
-ASTERIX_API double get_cat021_item131_LON(const cat021_item131 * item)
+double get_cat021_item131_LON(const cat021_item131 * item)
 {
     uint32_t lon_raw = 
         (((uint32_t) GET_BITS((item)->raw[3], 1, MASK_08_BITS) << 24) |
@@ -36,7 +36,7 @@ ASTERIX_API double get_cat021_item131_LON(const cat021_item131 * item)
  * Setters
  ******************************************************************************/
 
-ASTERIX_API void set_cat021_item131_LAT(cat021_item131 * item, double lat)
+void set_cat021_item131_LAT(cat021_item131 * item, double lat)
 {
     uint32_t lat_raw;
 
@@ -53,7 +53,7 @@ ASTERIX_API void set_cat021_item131_LAT(cat021_item131 * item, double lat)
     SET_BITS(&(item->raw[3]), (lat_raw      ), MASK_08_BITS, 1);
 }
 
-ASTERIX_API void set_cat021_item131_LON(cat021_item131 * item, double lon)
+void set_cat021_item131_LON(cat021_item131 * item, double lon)
 {
     uint32_t lon_raw;
 
@@ -74,7 +74,7 @@ ASTERIX_API void set_cat021_item131_LON(cat021_item131 * item, double lon)
  * Other Functions
  ******************************************************************************/
 
-ASTERIX_API void print_cat021_item131(const cat021_item131 * item)
+void print_cat021_item131(const cat021_item131 * item)
 {
     printf("Category 021 / Item 131 - Position in WGS-84 Co-ordinates\n");
     printf("  LAT (degrees) = %f\n", get_cat021_item131_LAT(item));

@@ -10,7 +10,7 @@
  * Getters
  ******************************************************************************/
 
-ASTERIX_API double get_cat021_item152_MH(const cat021_item152 * item)
+double get_cat021_item152_MH(const cat021_item152 * item)
 {
     return GET_BITS((item)->raw, 1, MASK_16_BITS) * LSB_CAT021_ITEM152_TAS;
 }
@@ -19,7 +19,7 @@ ASTERIX_API double get_cat021_item152_MH(const cat021_item152 * item)
  * Setters
  ******************************************************************************/
 
-ASTERIX_API void set_cat021_item152_MH(cat021_item152 * item, double mh)
+void set_cat021_item152_MH(cat021_item152 * item, double mh)
 {
     uint16_t mh_raw = 0;
 
@@ -33,7 +33,7 @@ ASTERIX_API void set_cat021_item152_MH(cat021_item152 * item, double mh)
  * Other Functions
  ******************************************************************************/
 
-ASTERIX_API void print_cat021_item152(const cat021_item152 * item)
+void print_cat021_item152(const cat021_item152 * item)
 {
     printf("Category 021 / Item 152 - Magnetic Heading\n");
     printf("  MH (degrees) = %f\n", get_cat021_item152_MH(item));

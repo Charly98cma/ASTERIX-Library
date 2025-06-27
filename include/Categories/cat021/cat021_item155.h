@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM155_H
 #define CAT021_ITEM155_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 #include "Common/constants.h"
@@ -29,14 +28,14 @@ extern "C" {
  * @typedef cat021_item155
  * @brief Category 021 Item 155 - Barometric Vertical Rate
  * 
- * The RE-Bit, if set, indicates that the value to be transmitted is 
- * beyond the range defined for this specific data item and the 
- * applied technology. In this case the Barometric Vertical Rate 
- * contains the maximum value that can be downloaded from the 
- * aircraft avionics and the RE-bit indicates that the actual value is 
- * greater than the value contained in the field. 
- * 
  * Barometric Vertical Rate, in two's complement form
+ * 
+ * @note The RE-Bit, if set, indicates that the value to be transmitted is 
+ *       beyond the range defined for this specific data item and the 
+ *       applied technology. In this case the Barometric Vertical Rate 
+ *       contains the maximum value that can be downloaded from the 
+ *       aircraft avionics and the RE-bit indicates that the actual value is 
+ *       greater than the value contained in the field. 
  */
 typedef struct cat021_item155 {
     union {

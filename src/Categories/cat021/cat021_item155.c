@@ -3,6 +3,7 @@
  * @brief Implementation of the Category 21 Item 155 functions
  */
 
+#include <stdio.h>
 #include "Categories/cat021/cat021_item155.h"
 #include "Common/constants.h"
 
@@ -10,12 +11,12 @@
  * Getters
  ******************************************************************************/
 
-ASTERIX_API uint8_t get_cat021_item155_RE(const cat021_item155 * item)
+uint8_t get_cat021_item155_RE(const cat021_item155 * item)
 {
     return GET_BITS((item)->raw, 16, MASK_01_BITS);
 }
 
-ASTERIX_API double get_cat021_item155_BVR(const cat021_item155 * item)
+double get_cat021_item155_BVR(const cat021_item155 * item)
 {
     return GET_BITS((item)->raw, 1, MASK_15_BITS) * LSB_CAT021_ITEM155_BVR;
 }
@@ -24,12 +25,12 @@ ASTERIX_API double get_cat021_item155_BVR(const cat021_item155 * item)
  * Setters
  ******************************************************************************/
 
-ASTERIX_API void set_cat021_item155_RE(cat021_item155 * item, uint8_t re)
+void set_cat021_item155_RE(cat021_item155 * item, uint8_t re)
 {
     SET_BITS(&((item)->raw), re, MASK_01_BITS, 16);
 }
 
-ASTERIX_API void set_cat021_item155_BVR(cat021_item155 * item, double bvr)
+void set_cat021_item155_BVR(cat021_item155 * item, double bvr)
 {
     uint16_t bvr_raw = 0;
 
@@ -43,9 +44,9 @@ ASTERIX_API void set_cat021_item155_BVR(cat021_item155 * item, double bvr)
  * Other Functions
  ******************************************************************************/
 
-ASTERIX_API void print_cat021_item155(const cat021_item155 * item)
+void print_cat021_item155(const cat021_item155 * item)
 {
-    printf("Category 021 / Item 155 - True Air Speed\n");
+    printf("Category 021 / Item 155 - Barometric Vertical Rate\n");
     printf("  RE = %d\n", get_cat021_item155_RE(item));
     printf("  BVR (feet/minute) = %f\n", get_cat021_item155_BVR(item));
 }

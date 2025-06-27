@@ -15,7 +15,6 @@
 extern "C" {
 #endif
 
-
 /*******************************************************************************
  * Macros
  ******************************************************************************/
@@ -30,10 +29,10 @@ extern "C" {
  * @typedef cat021_item152
  * @brief Category 021 Item 152 - Magnetic Heading
  * 
- * True North Heading is defined in the Reserved Expansion Field
- * in the subfield TNH.
- * 
  * Magnetic Heading (Element of Air Vector).
+ * 
+ * @note True North Heading is defined in the Reserved Expansion Field
+ *       in the subfield TNH.
  */
 typedef struct cat021_item152 {
     union {

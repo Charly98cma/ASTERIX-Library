@@ -15,7 +15,6 @@
 extern "C" {
 #endif
 
-
 /*******************************************************************************
  * Macros
  ******************************************************************************/
@@ -30,14 +29,14 @@ extern "C" {
  * @typedef cat021_item151
  * @brief Category 021 Item 151 - True Air Speed
  * 
- * The RE-Bit, if set, indicates that the value to be transmitted
- * is beyond the range defined for this specific data item and the
- * applied technology. In this case the True Air Speed contains the
- * maximum value that can be downloaded from the aircraft avionics and
- * the RE-bit indicates that the actual value is greater than the value
- * contained in the field.
- * 
  * True Air Speed.
+ * 
+ * @note The RE-Bit, if set, indicates that the value to be transmitted
+ *       is beyond the range defined for this specific data item and the
+ *       applied technology. In this case the True Air Speed contains the
+ *       maximum value that can be downloaded from the aircraft avionics and
+ *       the RE-bit indicates that the actual value is greater than the value
+ *       contained in the field.
  */
 typedef struct cat021_item151 {
     union {

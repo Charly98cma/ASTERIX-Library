@@ -10,22 +10,22 @@
  * Getters
  ******************************************************************************/
 
-ASTERIX_API uint8_t get_cat021_item148_MV(const cat021_item148 * item)
+uint8_t get_cat021_item148_MV(const cat021_item148 * item)
 {
     return GET_BITS((item)->raw, 16, MASK_01_BITS);
 }
 
-ASTERIX_API uint8_t get_cat021_item148_AH(const cat021_item148 * item)
+uint8_t get_cat021_item148_AH(const cat021_item148 * item)
 {
     return GET_BITS((item)->raw, 15, MASK_02_BITS);
 }
 
-ASTERIX_API uint8_t get_cat021_item148_AM(const cat021_item148 * item)
+uint8_t get_cat021_item148_AM(const cat021_item148 * item)
 {
     return GET_BITS((item)->raw, 14, MASK_01_BITS);
 }
 
-ASTERIX_API int32_t get_cat021_item148_ALT(const cat021_item148 * item)
+int32_t get_cat021_item148_ALT(const cat021_item148 * item)
 {
     return (int32_t) (GET_BITS((item)->raw, 1, MASK_13_BITS) * LSB_CAT021_ITEM148_ALT);
 }
@@ -34,22 +34,22 @@ ASTERIX_API int32_t get_cat021_item148_ALT(const cat021_item148 * item)
  * Setters
  ******************************************************************************/
 
-ASTERIX_API void set_cat021_item148_MV(cat021_item148 * item, uint8_t sas)
+void set_cat021_item148_MV(cat021_item148 * item, uint8_t sas)
 {
     SET_BITS(&((item)->raw), sas, MASK_01_BITS, 16);
 }
 
-ASTERIX_API void set_cat021_item148_AH(cat021_item148 * item, uint8_t src)
+void set_cat021_item148_AH(cat021_item148 * item, uint8_t src)
 {
     SET_BITS(&((item)->raw), src, MASK_01_BITS, 15);
 }
 
-ASTERIX_API void set_cat021_item148_AM(cat021_item148 * item, uint8_t src)
+void set_cat021_item148_AM(cat021_item148 * item, uint8_t src)
 {
     SET_BITS(&((item)->raw), src, MASK_01_BITS, 14);
 }
 
-ASTERIX_API void set_cat021_item148_ALT(cat021_item148 * item, int32_t alt)
+void set_cat021_item148_ALT(cat021_item148 * item, int32_t alt)
 {
     int16_t alt_raw = 0;
 
@@ -64,7 +64,7 @@ ASTERIX_API void set_cat021_item148_ALT(cat021_item148 * item, int32_t alt)
  * Other Functions
  ******************************************************************************/
 
-ASTERIX_API void print_cat021_item148(const cat021_item148 * item)
+void print_cat021_item148(const cat021_item148 * item)
 {
     printf("Category 021 / Item 148 - Final State Selected Altitude\n");
     printf("  MV = %d\n", get_cat021_item148_MV(item));

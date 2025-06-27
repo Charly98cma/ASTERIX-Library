@@ -10,7 +10,7 @@
  * Getters
  ******************************************************************************/
 
-ASTERIX_API uint8_t get_cat021_item132_MAM(const cat021_item132 * item)
+uint8_t get_cat021_item132_MAM(const cat021_item132 * item)
 {
     return GET_BITS((item)->raw, 1, MASK_08_BITS) * LSB_CAT021_ITEM132;
 }
@@ -19,7 +19,7 @@ ASTERIX_API uint8_t get_cat021_item132_MAM(const cat021_item132 * item)
  * Setters
  ******************************************************************************/
 
-ASTERIX_API void set_cat021_item132_MAM(cat021_item132 * item, uint8_t value)
+void set_cat021_item132_MAM(cat021_item132 * item, uint8_t value)
 {
     SET_BITS(&((item)->raw), value * LSB_CAT021_ITEM132, MASK_08_BITS, 1);
 }
@@ -28,7 +28,7 @@ ASTERIX_API void set_cat021_item132_MAM(cat021_item132 * item, uint8_t value)
  * Other Functions
  ******************************************************************************/
 
-ASTERIX_API void print_cat021_item132(const cat021_item132 * item)
+void print_cat021_item132(const cat021_item132 * item)
 {
     printf("Category 021 / Item 132 - Message Amplitude\n");
     printf("  MAM (dBm's) = %d\n", get_cat021_item132_MAM(item));

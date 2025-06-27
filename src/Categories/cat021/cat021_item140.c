@@ -10,12 +10,12 @@
  * Getters
  ******************************************************************************/
 
-ASTERIX_API uint16_t get_cat021_item140_GH_raw(const cat021_item140 * item)
+uint16_t get_cat021_item140_GH_raw(const cat021_item140 * item)
 {
     return GET_BITS((item)->raw, 1, MASK_16_BITS);
 }
 
-ASTERIX_API double get_cat021_item140_GH_feet(const cat021_item140 * item)
+double get_cat021_item140_GH_feet(const cat021_item140 * item)
 {
     return (double) (get_cat021_item140_GH_raw(item) * LSB_CAT021_ITEM140);
 }
@@ -24,7 +24,7 @@ ASTERIX_API double get_cat021_item140_GH_feet(const cat021_item140 * item)
  * Setters
  ******************************************************************************/
 
-ASTERIX_API void set_cat021_item140_GH_raw(cat021_item140 * item,
+void set_cat021_item140_GH_raw(cat021_item140 * item,
                                            uint16_t gh_raw)
 {
     // TODO: Check value is within limits
@@ -32,7 +32,7 @@ ASTERIX_API void set_cat021_item140_GH_raw(cat021_item140 * item,
     SET_BITS(&((item)->raw), (gh_raw     ), MASK_08_BITS, 1);
 }
 
-ASTERIX_API void set_cat021_item140_GH_feet(cat021_item140 * item, double gh)
+void set_cat021_item140_GH_feet(cat021_item140 * item, double gh)
 {
     uint16_t gh_raw = 0;
 
@@ -48,7 +48,7 @@ ASTERIX_API void set_cat021_item140_GH_feet(cat021_item140 * item, double gh)
  * Other Functions
  ******************************************************************************/
 
-ASTERIX_API void print_cat021_item140(const cat021_item140 * item)
+void print_cat021_item140(const cat021_item140 * item)
 {
     printf("Category 021 / Item 140 - Geometric Height\n");
     printf("  GH (raw) = 0x%02X\n", get_cat021_item140_GH_raw(item));

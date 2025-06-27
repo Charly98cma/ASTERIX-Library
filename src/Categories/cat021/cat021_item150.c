@@ -10,12 +10,12 @@
  * Getters
  ******************************************************************************/
 
-ASTERIX_API uint8_t get_cat021_item150_IM(const cat021_item150 * item)
+uint8_t get_cat021_item150_IM(const cat021_item150 * item)
 {
     return GET_BITS((item)->raw, 16, MASK_01_BITS);
 }
 
-ASTERIX_API double get_cat021_item150_AIRSPD(const cat021_item150 * item)
+double get_cat021_item150_AIRSPD(const cat021_item150 * item)
 {
     double real_speed = 0;
     uint16_t raw_speed = GET_BITS((item)->raw, 1, MASK_15_BITS);
@@ -32,12 +32,12 @@ ASTERIX_API double get_cat021_item150_AIRSPD(const cat021_item150 * item)
  * Setters
  ******************************************************************************/
 
-ASTERIX_API void set_cat021_item150_IM(cat021_item150 * item, uint8_t im)
+void set_cat021_item150_IM(cat021_item150 * item, uint8_t im)
 {
     SET_BITS(&((item)->raw), im, MASK_01_BITS, 16);
 }
 
-ASTERIX_API void set_cat021_item150_FL(cat021_item150 * item, double value)
+void set_cat021_item150_FL(cat021_item150 * item, double value)
 {
     uint16_t raw_value = 0;
 
@@ -53,7 +53,7 @@ ASTERIX_API void set_cat021_item150_FL(cat021_item150 * item, double value)
  * Other Functions
  ******************************************************************************/
 
-ASTERIX_API void print_cat021_item150(const cat021_item150 * item)
+void print_cat021_item150(const cat021_item150 * item)
 {
     uint8_t im = get_cat021_item150_IM(item);
 
