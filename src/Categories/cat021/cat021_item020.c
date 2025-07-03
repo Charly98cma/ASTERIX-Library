@@ -31,6 +31,6 @@ void set_cat021_item020_ECAT(cat021_item020 * item, uint8_t value)
 
 void print_cat021_item020(const cat021_item020 *item)
 {
-    printf("Category 021 / Item 020 - Emitter Category\n");
+    printf("Category 021 Item 020 - Emitter Category\n");
     printf("  ECAT: %d\n\n", get_cat021_item020_ECAT(item));  
 }

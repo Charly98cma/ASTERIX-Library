@@ -75,6 +75,6 @@ void set_cat021_item160_TRKANG(cat021_item160 * item, double track_angle)
 
 void print_cat021_item160(const cat021_item160 * item)
 {
-    printf("Category 021 / Item 160 - Airborne Ground Vector\n");
+    printf("Category 021 Item 160 - Airborne Ground Vector\n");
     printf("  RE = %d\n", get_cat021_item160_RE(item));
 }

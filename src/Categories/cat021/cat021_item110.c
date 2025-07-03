@@ -48,7 +48,7 @@ uint8_t get_cat021_item110_ext1_FX(const cat021_item110_ext1 * item)
 
 /* ============================ SECOND EXTENSION ============================ */
 
-#define TIP_BYTE(index, offset) (1 + (index) * NUM_BYTES_CAT021_ITEM110_EXT2 + (offset))
+#define TIP_BYTE(index, offset) (1 + ((index) * NUM_BYTES_CAT021_ITEM110_EXT2) + (offset))
 
 uint8_t get_cat021_item110_ext2_REP(const cat021_item110_ext2 * item)
 {
@@ -305,7 +305,7 @@ void print_cat021_item110(const cat021_item110 * item)
 {
     uint8_t i, rep = 0;
 
-    printf("CAT021 / Item 008 - Trajectory Intent\n");
+    printf("Category 021 Item 110 - Trajectory Intent\n");
     printf("  TIS = %d\n", get_cat021_item110_TIS(item));
     printf("  TID = %d\n", get_cat021_item110_TID(item));
     printf("  FX = %d\n", get_cat021_item110_FX(item));

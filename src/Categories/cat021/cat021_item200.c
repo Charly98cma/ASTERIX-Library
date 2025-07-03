@@ -76,7 +76,7 @@ void set_cat021_item200_SS(cat021_item200 * item, uint8_t ss)
 
 void print_cat021_item200(const cat021_item200 * item)
 {
-    printf("Category 021 / Item 200 - Target Status\n");
+    printf("Category 021 Item 200 - Target Status\n");
     printf("  ICF = %d\n", get_cat021_item200_ICF(item));    
     printf("  LNAV = %d\n", get_cat021_item200_LNAV(item));    
     printf("  ME = %d\n", get_cat021_item200_ME(item));    

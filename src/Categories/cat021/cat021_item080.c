@@ -33,6 +33,6 @@ void set_cat021_item080_TGTADDR(cat021_item080 * item, uint32_t addr)
 
 void print_cat021_item080(const cat021_item080 * item)
 {
-    printf("Category 021 / Item 080 - Target ICAO Address (24 bits)\n");
+    printf("Category 021 Item 080 - Target ICAO Address (24 bits)\n");
     printf("  ICAO Addr = 0x%03X\n", get_cat021_item080_TGTADDR(item));
 }

@@ -68,7 +68,7 @@ void set_cat021_item130_LON(cat021_item130 * item, double lon)
 
 void print_cat021_item130(const cat021_item130 * item)
 {
-    printf("Category 021 / Item 130 - Position in WGS-84 Co-ordinates\n");
+    printf("Category 021 Item 130 - Position in WGS-84 Co-ordinates\n");
     printf("  LAT (degrees) = %f\n", get_cat021_item130_LAT(item));
     printf("  LON (degrees) = %f\n", get_cat021_item130_LON(item));
 }

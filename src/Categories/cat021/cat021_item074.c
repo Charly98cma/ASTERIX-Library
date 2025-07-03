@@ -66,7 +66,7 @@ void set_cat021_item074_TMRP_HP_seconds(cat021_item074 * item, double seconds)
 
 void print_cat021_item074(const cat021_item074 * item)
 {
-    printf("Category 021 / Item 074 - Time of Message Reception of Position-High Precision\n");
+    printf("Category 021 Item 074 - Time of Message Reception of Position-High Precision\n");
     printf("  TMRP_HP_FSI = %d\n", get_cat021_item074_FSI(item));
     printf("  TMRP_HP (raw) = 0x%04X\n", get_cat021_item074_TMRP_HP_raw(item));
     printf("  TMRP_HP (seconds) = %f\n\n", get_cat021_item074_TMRP_HP_seconds(item));

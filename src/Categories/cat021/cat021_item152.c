@@ -35,6 +35,6 @@ void set_cat021_item152_MH(cat021_item152 * item, double mh)
 
 void print_cat021_item152(const cat021_item152 * item)
 {
-    printf("Category 021 / Item 152 - Magnetic Heading\n");
+    printf("Category 021 Item 152 - Magnetic Heading\n");
     printf("  MH (degrees) = %f\n", get_cat021_item152_MH(item));
 }

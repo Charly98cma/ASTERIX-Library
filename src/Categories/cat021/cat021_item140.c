@@ -50,7 +50,7 @@ void set_cat021_item140_GH_feet(cat021_item140 * item, double gh)
 
 void print_cat021_item140(const cat021_item140 * item)
 {
-    printf("Category 021 / Item 140 - Geometric Height\n");
+    printf("Category 021 Item 140 - Geometric Height\n");
     printf("  GH (raw) = 0x%02X\n", get_cat021_item140_GH_raw(item));
     printf("  GH (feets) = %f\n", get_cat021_item140_GH_feet(item));
 }

@@ -43,6 +43,6 @@ void set_cat021_item165_TAR(cat021_item165 * item, double tar)
 
 void print_cat021_item165(const cat021_item165 * item)
 {
-    printf("Category 021 / Item 155 - Track Angle Rate\n");
+    printf("Category 021 Item 155 - Track Angle Rate\n");
     printf("  TAR = %f\n", get_cat021_item165_TAR(item));
 }

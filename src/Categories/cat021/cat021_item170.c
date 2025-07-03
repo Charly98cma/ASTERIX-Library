@@ -125,6 +125,6 @@ void print_cat021_item170(const cat021_item170 * item)
     unsigned char str[8];
     get_cat021_item170_TI(item, str);
     
-    printf("Category 021 / Item 170 - Target Identification\n");
+    printf("Category 021 Item 170 - Target Identification\n");
     printf("  Target Identification = %s\n", str);
 }

@@ -341,7 +341,7 @@ uint8_t count_cat021_item040_extensions(const cat021_item040 *item)
 
 void print_cat021_item040(const cat021_item040 *item)
 {
-    printf("Category 021 / Item 040 - Target Report Descriptor\n");
+    printf("Category 021 Item 040 - Target Report Descriptor\n");
     printf("  ATP = %d\n", get_cat021_item040_ATP(item));
     printf("  ARC = %d\n", get_cat021_item040_ARC(item));
     printf("  RC = %d\n", get_cat021_item040_RC(item));

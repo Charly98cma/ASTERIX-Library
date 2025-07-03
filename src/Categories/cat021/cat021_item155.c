@@ -46,7 +46,7 @@ void set_cat021_item155_BVR(cat021_item155 * item, double bvr)
 
 void print_cat021_item155(const cat021_item155 * item)
 {
-    printf("Category 021 / Item 155 - Barometric Vertical Rate\n");
+    printf("Category 021 Item 155 - Barometric Vertical Rate\n");
     printf("  RE = %d\n", get_cat021_item155_RE(item));
     printf("  BVR (feet/minute) = %f\n", get_cat021_item155_BVR(item));
 }

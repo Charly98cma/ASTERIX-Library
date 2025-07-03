@@ -40,7 +40,7 @@ void set_cat021_item151_TAS(cat021_item151 * item, uint16_t tas)
 
 void print_cat021_item151(const cat021_item151 * item)
 {
-    printf("Category 021 / Item 151 - True Air Speed\n");
+    printf("Category 021 Item 151 - True Air Speed\n");
     printf("  RE = %d\n", get_cat021_item151_RE(item));
     printf("  TAS = %d\n", get_cat021_item151_TAS(item));
 }

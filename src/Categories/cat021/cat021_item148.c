@@ -66,7 +66,7 @@ void set_cat021_item148_ALT(cat021_item148 * item, int32_t alt)
 
 void print_cat021_item148(const cat021_item148 * item)
 {
-    printf("Category 021 / Item 148 - Final State Selected Altitude\n");
+    printf("Category 021 Item 148 - Final State Selected Altitude\n");
     printf("  MV = %d\n", get_cat021_item148_MV(item));
     printf("  AH = %d\n", get_cat021_item148_AH(item));
     printf("  AM = %d\n", get_cat021_item148_AM(item));

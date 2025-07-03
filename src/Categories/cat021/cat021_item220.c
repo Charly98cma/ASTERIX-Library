@@ -157,7 +157,7 @@ void set_cat021_item220_ext4_TURB(cat021_item220_ext4 * item, uint8_t turb)
 
 void print_cat021_item220(const cat021_item220 * item)
 {
-    printf("Category 021 / Item 220 - Met Information\n");
+    printf("Category 021 Item 220 - Met Information\n");
 
     printf("  WS = %d\n", get_cat021_item220_WS(item));
     printf("  WD = %d\n", get_cat021_item220_WD(item));

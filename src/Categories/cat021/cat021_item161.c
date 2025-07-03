@@ -38,6 +38,6 @@ void set_cat021_item161_TRKNUM(cat021_item161 * item, uint16_t track_number)
 
 void print_cat021_item161(const cat021_item161 * item)
 {
-    printf("Category 021 / Item 161 - Track Number\n");
+    printf("Category 021 Item 161 - Track Number\n");
     printf("  TRACK NUMBER = %d\n", get_cat021_item161_TRKNUM(item));
 }

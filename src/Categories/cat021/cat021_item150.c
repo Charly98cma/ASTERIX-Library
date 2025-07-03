@@ -57,7 +57,7 @@ void print_cat021_item150(const cat021_item150 * item)
 {
     uint8_t im = get_cat021_item150_IM(item);
 
-    printf("Category 021 / Item 150 - Air Speed\n");
+    printf("Category 021 Item 150 - Air Speed\n");
     printf("  IM = %d\n", im);
     if (im == CAT021_ITEM150_IM_IAS)
         printf("  IAS = %f\n", get_cat021_item150_AIRSPD(item));

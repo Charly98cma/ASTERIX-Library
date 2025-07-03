@@ -50,7 +50,7 @@ void set_cat021_item157_GVR(cat021_item157 * item, double gvr)
 
 void print_cat021_item157(const cat021_item157 * item)
 {
-    printf("Category 021 / Item 157 - Geometric Vertical Rate\n");
+    printf("Category 021 Item 157 - Geometric Vertical Rate\n");
     printf("  RE = %d\n", get_cat021_item157_RE(item));
     printf("  GVR (feet/minute) = %f\n", get_cat021_item157_GVR(item));
 }

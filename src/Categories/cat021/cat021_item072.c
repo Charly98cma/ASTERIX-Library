@@ -53,7 +53,7 @@ void set_cat021_item072_TAV_seconds(cat021_item072 * item, double seconds)
 
 void print_cat021_item072(const cat021_item072 * item)
 {
-    printf("Category 021 / Item 072 - Time of Applicability for Velocity\n");
+    printf("Category 021 Item 072 - Time of Applicability for Velocity\n");
     printf("  TAV (raw) = 0x%03X\n", get_cat021_item072_TAV_raw(item));
     printf("  TAV (seconds) = %f\n\n", get_cat021_item072_TAV_seconds(item));
 }

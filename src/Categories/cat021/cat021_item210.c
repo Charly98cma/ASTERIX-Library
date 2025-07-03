@@ -51,7 +51,7 @@ void set_cat021_item210_LTT(cat021_item210 * item, uint8_t ltt)
 
 void print_cat021_item210(const cat021_item210 * item)
 {
-    printf("Category 021 / Item 200 - MOPS Version\n");
+    printf("Category 021 Item 200 - MOPS Version\n");
     printf("  VNS = %d\n", get_cat021_item210_VNS(item));
     printf("  VN = %d\n", get_cat021_item210_VN(item));
     printf("  LTT = %d\n", get_cat021_item210_LTT(item));

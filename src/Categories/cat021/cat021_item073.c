@@ -53,7 +53,7 @@ void set_cat021_item073_TMRP_seconds(cat021_item073 * item, double seconds)
 
 void print_cat021_item073(const cat021_item073 * item)
 {
-    printf("Category 021 / Item 073 - Time of Message Reception for Position\n");
+    printf("Category 021 Item 073 - Time of Message Reception for Position\n");
     printf("  TMRP (raw) = 0x%03X\n", get_cat021_item073_TMRP_raw(item));
     printf("  TMRP (seconds) = %f\n\n", get_cat021_item073_TMRP_seconds(item));
 }

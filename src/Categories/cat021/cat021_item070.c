@@ -131,7 +131,7 @@ uint16_t set_cat021_item070_code(cat021_item070 * item, uint16_t code)
 
 void print_cat021_item070(cat021_item070 * item)
 {
-    printf("Category 021 / Item 070 - Mode 3/A Code in Octal Representation\n");
+    printf("Category 021 Item 070 - Mode 3/A\n");
     printf("  Raw bits: 0x%04X\n", item->raw);
     printf("  Code: %04o\n\n", get_cat021_item070_code(item));
 }

@@ -31,6 +31,6 @@ void set_cat021_item015_SI(cat021_item015 * item, uint8_t value)
 
 void print_cat021_item015(const cat021_item015 *item)
 {
-    printf("CAT021 / Item 015 - Service Identification\n");
+    printf("Category 021 Item 015 - Service Identification\n");
     printf("  SI: 0x%02X\n\n", get_cat021_item015_SI(item));
 }

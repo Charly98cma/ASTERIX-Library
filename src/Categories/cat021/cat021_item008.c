@@ -98,7 +98,7 @@ void set_cat021_item008_SA(cat021_item008 * item, uint8_t value)
 
 void print_cat021_item008(const cat021_item008 *item)
 {
-    printf("CAT021 / Item 008 - Aircraft Operational Status\n");
+    printf("Category 021 Item 008 - Aircraft Operational Status\n");
     printf("  RA: %d\n", get_cat021_item008_RA(item));
     printf("  TC: %d\n", get_cat021_item008_TC(item));
     printf("  TS: %d\n", get_cat021_item008_TS(item));

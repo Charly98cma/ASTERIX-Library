@@ -56,7 +56,7 @@ void set_cat021_item146_ALT(cat021_item146 * item, int32_t alt)
 
 void print_cat021_item146(const cat021_item146 * item)
 {
-    printf("Category 021 / Item 146 - Flight Level\n");
+    printf("Category 021 Item 146 - Selected Altitude\n");
     printf("  SAS = %d\n", get_cat021_item146_SAS(item));
     printf("  SRC = %d\n", get_cat021_item146_SRC(item));
     printf("  ALT = %d\n", get_cat021_item146_ALT(item));

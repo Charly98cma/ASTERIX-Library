@@ -50,7 +50,7 @@ void set_cat021_item145_FL_feet(cat021_item145 * item, int16_t fl)
 
 void print_cat021_item145(const cat021_item145 * item)
 {
-    printf("Category 021 / Item 145 - Flight Level\n");
+    printf("Category 021 Item 145 - Flight Level\n");
     printf("  FL (steps of 1/4 FL's) = %d\n", get_cat021_item145_FL_raw(item));
     printf("  FL = %d\n", get_cat021_item145_FL_feet(item));
 }

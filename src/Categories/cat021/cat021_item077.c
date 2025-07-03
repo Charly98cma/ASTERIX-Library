@@ -53,7 +53,7 @@ void set_cat021_item077_TART_seconds(cat021_item077 * item, double seconds)
 
 void print_cat021_item077(const cat021_item077 * item)
 {
-    printf("Category 021 / Item 077 - Time of ASTERIX Report Transmission\n");
+    printf("Category 021 Item 077 - Time of ASTERIX Report Transmission\n");
     printf("  TART (raw) = 0x%03X\n", get_cat021_item077_TART_raw(item));
     printf("  TART (seconds) = %f\n\n", get_cat021_item077_TART_seconds(item));
 }

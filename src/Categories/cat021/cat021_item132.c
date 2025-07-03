@@ -30,6 +30,6 @@ void set_cat021_item132_MAM(cat021_item132 * item, uint8_t value)
 
 void print_cat021_item132(const cat021_item132 * item)
 {
-    printf("Category 021 / Item 132 - Message Amplitude\n");
+    printf("Category 021 Item 132 - Message Amplitude\n");
     printf("  MAM (dBm's) = %d\n", get_cat021_item132_MAM(item));
 }

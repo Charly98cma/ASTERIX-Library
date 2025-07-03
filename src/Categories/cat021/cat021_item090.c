@@ -203,7 +203,7 @@ uint8_t count_cat021_item090_extensions(const cat021_item090 *item)
 
 void print_cat021_item090(const cat021_item090 * item)
 {
-    printf("Category 021 / Item 090 - Quality Indicators\n");
+    printf("Category 021 Item 090 - Quality Indicators\n");
     printf("  NUCr_NACv = %d\n", get_cat021_item090_NUCr_NACv(item));
     printf("  NUCp_NIC = %d\n", get_cat021_item090_NUCp_NIC(item));
     printf("  FX = %d\n", get_cat021_item090_FX(item));

@@ -53,7 +53,7 @@ void set_cat021_item071_TAP_seconds(cat021_item071 * item, double seconds)
 
 void print_cat021_item071(const cat021_item071 * item)
 {
-    printf("Category 021 / Item 071 - Time of Applicability for Position\n");
+    printf("Category 021 Item 071 - Time of Applicability for Position\n");
     printf("  TAP (raw) = 0x%03X\n", get_cat021_item071_TAP_raw(item));
     printf("  TAP (seconds) = %f\n\n", get_cat021_item071_TAP_seconds(item));
 }

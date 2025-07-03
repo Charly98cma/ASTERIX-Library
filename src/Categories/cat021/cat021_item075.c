@@ -53,7 +53,7 @@ void set_cat021_item075_TMRV_seconds(cat021_item075 * item, double seconds)
 
 void print_cat021_item075(const cat021_item075 * item)
 {
-    printf("Category 021 / Item 075 - Time of Message Reception for Velocity\n");
+    printf("Category 021 Item 075 - Time of Message Reception for Velocity\n");
     printf("  TMRV (raw) = 0x%03X\n", get_cat021_item075_TMRV_raw(item));
     printf("  TMRV (seconds) = %f\n\n", get_cat021_item075_TMRV_seconds(item));
 }
