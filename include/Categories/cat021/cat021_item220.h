@@ -19,11 +19,11 @@ extern "C" {
  ******************************************************************************/
 
 /// @brief Cat 021 Item 220 Ext1 - Wind Speed LSB = 1 knot
-#define CAT021_ITEM220_LSB_EXT1_WINDSPD     1
+#define CAT021_ITEM220_EXT1_LSB_WINDSPD     1
 /// @brief Cat 021 Item 220 Ext2 - Wind Direction LSB = 1 degree
-#define CAT021_ITEM220_LSB_EXT2_WINDDIR     1
+#define CAT021_ITEM220_EXT2_LSB_WINDDIR     1
 /// @brief Cat 021 Item 220 Ext3 - Temperature LSB = 0.25 Celsius
-#define CAT021_ITEM220_LSB_EXT3_TEMP        (double) (0.25)
+#define CAT021_ITEM220_EXT3_LSB_TEMP        (double) (0.25)
 
 /// @brief Maximum value of Wind Speed
 #define CAT021_ITEM220_EXT1_MIN_WINDSPD     0
@@ -58,7 +58,7 @@ typedef struct cat021_item220_ext1 {
      * 
      * LSB = 1 knot
      */
-    uint16_t WINDSPD;
+    uint8_t WINDSPD[2];
 } cat021_item220_ext1;
 
 /**
@@ -73,7 +73,7 @@ typedef struct cat021_item220_ext2 {
      * 
      * LSB = 1 degree
      */
-    uint16_t WINDDIR;
+    uint8_t WINDDIR[2];
 } cat021_item220_ext2;
 
 /**
@@ -88,7 +88,7 @@ typedef struct cat021_item220_ext3 {
      * 
      * LSB = 0.25 Celsius
      */
-    uint16_t TEMP;
+    int8_t TEMP[2];
 } cat021_item220_ext3;
 
 /**
