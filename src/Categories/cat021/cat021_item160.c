@@ -4,8 +4,11 @@
  */
 
 #include <stdio.h>
-#include "Categories/cat021/cat021_item160.h"
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item160.h"
 
 /*******************************************************************************
  * Getters
@@ -40,12 +43,12 @@ double get_cat021_item160_TRKANG(const cat021_item160 * item)
  * Setters
  ******************************************************************************/
 
-void set_cat021_item160_RE(cat021_item160 * item, uint8_t re)
+void set_cat021_item160_RE(cat021_item160 * item, const uint8_t re)
 {
     SET_BITS(&(item->raw[0]), re, MASK_01_BITS, 8);
 }
 
-void set_cat021_item160_GRDSPD(cat021_item160 * item, double ground_speed)
+void set_cat021_item160_GRDSPD(cat021_item160 * item, const double ground_speed)
 {
     uint16_t gs_raw = 0;
 
@@ -57,7 +60,7 @@ void set_cat021_item160_GRDSPD(cat021_item160 * item, double ground_speed)
     SET_BITS(&(item->raw[1]), (gs_raw     ), MASK_08_BITS, 1);
 }
 
-void set_cat021_item160_TRKANG(cat021_item160 * item, double track_angle)
+void set_cat021_item160_TRKANG(cat021_item160 * item, const double track_angle)
 {
     uint16_t ta_raw = 0;
 

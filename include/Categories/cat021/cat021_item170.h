@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {

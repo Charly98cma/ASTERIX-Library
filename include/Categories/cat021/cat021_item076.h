@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM076_H
 #define CAT021_ITEM076_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -18,10 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-/** 
- * @brief LSB (1/2^30 s) Time of Message Reception of Position–High Precision
- */
-#define LSB_CAT021_ITEM076          (double) (1/P2_30)
+#define CAT021_ITEM076_LSB_TMRV_HP   (1.0/P2_30) /// @brief LSB = 1/2^30 seconds
 
 /*******************************************************************************
  * Structures and Types
@@ -104,7 +100,8 @@ ASTERIX_API double get_cat021_item076_TMRV_HP_seconds(const cat021_item076 * ite
  * @param item Pointer to cat021_item076 structure.
  * @param raw_value Raw 2-bit to store.
  */
-ASTERIX_API void set_cat021_item076_FSI(cat021_item076 * item, uint8_t raw_value);
+ASTERIX_API void set_cat021_item076_FSI(cat021_item076 * item,
+                                        const uint8_t raw_value);
 
 /**
  * @brief Set the Time of Message Reception of Position–High Precision (TMRV_HP)
@@ -115,7 +112,8 @@ ASTERIX_API void set_cat021_item076_FSI(cat021_item076 * item, uint8_t raw_value
  * @param item Pointer to cat021_item076 structure.
  * @param raw_value Raw 30-bit time value to store (units of 1/2^30 seconds).
  */
-ASTERIX_API void set_cat021_item076_TMRV_HP_raw(cat021_item076 * item, uint32_t raw_value);
+ASTERIX_API void set_cat021_item076_TMRV_HP_raw(cat021_item076 * item,
+                                                const uint32_t raw_value);
 
 /**
  * @brief Set the Time of Message Reception of Position–High Precision (TMRV_HP)
@@ -124,7 +122,8 @@ ASTERIX_API void set_cat021_item076_TMRV_HP_raw(cat021_item076 * item, uint32_t 
  * @param item Pointer to cat021_item076 structure.
  * @param seconds Time in seconds (will be converted to 1/2^30 second units)
  */
-ASTERIX_API void set_cat021_item076_TMRV_HP_seconds(cat021_item076 * item, double seconds);
+ASTERIX_API void set_cat021_item076_TMRV_HP_seconds(cat021_item076 * item,
+                                                    const double seconds);
 
 /*******************************************************************************
  * Other Functions

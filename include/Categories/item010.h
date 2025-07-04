@@ -1,5 +1,5 @@
 /**
- * @file sac_sic.h
+ * @file item010.h
  * @brief Definition of Item 010 and SAC/SIC values
  */
 
@@ -34,7 +34,7 @@ extern "C" {
 typedef struct item010 {
     union {
         /// @brief Raw octet as received (recommended for portable access)
-        uint16_t raw;
+        uint8_t raw[2];
         
         struct {
             /// @brief System Area Code (8 bits)

@@ -4,8 +4,11 @@
  */ 
 
 #include <stdio.h>
-#include "Categories/cat021/cat021_item220.h"
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item220.h"
 
 /*******************************************************************************
  * Getters
@@ -86,34 +89,35 @@ uint8_t get_cat021_item220_ext4_TURB(const cat021_item220_ext4 * item)
 
 /* ============================== MAIN BYTE ============================== */
 
-void set_cat021_item220_WS(cat021_item220 * item, uint8_t ws)
+void set_cat021_item220_WS(cat021_item220 * item, const uint8_t ws)
 {
     SET_BITS(&(item->raw), ws, 8, MASK_01_BITS);
 }
 
-void set_cat021_item220_WD(cat021_item220 * item, uint8_t wd)
+void set_cat021_item220_WD(cat021_item220 * item, const uint8_t wd)
 {
     SET_BITS(&(item->raw), wd, 7, MASK_01_BITS);
 }
 
-void set_cat021_item220_TEMP(cat021_item220 * item, uint8_t temp)
+void set_cat021_item220_TEMP(cat021_item220 * item, const uint8_t temp)
 {
     SET_BITS(&(item->raw), temp, 6, MASK_01_BITS);
 }
 
-void set_cat021_item220_TRB(cat021_item220 * item, uint8_t trb)
+void set_cat021_item220_TRB(cat021_item220 * item, const uint8_t trb)
 {
     SET_BITS(&(item->raw), trb, 5, MASK_01_BITS);
 }
 
-void set_cat021_item220_FX(cat021_item220 * item, uint8_t fx)
+void set_cat021_item220_FX(cat021_item220 * item, const uint8_t fx)
 {
     SET_BITS(&(item->raw), fx, 1, MASK_01_BITS);
 }
 
 /* ============================== SUBFIELD #1 ============================== */
 
-void set_cat021_item220_ext1_WINDSPD(cat021_item220_ext1 * item, uint16_t wind_spd)
+void set_cat021_item220_ext1_WINDSPD(cat021_item220_ext1 * item,
+                                     const uint16_t wind_spd)
 {
     // TODO: Check value is in valid range
     SET_BITS(&(item->WINDSPD[0]), (wind_spd >> 8), MASK_08_BITS, 1);
@@ -122,7 +126,8 @@ void set_cat021_item220_ext1_WINDSPD(cat021_item220_ext1 * item, uint16_t wind_s
 
 /* ============================== SUBFIELD #2 ============================== */
 
-void set_cat021_item220_ext2_WINDDIR(cat021_item220_ext2 * item, uint16_t wind_dir)
+void set_cat021_item220_ext2_WINDDIR(cat021_item220_ext2 * item,
+                                     const uint16_t wind_dir)
 {
     // TODO: Check value is in valid range
     SET_BITS(&(item->WINDDIR[0]), (wind_dir >> 8), MASK_08_BITS, 1);
@@ -131,7 +136,7 @@ void set_cat021_item220_ext2_WINDDIR(cat021_item220_ext2 * item, uint16_t wind_d
 
 /* ============================== SUBFIELD #3 ============================== */
 
-void set_cat021_item220_ext3_TEMP(cat021_item220_ext3 * item, double temp)
+void set_cat021_item220_ext3_TEMP(cat021_item220_ext3 * item, const double temp)
 {
     int16_t temp_raw = 0;
 
@@ -145,7 +150,8 @@ void set_cat021_item220_ext3_TEMP(cat021_item220_ext3 * item, double temp)
 
 /* ============================== SUBFIELD #4 ============================== */
 
-void set_cat021_item220_ext4_TURB(cat021_item220_ext4 * item, uint8_t turb)
+void set_cat021_item220_ext4_TURB(cat021_item220_ext4 * item,
+                                  const uint8_t turb)
 {
     // TODO: Check value is in valid range
     SET_BITS(&(item->TURB), turb, MASK_16_BITS, 1);

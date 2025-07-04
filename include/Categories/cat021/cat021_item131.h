@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM131_H
 #define CAT021_ITEM131_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 #include "Common/constants.h"
@@ -19,8 +18,8 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM131_LAT      (double) (180/P2_30)    /// LSB = 1/2^30 deg
-#define LSB_CAT021_ITEM131_LON      (double) (180/P2_30)    /// LSB = 1/2^30 deg
+#define CAT021_ITEM131_LSB_LAT             (180.0/P2_30)    /// LSB = 1/2^30 deg
+#define CAT021_ITEM131_LSB_LON             (180.0/P2_30)    /// LSB = 1/2^30 deg
 
 /*******************************************************************************
  * Structures and Types
@@ -89,7 +88,7 @@ ASTERIX_API double get_cat021_item131_LON(const cat021_item131 * item);
  * @param item Pointer to cat021_item131 structure
  * @param lan New high-resolution latitude value in degrees's (see LSB)
  */
-ASTERIX_API void set_cat021_item131_LAT(cat021_item131 * item, double lat);
+ASTERIX_API void set_cat021_item131_LAT(cat021_item131 * item, const double lat);
 
 /**
  * @brief Set the new Longitude in High-Resolution Position in WGS-84
@@ -98,7 +97,7 @@ ASTERIX_API void set_cat021_item131_LAT(cat021_item131 * item, double lat);
  * @param item Pointer to cat021_item131 structure
  * @param lan New high-resolution longitude value in degrees's (see LSB)
  */
-ASTERIX_API void set_cat021_item131_LON(cat021_item131 * item, double lon);
+ASTERIX_API void set_cat021_item131_LON(cat021_item131 * item, const double lon);
 
 /*******************************************************************************
  * Other Functions

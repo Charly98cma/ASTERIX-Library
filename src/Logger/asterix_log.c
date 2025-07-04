@@ -6,7 +6,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include "Common/asterix_log.h"
+#include "Logger/asterix_log.h"
 
 /*******************************************************************************
  * Functions

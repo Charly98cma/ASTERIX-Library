@@ -1,10 +1,10 @@
 /**
- * @file common.h
- * @brief Values, types and function headers used troughout the project
+ * @file header.h
+ * @brief Structure and functions of the ASTERIX header present in all messages
  */
 
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef HEADER_H
+#define HEADER_H
 
 #include <stdint.h>
 #include "Common/visibility.h"
@@ -22,7 +22,7 @@ extern "C" {
  ******************************************************************************/
 
 /**
- * @typedef header_t
+ * @typedef header
  * @brief Header type of ASTERIX messages
  * 
  * Type used to represent the header of any ASTERIX message,
@@ -111,4 +111,4 @@ ASTERIX_API void print_header(const header * item);
 }
 #endif
 
-#endif // COMMON_H
+#endif // HEADER_H

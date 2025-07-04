@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM070_H
 #define CAT021_ITEM070_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -223,7 +222,7 @@ ASTERIX_API uint16_t get_cat021_item070_code(const cat021_item070 * item);
  * @return uint16_t value set as the M3/A code
  */
 ASTERIX_API uint16_t set_cat021_item070_code(cat021_item070 * item,
-                                             uint16_t code);
+                                             const uint16_t code);
 
 /*******************************************************************************
  * Other Functions
@@ -238,7 +237,7 @@ ASTERIX_API uint16_t set_cat021_item070_code(cat021_item070 * item,
  *
  * @param item Pointer to a cat021_item070 structure.
  */
-ASTERIX_API void print_cat021_item070(cat021_item070 * item);
+ASTERIX_API void print_cat021_item070(const cat021_item070 * item);
 
 #ifdef __cplusplus
 }

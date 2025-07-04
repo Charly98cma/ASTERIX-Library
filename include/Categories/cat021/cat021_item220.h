@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,11 +18,11 @@ extern "C" {
  ******************************************************************************/
 
 /// @brief Cat 021 Item 220 Ext1 - Wind Speed LSB = 1 knot
-#define CAT021_ITEM220_EXT1_LSB_WINDSPD     1
+#define CAT021_ITEM220_EXT1_LSB_WINDSPD     (1.0)
 /// @brief Cat 021 Item 220 Ext2 - Wind Direction LSB = 1 degree
-#define CAT021_ITEM220_EXT2_LSB_WINDDIR     1
+#define CAT021_ITEM220_EXT2_LSB_WINDDIR     (1.0)
 /// @brief Cat 021 Item 220 Ext3 - Temperature LSB = 0.25 Celsius
-#define CAT021_ITEM220_EXT3_LSB_TEMP        (double) (0.25)
+#define CAT021_ITEM220_EXT3_LSB_TEMP        (0.25)
 
 /// @brief Maximum value of Wind Speed
 #define CAT021_ITEM220_EXT1_MIN_WINDSPD     0
@@ -280,7 +279,7 @@ ASTERIX_API uint8_t get_cat021_item220_ext4_TURB(const cat021_item220_ext4 * ite
  * @param item pointer to cat021_item220 structure
  * @param ws value of new Wind Speed subfield presence indicator
  */
-ASTERIX_API void set_cat021_item220_WS(cat021_item220 * item, uint8_t ws);
+ASTERIX_API void set_cat021_item220_WS(cat021_item220 * item, const uint8_t ws);
 
 /**
  * @brief Set Wind Direction (WINDDIR) subfield presence into Cat 021 Item 220
@@ -289,7 +288,7 @@ ASTERIX_API void set_cat021_item220_WS(cat021_item220 * item, uint8_t ws);
  * @param item pointer to cat021_item220 structure
  * @param wd value of new Wind Direction subfield presence indicator
  */
-ASTERIX_API void set_cat021_item220_WD(cat021_item220 * item, uint8_t wd);
+ASTERIX_API void set_cat021_item220_WD(cat021_item220 * item, const uint8_t wd);
 
 /**
  * @brief Set Temperature (TEMP) subfield presence into Cat 021 Item 220
@@ -298,7 +297,7 @@ ASTERIX_API void set_cat021_item220_WD(cat021_item220 * item, uint8_t wd);
  * @param item pointer to cat021_item220 structure
  * @param temp value of new Teperature subfield presence indicator
  */
-ASTERIX_API void set_cat021_item220_TEMP(cat021_item220 * item, uint8_t temp);
+ASTERIX_API void set_cat021_item220_TEMP(cat021_item220 * item, const uint8_t temp);
 
 /**
  * @brief Set Turbulance (TURB) subfield presence into Cat 021 Item 220
@@ -307,7 +306,7 @@ ASTERIX_API void set_cat021_item220_TEMP(cat021_item220 * item, uint8_t temp);
  * @param item pointer to cat021_item220 structure
  * @param trb value of new Turbulance subfield presence indicator
  */
-ASTERIX_API void set_cat021_item220_TRB(cat021_item220 * item, uint8_t trb);
+ASTERIX_API void set_cat021_item220_TRB(cat021_item220 * item, const uint8_t trb);
 
 /**
  * @brief Set Extension Indicator (FX) value into Cat 021 Item 220
@@ -317,7 +316,7 @@ ASTERIX_API void set_cat021_item220_TRB(cat021_item220 * item, uint8_t trb);
  * @param fx new value of extension presence (0: no extension;
  *                                            1: extension present)
  */
-ASTERIX_API void set_cat021_item220_FX(cat021_item220 * item, uint8_t fx);
+ASTERIX_API void set_cat021_item220_FX(cat021_item220 * item, const uint8_t fx);
 
 /* ============================== SUBFIELD #1 ============================== */
 
@@ -328,7 +327,7 @@ ASTERIX_API void set_cat021_item220_FX(cat021_item220 * item, uint8_t fx);
  * @param ws value of new Wind Speed in knots (LSB = 1 knot)
  */
 ASTERIX_API void set_cat021_item220_ext1_WINDSPD(cat021_item220_ext1 * item,
-                                                 uint16_t wind_spd);
+                                                 const uint16_t wind_spd);
 
 /* ============================== SUBFIELD #2 ============================== */
 
@@ -339,7 +338,7 @@ ASTERIX_API void set_cat021_item220_ext1_WINDSPD(cat021_item220_ext1 * item,
  * @param wd value of new Wind Direction in degrees (LSB = 1 degree)
  */
 ASTERIX_API void set_cat021_item220_ext2_WINDDIR(cat021_item220_ext2 * item,
-                                                 uint16_t wind_dir);
+                                                 const uint16_t wind_dir);
 
 /* ============================== SUBFIELD #3 ============================== */
 
@@ -350,7 +349,7 @@ ASTERIX_API void set_cat021_item220_ext2_WINDDIR(cat021_item220_ext2 * item,
  * @param temp value of new Teperature in Celsius (LSB = 0.25 Celsius)
  */
 ASTERIX_API void set_cat021_item220_ext3_TEMP(cat021_item220_ext3 * item,
-                                              double temp);
+                                              const double temp);
 
 /* ============================== SUBFIELD #4 ============================== */
 
@@ -361,7 +360,7 @@ ASTERIX_API void set_cat021_item220_ext3_TEMP(cat021_item220_ext3 * item,
  * @param trb value of new Turbulance level (from 0 to 15)
  */
 ASTERIX_API void set_cat021_item220_ext4_TURB(cat021_item220_ext4 * item,
-                                              uint8_t turb);
+                                              const uint8_t turb);
 
 /*******************************************************************************
  * Other Functions

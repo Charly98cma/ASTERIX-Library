@@ -4,8 +4,11 @@
  */
 
 #include <stdio.h>
-#include "Categories/cat021/cat021_item230.h"
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item230.h"
 
 /*******************************************************************************
  * Getters
@@ -13,8 +16,9 @@
 
 double get_cat021_item230_RA(const cat021_item230 * item)
 {
-    int16_t ra_raw = (int16_t) ((GET_BITS(item->raw[0], 1, MASK_08_BITS) << 8) |
-                                (GET_BITS(item->raw[1], 1, MASK_08_BITS)     ));
+    int16_t ra_raw = (int16_t) (
+        (GET_BITS(item->raw[0], 1, MASK_08_BITS) << 8) |
+        (GET_BITS(item->raw[1], 1, MASK_08_BITS)     ));
     return (ra_raw * CAT021_ITEM230_LSB_RA);
 }
 
@@ -22,7 +26,7 @@ double get_cat021_item230_RA(const cat021_item230 * item)
  * Setters
  ******************************************************************************/
 
-void set_cat021_item230_RA(cat021_item230 * item, double ra)
+void set_cat021_item230_RA(cat021_item230 * item, const double ra)
 {
     int16_t ra_raw = 0;
 

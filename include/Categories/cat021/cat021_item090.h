@@ -6,8 +6,8 @@
 #ifndef CAT021_ITEM090_H
 #define CAT021_ITEM090_H
 
-#include <stdio.h>
 #include <stdint.h>
+#include "Common/versions.h"
 #include "Common/visibility.h"
 
 #ifdef __cplusplus
@@ -17,6 +17,14 @@ extern "C" {
 /*******************************************************************************
  * Macros
  ******************************************************************************/
+
+#if (CAT021_ED >= 2 && CAT021_VN >= 7)
+
+#define CAT021_ITEM090_EXT5_LSB_VAL_DIST_P1       (128.0)    // LSB = 128 meters
+#define CAT021_ITEM090_EXT6_LSB_VAL_DIST_P2         (1.0)    // LSB =   1 meters
+#define CAT021_ITEM090_EXT7_LSB_VAL_DIST_QUAL_P1  (128.0)    // LSB = 128 meters
+
+#endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 /*******************************************************************************
  * Structures and Types
@@ -114,8 +122,22 @@ typedef struct cat021_item090_ext3 {
              *  (check EUROCONTROL conversion table for values explanation)
              */
             uint8_t PIC     :4;
+
+#if (CAT021_ED >= 2 && CAT021_VN >= 7)
+            /**
+             * @brief Source of PIC
+             * 
+             * = 0 PIC mapped from FTC and NICsup
+             * = 1 PIC directly received in HVA or Phase Overlay
+             */
+            uint8_t SRC     :1;
+            /// @brief Spare bits-3/2, set to 0
+            uint8_t spare   :2;
+#else
             /// @brief Spare bits-4/2, set to 0
             uint8_t spare   :3;
+#endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
+
             /**
              * @brief Field extension
              * 
@@ -125,6 +147,162 @@ typedef struct cat021_item090_ext3 {
         };
     };
 } cat021_item090_ext3;
+
+#if (CAT021_ED >= 2 && CAT021_VN >= 7)
+
+/**
+ * @typedef cat021_item090_ext4
+ * @brief Category 021 / Item 090 - Fourth extension subfield (1 byte)
+ * 
+ * Position Validation Indicators
+ */
+typedef struct cat021_item090_ext4 {
+    union {
+        /// @brief Raw octet as received (recommended for portable access)
+        uint8_t raw;
+
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+ 
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /// @brief Spare bits-8/7 set to 0
+            uint8_t spare           :2;
+            /**
+             * @brief Position Validation State (see Specification Standard)
+             */
+            uint8_t VALSTATE       :3;
+            /**
+             * @brief Validation Distance Availability
+             * 
+             * = 0 Item not available | = 1 Item available
+             */
+            uint8_t VD              :1;
+            /**
+             * @brief Validation Distance Quality Availability
+             * 
+             * = 0 Item not available | = 1 Item available
+             */
+            uint8_t VQ              :1;
+            /**
+             * @brief Field extension
+             * 
+             * = 0 end of data item | = 1 next extension
+             */
+            uint8_t FX              :1;
+        };
+    };
+} cat021_item090_ext4;
+
+/**
+ * @typedef cat021_item090_ext5
+ * @brief Category 021 / Item 090 - Fifth extension subfield (1 byte)
+ * 
+ * Position Validation Distance Part 1
+ */
+typedef struct cat021_item090_ext5 {
+    union {
+        /// @brief Raw octet as received (recommended for portable access)
+        uint8_t raw;
+
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+ 
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /**
+             * @brief Position Validation Distance Part 1 (steps of 128 meters)
+             * 
+             * LSB = 128 meters
+             * 
+             * Range: 0 to 16256
+             */
+            uint8_t VAL_DIST_P1     :7;
+            /**
+             * @brief Field extension
+             * 
+             * = 0 end of data item | = 1 next extension
+             */
+            uint8_t FX              :1;
+        };
+    };
+} cat021_item090_ext5;
+
+/**
+ * @typedef cat021_item090_ext6
+ * @brief Category 021 / Item 090 - Sixth extension subfield (1 byte)
+ * 
+ * Position Validation Distance Part 2
+ */
+typedef struct cat021_item090_ext6 {
+    union {
+        /// @brief Raw octet as received (recommended for portable access)
+        uint8_t raw;
+
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+ 
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /**
+             * @brief Position Validation Distance Part 2 (steps of 1 meters)
+             * 
+             * LSB = 1 meters
+             * 
+             * Range: 0 to 127
+             */
+            uint8_t VAL_DIST_P2     :7;
+            /**
+             * @brief Field extension
+             * 
+             * = 0 end of data item | = 1 next extension
+             */
+            uint8_t FX              :1;
+        };
+    };
+} cat021_item090_ext6;
+
+/**
+ * @typedef cat021_item090_ext7
+ * @brief Category 021 / Item 090 - Seventh extension subfield (1 byte)
+ */
+typedef struct cat021_item090_ext7 {
+    union {
+        /// @brief Raw octet as received (recommended for portable access)
+        uint8_t raw;
+
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+ 
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /**
+             * @brief Position Validation Distance Quality (steps of 128 meters)
+             * 
+             * LSB = 128 meters
+             * 
+             * Range: 0 to 16256
+             */
+            uint8_t VALDISTQUALP1     :7;
+            /**
+             * @brief Field extension
+             * 
+             * = 0 end of data item | = 1 next extension
+             */
+            uint8_t FX              :1;
+        };
+    };
+} cat021_item090_ext7;
+
+#endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 /**
  * @typedef cat021_item090
@@ -168,6 +346,18 @@ typedef struct cat021_item090 {
     cat021_item090_ext2 ext2;
     /// @brief Third extension subfield (1 byte)
     cat021_item090_ext3 ext3;
+
+#if (CAT021_ED >= 2 && CAT021_VN >= 7)
+    /// @brief Fourth extension subfield (1 byte)
+    cat021_item090_ext4 ext4;
+    /// @brief Fifth extension subfield (1 byte)
+    cat021_item090_ext5 ext5;
+    /// @brief Sixth extension subfield (1 byte)
+    cat021_item090_ext6 ext6;
+    /// @brief Seventh extension subfield (1 byte)
+    cat021_item090_ext7 ext7;
+#endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
+
 } cat021_item090;
 
 /*******************************************************************************
@@ -311,13 +501,128 @@ ASTERIX_API uint8_t get_cat021_item0900_ext2_FX(const cat021_item090_ext2 * item
  */
 ASTERIX_API uint8_t get_cat021_item0900_ext3_PIC(const cat021_item090_ext3 * item);
 
+#if (CAT021_ED >= 2 && CAT021_VN >= 7)
+
+/**
+ * @brief Get the PIC Source (SRC) from Cat 021 Item 090 Third Extension
+ * 
+ * @param item Pointer to cat021_item090_ext3 structure 
+ * @return uint8_t Value of SRC (0: PIC mapped from FTC and NIC Supplements;
+ *                               1 PIC directly received in HVA or Phase Overlay)
+ */
+ASTERIX_API uint8_t get_cat021_item0900_ext3_SRC(const cat021_item090_ext3 * item);
+
+#endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
+
 /**
  * @brief Get the value of Field Extension (FX) from Cat 021 Item 090 Third Extension
  * 
  * @param item Pointer to cat021_item090_ext3 structure 
- * @return uint8_t Value of FX (0: end of item, 1: next extension present)
+ * @return uint8_t Value of FX (0: end of item, 1: fourth extension present)
  */
 ASTERIX_API uint8_t get_cat021_item0900_ext3_FX(const cat021_item090_ext3 * item);
+
+#if (CAT021_ED >= 2 && CAT021_VN >= 7)
+
+/* ============================ FOURTH EXTENSION ===========================  */
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext4 structure
+ * 
+ * @return uint8_t
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext4_VALSTATE(const cat021_item090_ext4 * item);
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext4 structure
+ * 
+ * @return uint8_t
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext4_VD(const cat021_item090_ext4 * item);
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext4 structure
+ * 
+ * @return uint8_t
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext4_VQ(const cat021_item090_ext4 * item);
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext4 structure
+ * 
+ * @return uint8_t Value of FX (0: end of item, 1: fifth extension present)
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext4_FX(const cat021_item090_ext4 * item);
+
+/* ============================ FIFTH EXTENSION ============================  */
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext5 structure
+ * 
+ * @return uint8_t
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext5_VALDISTP1(const cat021_item090_ext5 * item);
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext5 structure
+ * 
+ * @return uint8_t Value of FX (0: end of item, 1: sixth extension present)
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext5_FX(const cat021_item090_ext5 * item);
+
+/* ============================ SIXTH EXTENSION ============================  */
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext6 structure
+ * 
+ * @return uint8_t
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext6_VALDISTP2(const cat021_item090_ext6 * item);
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext6 structure
+ * 
+ * @return uint8_t Value of FX (0: end of item, 1: seventh extension present)
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext6_FX(const cat021_item090_ext6 * item);
+
+/* =========================== SEVENTH EXTENSION ===========================  */
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext7 structure
+ * 
+ * @return uint8_t
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext7_VALDISTQUALP1(const cat021_item090_ext7 * item);
+
+/**
+ * @brief
+ * 
+ * @param item pointer to cat021_item090_ext7 structure
+ * 
+ * @return uint8_t Value of FX (0: end of item, 1: eight extension present)
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext7_FX(const cat021_item090_ext7 * item);
+
+#endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 /*******************************************************************************
  * Setters
@@ -461,6 +766,10 @@ ASTERIX_API void set_cat021_item090_ext3_PIC(cat021_item090_ext3 * item, uint8_t
  * @param value New value of FX (0: end of item, 1: next extension present)
  */
 ASTERIX_API void set_cat021_item090_ext3_FX(cat021_item090_ext3 * item, uint8_t value);
+
+#if (CAT021_ED >= 2 && CAT021_VN >= 7)
+
+#endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 /*******************************************************************************
  * Other Functions

@@ -3,8 +3,12 @@
  * @brief Implementation of the Category 21 Item 145 functions
  */
 
-#include "Categories/cat021/cat021_item145.h"
+#include <stdio.h>
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item145.h"
 
 /*******************************************************************************
  * Getters
@@ -12,12 +16,12 @@
 
 uint16_t get_cat021_item145_FL_raw(const cat021_item145 * item)
 {
-    return GET_BITS((item)->raw, 1, MASK_16_BITS);
+    return GET_BITS(item->raw, 1, MASK_16_BITS);
 }
 
 int16_t get_cat021_item145_FL_feet(const cat021_item145 * item)
 {
-    return (int16_t) (get_cat021_item145_FL_raw(item) * LSB_CAT021_ITEM145);
+    return (int16_t) (get_cat021_item145_FL_raw(item) * CAT021_ITEM145_LSB_FL);
 }
 
 /*******************************************************************************
@@ -25,21 +29,21 @@ int16_t get_cat021_item145_FL_feet(const cat021_item145 * item)
  ******************************************************************************/
 
 void set_cat021_item145_FL_raw(cat021_item145 * item,
-                                           uint16_t fl_raw)
+                               const uint16_t fl_raw)
 {
     // TODO: Check value is within limits
-    SET_BITS(&((item)->raw), (fl_raw >> 8), MASK_08_BITS, 9);
-    SET_BITS(&((item)->raw), (fl_raw     ), MASK_08_BITS, 1);
+    SET_BITS(&(item->raw), (fl_raw >> 8), MASK_08_BITS, 9);
+    SET_BITS(&(item->raw), (fl_raw     ), MASK_08_BITS, 1);
 }
 
-void set_cat021_item145_FL_feet(cat021_item145 * item, int16_t fl)
+void set_cat021_item145_FL_feet(cat021_item145 * item, const int16_t fl)
 {
     uint16_t fl_raw = 0;
 
     // TODO: Check value is within limits
     // Make the conversion only if value requiers it
     if (fl > 0)
-        fl_raw = (uint16_t) ((fl / LSB_CAT021_ITEM145) + 0.5);
+        fl_raw = (uint16_t) ((fl / CAT021_ITEM145_LSB_FL) + 0.5);
     
     set_cat021_item145_FL_raw(item, fl_raw);
 }

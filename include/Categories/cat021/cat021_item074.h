@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM074_H
 #define CAT021_ITEM074_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 #include "Common/constants.h"
@@ -19,10 +18,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-/** 
- * @brief LSB (1/2^30 s) Time of Message Reception of Position–High Precision
- */
-#define LSB_CAT021_ITEM074          (double) (1/P2_30)
+#define CAT021_ITEM074_LSB_TMRP_HP   (1.0/P2_30) /// @brief LSB = 1/2^30 seconds
 
 /*******************************************************************************
  * Structures and Types
@@ -105,7 +101,8 @@ ASTERIX_API double get_cat021_item074_TMRP_HP_seconds(const cat021_item074 * ite
  * @param item Pointer to cat021_item074 structure.
  * @param raw_value Raw 2-bit to store.
  */
-ASTERIX_API void set_cat021_item074_FSI(cat021_item074 * item, uint8_t raw_value);
+ASTERIX_API void set_cat021_item074_FSI(cat021_item074 * item,
+                                        const uint8_t raw_value);
 
 /**
  * @brief Set the Time of Message Reception of Position–High Precision (TMRP_HP)
@@ -116,7 +113,8 @@ ASTERIX_API void set_cat021_item074_FSI(cat021_item074 * item, uint8_t raw_value
  * @param item Pointer to cat021_item074 structure.
  * @param raw_value Raw 30-bit time value to store (units of 1/2^30 seconds).
  */
-ASTERIX_API void set_cat021_item074_TMRP_HP_raw(cat021_item074 * item, uint32_t raw_value);
+ASTERIX_API void set_cat021_item074_TMRP_HP_raw(cat021_item074 * item,
+                                                const uint32_t raw_value);
 
 /**
  * @brief Set the Time of Message Reception of Position–High Precision (TMRP_HP)
@@ -125,7 +123,8 @@ ASTERIX_API void set_cat021_item074_TMRP_HP_raw(cat021_item074 * item, uint32_t 
  * @param item Pointer to cat021_item074 structure.
  * @param seconds Time in seconds (will be converted to 1/2^30 second units)
  */
-ASTERIX_API void set_cat021_item074_TMRP_HP_seconds(cat021_item074 * item, double seconds);
+ASTERIX_API void set_cat021_item074_TMRP_HP_seconds(cat021_item074 * item,
+                                                    const double seconds);
 
 /*******************************************************************************
  * Other Functions

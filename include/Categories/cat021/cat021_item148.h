@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM148_H
 #define CAT021_ITEM148_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -18,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM148_ALT                        25         /// LSB = 25 ft
+#define CAT021_ITEM148_LSB_ALT                        25         /// LSB = 25 ft
 
 /*******************************************************************************
  * Structures and Types
@@ -121,7 +120,8 @@ ASTERIX_API int32_t get_cat021_item148_ALT(const cat021_item148 * item);
  * @param item Pointer to cat021_item148 structure
  * @param value New MV value (0: not active / unknown, 1: active)
  */
-ASTERIX_API void set_cat021_item148_MV(cat021_item148 * item, uint8_t sas);
+ASTERIX_API void set_cat021_item148_MV(cat021_item148 * item,
+                                       const uint8_t sas);
 
 /**
  * @brief Set the given Approach Hold (AH) into Cat 021 Item 148
@@ -129,7 +129,8 @@ ASTERIX_API void set_cat021_item148_MV(cat021_item148 * item, uint8_t sas);
  * @param item Pointer to cat021_item148 structure
  * @param value New AH value (0: not active / unknown, 1: active)
  */
-ASTERIX_API void set_cat021_item148_AH(cat021_item148 * item, uint8_t src);
+ASTERIX_API void set_cat021_item148_AH(cat021_item148 * item,
+                                       const uint8_t src);
 
 /**
  * @brief Set the given Approach Mode (AM) into
@@ -138,7 +139,8 @@ ASTERIX_API void set_cat021_item148_AH(cat021_item148 * item, uint8_t src);
  * @param item Pointer to cat021_item148 structure
  * @param value New AM value (0: not active / unknown, 1: active)
  */
-ASTERIX_API void set_cat021_item148_AM(cat021_item148 * item, uint8_t src);
+ASTERIX_API void set_cat021_item148_AM(cat021_item148 * item,
+                                       const uint8_t src);
 
 /**
  * @brief Set the given Altitude (ALT) (LSB = 25 ft) into
@@ -147,7 +149,8 @@ ASTERIX_API void set_cat021_item148_AM(cat021_item148 * item, uint8_t src);
  * @param item Pointer to cat021_item148 structure
  * @param value New ALT value (LSB = 25 ft)
  */
-ASTERIX_API void set_cat021_item148_ALT(cat021_item148 * item, int32_t alt);
+ASTERIX_API void set_cat021_item148_ALT(cat021_item148 * item,
+                                        const int32_t alt);
 
 /*******************************************************************************
  * Other Functions

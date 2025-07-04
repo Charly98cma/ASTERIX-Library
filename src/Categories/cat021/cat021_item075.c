@@ -3,8 +3,12 @@
  * @brief Implementation of the Category 21 Item 075 functions
  */
 
-#include "Categories/cat021/cat021_item075.h"
+#include <stdio.h>
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item075.h"
 
 /*******************************************************************************
  * Getters
@@ -12,21 +16,21 @@
 
 uint32_t get_cat021_item075_TMRV_raw(const cat021_item075 * item)
 {
-    return (uint32_t) (((uint32_t)item->raw[0] << 16) |
-                       ((uint32_t)item->raw[1] <<  8) |
-                       ((uint32_t)item->raw[2]      ));
+    return (((uint32_t)item->raw[0] << 16) |
+            ((uint32_t)item->raw[1] <<  8) |
+            ((uint32_t)item->raw[2]      ));
 }
 
 double get_cat021_item075_TMRV_seconds(const cat021_item075 * item)
 {
-    return (double) (get_cat021_item075_TMRV_raw(item) * LSB_CAT021_ITEM075);
+    return (get_cat021_item075_TMRV_raw(item) * CAT021_ITEM075_LSB_TMRV);
 }
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
-void set_cat021_item075_TMRV_raw(cat021_item075 * item, uint32_t raw_value)
+void set_cat021_item075_TMRV_raw(cat021_item075 * item, const uint32_t raw_value)
 {
     // TODO: Check raw_values is in valid range
     SET_BITS(&(item->raw[0]), (raw_value >> 16), MASK_08_BITS, 1);
@@ -34,7 +38,7 @@ void set_cat021_item075_TMRV_raw(cat021_item075 * item, uint32_t raw_value)
     SET_BITS(&(item->raw[2]), (raw_value      ), MASK_08_BITS, 1);
 }
 
-void set_cat021_item075_TMRV_seconds(cat021_item075 * item, double seconds)
+void set_cat021_item075_TMRV_seconds(cat021_item075 * item, const double seconds)
 {
     uint32_t raw_value = 0;
 
@@ -42,7 +46,7 @@ void set_cat021_item075_TMRV_seconds(cat021_item075 * item, double seconds)
 
     // Turn to raw format and round to nearest unit if bigger than 0
     if (seconds > 0)
-        raw_value = (uint32_t) ((seconds / LSB_CAT021_ITEM075) + 0.5);
+        raw_value = (uint32_t) ((seconds / CAT021_ITEM075_LSB_TMRV) + 0.5);
 
     set_cat021_item075_TMRV_raw(item, raw_value);
 }

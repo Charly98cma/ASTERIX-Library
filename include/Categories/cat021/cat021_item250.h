@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -127,7 +126,8 @@ ASTERIX_API uint8_t get_cat021_item250_BDS2(const cat021_item250 * item,
  ******************************************************************************/
 
 /**
- * @brief Set a new Repetition Factor (REP) value of BDS Registers into Cat 021 Item 250
+ * @brief Set a new Repetition Factor (REP) value of BDS Registers into
+ *        Cat 021 Item 250
  * 
  * @param item pointer to cat021_item250 structure
  * @param rep new RP value

@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -85,7 +84,7 @@ ASTERIX_API double get_cat021_item230_RA(const cat021_item230 * item);
  * @param item pointer to cat021_item230 structure
  * @param ra new Roll Angle value (LSB = 0.01 degrees) (-180 <= ra <= 180)
  */
-ASTERIX_API void set_cat021_item230_RA(cat021_item230 * item, double ra);
+ASTERIX_API void set_cat021_item230_RA(cat021_item230 * item, const double ra);
 
 /*******************************************************************************
  * Other Functions

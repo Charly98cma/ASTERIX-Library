@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -160,7 +159,7 @@ ASTERIX_API uint8_t get_cat021_item200_SS(const cat021_item200 * item);
  * @param icf new value to write into the item (0: No intent change active;
  *                                              1: Intent change flag raised)
  */
-ASTERIX_API void set_cat021_item200_ICF(cat021_item200 * item, uint8_t icf);
+ASTERIX_API void set_cat021_item200_ICF(cat021_item200 * item, const uint8_t icf);
 
 /**
  * @brief Set the new Lateral NAVigation Mode (LNAV) value into Cat 021 Item 200 
@@ -169,7 +168,7 @@ ASTERIX_API void set_cat021_item200_ICF(cat021_item200 * item, uint8_t icf);
  * @param lnav new value to write into the item (0: LNAV Mode engaged;
  *                                               1: LNAV Mode not engaged)
  */
-ASTERIX_API void set_cat021_item200_LNAV(cat021_item200 * item, uint8_t lnav);
+ASTERIX_API void set_cat021_item200_LNAV(cat021_item200 * item, const uint8_t lnav);
 
 /**
  * @brief Set the new Military Emergency (ME) value into Cat 021 Item 200 
@@ -177,7 +176,7 @@ ASTERIX_API void set_cat021_item200_LNAV(cat021_item200 * item, uint8_t lnav);
  * @param item pointer to cat021_item200 structure
  * @param me new value to write into the item (0: No emergency; 1: Emergency)
  */
-ASTERIX_API void set_cat021_item200_ME(cat021_item200 * item, uint8_t me);
+ASTERIX_API void set_cat021_item200_ME(cat021_item200 * item, const uint8_t me);
 
 /**
  * @brief Set the new Priority Status (PS) value into Cat 021 Item 200 
@@ -191,7 +190,7 @@ ASTERIX_API void set_cat021_item200_ME(cat021_item200 * item, uint8_t me);
  *                                             5: Unlawful interference;
  *                                             6: “Downed” Aircraft)
  */
-ASTERIX_API void set_cat021_item200_PS(cat021_item200 * item, uint8_t ps);
+ASTERIX_API void set_cat021_item200_PS(cat021_item200 * item, const uint8_t ps);
 
 /**
  * @brief Set the new Surveillance Status (SS) value into Cat 021 Item 200 
@@ -205,7 +204,7 @@ ASTERIX_API void set_cat021_item200_PS(cat021_item200 * item, uint8_t ps);
                                                   than emergency);
  *                                             3: SPI set)
  */
-ASTERIX_API void set_cat021_item200_SS(cat021_item200 * item, uint8_t ss);
+ASTERIX_API void set_cat021_item200_SS(cat021_item200 * item, const uint8_t ss);
 
 /*******************************************************************************
  * Other Functions

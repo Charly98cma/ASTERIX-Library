@@ -3,8 +3,12 @@
  * @brief Implementation of the Category 21 Item 150 functions
  */
 
-#include "Categories/cat021/cat021_item150.h"
+#include <stdio.h>
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item150.h"
 
 /*******************************************************************************
  * Getters
@@ -12,18 +16,18 @@
 
 uint8_t get_cat021_item150_IM(const cat021_item150 * item)
 {
-    return GET_BITS((item)->raw, 16, MASK_01_BITS);
+    return GET_BITS(item->raw, 16, MASK_01_BITS);
 }
 
 double get_cat021_item150_AIRSPD(const cat021_item150 * item)
 {
     double real_speed = 0;
-    uint16_t raw_speed = GET_BITS((item)->raw, 1, MASK_15_BITS);
+    uint16_t raw_speed = GET_BITS(item->raw, 1, MASK_15_BITS);
 
     if (get_cat021_item150_IM(item) == CAT021_ITEM150_IM_IAS)
-        real_speed = raw_speed * LSB_CAT021_ITEM150_IAS;
+        real_speed = raw_speed * CAT021_ITEM150_LSB_IAS;
     else
-        real_speed = raw_speed * LSB_CAT021_ITEM150_MACH;
+        real_speed = raw_speed * CAT021_ITEM150_LSB_MACH;
 
     return real_speed;
 }
@@ -32,21 +36,21 @@ double get_cat021_item150_AIRSPD(const cat021_item150 * item)
  * Setters
  ******************************************************************************/
 
-void set_cat021_item150_IM(cat021_item150 * item, uint8_t im)
+void set_cat021_item150_IM(cat021_item150 * item, const uint8_t im)
 {
-    SET_BITS(&((item)->raw), im, MASK_01_BITS, 16);
+    SET_BITS(&(item->raw), im, MASK_01_BITS, 16);
 }
 
-void set_cat021_item150_FL(cat021_item150 * item, double value)
+void set_cat021_item150_FL(cat021_item150 * item, const double value)
 {
     uint16_t raw_value = 0;
 
     if (get_cat021_item150_IM(item) == CAT021_ITEM150_IM_IAS)
-        raw_value = value / LSB_CAT021_ITEM150_IAS;
+        raw_value = value / CAT021_ITEM150_LSB_IAS;
     else
-        raw_value = value / LSB_CAT021_ITEM150_MACH;
+        raw_value = value / CAT021_ITEM150_LSB_MACH;
 
-    SET_BITS(&((item)->raw), raw_value, MASK_15_BITS, 1);
+    SET_BITS(&(item->raw), raw_value, MASK_15_BITS, 1);
 }
 
 /*******************************************************************************

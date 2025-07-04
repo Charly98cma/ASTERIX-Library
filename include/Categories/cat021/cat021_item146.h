@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM146_H
 #define CAT021_ITEM146_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -18,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM146_ALT                        25         /// LSB = 25 ft
+#define CAT021_ITEM146_LSB_ALT                        25         /// LSB = 25 ft
 
 /*******************************************************************************
  * Structures and Types
@@ -114,7 +113,8 @@ ASTERIX_API int32_t get_cat021_item146_ALT(const cat021_item146 * item);
  * @param item Pointer to cat021_item146 structure
  * @param value New SAS value
  */
-ASTERIX_API void set_cat021_item146_SAS(cat021_item146 * item, uint8_t sas);
+ASTERIX_API void set_cat021_item146_SAS(cat021_item146 * item,
+                                        const uint8_t sas);
 
 /**
  * @brief Set the given altitude Source (SRC) value into
@@ -123,7 +123,8 @@ ASTERIX_API void set_cat021_item146_SAS(cat021_item146 * item, uint8_t sas);
  * @param item Pointer to cat021_item146 structure
  * @param value New SRC value (see values correspondance)
  */
-ASTERIX_API void set_cat021_item146_SRC(cat021_item146 * item, uint8_t src);
+ASTERIX_API void set_cat021_item146_SRC(cat021_item146 * item,
+                                        const uint8_t src);
 
 /**
  * @brief Set the given Altitude (ALT) value (LSB = 25 ft) into
@@ -132,7 +133,8 @@ ASTERIX_API void set_cat021_item146_SRC(cat021_item146 * item, uint8_t src);
  * @param item Pointer to cat021_item146 structure
  * @param value New ALT value (LSB = 25 ft)
  */
-ASTERIX_API void set_cat021_item146_ALT(cat021_item146 * item, int32_t alt);
+ASTERIX_API void set_cat021_item146_ALT(cat021_item146 * item,
+                                        const int32_t alt);
 
 /*******************************************************************************
  * Other Functions

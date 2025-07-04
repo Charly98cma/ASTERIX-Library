@@ -3,8 +3,12 @@
  * @brief Implementation of the Category 21 Item 010 functions
  */
 
-#include "Categories/cat021/cat021_item010.h"
+#include <stdio.h>
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item010.h"
 
 /*******************************************************************************
  * Getters
@@ -24,12 +28,12 @@ uint8_t get_cat021_item010_SIC(const cat021_item010 * item)
  * Setters
  ******************************************************************************/
 
-void set_cat021_item010_SAC(cat021_item010 * item, uint8_t sac_value)
+void set_cat021_item010_SAC(cat021_item010 * item, const uint8_t sac_value)
 {
     set_item010_SAC((item010 *) item, sac_value);
 }
 
-void set_cat021_item010_SIC(cat021_item010 * item, uint8_t sic_value)
+void set_cat021_item010_SIC(cat021_item010 * item, const uint8_t sic_value)
 {
     set_item010_SIC((item010 *) item, sic_value);
 }

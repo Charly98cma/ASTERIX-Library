@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM020_H
 #define CAT021_ITEM020_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -74,7 +73,8 @@ ASTERIX_API uint8_t get_cat021_item020_ECAT(const cat021_item020 * item);
  * @param item Pointer to cat021_item020 structure.
  * @param sic_value Value of ECAT
  */
-ASTERIX_API void set_cat021_item020_ECAT(cat021_item020 * item, uint8_t value);
+ASTERIX_API void set_cat021_item020_ECAT(cat021_item020 * item,
+                                         const uint8_t value);
 
 /*******************************************************************************
  * Other Functions

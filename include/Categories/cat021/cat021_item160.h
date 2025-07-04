@@ -24,8 +24,8 @@ extern "C" {
 #define CAT021_ITEM160_MIN_TRKANG       (0)     /// @brief Min track angle = 0 degrees
 #define CAT021_ITEM160_MAX_TRKANG       (360)   /// @brief Max track angle = 360 degrees
 
-#define CAT021_ITEM160_LSB_GRDSPD      (double) (1/P2_14)      /// LSB = 1/2^14 knots
-#define CAT021_ITEM160_LSB_TRKANG      (double) (360/P2_16)    /// LSB = 360/2^16 degrees
+#define CAT021_ITEM160_LSB_GRDSPD       (1.0/P2_14)    /// LSB = 1/2^14 knots
+#define CAT021_ITEM160_LSB_TRKANG       (360.0/P2_16)  /// LSB = 360/2^16 degrees
 
 /*******************************************************************************
  * Structures and Types
@@ -123,7 +123,7 @@ ASTERIX_API double get_cat021_item160_TRKANG(const cat021_item160 * item);
  * @param item pointer to cat021_item160 structure
  * @param re new RE indicator (0: within range, 1: exceeds range)
  */
-ASTERIX_API void set_cat021_item160_RE(cat021_item160 * item, uint8_t re);
+ASTERIX_API void set_cat021_item160_RE(cat021_item160 * item, const uint8_t re);
 /**
  * @brief Set the Ground Speed (GRDSPD) value in NM/min into Cat 021 Item 160
  * 
@@ -132,7 +132,7 @@ ASTERIX_API void set_cat021_item160_RE(cat021_item160 * item, uint8_t re);
  *                     (Range: 0 <= ground_speed < 2)
  */
 ASTERIX_API void set_cat021_item160_GRDSPD(cat021_item160 * item,
-                                           double ground_speed);
+                                           const double ground_speed);
 /**
  * @brief Set the Track Angle (TRKANG) value in degrees into Cat 021 Item 160
  * 
@@ -140,7 +140,7 @@ ASTERIX_API void set_cat021_item160_GRDSPD(cat021_item160 * item,
  * @param track_angle new track angle value in degrees
  */
 ASTERIX_API void set_cat021_item160_TRKANG(cat021_item160 * item,
-                                           double track_angle);
+                                           const double track_angle);
 
 /*******************************************************************************
  * Other Functions

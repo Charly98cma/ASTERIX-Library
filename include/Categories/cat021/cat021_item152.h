@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM152_H
 #define CAT021_ITEM152_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 #include "Common/constants.h"
@@ -19,7 +18,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM152_TAS  (double) (360/P2_16)  /// LSB = 360/2^16 degrees
+#define CAT021_ITEM152_LSB_TAS         (360.0/P2_16)  /// LSB = 360/2^16 degrees
 
 /*******************************************************************************
  * Structures and Types
@@ -86,7 +85,7 @@ ASTERIX_API double get_cat021_item152_MH(const cat021_item152 * item);
  * @param item Pointer to cat021_item152 structure
  * @param tas New magnetic heading in degrees
  */
-ASTERIX_API void set_cat021_item152_MH(cat021_item152 * item, double tas);
+ASTERIX_API void set_cat021_item152_MH(cat021_item152 * item, const double tas);
 
 /*******************************************************************************
  * Other Functions

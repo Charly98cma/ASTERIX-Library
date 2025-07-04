@@ -1,11 +1,11 @@
 /**
- * @file common.c
+ * @file header.c
  * @brief Implementation of the functions to read CAT and LEN from ASTERIX
  *        headers
  */
 
 #include <stdio.h>
-#include "Common/common.h"
+#include "Categories/header.h"
 #include "Common/constants.h"
 
 /*******************************************************************************
@@ -14,12 +14,12 @@
 
 uint8_t get_header_CAT(const header * item)
 {
-    return ((item)->CAT);
+    return (item->CAT);
 }
 
 uint16_t get_header_LEN(const header * item)
 {
-    return ((item)->LEN);
+    return (item->LEN);
 }
 
 /*******************************************************************************

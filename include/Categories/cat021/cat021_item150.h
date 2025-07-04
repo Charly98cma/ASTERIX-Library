@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM150_H
 #define CAT021_ITEM150_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 #include "Common/constants.h"
@@ -22,8 +21,8 @@ extern "C" {
 #define CAT021_ITEM150_IM_IAS           0
 #define CAT021_ITEM150_IM_MACH          1
 
-#define LSB_CAT021_ITEM150_IAS          (double) (1/P2_14)  /// LSB = 2^-14 NM/s
-#define LSB_CAT021_ITEM150_MACH         (double) (0.25)     /// LSB = 0-001
+#define CAT021_ITEM150_LSB_IAS          (double) (1/P2_14)  /// LSB = 2^-14 NM/s
+#define CAT021_ITEM150_LSB_MACH         (double) (0.25)     /// LSB = 0-001
 
 /*******************************************************************************
  * Structures and Types
@@ -98,7 +97,7 @@ ASTERIX_API double get_cat021_item150_AIRSPD(const cat021_item150 * item);
  * @param item Pointer to cat021_item150 structure
  * @param value New IM value (0: IAS, 1: MACH)
  */
-ASTERIX_API void set_cat021_item150_IM(cat021_item150 * item, uint8_t im);
+ASTERIX_API void set_cat021_item150_IM(cat021_item150 * item, const uint8_t im);
 
 /**
  * @brief Set the given Air Speed (AIRSPD) value (see LSB for each mode) into
@@ -107,7 +106,7 @@ ASTERIX_API void set_cat021_item150_IM(cat021_item150 * item, uint8_t im);
  * @param item Pointer to cat021_item150 structure
  * @param value New Air Speed (IAS LSB = 1/ 2^14 NM/s, MACH LSB = 0.001)
  */
-ASTERIX_API void set_cat021_item150_FL(cat021_item150 * item, double value);
+ASTERIX_API void set_cat021_item150_FL(cat021_item150 * item, const double value);
 
 /*******************************************************************************
  * Other Functions

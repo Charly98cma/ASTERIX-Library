@@ -4,8 +4,11 @@
  */
 
 #include <stdio.h>
-#include "Categories/cat021/cat021_item157.h"
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item157.h"
 
 /*******************************************************************************
  * Getters
@@ -18,22 +21,23 @@ uint8_t get_cat021_item157_RE(const cat021_item157 * item)
 
 double get_cat021_item157_GVR(const cat021_item157 * item)
 {
-    int16_t raw_gvr = (int16_t) ((GET_BITS(item->raw[0], 1, MASK_07_BITS) << 8) |
-                                 (GET_BITS(item->raw[1], 1, MASK_08_BITS)     ));
+    int16_t raw_gvr = (int16_t) (
+        (GET_BITS(item->raw[0], 1, MASK_07_BITS) << 8) |
+        (GET_BITS(item->raw[1], 1, MASK_08_BITS)     ));
 
-    return  (double) (raw_gvr * CAT021_ITEM157_LSB_GVR);
+    return  (raw_gvr * CAT021_ITEM157_LSB_GVR);
 }
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
-void set_cat021_item157_RE(cat021_item157 * item, uint8_t re)
+void set_cat021_item157_RE(cat021_item157 * item, const uint8_t re)
 {
     SET_BITS(&(item->raw[0]), re, MASK_01_BITS, 8);
 }
 
-void set_cat021_item157_GVR(cat021_item157 * item, double gvr)
+void set_cat021_item157_GVR(cat021_item157 * item, const double gvr)
 {
     int16_t gvr_raw = 0;
 

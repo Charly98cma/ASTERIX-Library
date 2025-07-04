@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM008_H
 #define CAT021_ITEM008_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -173,7 +172,8 @@ ASTERIX_API uint8_t get_cat021_item008_SA(const cat021_item008 * item);
  * @param item Pointer to cat021_item008 structure.
  * @param value Value of RA
  */
-ASTERIX_API void set_cat021_item008_RA(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_RA(cat021_item008 * item,
+                                       const uint8_t ra);
 
 /**
  * @brief Set the Target Trajectory Change Report Capability (TC) into the raw field.
@@ -181,7 +181,8 @@ ASTERIX_API void set_cat021_item008_RA(cat021_item008 * item, uint8_t value);
  * @param item Pointer to cat021_item008 structure.
  * @param value Value of TC
  */
-ASTERIX_API void set_cat021_item008_TC(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_TC(cat021_item008 * item,
+                                       const uint8_t tc);
 
 /**
  * @brief Set the Target State Report Capability (TS) into the raw field.
@@ -189,7 +190,8 @@ ASTERIX_API void set_cat021_item008_TC(cat021_item008 * item, uint8_t value);
  * @param item Pointer to cat021_item008 structure.
  * @param value Value of TS
  */
-ASTERIX_API void set_cat021_item008_TS(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_TS(cat021_item008 * item,
+                                       const uint8_t ts);
 
 /**
  * @brief Set the Air-Referenced Velocity Report Capability (ARV) into the raw field.
@@ -197,7 +199,8 @@ ASTERIX_API void set_cat021_item008_TS(cat021_item008 * item, uint8_t value);
  * @param item Pointer to cat021_item008 structure.
  * @param value Value of ARV
  */
-ASTERIX_API void set_cat021_item008_ARV(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_ARV(cat021_item008 * item,
+                                        const uint8_t arv);
 
 /**
  * @brief Set the Cockpit Display of Traffic Information airborne (CDTI) into the raw field.
@@ -205,7 +208,8 @@ ASTERIX_API void set_cat021_item008_ARV(cat021_item008 * item, uint8_t value);
  * @param item Pointer to cat021_item008 structure.
  * @param value Value of CDTI
  */
-ASTERIX_API void set_cat021_item008_CDTI(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_CDTI(cat021_item008 * item,
+                                         const uint8_t cdti);
 
 /**
  * @brief Set the Not TCAS System Status (NTCAS) into the raw field.
@@ -213,7 +217,8 @@ ASTERIX_API void set_cat021_item008_CDTI(cat021_item008 * item, uint8_t value);
  * @param item Pointer to cat021_item008 structure.
  * @param value Value of NTCAS
  */
-ASTERIX_API void set_cat021_item008_NTCAS(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_NTCAS(cat021_item008 * item,
+                                          const uint8_t ntcas);
 
 /**
  * @brief Set the Single Antenna (SA) into the raw field.
@@ -221,11 +226,13 @@ ASTERIX_API void set_cat021_item008_NTCAS(cat021_item008 * item, uint8_t value);
  * @param item Pointer to cat021_item008 structure.
  * @param value Value of SA
  */
-ASTERIX_API void set_cat021_item008_SA(cat021_item008 * item, uint8_t value);
+ASTERIX_API void set_cat021_item008_SA(cat021_item008 * item,
+                                       const uint8_t sa);
 
 /*******************************************************************************
  * Other Functions
  ******************************************************************************/
+
 /**
  * @brief Print the contents of CAT 021 / Item 008.
  *

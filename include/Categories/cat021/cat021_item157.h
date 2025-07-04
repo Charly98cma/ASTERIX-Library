@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define CAT021_ITEM157_LSB_GVR      (double) (6.25)  /// LSB = 6.25 feet/minute
+#define CAT021_ITEM157_LSB_GVR                (6.25)  /// LSB = 6.25 feet/minute
 
 /*******************************************************************************
  * Structures and Types
@@ -99,7 +98,7 @@ ASTERIX_API double get_cat021_item157_GVR(const cat021_item157 * item);
  * @param item Pointer to cat021_item157 structure
  * @param re New RE indicator (0: within range, 1: exceeds range)
  */
-ASTERIX_API void set_cat021_item157_RE(cat021_item157 * item, uint8_t re);
+ASTERIX_API void set_cat021_item157_RE(cat021_item157 * item, const uint8_t re);
 
 /**
  * @brief Set the given Geometric Vertical Rate (GVR) value (see LSB) into
@@ -108,7 +107,7 @@ ASTERIX_API void set_cat021_item157_RE(cat021_item157 * item, uint8_t re);
  * @param item Pointer to cat021_item157 structure
  * @param GVR New GVR in feets/minute (see LSB)
  */
-ASTERIX_API void set_cat021_item157_GVR(cat021_item157 * item, double GVR);
+ASTERIX_API void set_cat021_item157_GVR(cat021_item157 * item, const double GVR);
 
 /*******************************************************************************
  * Other Functions

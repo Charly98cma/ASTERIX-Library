@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -124,7 +123,7 @@ ASTERIX_API uint8_t get_cat021_item210_LTT(const cat021_item210 * item);
  * @param item pointer to cat021_item210 structure
  * @param vns new Version Not Supported value to write
  */
-ASTERIX_API void set_cat021_item210_VNS(cat021_item210 * item, uint8_t vns);
+ASTERIX_API void set_cat021_item210_VNS(cat021_item210 * item, const uint8_t vns);
 
 /**
  * @brief Set the new value of Version Number (VN) into cat 021 Item 210
@@ -132,7 +131,7 @@ ASTERIX_API void set_cat021_item210_VNS(cat021_item210 * item, uint8_t vns);
  * @param item pointer to cat021_item210 structure
  * @param vn new Version Number value to write
  */
-ASTERIX_API void set_cat021_item210_VN(cat021_item210 * item, uint8_t vn);
+ASTERIX_API void set_cat021_item210_VN(cat021_item210 * item, const uint8_t vn);
 
 /**
  * @brief Set the new value of Link Technology Type (LTS) into cat 021 Item 210
@@ -140,7 +139,7 @@ ASTERIX_API void set_cat021_item210_VN(cat021_item210 * item, uint8_t vn);
  * @param item pointer to cat021_item210 structure
  * @param ltt new Link Technology Type value to write
  */
-ASTERIX_API void set_cat021_item210_LTT(cat021_item210 * item, uint8_t ltt);
+ASTERIX_API void set_cat021_item210_LTT(cat021_item210 * item, const uint8_t ltt);
 
 /*******************************************************************************
  * Other Functions

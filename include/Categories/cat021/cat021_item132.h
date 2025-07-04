@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM132_H
 #define CAT021_ITEM132_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -18,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM132              1                       /// LSB = 1 dBm
+#define CAT021_ITEM132_LSB_MAM              (1.0)                /// LSB = 1 dBm
 
 /*******************************************************************************
  * Structures and Types
@@ -71,7 +70,8 @@ ASTERIX_API uint8_t get_cat021_item132_MAM(const cat021_item132 * item);
  * @param item Pointer to cat021_item132 structure
  * @param value New MAM value in dBm's (LSB = 1 dBm)
  */
-ASTERIX_API void set_cat021_item132_MAM(cat021_item132 * item, uint8_t value);
+ASTERIX_API void set_cat021_item132_MAM(cat021_item132 * item,
+                                        const uint8_t value);
 
 /*******************************************************************************
  * Other Functions

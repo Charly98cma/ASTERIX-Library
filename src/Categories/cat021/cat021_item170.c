@@ -4,10 +4,12 @@
  */
 
 #include <stdio.h>
-#include <string.h>
-#include "Categories/cat021/cat021_item170.h"
+
 #include "Common/constants.h"
 #include "Aux_Funcs/char_encoding.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item170.h"
 
 /*******************************************************************************
  * Getters

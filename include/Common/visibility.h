@@ -3,8 +3,8 @@
  * @brief Macros to setup the visibility of the library functions
  */
 
-#ifndef ASTERIX_VISIBILITY_H
-#define ASTERIX_VISIBILITY_H
+#ifndef VISIBILITY_H
+#define VISIBILITY_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -27,4 +27,4 @@ extern "C" {
 }
 #endif
 
-#endif // ASTERIX_VISIBILITY_H
+#endif // VISIBILITY_H

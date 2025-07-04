@@ -4,8 +4,12 @@
  */
 
 #include <stdio.h>
-#include "Categories/cat021/cat021_item271.h"
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item271.h"
+
 
 /*******************************************************************************
  * Getters
@@ -55,42 +59,42 @@ uint8_t get_cat021_item271_ext1_FX(const cat021_item271_ext1 * item)
  * Setters
  ******************************************************************************/
 
-void set_cat021_item271_POA(cat021_item271 * item, uint8_t poa)
+void set_cat021_item271_POA(cat021_item271 * item, const uint8_t poa)
 {
     SET_BITS(&(item->raw), poa, MASK_01_BITS, 6);
 }
 
-void set_cat021_item271_CDTIS(cat021_item271 * item, uint8_t cdtis)
+void set_cat021_item271_CDTIS(cat021_item271 * item, const uint8_t cdtis)
 {
     SET_BITS(&(item->raw), cdtis, MASK_01_BITS, 5);
 }
 
-void set_cat021_item271_B2(cat021_item271 * item, uint8_t b2)
+void set_cat021_item271_B2(cat021_item271 * item, const uint8_t b2)
 {
     SET_BITS(&(item->raw), b2, MASK_01_BITS, 4);
 }
 
-void set_cat021_item271_RAS(cat021_item271 * item, uint8_t ras)
+void set_cat021_item271_RAS(cat021_item271 * item, const uint8_t ras)
 {
     SET_BITS(&(item->raw), ras, MASK_01_BITS, 3);
 }
 
-void set_cat021_item271_IDENT(cat021_item271 * item, uint8_t ident)
+void set_cat021_item271_IDENT(cat021_item271 * item, const uint8_t ident)
 {
     SET_BITS(&(item->raw), ident, MASK_01_BITS, 2);
 }
 
-void set_cat021_item271_FX(cat021_item271 * item, uint8_t fx)
+void set_cat021_item271_FX(cat021_item271 * item, const uint8_t fx)
 {
     SET_BITS(&(item->raw), fx, MASK_01_BITS, 1);
 }
 
-void set_cat021_item271_ext1_LW(cat021_item271_ext1 * item, uint8_t lw)
+void set_cat021_item271_ext1_LW(cat021_item271_ext1 * item, const uint8_t lw)
 {
     SET_BITS(&(item->raw), lw, MASK_04_BITS, 5);
 }
 
-void set_cat021_item271_ext1_FX(cat021_item271_ext1 * item, uint8_t fx)
+void set_cat021_item271_ext1_FX(cat021_item271_ext1 * item, const uint8_t fx)
 {
     SET_BITS(&(item->raw), fx, MASK_01_BITS, 1);
 }

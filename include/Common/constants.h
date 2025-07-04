@@ -6,8 +6,6 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#include <stdlib.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,6 +24,7 @@ extern "C" {
 #define OP_OK               0
 /* Value returned when the function failed */
 #define OP_FAIL             1
+
 
 /*******************************************************************************
  * POWERS OF 2
@@ -64,6 +63,7 @@ extern "C" {
 #define P2_31       (1U << 31)              ///< 2^31 = 2147483648
 #define P2_32       (1U << 32)              ///< 2^32 = 4294967296
 
+
 /*******************************************************************************
  * POWERS OF 10
  ******************************************************************************/
@@ -88,6 +88,7 @@ extern "C" {
 #define P10_18  1000000000000000000.0       ///< 10^18 = 1000000000000000000
 #define P10_19  10000000000000000000.0      ///< 10^19 = 10000000000000000000
 #define P10_20  100000000000000000000.0     ///< 10^20 = 100000000000000000000
+
 
 /*******************************************************************************
  * BIT MASKS
@@ -125,10 +126,10 @@ extern "C" {
 #define MASK_31_BITS    0x7FFFFFFFU          ///< 31 bits mask
 #define MASK_32_BITS    0xFFFFFFFFU          ///< 32 bits mask
 
+
 /*******************************************************************************
  * BIT MASKS
  ******************************************************************************/
-
 #define MASK_BIT_00     P2_0        ///< Mask of bit  0 
 #define MASK_BIT_01     P2_1        ///< Mask of bit  1 
 #define MASK_BIT_02     P2_2        ///< Mask of bit  2 
@@ -163,51 +164,6 @@ extern "C" {
 #define MASK_BIT_31     P2_31       ///< Mask of bit 31 
 #define MASK_BIT_32     P2_32       ///< Mask of bit 32 
 
-/*******************************************************************************
- * Additional functions
- ******************************************************************************/
-
-/**
- * @brief Read specific bits from a value applying a mask at a given position.
- * 
- * This macro extracts the desired bits from a given field by shifting the bits
- * to the right and applying the provided mask. The bit positions are specified
- * in a **1-based format** (bit 1 is the least significant bit).
- * 
- * This macro is portable and useful for accessing packed bit fields when direct
- * structure access is not recommended due to endianness or compiler-specific layout.
- * 
- * @param value Value from which bits are to be extracted.
- * @param pos Starting bit position (1-based, where bit 1 is the least significant bit).
- * @param mask Bitmask to select the desired bits (unshifted).
- * 
- * @return The extracted bits from the given value, aligned to the least significant bits.
- * 
- * @note The macro assumes that `pos` starts from 1. If `pos` is 1, no shift is applied.
- */
-#define GET_BITS(value, pos, mask) (((value) >> (pos-1)) & mask)
-
-/**
- * @brief Macro to set desired bits on a given position in a target field by reference.
- * 
- * @param dst Pointer to the target variable.
- * @param val Value to set.
- * @param mask Mask for the bits to be set.
- * @param pos Bit position (1-based, where 1 is the least significant bit).
- */
-#define SET_BITS(dst, val, mask, pos) \
-    (*(dst)) |= (((val) & (mask)) << ((pos) - 1))
-
-/**
- * @brief Macro to check if the value is in the defines range
- * 
- * @param min Minimum value of the range
- * @param val Value to check
- * @param max Maximum value of the range.
- * 
- * @return True if the given value is in the range, False otherwhise
- */
-#define IN_RANGE(min, val, max) ((min <= val) && (val <= max))
 
 #ifdef __cplusplus
 }

@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM151_H
 #define CAT021_ITEM151_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 #include "Common/constants.h"
@@ -19,7 +18,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM151_TAS          1  /// LSB = 1 knot
+#define CAT021_ITEM151_LSB_TAS          (1.0)                   /// LSB = 1 knot
 
 /*******************************************************************************
  * Structures and Types
@@ -100,7 +99,7 @@ ASTERIX_API uint16_t get_cat021_item151_TAS(const cat021_item151 * item);
  * @param item Pointer to cat021_item151 structure
  * @param re New RE indicator (0: within range, 1: exceeds range)
  */
-ASTERIX_API void set_cat021_item151_RE(cat021_item151 * item, uint8_t re);
+ASTERIX_API void set_cat021_item151_RE(cat021_item151 * item, const uint8_t re);
 
 /**
  * @brief Set the given True Air Speed (TAS) value (LSB = 1 knot) into
@@ -109,7 +108,7 @@ ASTERIX_API void set_cat021_item151_RE(cat021_item151 * item, uint8_t re);
  * @param item Pointer to cat021_item151 structure
  * @param tas New True Air Speed in knots
  */
-ASTERIX_API void set_cat021_item151_TAS(cat021_item151 * item, uint16_t tas);
+ASTERIX_API void set_cat021_item151_TAS(cat021_item151 * item, const uint16_t tas);
 
 /*******************************************************************************
  * Other Functions

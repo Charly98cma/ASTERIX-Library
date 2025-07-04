@@ -4,8 +4,11 @@
  */
 
 #include <stdio.h>
-#include "Categories/cat021/cat021_item260.h"
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item260.h"
 
 /*******************************************************************************
  * Getters
@@ -61,44 +64,44 @@ uint32_t get_cat021_item260_TID(const cat021_item260 * item)
  * Setters
  ******************************************************************************/
 
-void set_cat021_item260_TYP(cat021_item260 * item, uint8_t typ)
+void set_cat021_item260_TYP(cat021_item260 * item, const uint8_t typ)
 {
     SET_BITS(&(item->raw[0]), typ, MASK_05_BITS, 4);
 }
 
-void set_cat021_item260_STYP(cat021_item260 * item, uint8_t styp)
+void set_cat021_item260_STYP(cat021_item260 * item, const uint8_t styp)
 {
     SET_BITS(&(item->raw[0]), styp, MASK_03_BITS, 1);
 }
 
-void set_cat021_item260_ARA(cat021_item260 * item, uint16_t ara)
+void set_cat021_item260_ARA(cat021_item260 * item, const uint16_t ara)
 {
     SET_BITS(&(item->raw[1]), (ara >> 6), MASK_08_BITS, 1);
     SET_BITS(&(item->raw[2]), (ara     ), MASK_06_BITS, 3);
 }
 
-void set_cat021_item260_RAC(cat021_item260 * item, uint8_t rac)
+void set_cat021_item260_RAC(cat021_item260 * item, const uint8_t rac)
 {
     SET_BITS(&(item->raw[2]), (rac >> 2), MASK_02_BITS, 1);
     SET_BITS(&(item->raw[3]), (rac     ), MASK_02_BITS, 7);
 }
 
-void set_cat021_item260_RAT(cat021_item260 * item, uint8_t rat)
+void set_cat021_item260_RAT(cat021_item260 * item, const uint8_t rat)
 {
     SET_BITS(&(item->raw[3]), rat, MASK_01_BITS, 6);
 }
 
-void set_cat021_item260_MTE(cat021_item260 * item, uint8_t mte)
+void set_cat021_item260_MTE(cat021_item260 * item, const uint8_t mte)
 {
     SET_BITS(&(item->raw[3]), mte, MASK_01_BITS, 5);
 }
 
-void set_cat021_item260_TTI(cat021_item260 * item, uint8_t tti)
+void set_cat021_item260_TTI(cat021_item260 * item, const uint8_t tti)
 {
     SET_BITS(&(item->raw[3]), tti, MASK_02_BITS, 3);
 }
 
-void set_cat021_item260_TID(cat021_item260 * item, uint32_t tid)
+void set_cat021_item260_TID(cat021_item260 * item, const uint32_t tid)
 {
     SET_BITS(&(item->raw[3]), (tid >> 24), MASK_02_BITS, 1);
     SET_BITS(&(item->raw[4]), (tid >> 16), MASK_08_BITS, 1);

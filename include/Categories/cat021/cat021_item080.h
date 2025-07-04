@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM080_H
 #define CAT021_ITEM080_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -62,7 +61,8 @@ ASTERIX_API uint32_t get_cat021_item080_TGTADDR(const cat021_item080 * item);
  * @param item Pointer to cat021_item080 structure.
  * @param addr 24-bit target address.
  */
-ASTERIX_API void set_cat021_item080_TGTADDR(cat021_item080 * item, uint32_t addr);
+ASTERIX_API void set_cat021_item080_TGTADDR(cat021_item080 * item,
+                                            const uint32_t addr);
 
 /*******************************************************************************
  * Other Functions

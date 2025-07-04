@@ -6,10 +6,8 @@
 #ifndef CAT021_ITEM075_H
 #define CAT021_ITEM075_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,10 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-/** 
- * @brief LSB (1/128 s) Time of Message Reception for Velocity
- */
-#define LSB_CAT021_ITEM075                (double) (1/P2_7)
+#define CAT021_ITEM075_LSB_TMRV       (1.0/128.0) /// @brief LSB = 1/128 seconds
 
 /*******************************************************************************
  * Structures and Types
@@ -58,7 +53,7 @@ typedef struct cat021_item075 {
  * @param item Pointer to cat021_item075 structure.
  * @return uint32_t Time in units of 1/128 s (0 = midnight).
  */
-ASTERIX_API uint32_t get_cat021_item075_raw(const cat021_item075 * item);
+ASTERIX_API uint32_t get_cat021_item075_TMRV_raw(const cat021_item075 * item);
 
 /**
  * @brief Get the Time of Message Reception for Velocity in seconds (floating-point)
@@ -83,7 +78,8 @@ ASTERIX_API double get_cat021_item075_TMRV_seconds(const cat021_item075 * item);
  * @param item Pointer to cat021_item075 structure.
  * @param raw_value Raw 24-bit time value to store (units of 1/128 s).
  */
-ASTERIX_API void set_cat021_item075_TMRV_raw(cat021_item075 * item, uint32_t raw_value);
+ASTERIX_API void set_cat021_item075_TMRV_raw(cat021_item075 * item,
+                                             const uint32_t raw_value);
 
 /**
  * @brief Set the Time of Message Reception for Velocity in seconds into Cat 021 Item 075.
@@ -93,7 +89,8 @@ ASTERIX_API void set_cat021_item075_TMRV_raw(cat021_item075 * item, uint32_t raw
  * @param item Pointer to cat021_item075 structure.
  * @param seconds Time in seconds (will be converted to 1/128-s units).
  */
-ASTERIX_API void set_cat021_item075_TMRV_seconds(cat021_item075 * item, double seconds);
+ASTERIX_API void set_cat021_item075_TMRV_seconds(cat021_item075 * item,
+                                                 const double seconds);
 
 /*******************************************************************************
  * Other Functions

@@ -4,8 +4,11 @@
  */
 
 #include <stdio.h>
-#include "Categories/cat021/cat021_item155.h"
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item155.h"
 
 /*******************************************************************************
  * Getters
@@ -13,31 +16,31 @@
 
 uint8_t get_cat021_item155_RE(const cat021_item155 * item)
 {
-    return GET_BITS((item)->raw, 16, MASK_01_BITS);
+    return GET_BITS(item->raw, 16, MASK_01_BITS);
 }
 
 double get_cat021_item155_BVR(const cat021_item155 * item)
 {
-    return GET_BITS((item)->raw, 1, MASK_15_BITS) * LSB_CAT021_ITEM155_BVR;
+    return GET_BITS(item->raw, 1, MASK_15_BITS) * CAT021_ITEM155_LSB_BVR;
 }
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
-void set_cat021_item155_RE(cat021_item155 * item, uint8_t re)
+void set_cat021_item155_RE(cat021_item155 * item, const uint8_t re)
 {
-    SET_BITS(&((item)->raw), re, MASK_01_BITS, 16);
+    SET_BITS(&(item->raw), re, MASK_01_BITS, 16);
 }
 
-void set_cat021_item155_BVR(cat021_item155 * item, double bvr)
+void set_cat021_item155_BVR(cat021_item155 * item, const double bvr)
 {
     uint16_t bvr_raw = 0;
 
     if (bvr > 0)
-        bvr_raw = (uint16_t) ((bvr / LSB_CAT021_ITEM155_BVR) + 0.5);
+        bvr_raw = (uint16_t) ((bvr / CAT021_ITEM155_LSB_BVR) + 0.5);
 
-    SET_BITS(&((item)->raw), bvr_raw, MASK_15_BITS, 1);
+    SET_BITS(&(item->raw), bvr_raw, MASK_15_BITS, 1);
 }
 
 /*******************************************************************************

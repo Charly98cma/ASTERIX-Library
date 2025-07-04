@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -151,56 +150,64 @@ ASTERIX_API uint32_t get_cat021_item260_TID(const cat021_item260 * item);
  * 
  * @param item pointer to cat021_item260 structure
  */
-ASTERIX_API void set_cat021_item260_TYP(cat021_item260 * item, uint8_t typ);
+ASTERIX_API void set_cat021_item260_TYP(cat021_item260 * item,
+                                        const uint8_t typ);
 
 /**
  * @brief
  * 
  * @param item pointer to cat021_item260 structure
  */
-ASTERIX_API void set_cat021_item260_STYP(cat021_item260 * item, uint8_t styp);
+ASTERIX_API void set_cat021_item260_STYP(cat021_item260 * item,
+                                        const uint8_t styp);
 
 /**
  * @brief
  * 
  * @param item pointer to cat021_item260 structure
  */
-ASTERIX_API void set_cat021_item260_ARA(cat021_item260 * item, uint16_t ara);
+ASTERIX_API void set_cat021_item260_ARA(cat021_item260 * item,
+                                        const uint16_t ara);
 
 /**
  * @brief
  * 
  * @param item pointer to cat021_item260 structure
  */
-ASTERIX_API void set_cat021_item260_RAC(cat021_item260 * item, uint8_t rac);
+ASTERIX_API void set_cat021_item260_RAC(cat021_item260 * item,
+                                        const uint8_t rac);
 
 /**
  * @brief
  * 
  * @param item pointer to cat021_item260 structure
  */
-ASTERIX_API void set_cat021_item260_RAT(cat021_item260 * item, uint8_t rat);
+ASTERIX_API void set_cat021_item260_RAT(cat021_item260 * item,
+                                        const uint8_t rat);
 
 /**
  * @brief
  * 
  * @param item pointer to cat021_item260 structure
  */
-ASTERIX_API void set_cat021_item260_MTE(cat021_item260 * item, uint8_t mte);
+ASTERIX_API void set_cat021_item260_MTE(cat021_item260 * item,
+                                        const uint8_t mte);
 
 /**
  * @brief
  * 
  * @param item pointer to cat021_item260 structure
  */
-ASTERIX_API void set_cat021_item260_TTI(cat021_item260 * item, uint8_t tti);
+ASTERIX_API void set_cat021_item260_TTI(cat021_item260 * item,
+                                        const uint8_t tti);
 
 /**
  * @brief
  * 
  * @param item pointer to cat021_item260 structure
  */
-ASTERIX_API void set_cat021_item260_TID(cat021_item260 * item, uint32_t tid);
+ASTERIX_API void set_cat021_item260_TID(cat021_item260 * item,
+                                        const uint32_t tid);
 
 /*******************************************************************************
  * Other Functions

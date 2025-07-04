@@ -4,8 +4,11 @@
  */
 
 #include <stdio.h>
-#include "Categories/cat021/cat021_item165.h"
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item165.h"
 
 /*******************************************************************************
  * Getters
@@ -25,7 +28,7 @@ double get_cat021_item165_TAR(const cat021_item165 * item)
  * Setters
  ******************************************************************************/
 
-void set_cat021_item165_TAR(cat021_item165 * item, double tar)
+void set_cat021_item165_TAR(cat021_item165 * item, const double tar)
 {
     int16_t tar_raw = 0;
 

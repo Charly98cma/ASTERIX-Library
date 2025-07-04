@@ -19,26 +19,32 @@ There are some drawbacks from avoiding dynamic memory allocation, since certain 
 ├── build/
 ├── docs/
 ├── include/
+│   ├── Aux_Funcs
+|   |   ├── aux_funcs.h             # Additional functions for better code mantainability
+|   |   ├── bitwise_funcs.h         # Functions to RW/WR values using bits and shifts
+|   |   └── char_encoding.h         # Values and converter of A/C identification characters
 │   ├── Categories
-│   │   └── catXXX/                 # Folder of each category
-│   │       ├── catXXX.h            # Header with all items and encoding/decoding
-│   │       ├── catXXX_itemYYY.h    # Items (types, macros and LSBs)
-│   │       └── repo_api.h          # Aux. header to import all categories at once
+│   │   ├── catXXX/                 # Folder of each category
+│   │   │   ├── catXXX.h            # Header with all items and encoding/decoding
+│   │   │   └── catXXX_itemYYY.h    # Items (types, macros and LSBs)
+│   │   ├── header.h                # Common types, macros and variables
+|   |   ├── item010.h               # Item 010 present in multiple categories
+│   │   └── repo_api.h              # Aux. header to import all categories at once
 │   └── Common
-│       ├── asterix_log.h           # Logger header for debugging purposes
-│       ├── common.h                # Common types, macros and variables
-│       ├── constants.h             # Useful macros and constant values
-│       ├── item010.h               # Item 010 present in multiple categories
-│       └── visibility.h            # Visibility header for functions use
+│   │   ├── constants.h             # Useful macros and constant values
+│   │   ├── versions.h              # Configuration file to define Edition and Version Number of each category
+│   │   └── visibility.h            # Visibility header for functions use
+│   └── Logger
+│       └── asterix_log.h           # Logger header for debugging purposes
 ├── src
 │   ├── Categories
-│   │   └── catXXX/                 # Folder of each category
-│   │       ├── catXXX.c            # Encode/Decode functions
-│   │       └── catXXX_itemYYY.c    # Functions of each item (getters/setters, prints, ...)
-│   └── Common
-│       ├── asterix_log.c           # Logger macros and functions
-│       ├── common.h                # CAT and LEN getters and setters
-│       └── item010.h               # Getter and print function of Item 010
+│   │   ├── catXXX/                 # Folder of each category
+│   │   |   ├── catXXX.c            # Encode/Decode functions
+│   │   |   └── catXXX_itemYYY.c    # Functions of each item (getters/setters, prints, ...)
+│   |   ├── header.h                # CAT and LEN getters and setters
+│   |   └── item010.h               # Getter and print function of Item 010
+│   └── Logger
+│       └── asterix_log.c           # Logger macros and functions
 ├── .gitignore
 ├── LICENSE
 ├── Makefile

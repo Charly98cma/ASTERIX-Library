@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -76,7 +75,7 @@ ASTERIX_API uint16_t get_cat021_item161_TRKNUM(const cat021_item161 * item);
  * @param track_number New Track Number (0 to 4095)
  */
 ASTERIX_API void set_cat021_item161_TRKNUM(cat021_item161 * item,
-                                           uint16_t track_number);
+                                           const uint16_t track_number);
 
 /*******************************************************************************
  * Other Functions

@@ -6,10 +6,7 @@
 #ifndef CAT021_ITEM010_H
 #define CAT021_ITEM010_H
 
-#include <stdio.h>
-#include <stdint.h>
-#include "Common/visibility.h"
-#include "Common/item010.h"
+#include "Categories/item010.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -67,7 +64,8 @@ ASTERIX_API uint8_t get_cat021_item010_SIC(const cat021_item010 * item);
  * @param item Pointer to cat021_item010 structure.
  * @param sac_value Value of the SAC
  */
-ASTERIX_API void set_cat021_item010_SAC(cat021_item010 * item, uint8_t sac_value);
+ASTERIX_API void set_cat021_item010_SAC(cat021_item010 * item,
+                                        const uint8_t sac_value);
 
 /**
  * @brief Set the System Identification Code (SIC) into the raw field.
@@ -75,7 +73,8 @@ ASTERIX_API void set_cat021_item010_SAC(cat021_item010 * item, uint8_t sac_value
  * @param item Pointer to cat021_item010 structure.
  * @param sic_value Value of the SIC
  */
-ASTERIX_API void set_cat021_item010_SIC(cat021_item010 * item, uint8_t sic_value);
+ASTERIX_API void set_cat021_item010_SIC(cat021_item010 * item,
+                                        const uint8_t sic_value);
 
 /*******************************************************************************
  * Other Functions

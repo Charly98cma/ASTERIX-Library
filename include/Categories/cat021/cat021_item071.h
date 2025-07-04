@@ -6,10 +6,8 @@
 #ifndef CAT021_ITEM071_H
 #define CAT021_ITEM071_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,10 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-/** 
- * @brief LSB (1/128 s) Time of Applicability for Position of Cat 021 Item 071 
- */
-#define LSB_CAT021_ITEM071                (double) (1/P2_7)
+#define CAT021_ITEM071_LSB_TAP             (1.0/128.0)     /// LSB = 128 seconds
 
 /*******************************************************************************
  * Structures and Types
@@ -81,7 +76,8 @@ ASTERIX_API double get_cat021_item071_TAP_seconds(const cat021_item071 * item);
  * @param item Pointer to cat021_item071 structure.
  * @param raw_value Raw 24-bit time value to store (units of 1/128 s).
  */
-ASTERIX_API void set_cat021_item071_TAP_raw(cat021_item071 * item, uint32_t raw_value);
+ASTERIX_API void set_cat021_item071_TAP_raw(cat021_item071 * item,
+                                            const uint32_t raw_value);
 
 /**
  * @brief Set the Time of Applicability for Position in seconds into Cat 021 Item 071.
@@ -91,7 +87,8 @@ ASTERIX_API void set_cat021_item071_TAP_raw(cat021_item071 * item, uint32_t raw_
  * @param item Pointer to cat021_item071 structure.
  * @param seconds Time in seconds (will be converted to 1/128-s units).
  */
-ASTERIX_API void set_cat021_item071_TAP_seconds(cat021_item071 * item, double seconds);
+ASTERIX_API void set_cat021_item071_TAP_seconds(cat021_item071 * item,
+                                                const double seconds);
 
 /*******************************************************************************
  * Other Functions

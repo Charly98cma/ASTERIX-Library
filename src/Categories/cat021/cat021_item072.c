@@ -3,8 +3,12 @@
  * @brief Implementation of the Category 21 Item 072 functions
  */
 
-#include "Categories/cat021/cat021_item072.h"
+#include <stdio.h>
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item072.h"
 
 /*******************************************************************************
  * Getters
@@ -19,14 +23,14 @@ uint32_t get_cat021_item072_TAV_raw(const cat021_item072 * item)
 
 double get_cat021_item072_TAV_seconds(const cat021_item072 * item)
 {
-    return (double) get_cat021_item072_TAV_raw(item) * LSB_CAT021_ITEM072;
+    return (double) get_cat021_item072_TAV_raw(item) * CAT021_ITEM072_LSB_TAV;
 }
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
-void set_cat021_item072_TAV_raw(cat021_item072 * item, uint32_t raw_value)
+void set_cat021_item072_TAV_raw(cat021_item072 * item, const uint32_t raw_value)
 {
     // TODO: Check value is in valid range
     SET_BITS(&(item->raw[0]), (raw_value >> 16), MASK_08_BITS, 1);
@@ -34,7 +38,7 @@ void set_cat021_item072_TAV_raw(cat021_item072 * item, uint32_t raw_value)
     SET_BITS(&(item->raw[2]), (raw_value      ), MASK_08_BITS, 1);
 }
 
-void set_cat021_item072_TAV_seconds(cat021_item072 * item, double seconds)
+void set_cat021_item072_TAV_seconds(cat021_item072 * item, const double seconds)
 {
     uint32_t raw_value = 0;
 
@@ -42,7 +46,7 @@ void set_cat021_item072_TAV_seconds(cat021_item072 * item, double seconds)
 
     // Turn to raw format and round to nearest unit if bigger than 0
     if (seconds <= 0)
-        raw_value = (uint32_t) ((seconds / LSB_CAT021_ITEM072) + 0.5);
+        raw_value = (uint32_t) ((seconds / CAT021_ITEM072_LSB_TAV) + 0.5);
 
     set_cat021_item072_TAV_raw(item, raw_value);
 }

@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM145_H
 #define CAT021_ITEM145_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -18,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM145          (double) (0.25)         /// LSB = 1/4 FL
+#define CAT021_ITEM145_LSB_FL                    (0.25)         /// LSB = 1/4 FL
 
 /*******************************************************************************
  * Structures and Types
@@ -87,7 +86,7 @@ ASTERIX_API int16_t get_cat021_item145_FL_feet(const cat021_item145 * item);
  * @param value New FL raw value in steps of 1/4 FL (see LSB)
  */
 ASTERIX_API void set_cat021_item145_FL_raw(cat021_item145 * item,
-                                           uint16_t fl_raw);
+                                           const uint16_t fl_raw);
 
 /**
  * @brief Set the given Flight Level (FL) value (see LSB) into
@@ -96,7 +95,8 @@ ASTERIX_API void set_cat021_item145_FL_raw(cat021_item145 * item,
  * @param item Pointer to cat021_item145 structure
  * @param value New FL value (LSB = 0.25 FL)
  */
-ASTERIX_API void set_cat021_item145_FL_feet(cat021_item145 * item, int16_t fl);
+ASTERIX_API void set_cat021_item145_FL_feet(cat021_item145 * item,
+                                            const int16_t fl);
 
 /*******************************************************************************
  * Other Functions

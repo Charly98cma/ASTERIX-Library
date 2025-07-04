@@ -3,8 +3,12 @@
  * @brief Implementation of the Category 21 Item 090 functions
  */
 
-#include "Categories/cat021/cat021_item090.h"
+#include <stdio.h>
+
 #include "Common/constants.h"
+#include "Aux_Funcs/bitwise_funcs.h"
+
+#include "Categories/cat021/cat021_item090.h"
 
 /*******************************************************************************
  * Getters
@@ -14,73 +18,73 @@
 
 uint8_t get_cat021_item090_NUCr_NACv(const cat021_item090 * item)
 {
-    return GET_BITS((item)->raw, 6, MASK_03_BITS);
+    return GET_BITS(item->raw, 6, MASK_03_BITS);
 }
 
 uint8_t get_cat021_item090_NUCp_NIC(const cat021_item090 * item)
 {
-    return GET_BITS((item)->raw, 2, MASK_04_BITS);
+    return GET_BITS(item->raw, 2, MASK_04_BITS);
 }
 
 uint8_t get_cat021_item090_FX(const cat021_item090 * item)
 {
-    return GET_BITS((item)->raw, 1, MASK_01_BITS);
+    return GET_BITS(item->raw, 1, MASK_01_BITS);
 }
 
 /* ============================= FIRST EXTENSION ============================ */
 
 uint8_t get_cat021_item090_ext1_NICbaro(const cat021_item090_ext1 * item)
 {
-    return GET_BITS((item)->raw, 8, MASK_01_BITS);
+    return GET_BITS(item->raw, 8, MASK_01_BITS);
 }
 
 uint8_t get_cat021_item090_ext1_SIL(const cat021_item090_ext1 * item)
 {
-    return GET_BITS((item)->raw, 6, MASK_02_BITS);
+    return GET_BITS(item->raw, 6, MASK_02_BITS);
 }
 
 uint8_t get_cat021_item090_ext1_NACp(const cat021_item090_ext1 * item)
 {
-    return GET_BITS((item)->raw, 2, MASK_04_BITS);
+    return GET_BITS(item->raw, 2, MASK_04_BITS);
 }
 
 uint8_t get_cat021_item090_ext1_FX(const cat021_item090_ext1 * item)
 {
-    return GET_BITS((item)->raw, 1, MASK_01_BITS);
+    return GET_BITS(item->raw, 1, MASK_01_BITS);
 }
 
 /* ============================ SECOND EXTENSION ============================ */
 
 uint8_t get_cat021_item090_ext2_SILS(const cat021_item090_ext2 * item)
 {
-    return GET_BITS((item)->raw, 6, MASK_01_BITS);
+    return GET_BITS(item->raw, 6, MASK_01_BITS);
 }
 
 uint8_t get_cat021_item090_ext2_SDA(const cat021_item090_ext2 * item)
 {
-    return GET_BITS((item)->raw, 4, MASK_02_BITS);
+    return GET_BITS(item->raw, 4, MASK_02_BITS);
 }
 
 uint8_t get_cat021_item090_ext2_GVA(const cat021_item090_ext2 * item)
 {
-    return GET_BITS((item)->raw, 2, MASK_02_BITS);
+    return GET_BITS(item->raw, 2, MASK_02_BITS);
 }
 
 uint8_t get_cat021_item090_ext2_FX(const cat021_item090_ext2 * item)
 {
-    return GET_BITS((item)->raw, 1, MASK_02_BITS);
+    return GET_BITS(item->raw, 1, MASK_02_BITS);
 }
 
 /* ============================ THIRD EXTENSION ============================  */
 
 uint8_t get_cat021_item090_ext3_PIC(const cat021_item090_ext3 * item)
 {
-    return GET_BITS((item)->raw, 5, MASK_04_BITS);
+    return GET_BITS(item->raw, 5, MASK_04_BITS);
 }
 
 uint8_t get_cat021_item090_ext3_FX(const cat021_item090_ext3 * item)
 {
-    return GET_BITS((item)->raw, 1, MASK_01_BITS);
+    return GET_BITS(item->raw, 1, MASK_01_BITS);
 }
 
 /*******************************************************************************

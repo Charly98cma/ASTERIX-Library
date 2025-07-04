@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM040_H
 #define CAT021_ITEM040_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -648,7 +647,7 @@ ASTERIX_API uint8_t get_cat021_item040_ext4_MBC_VAL(const cat021_item040_ext4 *i
  * @param item Pointer to cat021_item040 structure.
  * @param value New ATP value (0 to 7).
  */
-ASTERIX_API void set_cat021_item040_ATP(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ATP(cat021_item040 *item, const uint8_t value);
 
 /**
  * @brief Set the Altitude Reporting Capability (ARC) in CAT 021 Item 040.
@@ -658,7 +657,7 @@ ASTERIX_API void set_cat021_item040_ATP(cat021_item040 *item, uint8_t value);
  * @param item Pointer to cat021_item040 structure.
  * @param value New ARC value (0 to 3).
  */
-ASTERIX_API void set_cat021_item040_ARC(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ARC(cat021_item040 *item, const uint8_t value);
 
 /**
  * @brief Set the Range Check (RC) in CAT 021 Item 040.
@@ -668,7 +667,7 @@ ASTERIX_API void set_cat021_item040_ARC(cat021_item040 *item, uint8_t value);
  * @param item Pointer to cat021_item040 structure.
  * @param value New RC value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_RC(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_RC(cat021_item040 *item, const uint8_t value);
 
 /**
  * @brief Set the Report Type (RAB) in CAT 021 Item 040.
@@ -678,7 +677,7 @@ ASTERIX_API void set_cat021_item040_RC(cat021_item040 *item, uint8_t value);
  * @param item Pointer to cat021_item040 structure.
  * @param value New RAB value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_RAB(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_RAB(cat021_item040 *item, const uint8_t value);
 
 /**
  * @brief Set the Field Extension (FX) in CAT 021 Item 040.
@@ -688,7 +687,7 @@ ASTERIX_API void set_cat021_item040_RAB(cat021_item040 *item, uint8_t value);
  * @param item Pointer to cat021_item040 structure.
  * @param value New FX value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_FX(cat021_item040 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_FX(cat021_item040 *item, const uint8_t value);
 
 /* === FIRST EXTENSION === */
 
@@ -700,7 +699,7 @@ ASTERIX_API void set_cat021_item040_FX(cat021_item040 *item, uint8_t value);
  * @param item Pointer to cat021_item040_ext1 structure.
  * @param value New DCR value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext1_DCR(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_DCR(cat021_item040_ext1 *item, const uint8_t value);
 
 /**
  * @brief Set the Ground Bit Setting (GBS) in CAT 021 Item 040 First extension.
@@ -710,7 +709,7 @@ ASTERIX_API void set_cat021_item040_ext1_DCR(cat021_item040_ext1 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext1 structure.
  * @param value New GBS value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext1_GBS(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_GBS(cat021_item040_ext1 *item, const uint8_t value);
 
 /**
  * @brief Set the Simulated Target (SIM) in CAT 021 Item 040 First extension.
@@ -720,7 +719,7 @@ ASTERIX_API void set_cat021_item040_ext1_GBS(cat021_item040_ext1 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext1 structure.
  * @param value New SIM value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext1_SIM(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_SIM(cat021_item040_ext1 *item, const uint8_t value);
 
 /**
  * @brief Set the Test Target (TST) in CAT 021 Item 040 First extension.
@@ -730,7 +729,7 @@ ASTERIX_API void set_cat021_item040_ext1_SIM(cat021_item040_ext1 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext1 structure.
  * @param value New TST value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext1_TST(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_TST(cat021_item040_ext1 *item, const uint8_t value);
 
 /**
  * @brief Set the Selected Altitude Available (SAA) in CAT 021 Item 040 First extension.
@@ -740,7 +739,7 @@ ASTERIX_API void set_cat021_item040_ext1_TST(cat021_item040_ext1 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext1 structure.
  * @param value New SAA value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext1_SAA(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_SAA(cat021_item040_ext1 *item, const uint8_t value);
 
 /**
  * @brief Set the Confidence Level (CL) in CAT 021 Item 040 First extension.
@@ -750,7 +749,7 @@ ASTERIX_API void set_cat021_item040_ext1_SAA(cat021_item040_ext1 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext1 structure.
  * @param value New CL value (0 to 3).
  */
-ASTERIX_API void set_cat021_item040_ext1_CL(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_CL(cat021_item040_ext1 *item, const uint8_t value);
 
 /**
  * @brief Set the Field Extension (FX) in CAT 021 Item 040 First extension.
@@ -760,7 +759,7 @@ ASTERIX_API void set_cat021_item040_ext1_CL(cat021_item040_ext1 *item, uint8_t v
  * @param item Pointer to cat021_item040_ext1 structure.
  * @param value New FX value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext1_FX(cat021_item040_ext1 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext1_FX(cat021_item040_ext1 *item, const uint8_t value);
 
 /* ============================ SECOND EXTENSION ============================ */
 
@@ -772,7 +771,7 @@ ASTERIX_API void set_cat021_item040_ext1_FX(cat021_item040_ext1 *item, uint8_t v
  * @param item Pointer to cat021_item040_ext2 structure.
  * @param value New LLC value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext2_LLC(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_LLC(cat021_item040_ext2 *item, const uint8_t value);
 
 /**
  * @brief Set the Independent Position Check (IPC) in CAT 021 Item 040 Second extension.
@@ -782,7 +781,7 @@ ASTERIX_API void set_cat021_item040_ext2_LLC(cat021_item040_ext2 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext2 structure.
  * @param value New IPC value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext2_IPC(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_IPC(cat021_item040_ext2 *item, const uint8_t value);
 
 /**
  * @brief Set the No-go Bit Status (NOGO) in CAT 021 Item 040 Second extension.
@@ -792,7 +791,7 @@ ASTERIX_API void set_cat021_item040_ext2_IPC(cat021_item040_ext2 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext2 structure.
  * @param value New NOGO value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext2_NOGO(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_NOGO(cat021_item040_ext2 *item, const uint8_t value);
 
 /**
  * @brief Set the Compact Position Reporting (CPR) in CAT 021 Item 040 Second extension.
@@ -802,7 +801,7 @@ ASTERIX_API void set_cat021_item040_ext2_NOGO(cat021_item040_ext2 *item, uint8_t
  * @param item Pointer to cat021_item040_ext2 structure.
  * @param value New CPR value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext2_CPR(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_CPR(cat021_item040_ext2 *item, const uint8_t value);
 
 /**
  * @brief Set the Local Decoding Position Jump (LDPJ) in CAT 021 Item 040 Second extension.
@@ -812,7 +811,7 @@ ASTERIX_API void set_cat021_item040_ext2_CPR(cat021_item040_ext2 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext2 structure.
  * @param value New LDPJ value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext2_LDPJ(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_LDPJ(cat021_item040_ext2 *item, const uint8_t value);
 
 /**
  * @brief Set the Range Check (RCF) in CAT 021 Item 040 Second extension.
@@ -822,7 +821,7 @@ ASTERIX_API void set_cat021_item040_ext2_LDPJ(cat021_item040_ext2 *item, uint8_t
  * @param item Pointer to cat021_item040_ext2 structure.
  * @param value New RCF value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext2_RCF(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_RCF(cat021_item040_ext2 *item, const uint8_t value);
 
 /**
  * @brief Set the Field Extension (FX) in CAT 021 Item 040 Second extension.
@@ -832,7 +831,7 @@ ASTERIX_API void set_cat021_item040_ext2_RCF(cat021_item040_ext2 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext2 structure.
  * @param value New FX value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext2_FX(cat021_item040_ext2 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext2_FX(cat021_item040_ext2 *item, const uint8_t value);
 
 /* ============================ THIRD EXTENSION ============================  */
 
@@ -844,7 +843,7 @@ ASTERIX_API void set_cat021_item040_ext2_FX(cat021_item040_ext2 *item, uint8_t v
  * @param item Pointer to cat021_item040_ext3 structure.
  * @param value New TBC value.
  */
-ASTERIX_API void set_cat021_item040_ext3_TBC(cat021_item040_ext3 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext3_TBC(cat021_item040_ext3 *item, const uint8_t value);
 
 /**
  * @brief Set the TBC Element populated (TBC_EP) in CAT 021 Item 040 Third extension.
@@ -854,7 +853,7 @@ ASTERIX_API void set_cat021_item040_ext3_TBC(cat021_item040_ext3 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext3 structure.
  * @param value New TBC_EP value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext3_TBC_EP(cat021_item040_ext3 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext3_TBC_EP(cat021_item040_ext3 *item, const uint8_t value);
 
 /**
  * @brief Set the TBC Value (TBC_VAL) in CAT 021 Item 040 Third extension.
@@ -864,7 +863,7 @@ ASTERIX_API void set_cat021_item040_ext3_TBC_EP(cat021_item040_ext3 *item, uint8
  * @param item Pointer to cat021_item040_ext3 structure.
  * @param value New TBC_VAL value.
  */
-ASTERIX_API void set_cat021_item040_ext3_TBC_VAL(cat021_item040_ext3 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext3_TBC_VAL(cat021_item040_ext3 *item, const uint8_t value);
 
 /**
  * @brief Set the Field Extension (FX) in CAT 021 Item 040 Third extension.
@@ -874,7 +873,7 @@ ASTERIX_API void set_cat021_item040_ext3_TBC_VAL(cat021_item040_ext3 *item, uint
  * @param item Pointer to cat021_item040_ext3 structure.
  * @param value New FX value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext3_FX(cat021_item040_ext3 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext3_FX(cat021_item040_ext3 *item, const uint8_t value);
 
 /* ============================ FOURTH EXTENSION ============================ */
 
@@ -886,7 +885,7 @@ ASTERIX_API void set_cat021_item040_ext3_FX(cat021_item040_ext3 *item, uint8_t v
  * @param item Pointer to cat021_item040_ext4 structure.
  * @param value New MBC value.
  */
-ASTERIX_API void set_cat021_item040_ext4_MBC(cat021_item040_ext4 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext4_MBC(cat021_item040_ext4 *item, const uint8_t value);
 
 /**
  * @brief Set the MBC Element populated (MBC_EP) in CAT 021 Item 040 Fourth extension.
@@ -896,7 +895,7 @@ ASTERIX_API void set_cat021_item040_ext4_MBC(cat021_item040_ext4 *item, uint8_t 
  * @param item Pointer to cat021_item040_ext4 structure.
  * @param value New MBC_EP value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext4_MBC_EP(cat021_item040_ext4 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext4_MBC_EP(cat021_item040_ext4 *item, const uint8_t value);
 
 /**
  * @brief Set the MBC Value (MBC_VAL) in CAT 021 Item 040 Fourth extension.
@@ -906,7 +905,7 @@ ASTERIX_API void set_cat021_item040_ext4_MBC_EP(cat021_item040_ext4 *item, uint8
  * @param item Pointer to cat021_item040_ext4 structure.
  * @param value New MBC_VAL value.
  */
-ASTERIX_API void set_cat021_item040_ext4_MBC_VAL(cat021_item040_ext4 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext4_MBC_VAL(cat021_item040_ext4 *item, const uint8_t value);
 
 /**
  * @brief Set the Field Extension (FX) in CAT 021 Item 040 Fourth extension.
@@ -916,7 +915,7 @@ ASTERIX_API void set_cat021_item040_ext4_MBC_VAL(cat021_item040_ext4 *item, uint
  * @param item Pointer to cat021_item040_ext4 structure.
  * @param value New FX value (0 or 1).
  */
-ASTERIX_API void set_cat021_item040_ext4_FX(cat021_item040_ext4 *item, uint8_t value);
+ASTERIX_API void set_cat021_item040_ext4_FX(cat021_item040_ext4 *item, const uint8_t value);
 
 /*******************************************************************************
  * Other Functions

@@ -6,10 +6,8 @@
 #ifndef CAT021_ITEM073_H
 #define CAT021_ITEM073_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,10 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-/** 
- * @brief LSB (1/128 s) Time of Message Reception for Position
- */
-#define LSB_CAT021_ITEM073                (double) (1/P2_7)
+#define CAT021_ITEM073_LSB_TMRP   (1.0/128.0)     /// @brief LSB = 1/128 seconds
 
 /*******************************************************************************
  * Structures and Types
@@ -83,7 +78,8 @@ ASTERIX_API double get_cat021_item073_TMRP_seconds(const cat021_item073 * item);
  * @param item Pointer to cat021_item073 structure.
  * @param raw_value Raw 24-bit time value to store (units of 1/128 s).
  */
-ASTERIX_API void set_cat021_item073_TMRP_raw(cat021_item073 * item, uint32_t raw_value);
+ASTERIX_API void set_cat021_item073_TMRP_raw(cat021_item073 * item,
+                                             const uint32_t raw_value);
 
 /**
  * @brief Set the Time of Message Reception for Position in seconds into Cat 021 Item 073.
@@ -93,7 +89,8 @@ ASTERIX_API void set_cat021_item073_TMRP_raw(cat021_item073 * item, uint32_t raw
  * @param item Pointer to cat021_item073 structure.
  * @param seconds Time in seconds (will be converted to 1/128-s units).
  */
-ASTERIX_API void set_cat021_item073_TMRP_seconds(cat021_item073 * item, double seconds);
+ASTERIX_API void set_cat021_item073_TMRP_seconds(cat021_item073 * item,
+                                                 const double seconds);
 
 /*******************************************************************************
  * Other Functions

@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM015_H
 #define CAT021_ITEM015_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -50,6 +49,7 @@ typedef struct cat021_item015 {
  * Portable access to the SI bit, independent of compiler and endianness.
  * 
  * @param item Pointer to cat021_item015 structure.
+ * 
  * @return uint8_t Value of SI
  */
 ASTERIX_API uint8_t get_cat021_item015_SI(const cat021_item015 * item);
@@ -64,7 +64,8 @@ ASTERIX_API uint8_t get_cat021_item015_SI(const cat021_item015 * item);
  * @param item Pointer to cat021_item015 structure.
  * @param sic_value Value of the SI
  */
-ASTERIX_API void set_cat021_item015_SI(cat021_item015 * item, uint8_t value);
+ASTERIX_API void set_cat021_item015_SI(cat021_item015 * item,
+                                       const uint8_t value);
 
 /*******************************************************************************
  * Other Functions

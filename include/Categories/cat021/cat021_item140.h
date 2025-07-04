@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM140_H
 #define CAT021_ITEM140_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 
@@ -18,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM140          (double) (6.25)         /// LSB = 6.25 ft
+#define CAT021_ITEM140_LSB_GH                   (6.25)         /// LSB = 6.25 ft
 
 /*******************************************************************************
  * Structures and Types
@@ -87,7 +86,7 @@ ASTERIX_API double get_cat021_item140_GH_feet(const cat021_item140 * item);
  * @param value New GH raw value in steps of 6.25 feets (see LSB)
  */
 ASTERIX_API void set_cat021_item140_GH_raw(cat021_item140 * item,
-                                           uint16_t gh_raw);
+                                           const uint16_t gh_raw);
 
 /**
  * @brief Set the given Geometric Height (GH) real value (see LSB) into
@@ -97,7 +96,7 @@ ASTERIX_API void set_cat021_item140_GH_raw(cat021_item140 * item,
  * @param value New GH value in feets (LSB = 6.25 ft)
  */
 ASTERIX_API void set_cat021_item140_GH_feet(cat021_item140 * item,
-                                            double gh);
+                                            const double gh);
 
 /*******************************************************************************
  * Other Functions

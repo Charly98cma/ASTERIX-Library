@@ -6,10 +6,8 @@
 #ifndef CAT021_ITEM016_H
 #define CAT021_ITEM016_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM016_RP       (double) (1/P2_1)       /// LSB = 0.5
+#define CAT021_ITEM016_LSB_RP           (0.5)       /// @brief LSB = 0.5 seconds
 
 /*******************************************************************************
  * Structures and Types
@@ -93,7 +91,8 @@ ASTERIX_API double get_cat021_item016_RP_seconds(const cat021_item016 * item);
  * @param item Pointer to cat021_item016 structure.
  * @param sic_value Value of the RP in steps of 0.5 seconds
  */
-ASTERIX_API void set_cat021_item016_RP_raw(cat021_item016 * item, uint8_t raw_value);
+ASTERIX_API void set_cat021_item016_RP_raw(cat021_item016 * item,
+                                           const uint8_t raw_value);
 
 /**
  * @brief Set the Report Period (RP) valie in seconds into the raw field.
@@ -101,7 +100,8 @@ ASTERIX_API void set_cat021_item016_RP_raw(cat021_item016 * item, uint8_t raw_va
  * @param item Pointer to cat021_item016 structure.
  * @param sic_value Value of the RP in seconds
  */
-ASTERIX_API void set_cat021_item016_RP_seconds(cat021_item016 * item, double seconds);
+ASTERIX_API void set_cat021_item016_RP_seconds(cat021_item016 * item,
+                                               const double seconds);
 
 /*******************************************************************************
  * Other Functions

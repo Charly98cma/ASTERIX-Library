@@ -1,13 +1,12 @@
 /**
  * @file char_encoding.h
- * @brief Values and functions to encode/decode the a/c identification chars
+ * @brief Values and functions to encode/decode the A/C identification chars
  */
 
 #ifndef CHAR_ENCODING_H
 #define CHAR_ENCODING_H
 
 #include <stdint.h>
-#include "Common/visibility.h"
 
 #ifdef __cplusplus
 extern "C" {

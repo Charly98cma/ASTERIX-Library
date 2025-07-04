@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,9 +17,9 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define CAT021_ITEM165_MAX_VALUE_TAR       16       /// Max. TAR = 16 deg./sec.
+#define CAT021_ITEM165_MAX_VALUE_TAR        16       /// Max. TAR = 16 deg./sec.
 
-#define CAT021_ITEM165_LSB_TAR     (double) (1/P2_5)   /// LSB = 1/32 deg./sec.
+#define CAT021_ITEM165_LSB_TAR              (1.0/32.0)  /// LSB = 1/32 deg./sec.
 
 /*******************************************************************************
  * Structures and Types
@@ -88,7 +87,7 @@ ASTERIX_API double get_cat021_item165_TAR(const cat021_item165 * item);
  * @param tar new Track Angle Rate in degrees/second (LSB = 1/32 deg/sec.
  *                                                    Max value = 16 deg/sec)
  */
-ASTERIX_API void set_cat021_item165_TAR(cat021_item165 * item, double tar);
+ASTERIX_API void set_cat021_item165_TAR(cat021_item165 * item, const double tar);
 
 /*******************************************************************************
  * Other Functions

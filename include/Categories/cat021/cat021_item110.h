@@ -6,7 +6,6 @@
 #ifndef CAT021_ITEM110_H
 #define CAT021_ITEM110_H
 
-#include <stdio.h>
 #include <stdint.h>
 #include "Common/visibility.h"
 #include "Common/constants.h"
@@ -25,11 +24,11 @@ extern "C" {
 /// @brief Bytes on a Trajectory Intent Points
 #define NUM_BYTES_CAT021_ITEM110_EXT2   15
 
-#define LSB_CAT021_ITEM110_ALT          10                      /// LSB = 10 ft
-#define LSB_CAT021_ITEM110_LAT          (double) (180/P2_23)    /// LSB = 1/2^23 deg
-#define LSB_CAT021_ITEM110_LON          (double) (180/P2_23)    /// LSB = 1/2^23 deg
-#define LSB_CAT021_ITEM110_TOV          1                       /// LSB = 1 second
-#define LSB_CAT021_ITEM110_TTR          (double) (1/P10_2)      /// LSB = 0.01 NM
+#define CAT021_ITEM110_LSB_ALT          (10.0)        /// @brief LSB = 10 ft
+#define CAT021_ITEM110_LSB_LAT          (180.0/P2_23) /// @brief LSB = 1/2^23 deg
+#define CAT021_ITEM110_LSB_LON          (180.0/P2_23) /// @brief LSB = 1/2^23 deg
+#define CAT021_ITEM110_LSB_TOV          (1.0)         /// @brief LSB = 1 second
+#define CAT021_ITEM110_LSB_TTR          (1.0/P10_2)   /// @brief LSB = 0.01 NM
 
 /*******************************************************************************
  * Structures and Types

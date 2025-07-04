@@ -8,7 +8,6 @@
 
 #include <stdint.h>
 #include "Common/visibility.h"
-#include "Common/constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define LSB_CAT021_ITEM155_BVR      (double) (6.25)  /// LSB = 6.25 feet/minute
+#define CAT021_ITEM155_LSB_BVR                (6.25)  /// LSB = 6.25 feet/minute
 
 /*******************************************************************************
  * Structures and Types
@@ -99,7 +98,7 @@ ASTERIX_API double get_cat021_item155_BVR(const cat021_item155 * item);
  * @param item Pointer to cat021_item155 structure
  * @param re New RE indicator (0: within range, 1: exceeds range)
  */
-ASTERIX_API void set_cat021_item155_RE(cat021_item155 * item, uint8_t re);
+ASTERIX_API void set_cat021_item155_RE(cat021_item155 * item, const uint8_t re);
 
 /**
  * @brief Set the given Barometric Vertical Rate (BVR) value (see LSB) into
@@ -108,7 +107,7 @@ ASTERIX_API void set_cat021_item155_RE(cat021_item155 * item, uint8_t re);
  * @param item Pointer to cat021_item155 structure
  * @param bvr New BVR in feets/minute (see LSB)
  */
-ASTERIX_API void set_cat021_item155_BVR(cat021_item155 * item, double bvr);
+ASTERIX_API void set_cat021_item155_BVR(cat021_item155 * item, const double bvr);
 
 /*******************************************************************************
  * Other Functions
