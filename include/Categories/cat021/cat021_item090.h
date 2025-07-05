@@ -19,11 +19,10 @@ extern "C" {
  ******************************************************************************/
 
 #if (CAT021_ED >= 2 && CAT021_VN >= 7)
-
 #define CAT021_ITEM090_EXT5_LSB_VAL_DIST_P1       (128.0)    // LSB = 128 meters
 #define CAT021_ITEM090_EXT6_LSB_VAL_DIST_P2         (1.0)    // LSB =   1 meters
 #define CAT021_ITEM090_EXT7_LSB_VAL_DIST_QUAL_P1  (128.0)    // LSB = 128 meters
-
+#define CAT021_ITEM090_EXT8_LSB_VAL_DIST_QUAL_P2    (1.0)    // LSB =   1 meters
 #endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 /*******************************************************************************
@@ -302,6 +301,39 @@ typedef struct cat021_item090_ext7 {
     };
 } cat021_item090_ext7;
 
+/**
+ * @typedef cat021_item090_ext8
+ * @brief Category 021 / Item 090 - Eight extension subfield (1 byte)
+ */
+typedef struct cat021_item090_ext8 {
+    union {
+        /// @brief Raw octet as received (recommended for portable access)
+        uint8_t raw;
+
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+ 
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /**
+             * @brief Position Validation Distance Quality (steps of 1 meters)
+             * 
+             * LSB = 1 meters
+             * 
+             * Range: 0 to 127
+             */
+            uint8_t VALDISTQUALP2     :7;
+            /**
+             * @brief Field extension
+             * 
+             * = 0 end of data item | = 1 next extension
+             */
+            uint8_t FX              :1;
+        };
+    };
+} cat021_item090_ext8;
 #endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 /**
@@ -346,7 +378,6 @@ typedef struct cat021_item090 {
     cat021_item090_ext2 ext2;
     /// @brief Third extension subfield (1 byte)
     cat021_item090_ext3 ext3;
-
 #if (CAT021_ED >= 2 && CAT021_VN >= 7)
     /// @brief Fourth extension subfield (1 byte)
     cat021_item090_ext4 ext4;
@@ -356,6 +387,8 @@ typedef struct cat021_item090 {
     cat021_item090_ext6 ext6;
     /// @brief Seventh extension subfield (1 byte)
     cat021_item090_ext7 ext7;
+    /// @brief Eight extension subfield (1 byte)
+    cat021_item090_ext8 ext8;
 #endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 } cat021_item090;
@@ -376,6 +409,7 @@ typedef struct cat021_item090 {
  * technology protocol version (“MOPS version”, see I021/210).
  * 
  * @param item Pointer to cat021_item090 structure
+ * 
  * @return uint8_t Value of NUCr or NACv (see MOPS Version and conversion table)
  */
 ASTERIX_API uint8_t get_cat021_item090_NUCr_NACv(const cat021_item090 * item);
@@ -389,7 +423,8 @@ ASTERIX_API uint8_t get_cat021_item090_NUCr_NACv(const cat021_item090 * item);
  * Apart from the “PIC” item, all items are defined as per the respective link
  * technology protocol version (“MOPS version”, see I021/210).
  * 
- * @param item Pointer to cat021_item090 structure 
+ * @param item Pointer to cat021_item090 structure
+ * 
  * @return uint8_t Value of NUCp or NIC (see MOPS Version and conversion table)
  */
 ASTERIX_API uint8_t get_cat021_item090_NUCp_NIC(const cat021_item090 * item);
@@ -397,7 +432,8 @@ ASTERIX_API uint8_t get_cat021_item090_NUCp_NIC(const cat021_item090 * item);
 /**
  * @brief Get the value of Field Extension (FX) from Cat 021 Item 090
  * 
- * @param item Pointer to cat021_item090 structure 
+ * @param item Pointer to cat021_item090 structure
+ * 
  * @return uint8_t Value of FX (0: end of item, 1: first extension present)
  */
 ASTERIX_API uint8_t get_cat021_item090_FX(const cat021_item090 * item);
@@ -409,10 +445,11 @@ ASTERIX_API uint8_t get_cat021_item090_FX(const cat021_item090 * item);
  * @brief Get the value of NIC for Barometric Altitude (NICbaro) from Cat 021
  *        Item 090 First Extension
  * 
- * @param item Pointer to cat021_item090_ext1 structure 
+ * @param item Pointer to cat021_item090_ext1 structure
+ * 
  * @return uint8_t Value of NICbaro (check conversion table)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext1_NICbaro(const cat021_item090_ext1 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext1_NICbaro(const cat021_item090_ext1 * item);
 
 /**
  * @brief Get the value of Surveillance (V1) or Source (V2+) Integrity Level
@@ -421,10 +458,11 @@ ASTERIX_API uint8_t get_cat021_item0900_ext1_NICbaro(const cat021_item090_ext1 *
  * Apart from the “PIC” item, all items are defined as per the respective link
  * technology protocol version (“MOPS version”, see I021/210).
  * 
- * @param item Pointer to cat021_item090_ext1 structure 
+ * @param item Pointer to cat021_item090_ext1 structure
+ * 
  * @return uint8_t Value of SIL (check conversion table)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext1_SIL(const cat021_item090_ext1 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext1_SIL(const cat021_item090_ext1 * item);
 
 /**
  * @brief Get the value of Navigation Accuracy Category for Position (NACp)
@@ -433,29 +471,32 @@ ASTERIX_API uint8_t get_cat021_item0900_ext1_SIL(const cat021_item090_ext1 * ite
  * Apart from the “PIC” item, all items are defined as per the respective link
  * technology protocol version (“MOPS version”, see I021/210).
  * 
- * @param item Pointer to cat021_item090_ext1 structure 
+ * @param item Pointer to cat021_item090_ext1 structure
+ * 
  * @return uint8_t Value of NACp (check conversion table)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext1_NACp(const cat021_item090_ext1 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext1_NACp(const cat021_item090_ext1 * item);
 
 /**
  * @brief Get the value of Field Extension (FX) from Cat 021 Item 090 First Extension
  * 
- * @param item Pointer to cat021_item090_ext1 structure 
+ * @param item Pointer to cat021_item090_ext1 structure
+ * 
  * @return uint8_t Value of FX (0: end of item, 1: second extension present)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext1_FX(const cat021_item090_ext1 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext1_FX(const cat021_item090_ext1 * item);
 
 /* ============================ SECOND EXTENSION ============================ */
 
 /**
  * @brief Get the SIL-Supplement (SILS) from Cat 021 Item 090 Second Extension
  * 
- * @param item Pointer to cat021_item090_ext2 structure 
+ * @param item Pointer to cat021_item090_ext2 structure
+ * 
  * @return uint8_t Value of SIL-Supplement (0: measured per flight-hour,
  *                                          1: measured per sample)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext2_SILS(const cat021_item090_ext2 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext2_SILS(const cat021_item090_ext2 * item);
 
 /**
  * @brief Get the Horizontal Position System Design Assurance Level (SDA)
@@ -464,10 +505,11 @@ ASTERIX_API uint8_t get_cat021_item0900_ext2_SILS(const cat021_item090_ext2 * it
  * Apart from the “PIC” item, all items are defined as per the respective link
  * technology protocol version (“MOPS version”, see I021/210).
  * 
- * @param item Pointer to cat021_item090_ext2 structure 
+ * @param item Pointer to cat021_item090_ext2 structure
+ * 
  * @return uint8_t Value of SDA (check conversion table)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext2_SDA(const cat021_item090_ext2 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext2_SDA(const cat021_item090_ext2 * item);
 
 /**
  * @brief Get the Geometric Altitude Accuracy (GVA) from Cat 021 Item 090 Second Extension
@@ -475,18 +517,20 @@ ASTERIX_API uint8_t get_cat021_item0900_ext2_SDA(const cat021_item090_ext2 * ite
  * Apart from the “PIC” item, all items are defined as per the respective link
  * technology protocol version (“MOPS version”, see I021/210).
  * 
- * @param item Pointer to cat021_item090_ext2 structure 
+ * @param item Pointer to cat021_item090_ext2 structure
+ * 
  * @return uint8_t Value of GVA (check conversion table)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext2_GVA(const cat021_item090_ext2 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext2_GVA(const cat021_item090_ext2 * item);
 
 /**
  * @brief Get the value of Field Extension (FX) from Cat 021 Item 090 Second Extension
  * 
- * @param item Pointer to cat021_item090_ext2 structure 
+ * @param item Pointer to cat021_item090_ext2 structure
+ * 
  * @return uint8_t Value of FX (0: end of item, 1: third extension present)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext2_FX(const cat021_item090_ext2 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext2_FX(const cat021_item090_ext2 * item);
 
 /* ============================ THIRD EXTENSION ============================  */
 
@@ -496,67 +540,70 @@ ASTERIX_API uint8_t get_cat021_item0900_ext2_FX(const cat021_item090_ext2 * item
  * Value used to interpret the other values of this item, referencing the
  * corresponding conversion table.
  * 
- * @param item Pointer to cat021_item090_ext3 structure 
+ * @param item Pointer to cat021_item090_ext3 structure
+ * 
  * @return uint8_t Value of PIC
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext3_PIC(const cat021_item090_ext3 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext3_PIC(const cat021_item090_ext3 * item);
 
 #if (CAT021_ED >= 2 && CAT021_VN >= 7)
-
 /**
  * @brief Get the PIC Source (SRC) from Cat 021 Item 090 Third Extension
  * 
- * @param item Pointer to cat021_item090_ext3 structure 
+ * @param item Pointer to cat021_item090_ext3 structure
+ * 
  * @return uint8_t Value of SRC (0: PIC mapped from FTC and NIC Supplements;
  *                               1 PIC directly received in HVA or Phase Overlay)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext3_SRC(const cat021_item090_ext3 * item);
-
+ASTERIX_API uint8_t get_cat021_item090_ext3_SRC(const cat021_item090_ext3 * item);
 #endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 /**
  * @brief Get the value of Field Extension (FX) from Cat 021 Item 090 Third Extension
  * 
- * @param item Pointer to cat021_item090_ext3 structure 
+ * @param item Pointer to cat021_item090_ext3 structure
+ * 
  * @return uint8_t Value of FX (0: end of item, 1: fourth extension present)
  */
-ASTERIX_API uint8_t get_cat021_item0900_ext3_FX(const cat021_item090_ext3 * item);
+ASTERIX_API uint8_t get_cat021_item090_ext3_FX(const cat021_item090_ext3 * item);
 
 #if (CAT021_ED >= 2 && CAT021_VN >= 7)
-
 /* ============================ FOURTH EXTENSION ===========================  */
 
 /**
- * @brief
+ * @brief Get the value of Position Validation State (VALSTATE) from
+ *        Cat 021 Item 090 Fourth Extension
  * 
  * @param item pointer to cat021_item090_ext4 structure
  * 
- * @return uint8_t
+ * @return uint8_t value of VALSTATE (see specification Standard)
  */
 ASTERIX_API uint8_t get_cat021_item090_ext4_VALSTATE(const cat021_item090_ext4 * item);
 
 /**
- * @brief
+ * @brief Get the value of Validation Distance Availability (VD) from
+ *        Cat 021 Item 090 Fourth Extension
  * 
  * @param item pointer to cat021_item090_ext4 structure
  * 
- * @return uint8_t
+ * @return uint8_t value of VD (0: item not available; 1: item available)
  */
 ASTERIX_API uint8_t get_cat021_item090_ext4_VD(const cat021_item090_ext4 * item);
 
 /**
- * @brief
+ * @brief Get the value of Validation Distance Quality Availability (VQ) from
+ *        Cat 021 Item 090 Fourth Extension
  * 
  * @param item pointer to cat021_item090_ext4 structure
  * 
- * @return uint8_t
+ * @return uint8_t value of VQ (0: item not available; 1: item available)
  */
 ASTERIX_API uint8_t get_cat021_item090_ext4_VQ(const cat021_item090_ext4 * item);
 
 /**
- * @brief
+ * @brief Get the value of Field Extension (FX) from Cat 021 Item 090 Fourth Extension
  * 
- * @param item pointer to cat021_item090_ext4 structure
+ * @param item Pointer to cat021_item090_ext3 structure
  * 
  * @return uint8_t Value of FX (0: end of item, 1: fifth extension present)
  */
@@ -565,18 +612,19 @@ ASTERIX_API uint8_t get_cat021_item090_ext4_FX(const cat021_item090_ext4 * item)
 /* ============================ FIFTH EXTENSION ============================  */
 
 /**
- * @brief
+ * @brief Get the Position Validation Distance (VAL_DIST_P1) value in steps of
+ *        128 meters from Cat 021 Item 090 Fifth Extension
  * 
  * @param item pointer to cat021_item090_ext5 structure
  * 
- * @return uint8_t
+ * @return uint16_t value of VAL_DIST_P1 in steps of 128 meters (LSB = 128 m)
  */
-ASTERIX_API uint8_t get_cat021_item090_ext5_VALDISTP1(const cat021_item090_ext5 * item);
+ASTERIX_API uint16_t get_cat021_item090_ext5_VALDISTP1(const cat021_item090_ext5 * item);
 
 /**
- * @brief
+ * @brief Get the value of Field Extension (FX) from Cat 021 Item 090 Fifth Extension
  * 
- * @param item pointer to cat021_item090_ext5 structure
+ * @param item Pointer to cat021_item090_ext3 structure
  * 
  * @return uint8_t Value of FX (0: end of item, 1: sixth extension present)
  */
@@ -585,18 +633,19 @@ ASTERIX_API uint8_t get_cat021_item090_ext5_FX(const cat021_item090_ext5 * item)
 /* ============================ SIXTH EXTENSION ============================  */
 
 /**
- * @brief
+ * @brief Get the Position Validation Distance (VAL_DIST_P2) value in steps of
+ *        1 meters from Cat 021 Item 090 Sixth Extension
  * 
  * @param item pointer to cat021_item090_ext6 structure
  * 
- * @return uint8_t
+ * @return uint16_t value of VAL_DIST_P2 in steps of 1 meters (LSB = 1 m)
  */
 ASTERIX_API uint8_t get_cat021_item090_ext6_VALDISTP2(const cat021_item090_ext6 * item);
 
 /**
- * @brief
+ * @brief Get the value of Field Extension (FX) from Cat 021 Item 090 Sixth Extension
  * 
- * @param item pointer to cat021_item090_ext6 structure
+ * @param item Pointer to cat021_item090_ext3 structure
  * 
  * @return uint8_t Value of FX (0: end of item, 1: seventh extension present)
  */
@@ -605,23 +654,44 @@ ASTERIX_API uint8_t get_cat021_item090_ext6_FX(const cat021_item090_ext6 * item)
 /* =========================== SEVENTH EXTENSION ===========================  */
 
 /**
- * @brief
+ * @brief Get the Position Validation Distance Quality (VAL_DIST_QUAL_P1) value
+ *       in 128m steps from cat 021 Item 090 Seventh Extension
  * 
  * @param item pointer to cat021_item090_ext7 structure
  * 
- * @return uint8_t
+ * @return uint16_t value of VAL_DIST_QUAL_P1 in steps of 128 meters (LSB = 128 m)
  */
-ASTERIX_API uint8_t get_cat021_item090_ext7_VALDISTQUALP1(const cat021_item090_ext7 * item);
+ASTERIX_API uint16_t get_cat021_item090_ext7_VALDISTQUALP1(const cat021_item090_ext7 * item);
 
 /**
- * @brief
+ * @brief Get the value of Field Extension (FX) from Cat 021 Item 090 Seventh Extension
  * 
- * @param item pointer to cat021_item090_ext7 structure
+ * @param item Pointer to cat021_item090_ext3 structure
  * 
  * @return uint8_t Value of FX (0: end of item, 1: eight extension present)
  */
 ASTERIX_API uint8_t get_cat021_item090_ext7_FX(const cat021_item090_ext7 * item);
 
+/* =========================== EIGHT EXTENSION ===========================  */
+
+/**
+ * @brief Get the Position Validation Distance Quality (VAL_DIST_QUAL_P2) value
+ *       in 1m steps from cat 021 Item 090 Seventh Extension
+ * 
+ * @param item pointer to cat021_item090_ext8 structure
+ * 
+ * @return uint8_t value of VAL_DIST_QUAL_P2 in steps of 1 meters (LSB = 1 m)
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext8_VALDISTQUALP2(const cat021_item090_ext8 * item);
+
+/**
+ * @brief Get the value of Field Extension (FX) from Cat 021 Item 090 Eight Extension
+ * 
+ * @param item Pointer to cat021_item090_ext3 structure
+ * 
+ * @return uint8_t Value of FX (0: end of item, 1: next extension present)
+ */
+ASTERIX_API uint8_t get_cat021_item090_ext8_FX(const cat021_item090_ext8 * item);
 #endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 /*******************************************************************************
@@ -639,7 +709,8 @@ ASTERIX_API uint8_t get_cat021_item090_ext7_FX(const cat021_item090_ext7 * item)
  * @param item Pointer to cat021_item090 structure item
  * @param value New NUCr or NACv value (see MOPS Version and conversion table)
  */
-ASTERIX_API void set_cat021_item09_NUCrNACv(cat021_item090 * item, uint8_t value);
+ASTERIX_API void set_cat021_item09_NUCrNACv(cat021_item090 * item, 
+                                            const uint8_t value);
 
 /**
  * @brief Set the value for NUCp or NIC into Cat 021 Item 090
@@ -650,7 +721,8 @@ ASTERIX_API void set_cat021_item09_NUCrNACv(cat021_item090 * item, uint8_t value
  * @param item Pointer to cat021_item090 structure 
  * @param value New NUCp or NIC value (see MOPS Version and conversion table)
  */
-ASTERIX_API void set_cat021_item09_NUCp_NIC(cat021_item090 * item, uint8_t value);
+ASTERIX_API void set_cat021_item09_NUCp_NIC(cat021_item090 * item, 
+                                            const uint8_t value);
 
 /**
  * @brief Set the value of Field Extension (FX) into Cat 021 Item 090
@@ -658,7 +730,8 @@ ASTERIX_API void set_cat021_item09_NUCp_NIC(cat021_item090 * item, uint8_t value
  * @param item Pointer to cat021_item090 structure 
  * @param value New value of FX (0: end of item, 1: first extension present)
  */
-ASTERIX_API void set_cat021_item09_FX(cat021_item090 * item, uint8_t value);
+ASTERIX_API void set_cat021_item09_FX(cat021_item090 * item, 
+                                      const uint8_t value);
 
 /* ============================= FIRST EXTENSION ============================ */
 
@@ -670,7 +743,8 @@ ASTERIX_API void set_cat021_item09_FX(cat021_item090 * item, uint8_t value);
  * @param value New NICbaro value (check conversion table)
  */
 
-ASTERIX_API void set_cat021_item090_ext1_NICbaro(cat021_item090_ext1 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext1_NICbaro(cat021_item090_ext1 * item, 
+                                                 const uint8_t value);
 
 /**
  * @brief Get the value of Surveillance (V1) or Source (V2+) Integrity Level
@@ -682,7 +756,8 @@ ASTERIX_API void set_cat021_item090_ext1_NICbaro(cat021_item090_ext1 * item, uin
  * @param item Pointer to cat021_item090_ext1 structure 
  * @param value New SIL value (check conversion table)
  */
-ASTERIX_API void set_cat021_item090_ext1_SIL(cat021_item090_ext1 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext1_SIL(cat021_item090_ext1 * item, 
+                                            const uint8_t value);
 
 /**
  * @brief Get the value of Navigation Accuracy Category for Position (NACp)
@@ -694,7 +769,8 @@ ASTERIX_API void set_cat021_item090_ext1_SIL(cat021_item090_ext1 * item, uint8_t
  * @param item Pointer to cat021_item090_ext1 structure 
  * @param value New NACp value (check conversion table)
  */
-ASTERIX_API void set_cat021_item090_ext1_NACp(cat021_item090_ext1 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext1_NACp(cat021_item090_ext1 * item, 
+                                              const uint8_t value);
 
 /**
  * @brief Set the value of Field Extension (FX) into Cat 021 Item 090 First Extension
@@ -702,7 +778,8 @@ ASTERIX_API void set_cat021_item090_ext1_NACp(cat021_item090_ext1 * item, uint8_
  * @param item Pointer to cat021_item090_ext1 structure 
  * @param value New FX value (0: end of item, 1: second extension present)
  */
-ASTERIX_API void set_cat021_item090_ext1_FX(cat021_item090_ext1 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext1_FX(cat021_item090_ext1 * item, 
+                                            const uint8_t value);
 
 /* ============================ SECOND EXTENSION ============================ */
 
@@ -713,7 +790,8 @@ ASTERIX_API void set_cat021_item090_ext1_FX(cat021_item090_ext1 * item, uint8_t 
  * @param value New SIL-Supplement value (0: measured per flight-hour,
  *                                        1: measured per sample)
  */
-ASTERIX_API void set_cat021_item090_ext2_SILS(cat021_item090_ext2 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext2_SILS(cat021_item090_ext2 * item, 
+                                              const uint8_t value);
 
 /**
  * @brief Get the Horizontal Position System Design Assurance Level (SDA)
@@ -725,7 +803,8 @@ ASTERIX_API void set_cat021_item090_ext2_SILS(cat021_item090_ext2 * item, uint8_
  * @param item Pointer to cat021_item090_ext2 structure
  * @param value New SDA value (check conversion table)  
  */
-ASTERIX_API void set_cat021_item090_ext2_SDA(cat021_item090_ext2 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext2_SDA(cat021_item090_ext2 * item, 
+                                             const uint8_t value);
 
 /**
  * @brief Get the Geometric Altitude Accuracy (GVA) from Cat 021 Item 090 Second Extension
@@ -736,7 +815,8 @@ ASTERIX_API void set_cat021_item090_ext2_SDA(cat021_item090_ext2 * item, uint8_t
  * @param item Pointer to cat021_item090_ext2 structure
  * @param value New GVA value (check conversion table)
  */
-ASTERIX_API void set_cat021_item090_ext2_GVA(cat021_item090_ext2 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext2_GVA(cat021_item090_ext2 * item, 
+                                             const uint8_t value);
 
 /**
  * @brief Set the value of Field Extension (FX) into Cat 021 Item 090 Second Extension
@@ -744,7 +824,8 @@ ASTERIX_API void set_cat021_item090_ext2_GVA(cat021_item090_ext2 * item, uint8_t
  * @param item Pointer to cat021_item090_ext2 structure 
  * @param value New value of FX (0: end of item, 1: third extension present)
  */
-ASTERIX_API void set_cat021_item090_ext2_FX(cat021_item090_ext2 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext2_FX(cat021_item090_ext2 * item, 
+                                            const uint8_t value);
 
 /* ============================ THIRD EXTENSION ============================  */
 
@@ -757,7 +838,20 @@ ASTERIX_API void set_cat021_item090_ext2_FX(cat021_item090_ext2 * item, uint8_t 
  * @param item Pointer to cat021_item090_ext3 structure
  * @param value New PIC value between 0 and 15 (check conversion table)
  */
-ASTERIX_API void set_cat021_item090_ext3_PIC(cat021_item090_ext3 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext3_PIC(cat021_item090_ext3 * item, 
+                                             const uint8_t value);
+
+#if (CAT021_ED >= 2 && CAT021_VN >= 7)
+/**
+ * @brief Set the PIC Source (SRC) value into Cat 021 Item 090 Third Extension
+ * 
+ * @param item Pointer to cat021_item090_ext3 structure
+ * @param pic_src Value of SRC (0: PIC mapped from FTC and NIC Supplements;
+ *                              1 PIC directly received in HVA or Phase Overlay)
+ */
+ASTERIX_API void set_cat021_item090_ext3_SRC(cat021_item090_ext3 * item, 
+                                              const uint8_t pic_src);
+#endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
 /**
  * @brief Set the value of Field Extension (FX) into Cat 021 Item 090 Third Extension
@@ -765,9 +859,138 @@ ASTERIX_API void set_cat021_item090_ext3_PIC(cat021_item090_ext3 * item, uint8_t
  * @param item Pointer to cat021_item090_ext3 structure 
  * @param value New value of FX (0: end of item, 1: next extension present)
  */
-ASTERIX_API void set_cat021_item090_ext3_FX(cat021_item090_ext3 * item, uint8_t value);
+ASTERIX_API void set_cat021_item090_ext3_FX(cat021_item090_ext3 * item, 
+                                            const uint8_t value);
 
 #if (CAT021_ED >= 2 && CAT021_VN >= 7)
+
+/* ============================ FOURTH EXTENSION ===========================  */
+
+/**
+ * @brief Set a new Position Validation State (VALSTATE) value into Cat 021
+ *        Item 090 Fourth Extension
+ * 
+ * @param item pointer to cat021_item090_ext4 structure
+ * @param val_state new VALSTATE value (see Specification Standard)
+ */
+ASTERIX_API void set_cat021_item090_ext4_VALSTATE(cat021_item090_ext4 * item,
+                                                  const uint8_t val_state);
+
+/**
+ * @brief Set the new Validation Distance Availability )VD) value into
+ *        Cat 021 Item 090 Fourth Extension
+ * 
+ * @param item pointer to cat021_item090_ext4 structure
+ * @param vd new VD value (0: item not available; 1: item available)
+ */
+ASTERIX_API void set_cat021_item090_ext4_VD(cat021_item090_ext4 * item,
+                                            const uint8_t vd);
+
+/**
+ * @brief Set the new Validation Distance Quality Availability (VQ) value into
+ *        Cat 021 Item 090 Fourth Extension
+ * 
+ * @param item pointer to cat021_item090_ext4 structure
+ * @param vq new VQ value (0: item not available; 1: item available)
+ */
+ASTERIX_API void set_cat021_item090_ext4_VQ(cat021_item090_ext4 * item,
+                                            const uint8_t vq);
+
+/**
+ * @brief Set the value of Field Extension (FX) into Cat 021 Item 090 Forth Extension
+ * 
+ * @param item Pointer to cat021_item090_ext4 structure 
+ * @param value New value of FX (0: end of item, 1: next extension present)
+ */
+ASTERIX_API void set_cat021_item090_ext4_FX(cat021_item090_ext4 * item,
+                                            const uint8_t fx);
+
+/* ============================ FIFTH EXTENSION ============================  */
+
+/**
+ * @brief Set the new Position Validation Distance (VAL_DIST_P1) value into
+ *        Cat 021 Item 090 Fifth Extension
+ * 
+ * @param item pointer to cat021_item090_ext5 structure
+ * @param val_dist_p1 new VAL_DIST_P1 value in steps of 128 meters (LSB = 128 m)
+ */
+ASTERIX_API void set_cat021_item090_ext5_VALDISTP1(cat021_item090_ext5 * item,
+                                                   const uint16_t val_dist_p1);
+
+/**
+ * @brief Set the value of Field Extension (FX) into Cat 021 Item 090 Fifth Extension
+ * 
+ * @param item Pointer to cat021_item090_ext5 structure 
+ * @param value New value of FX (0: end of item, 1: next extension present)
+ */
+ASTERIX_API void set_cat021_item090_ext5_FX(cat021_item090_ext5 * item,
+                                            const uint8_t fx);
+
+/* ============================ SIXTH EXTENSION ============================  */
+
+/**
+ * @brief Set the new Position Validation Distance (VAL_DIST_P2) value into
+ *        Cat 021 Item 090 Sixth Extension
+ * 
+ * @param item pointer to cat021_item090_ext6 structure
+ * @param val_dist_p2 new VAL_DIST_P2 value in steps of 1 meter (LSB = 1 m)
+ */
+ASTERIX_API void set_cat021_item090_ext6_VALDISTP2(cat021_item090_ext6 * item,
+                                                   const uint8_t val_dist_p2);
+
+/**
+ * @brief Set the value of Field Extension (FX) into Cat 021 Item 090
+ *        Sixth Extension
+ * 
+ * @param item Pointer to cat021_item090_ext6 structure 
+ * @param value New value of FX (0: end of item, 1: next extension present)
+ */
+ASTERIX_API void set_cat021_item090_ext6_FX(cat021_item090_ext6 * item,
+                                            const uint8_t fx);
+
+/* =========================== SEVENTH EXTENSION ===========================  */
+
+/**
+ * @brief Set new Position Validation Distance Quality (VALDISTQUALP1) value
+ *        into Cat 021 Item 090 Seventh Extension
+ * 
+ * @param item pointer to cat021_item090_ext7 structure
+ * @param val_dist_qual_p1 new VAL_DIST_QUAL_P1 value in steps of 128 meters (LSB = 128 m)
+ */
+ASTERIX_API void set_cat021_item090_ext7_VALDISTQUALP1(cat021_item090_ext7 * item,
+                                                       const uint16_t val_dist_qual_p1);
+
+/**
+ * @brief Set the value of Field Extension (FX) into Cat 021 Item 090
+ *        Seventh Extension
+ * 
+ * @param item Pointer to cat021_item090_ext7 structure 
+ * @param value New value of FX (0: end of item, 1: next extension present)
+ */
+ASTERIX_API void set_cat021_item090_ext7_FX(cat021_item090_ext7 * item,
+                                            const uint8_t fx);
+
+/* ============================ EIGHT EXTENSION ============================  */
+
+/**
+ * @brief Set new Position Validation Distance Quality (VALDISTQUALP2) value
+ *        into Cat 021 Item 090 Eight Extension
+ * 
+ * @param item pointer to cat021_item090_ext8 structure
+ * @param val_dist_qual_p2 new VAL_DIST_QUAL_P2 value in steps of 1 meters (LSB = 1 m)
+ */
+ASTERIX_API void set_cat021_item090_ext8_VALDISTQUALP2(cat021_item090_ext8 * item,
+                                                       const uint8_t val_dist_qual_p2);
+
+/**
+ * @brief Set the value of Field Extension (FX) into Cat 021 Item 090
+ *        Eight Extension
+ * 
+ * @param item Pointer to cat021_item090_ext8 structure 
+ * @param value New value of FX (0: end of item, 1: next extension present)
+ */
+ASTERIX_API void set_cat021_item090_ext8_FX(cat021_item090_ext8 * item,
+                                            const uint8_t fx);
 
 #endif // (CAT021_ED >= 2 && CAT021_VN >= 7)
 
