@@ -30,9 +30,21 @@ extern "C" {
  */
 typedef struct cat021_item080 {
 
-    /// @brief Target ICAO Address (24 bits)
-    uint8_t raw[3];
-
+    union {
+        /// @brief Raw octet as received (recommended for portable access)
+        uint8_t raw[3];
+        
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+        
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /// @brief Target ICAO Address (24 bits)
+            uint8_t TGTADDR[3];
+        };
+    };
 } cat021_item080;
 
 /*******************************************************************************

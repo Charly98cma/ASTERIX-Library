@@ -32,13 +32,23 @@ extern "C" {
  * expressed as UTC.
  */
 typedef struct cat021_item073 {
-    /** 
-     * @brief Time of Message Reception for Position (TMRP)
-     * 
-     * Raw 3-bytes as received (LSB = 1/128 sec)
-     * 
-     */
-    uint8_t raw[3];
+    union {
+        /// @brief Raw octet as received (recommended for portable access)
+        uint8_t raw[3];
+        
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+        
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /** 
+             * @brief Time of Message Reception for Position (TMRP) (LSB = 1/128 sec)
+             */
+            uint8_t TMRP[3];
+        };
+    };
 } cat021_item073;
 
 /*******************************************************************************

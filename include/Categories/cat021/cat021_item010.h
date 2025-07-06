@@ -6,6 +6,10 @@
 #ifndef CAT021_ITEM010_H
 #define CAT021_ITEM010_H
 
+#include <stdint.h>
+
+#include "Common/visibility.h"
+
 #include "Categories/item010.h"
 
 #ifdef __cplusplus

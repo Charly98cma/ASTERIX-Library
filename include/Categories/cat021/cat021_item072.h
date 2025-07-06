@@ -31,13 +31,23 @@ extern "C" {
  * the form of elapsed time since last midnight, expressed as UTC.
  */
 typedef struct cat021_item072 {
-    /** 
-     * @brief Time of Applicability for Velocity
-     * 
-     * Raw 3-bytes as received (LSB = 1/128 sec)
-     * 
-     */
-    uint8_t raw[3];
+    union {
+        /// @brief Raw octet as received (recommended for portable access)
+        uint8_t raw[3];
+        
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+        
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /** 
+             * @brief Time of Applicability for Velocity (LSB = 1/128 sec)
+             */
+            uint8_t TAV[3];
+        };
+    };
 } cat021_item072;
 
 /*******************************************************************************
