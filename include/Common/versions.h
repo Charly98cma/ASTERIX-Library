@@ -15,7 +15,7 @@ extern "C" {
     #define CAT021_ED   2
 #endif // CAT021_ED
 #ifndef CAT021_VN 
-    #define CAT021_VN   4
+    #define CAT021_VN   7
 #endif // CAT021_VN
 
 
