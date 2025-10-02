@@ -29,9 +29,7 @@ void log_set_file(FILE* fp) {
  */
 const char* current_time_str(char* buffer, size_t size) {
     time_t t = time(NULL);
-    struct tm tm_info;
-    localtime_r(&t, &tm_info);
-    strftime(buffer, size, "%Y-%m-%d %H:%M:%S", &tm_info);
+    strftime(buffer, size, "%Y-%m-%d %H:%M:%S", localtime(&t));
     return buffer;
 }
 
