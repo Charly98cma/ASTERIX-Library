@@ -18,7 +18,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define I021_152_LSB_TAS         (360.0/P2_16)  /// LSB = 360/2^16 degrees
+#define I021_152_LSB_MH         (360.0/P2_16)  /// LSB = 360/2^16 degrees
 
 /*******************************************************************************
  * Structures and Types
@@ -26,7 +26,7 @@ extern "C" {
 
 /**
  * @typedef I021_152
- * @brief Category 021 Item 152 - Magnetic Heading
+ * @brief Category 021 / Item 152 - Magnetic Heading
  * 
  * Magnetic Heading (Element of Air Vector).
  * 
@@ -36,7 +36,7 @@ extern "C" {
 typedef struct I021_152 {
     union {
         /// @brief Raw octets as received (recommended for portable access)
-        uint16_t raw;
+        uint8_t raw[2];
 
         /**
          * @note Bit-field layout is compiler and endianness dependent.
@@ -46,17 +46,11 @@ typedef struct I021_152 {
         /// @brief Bit-field access (might be non-portable, use with caution)
         struct {
             /**
-             * @brief Range Exceeded Indicator
+             * @brief Magnetic Heading (Element of Air Vector)
              * 
-             * = 0: value within defined range | = 1: value exceeds defines range
+             * LSB = 360/2^16 degrees
              */
-            uint16_t RE;
-            /**
-             * @brief Magnetic Heading
-             * 
-             * LSB = 1 knot
-             */
-            uint16_t TAS;
+            uint16_t MH;
         };
     };
 } I021_152;
@@ -85,7 +79,37 @@ ASTERIX_API double get_I021_152_MH(const I021_152 * item);
  * @param item Pointer to I021_152 structure
  * @param tas New magnetic heading in degrees
  */
-ASTERIX_API void set_I021_152_MH(I021_152 * item, const double tas);
+ASTERIX_API void set_I021_152_MH(I021_152 * item, double tas);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_152(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_152(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 #include "Common/constants.h"
-#include "Aux_Funcs/bitwise_funcs.h"
+#include "Aux_Funcs/aux_funcs.h"
 
 #include "Categories/I021/I021_150.h"
 
@@ -15,38 +15,57 @@
  ******************************************************************************/
 
 uint8_t get_I021_150_IM(const I021_150 * item) {
-    return GET_BITS(item->raw, 16, MASK_01_BITS);
+    return (item->raw[0] >> 7) & MASK_01_BITS;
 }
 
 double get_I021_150_AIRSPD(const I021_150 * item) {
-    double real_speed = 0;
-    uint16_t raw_speed = GET_BITS(item->raw, 1, MASK_15_BITS);
+    double air_speed = 0;
+    uint16_t air_speed_raw = ((item->raw[0] & MASK_07_BITS) << 8) | item->raw[1];
 
     if (get_I021_150_IM(item) == I021_150_IM_IAS)
-        real_speed = raw_speed * I021_150_LSB_IAS;
+        air_speed = air_speed_raw * I021_150_LSB_IAS;
     else
-        real_speed = raw_speed * I021_150_LSB_MACH;
+        air_speed = air_speed_raw * I021_150_LSB_MACH;
 
-    return real_speed;
+    return air_speed;
 }
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
-void set_I021_150_IM(I021_150 * item, const uint8_t im) {
-    SET_BITS(&(item->raw), im, MASK_01_BITS, 16);
+void set_I021_150_IM(I021_150 * item, uint8_t im) {
+    item->raw[0] |= (im & MASK_01_BITS) << 7;
 }
 
-void set_I021_150_FL(I021_150 * item, const double value) {
-    uint16_t raw_value = 0;
+void set_I021_150_AIRSPD(I021_150 * item, double airspd) {
+    uint16_t airspd_raw = 0;
 
     if (get_I021_150_IM(item) == I021_150_IM_IAS)
-        raw_value = value / I021_150_LSB_IAS;
+        airspd_raw = airspd / I021_150_LSB_IAS;
     else
-        raw_value = value / I021_150_LSB_MACH;
+        airspd_raw = airspd / I021_150_LSB_MACH;
 
-    SET_BITS(&(item->raw), raw_value, MASK_15_BITS, 1);
+    item->raw[0] |= (airspd_raw >> 8) & MASK_07_BITS;
+    item->raw[1] = airspd_raw;
+}
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+uint16_t encode_I021_150(void * item_in, unsigned char * msg_out, uint16_t out_index) {
+    I021_150 * item = (I021_150 *) item_in;
+    msg_out[out_index++] = item->raw[0];
+    msg_out[out_index++] = item->raw[1];
+    return out_index;
+}
+
+uint16_t decode_I021_150(void * item_out, const unsigned char * msg_in, uint16_t in_index) {
+    I021_150 * item = (I021_150 *) item_out;
+    item->raw[0] = msg_in[in_index++];
+    item->raw[1] = msg_in[in_index++];
+    return in_index;
 }
 
 /*******************************************************************************

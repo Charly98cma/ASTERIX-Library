@@ -25,7 +25,7 @@ extern "C" {
 
 /**
  * @typedef I021_400
- * @brief Category 021 Item 400 - Receiver ID
+ * @brief Category 021 / Item 400 - Receiver ID
  * 
  * Designator of Ground Station in Distributed System
  */
@@ -69,7 +69,37 @@ ASTERIX_API uint8_t get_I021_400_RID(const I021_400 * item);
  * @param item pointer to I021_400 structure
  * @param rid new RID value
  */
-ASTERIX_API void set_I021_400_RID(I021_400 * item, const uint8_t rid);
+ASTERIX_API void set_I021_400_RID(I021_400 * item, uint8_t rid);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_400(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_400(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

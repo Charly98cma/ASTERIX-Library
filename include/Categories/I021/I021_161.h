@@ -26,7 +26,7 @@ extern "C" {
 
 /**
  * @typedef I021_161
- * @brief Category 021 Item 161 - Airborne Ground Vector
+ * @brief Category 021 / Item 161 - Airborne Ground Vector
  * 
  * An integer value representing a unique reference to a track record within a
  * particular track file
@@ -74,7 +74,37 @@ ASTERIX_API uint16_t get_I021_161_TRKNUM(const I021_161 * item);
  * @param item pointer to I021_161 structure
  * @param track_number New Track Number (0 to 4095)
  */
-ASTERIX_API void set_I021_161_TRKNUM(I021_161 * item, const uint16_t track_number);
+ASTERIX_API void set_I021_161_TRKNUM(I021_161 * item, uint16_t track_number);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_161(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_161(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

@@ -33,7 +33,7 @@ extern "C" {
 
 /**
  * @typedef I021_160
- * @brief Category 021 Item 160 - Airborne Ground Vector
+ * @brief Category 021 / Item 160 - Airborne Ground Vector
  * 
  * Ground Speed and Track Angle elements of Airborne Ground Vector.
  * 
@@ -123,22 +123,52 @@ ASTERIX_API double get_I021_160_TRKANG(const I021_160 * item);
  * @param item pointer to I021_160 structure
  * @param re new RE indicator (0: within range, 1: exceeds range)
  */
-ASTERIX_API void set_I021_160_RE(I021_160 * item, const uint8_t re);
+ASTERIX_API void set_I021_160_RE(I021_160 * item, uint8_t re);
 /**
  * @brief Set the Ground Speed (GRDSPD) value in NM/min into I021/160
  * 
  * @param item pointer to I021_160 structure
- * @param ground_speed new ground speed value in nautical miles per minute
- *                     (Range: 0 <= ground_speed < 2)
+ * @param ground_speed_nmpmin new ground speed value in nautical miles per minute
+ *                            (Range: 0 <= ground_speed < 2)
  */
-ASTERIX_API void set_I021_160_GRDSPD(I021_160 * item, const double ground_speed);
+ASTERIX_API void set_I021_160_GRDSPD(I021_160 * item, double ground_speed_nmpmin);
 /**
  * @brief Set the Track Angle (TRKANG) value in degrees into I021/160
  * 
  * @param item pointer to I021_160 structure
- * @param track_angle new track angle value in degrees
+ * @param track_angle_deg new track angle value in degrees
  */
-ASTERIX_API void set_I021_160_TRKANG(I021_160 * item, const double track_angle);
+ASTERIX_API void set_I021_160_TRKANG(I021_160 * item, double track_angle_deg);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_160(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_160(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

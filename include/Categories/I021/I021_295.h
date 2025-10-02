@@ -17,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define I021_295_N_OCTETS     8   /// Number of octets of Primary Subfield
+#define I021_295_N_OCTETS     4   /// Number of octets of Primary Subfield
 
 #define I021_295_LSB_EXT1_AOS       (0.1)   /// LSB = 0.1 seconds
 #define I021_295_LSB_EXT2_TRD       (0.1)   /// LSB = 0.1 seconds
@@ -49,7 +49,7 @@ extern "C" {
 
 /**
  * @typedef I021_295_EXT1
- * @brief Category 021 Item 295 Subfield #1 - Aircraft Operational Status age
+ * @brief Category 021 / Item 295 Subfield #1 - Aircraft Operational Status age
  */
 typedef struct I021_295_EXT1 {
     uint8_t AOS;
@@ -57,7 +57,7 @@ typedef struct I021_295_EXT1 {
 
 /**
  * @typedef I021_295_EXT2
- * @brief Category 021 Item 295 Subfield #2 - Target Report Descriptor age
+ * @brief Category 021 / Item 295 Subfield #2 - Target Report Descriptor age
  */
 typedef struct I021_295_EXT2 {
     uint8_t TRD;
@@ -65,7 +65,7 @@ typedef struct I021_295_EXT2 {
 
 /**
  * @typedef I021_295_EXT3
- * @brief Category 021 Item 295 Subfield #3 - Mode 3/A Code age
+ * @brief Category 021 / Item 295 Subfield #3 - Mode 3/A Code age
  */
 typedef struct I021_295_EXT3 {
     uint8_t M3A;
@@ -73,7 +73,7 @@ typedef struct I021_295_EXT3 {
 
 /**
  * @typedef I021_295_EXT4
- * @brief Category 021 Item 295 Subfield #4 - Quality Indicators age
+ * @brief Category 021 / Item 295 Subfield #4 - Quality Indicators age
  */
 typedef struct I021_295_EXT4 {
     uint8_t QI;
@@ -81,7 +81,7 @@ typedef struct I021_295_EXT4 {
 
 /**
  * @typedef I021_295_EXT5
- * @brief Category 021 Item 295 Subfield #5 - Trajectory Intent age
+ * @brief Category 021 / Item 295 Subfield #5 - Trajectory Intent age
  */
 typedef struct I021_295_EXT5 {
     uint8_t TI;
@@ -89,7 +89,7 @@ typedef struct I021_295_EXT5 {
 
 /**
  * @typedef I021_295_EXT6
- * @brief Category 021 Item 295 Subfield #6 - Message Amplitude age
+ * @brief Category 021 / Item 295 Subfield #6 - Message Amplitude age
  */
 typedef struct I021_295_EXT6 {
     uint8_t MAM;
@@ -97,7 +97,7 @@ typedef struct I021_295_EXT6 {
 
 /**
  * @typedef I021_295_EXT7
- * @brief Category 021 Item 295 Subfield #7 - Geometric Height age
+ * @brief Category 021 / Item 295 Subfield #7 - Geometric Height age
  */
 typedef struct I021_295_EXT7 {
     uint8_t GH;
@@ -105,7 +105,7 @@ typedef struct I021_295_EXT7 {
 
 /**
  * @typedef I021_295_EXT8
- * @brief Category 021 Item 295 Subfield #8 - Flight Level age
+ * @brief Category 021 / Item 295 Subfield #8 - Flight Level age
  */
 typedef struct I021_295_EXT8 {
     uint8_t FL;
@@ -113,7 +113,7 @@ typedef struct I021_295_EXT8 {
 
 /**
  * @typedef I021_295_EXT9
- * @brief Category 021 Item 295 Subfield #9 - Selected Altitude age
+ * @brief Category 021 / Item 295 Subfield #9 - Selected Altitude age
  */
 typedef struct I021_295_EXT9 {
     uint8_t SAL;
@@ -121,7 +121,7 @@ typedef struct I021_295_EXT9 {
 
 /**
  * @typedef I021_295_EXT10
- * @brief Category 021 Item 295 Subfield #10 - Final State Selected Altitude age
+ * @brief Category 021 / Item 295 Subfield #10 - Final State Selected Altitude age
  */
 typedef struct I021_295_EXT10 {
     uint8_t FSA;
@@ -129,7 +129,7 @@ typedef struct I021_295_EXT10 {
 
 /**
  * @typedef I021_295_EXT11
- * @brief Category 021 Item 295 Subfield #11 - Air Speed age
+ * @brief Category 021 / Item 295 Subfield #11 - Air Speed age
  */
 typedef struct I021_295_EXT11 {
     uint8_t AS;
@@ -137,7 +137,7 @@ typedef struct I021_295_EXT11 {
 
 /**
  * @typedef I021_295_EXT12
- * @brief Category 021 Item 295 Subfield #12 - True Air Speed age
+ * @brief Category 021 / Item 295 Subfield #12 - True Air Speed age
  */
 typedef struct I021_295_EXT12 {
     uint8_t TAS;
@@ -145,7 +145,7 @@ typedef struct I021_295_EXT12 {
 
 /**
  * @typedef I021_295_EXT13
- * @brief Category 021 Item 295 Subfield #13 - Magnetic Heading age
+ * @brief Category 021 / Item 295 Subfield #13 - Magnetic Heading age
  */
 typedef struct I021_295_EXT13 {
     uint8_t MH;
@@ -153,7 +153,7 @@ typedef struct I021_295_EXT13 {
 
 /**
  * @typedef I021_295_EXT14
- * @brief Category 021 Item 295 Subfield #14 - Barometric Vertical Rate age
+ * @brief Category 021 / Item 295 Subfield #14 - Barometric Vertical Rate age
  */
 typedef struct I021_295_EXT14 {
     uint8_t BVR;
@@ -161,7 +161,7 @@ typedef struct I021_295_EXT14 {
 
 /**
  * @typedef I021_295_EXT15
- * @brief Category 021 Item 295 Subfield #15 - Geometric Vertical Rate age
+ * @brief Category 021 / Item 295 Subfield #15 - Geometric Vertical Rate age
  */
 typedef struct I021_295_EXT15 {
     uint8_t GVR;
@@ -169,7 +169,7 @@ typedef struct I021_295_EXT15 {
 
 /**
  * @typedef I021_295_EXT16
- * @brief Category 021 Item 295 Subfield #16 - Ground Vector age
+ * @brief Category 021 / Item 295 Subfield #16 - Ground Vector age
  */
 typedef struct I021_295_EXT16 {
     uint8_t GV;
@@ -177,7 +177,7 @@ typedef struct I021_295_EXT16 {
 
 /**
  * @typedef I021_295_EXT17
- * @brief Category 021 Item 295 Subfield #17 - Track Angle Rate age
+ * @brief Category 021 / Item 295 Subfield #17 - Track Angle Rate age
  */
 typedef struct I021_295_EXT17 {
     uint8_t TAR;
@@ -185,7 +185,7 @@ typedef struct I021_295_EXT17 {
 
 /**
  * @typedef I021_295_EXT18
- * @brief Category 021 Item 295 Subfield #18 - Target Identification age
+ * @brief Category 021 / Item 295 Subfield #18 - Target Identification age
  */
 typedef struct I021_295_EXT18 {
     uint8_t TID;
@@ -193,7 +193,7 @@ typedef struct I021_295_EXT18 {
 
 /**
  * @typedef I021_295_EXT19
- * @brief Category 021 Item 295 Subfield #19 - Target Status age
+ * @brief Category 021 / Item 295 Subfield #19 - Target Status age
  */
 typedef struct I021_295_EXT19 {
     uint8_t TS;
@@ -201,7 +201,7 @@ typedef struct I021_295_EXT19 {
 
 /**
  * @typedef I021_295_EXT20
- * @brief Category 021 Item 295 Subfield #20 - Met Information age
+ * @brief Category 021 / Item 295 Subfield #20 - Met Information age
  */
 typedef struct I021_295_EXT20 {
     uint8_t MET;
@@ -209,7 +209,7 @@ typedef struct I021_295_EXT20 {
 
 /**
  * @typedef I021_295_EXT21
- * @brief Category 021 Item 295 Subfield #21 - Roll Angle age
+ * @brief Category 021 / Item 295 Subfield #21 - Roll Angle age
  */
 typedef struct I021_295_EXT21 {
     uint8_t ROA;
@@ -217,7 +217,7 @@ typedef struct I021_295_EXT21 {
 
 /**
  * @typedef I021_295_EXT22
- * @brief Category 021 Item 295 Subfield #22 - ACAS Resolution Advisory age
+ * @brief Category 021 / Item 295 Subfield #22 - ACAS Resolution Advisory age
  */
 typedef struct I021_295_EXT22 {
     uint8_t ARA;
@@ -225,7 +225,7 @@ typedef struct I021_295_EXT22 {
 
 /**
  * @typedef I021_295_EXT23
- * @brief Category 021 Item 295 Subfield #23 - Surface Capabilities and Characteristics age
+ * @brief Category 021 / Item 295 Subfield #23 - Surface Capabilities and Characteristics age
  */
 typedef struct I021_295_EXT23 {
     uint8_t SCC;
@@ -234,7 +234,7 @@ typedef struct I021_295_EXT23 {
 
 /**
  * @typedef I021_295
- * @brief Category 021 Item 295 - Data Ages
+ * @brief Category 021 / Item 295 - Data Ages
  * 
  * Ages of the data provided
  */
@@ -947,217 +947,227 @@ ASTERIX_API double get_I021_295_EXT23_SCC(const I021_295_EXT23 * item);
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param ads
  */
-ASTERIX_API void set_I021_295_AOS(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_AOS(I021_295 * item, uint8_t ads);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param trd
  */
-ASTERIX_API void set_I021_295_TRD(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_TRD(I021_295 * item, uint8_t trd);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param m3a
  */
-ASTERIX_API void set_I021_295_M3A(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_M3A(I021_295 * item, uint8_t m3a);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param qi
  */
-ASTERIX_API void set_I021_295_QI(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_QI(I021_295 * item, uint8_t qi);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param ti
  */
-ASTERIX_API void set_I021_295_TI(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_TI(I021_295 * item, uint8_t ti);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param mam
  */
-ASTERIX_API void set_I021_295_MAM(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_MAM(I021_295 * item, uint8_t mam);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param gh
  */
-ASTERIX_API void set_I021_295_GH(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_GH(I021_295 * item, uint8_t gh);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param fx
  */
-ASTERIX_API void set_I021_295_FX1(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_FX1(I021_295 * item, uint8_t fx);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param fl
  */
-ASTERIX_API void set_I021_295_FL(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_FL(I021_295 * item, uint8_t fl);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param sal
  */
-ASTERIX_API void set_I021_295_SAL(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_SAL(I021_295 * item, uint8_t sal);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param fsa
  */
-ASTERIX_API void set_I021_295_FSA(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_FSA(I021_295 * item, uint8_t fsa);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param as
  */
-ASTERIX_API void set_I021_295_AS(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_AS(I021_295 * item, uint8_t as);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param tas
  */
-ASTERIX_API void set_I021_295_TAS(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_TAS(I021_295 * item, uint8_t tas);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param mh
  */
-ASTERIX_API void set_I021_295_MH(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_MH(I021_295 * item, uint8_t mh);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param bvr
  */
-ASTERIX_API void set_I021_295_BVR(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_BVR(I021_295 * item, uint8_t bvr);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param fx
  */
-ASTERIX_API void set_I021_295_FX2(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_FX2(I021_295 * item, uint8_t fx);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param gvr
  */
-ASTERIX_API void set_I021_295_GVR(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_GVR(I021_295 * item, uint8_t gvr);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param gv
  */
-ASTERIX_API void set_I021_295_GV(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_GV(I021_295 * item, uint8_t gv);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param tar
  */
-ASTERIX_API void set_I021_295_TAR(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_TAR(I021_295 * item, uint8_t tar);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param tid
  */
-ASTERIX_API void set_I021_295_TID(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_TID(I021_295 * item, uint8_t tid);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param ts
  */
-ASTERIX_API void set_I021_295_TS(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_TS(I021_295 * item, uint8_t ts);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param met
  */
-ASTERIX_API void set_I021_295_MET(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_MET(I021_295 * item, uint8_t met);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param roa
  */
-ASTERIX_API void set_I021_295_ROA(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_ROA(I021_295 * item, uint8_t roa);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param fx
  */
-ASTERIX_API void set_I021_295_FX3(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_FX3(I021_295 * item, uint8_t fx);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param ara
  */
-ASTERIX_API void set_I021_295_ARA(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_ARA(I021_295 * item, uint8_t ara);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param scc
  */
-ASTERIX_API void set_I021_295_SCC(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_SCC(I021_295 * item, uint8_t scc);
 
 /**
  * @brief 
  * 
  * @param item pointer to I021_295 structure
- * @param value
+ * @param fx
  */
-ASTERIX_API void set_I021_295_FX4(I021_295 * item, const uint8_t value);
+ASTERIX_API void set_I021_295_FX4(I021_295 * item, uint8_t fx);
+
+/* =============================== SUBFIELD 1 =============================== */
+
+/**
+ * @brief
+ * 
+ * @param item pointer to I021_295_EXT2 structure
+ * @param ads
+ */
+void set_I021_295_EXT1_AOS(I021_295_EXT1 * item, double ads);
 
 /* =============================== SUBFIELD 2 =============================== */
 
@@ -1165,9 +1175,9 @@ ASTERIX_API void set_I021_295_FX4(I021_295 * item, const uint8_t value);
  * @brief
  * 
  * @param item pointer to I021_295_EXT2 structure
- * @param value
+ * @param trd
  */
-ASTERIX_API void set_I021_295_EXT2_TRD(I021_295_EXT2 * item, const double value);
+ASTERIX_API void set_I021_295_EXT2_TRD(I021_295_EXT2 * item, double trd);
 
 /* =============================== SUBFIELD 3 =============================== */
 
@@ -1175,9 +1185,9 @@ ASTERIX_API void set_I021_295_EXT2_TRD(I021_295_EXT2 * item, const double value)
  * @brief
  * 
  * @param item pointer to I021_295_EXT3 structure
- * @param value
+ * @param m3a
  */
-ASTERIX_API void set_I021_295_EXT3_M3A(I021_295_EXT3 * item, const double value);
+ASTERIX_API void set_I021_295_EXT3_M3A(I021_295_EXT3 * item, double m3a);
 
 /* =============================== SUBFIELD 4 =============================== */
 
@@ -1185,9 +1195,9 @@ ASTERIX_API void set_I021_295_EXT3_M3A(I021_295_EXT3 * item, const double value)
  * @brief
  * 
  * @param item pointer to I021_295_EXT4 structure
- * @param value
+ * @param qi
  */
-ASTERIX_API void set_I021_295_EXT4_QI(I021_295_EXT4 * item, const double value);
+ASTERIX_API void set_I021_295_EXT4_QI(I021_295_EXT4 * item, double qi);
 
 /* =============================== SUBFIELD 5 =============================== */
 
@@ -1195,9 +1205,9 @@ ASTERIX_API void set_I021_295_EXT4_QI(I021_295_EXT4 * item, const double value);
  * @brief
  * 
  * @param item pointer to I021_295_EXT5 structure
- * @param value
+ * @param ti
  */
-ASTERIX_API void set_I021_295_EXT5_TI(I021_295_EXT5 * item, const double value);
+ASTERIX_API void set_I021_295_EXT5_TI(I021_295_EXT5 * item, double ti);
 
 /* =============================== SUBFIELD 6 =============================== */
 
@@ -1205,9 +1215,9 @@ ASTERIX_API void set_I021_295_EXT5_TI(I021_295_EXT5 * item, const double value);
  * @brief
  * 
  * @param item pointer to I021_295_EXT6 structure
- * @param value
+ * @param mam
  */
-ASTERIX_API void set_I021_295_EXT6_MAM(I021_295_EXT6 * item, const double value);
+ASTERIX_API void set_I021_295_EXT6_MAM(I021_295_EXT6 * item, double mam);
 
 /* =============================== SUBFIELD 7 =============================== */
 
@@ -1215,9 +1225,9 @@ ASTERIX_API void set_I021_295_EXT6_MAM(I021_295_EXT6 * item, const double value)
  * @brief
  * 
  * @param item pointer to I021_295_EXT7 structure
- * @param value
+ * @param gh
  */
-ASTERIX_API void set_I021_295_EXT7_GH(I021_295_EXT7 * item, const double value);
+ASTERIX_API void set_I021_295_EXT7_GH(I021_295_EXT7 * item, double gh);
 
 /* =============================== SUBFIELD 8 =============================== */
 
@@ -1225,9 +1235,9 @@ ASTERIX_API void set_I021_295_EXT7_GH(I021_295_EXT7 * item, const double value);
  * @brief
  * 
  * @param item pointer to I021_295_EXT8 structure
- * @param value
+ * @param fl
  */
-ASTERIX_API void set_I021_295_EXT8_FL(I021_295_EXT8 * item, const double value);
+ASTERIX_API void set_I021_295_EXT8_FL(I021_295_EXT8 * item, double fl);
 
 /* =============================== SUBFIELD 9 =============================== */
 
@@ -1235,9 +1245,9 @@ ASTERIX_API void set_I021_295_EXT8_FL(I021_295_EXT8 * item, const double value);
  * @brief
  * 
  * @param item pointer to I021_295_EXT9 structure
- * @param value
+ * @param sal
  */
-ASTERIX_API void set_I021_295_EXT9_SAL(I021_295_EXT9 * item, const double value);
+ASTERIX_API void set_I021_295_EXT9_SAL(I021_295_EXT9 * item, double sal);
 
 /* =============================== SUBFIELD 10 ============================== */
 
@@ -1245,9 +1255,9 @@ ASTERIX_API void set_I021_295_EXT9_SAL(I021_295_EXT9 * item, const double value)
  * @brief
  * 
  * @param item pointer to I021_295_EXT10 structure
- * @param value
+ * @param fsa
  */
-ASTERIX_API void set_I021_295_EXT10_FSA(I021_295_EXT10 * item, const double value);
+ASTERIX_API void set_I021_295_EXT10_FSA(I021_295_EXT10 * item, double fsa);
 
 /* =============================== SUBFIELD 11 ============================== */
 
@@ -1255,9 +1265,9 @@ ASTERIX_API void set_I021_295_EXT10_FSA(I021_295_EXT10 * item, const double valu
  * @brief
  * 
  * @param item pointer to I021_295_EXT11 structure
- * @param value
+ * @param as
  */
-ASTERIX_API void set_I021_295_EXT11_AS(I021_295_EXT11 * item, const double value);
+ASTERIX_API void set_I021_295_EXT11_AS(I021_295_EXT11 * item, double as);
 
 /* =============================== SUBFIELD 12 ============================== */
 
@@ -1265,9 +1275,9 @@ ASTERIX_API void set_I021_295_EXT11_AS(I021_295_EXT11 * item, const double value
  * @brief
  * 
  * @param item pointer to I021_295_EXT12 structure
- * @param value
+ * @param tas
  */
-ASTERIX_API void set_I021_295_EXT12_TAS(I021_295_EXT12 * item, const double value);
+ASTERIX_API void set_I021_295_EXT12_TAS(I021_295_EXT12 * item, double tas);
 
 /* =============================== SUBFIELD 13 ============================== */
 
@@ -1275,9 +1285,9 @@ ASTERIX_API void set_I021_295_EXT12_TAS(I021_295_EXT12 * item, const double valu
  * @brief
  * 
  * @param item pointer to I021_295_EXT13 structure
- * @param value
+ * @param mh
  */
-ASTERIX_API void set_I021_295_EXT13_MH(I021_295_EXT13 * item, const double value);
+ASTERIX_API void set_I021_295_EXT13_MH(I021_295_EXT13 * item, double mh);
 
 /* =============================== SUBFIELD 14 ============================== */
 
@@ -1285,9 +1295,9 @@ ASTERIX_API void set_I021_295_EXT13_MH(I021_295_EXT13 * item, const double value
  * @brief
  * 
  * @param item pointer to I021_295_EXT14 structure
- * @param value
+ * @param bvr
  */
-ASTERIX_API void set_I021_295_EXT14_BVR(I021_295_EXT14 * item, const double value);
+ASTERIX_API void set_I021_295_EXT14_BVR(I021_295_EXT14 * item, double bvr);
 
 /* =============================== SUBFIELD 15 ============================== */
 
@@ -1295,9 +1305,9 @@ ASTERIX_API void set_I021_295_EXT14_BVR(I021_295_EXT14 * item, const double valu
  * @brief
  * 
  * @param item pointer to I021_295_EXT15 structure
- * @param value
+ * @param gvr
  */
-ASTERIX_API void set_I021_295_EXT15_GVR(I021_295_EXT15 * item, const double value);
+ASTERIX_API void set_I021_295_EXT15_GVR(I021_295_EXT15 * item, double gvr);
 
 /* =============================== SUBFIELD 16 ============================== */
 
@@ -1305,9 +1315,9 @@ ASTERIX_API void set_I021_295_EXT15_GVR(I021_295_EXT15 * item, const double valu
  * @brief
  * 
  * @param item pointer to I021_295_EXT16 structure
- * @param value
+ * @param gv
  */
-ASTERIX_API void set_I021_295_EXT16_GV(I021_295_EXT16 * item, const double value);
+ASTERIX_API void set_I021_295_EXT16_GV(I021_295_EXT16 * item, double gv);
 
 /* =============================== SUBFIELD 17 ============================== */
 
@@ -1315,9 +1325,9 @@ ASTERIX_API void set_I021_295_EXT16_GV(I021_295_EXT16 * item, const double value
  * @brief
  * 
  * @param item pointer to I021_295_EXT17 structure
- * @param value
+ * @param tar
  */
-ASTERIX_API void set_I021_295_EXT17_TAR(I021_295_EXT17 * item, const double value);
+ASTERIX_API void set_I021_295_EXT17_TAR(I021_295_EXT17 * item, double tar);
 
 /* =============================== SUBFIELD 18 ============================== */
 
@@ -1325,9 +1335,9 @@ ASTERIX_API void set_I021_295_EXT17_TAR(I021_295_EXT17 * item, const double valu
  * @brief
  * 
  * @param item pointer to I021_295_EXT18 structure
- * @param value
+ * @param tid
  */
-ASTERIX_API void set_I021_295_EXT18_TID(I021_295_EXT18 * item, const double value);
+ASTERIX_API void set_I021_295_EXT18_TID(I021_295_EXT18 * item, double tid);
 
 /* =============================== SUBFIELD 19 ============================== */
 
@@ -1335,9 +1345,9 @@ ASTERIX_API void set_I021_295_EXT18_TID(I021_295_EXT18 * item, const double valu
  * @brief
  * 
  * @param item pointer to I021_295_EXT19 structure
- * @param value
+ * @param ts
  */
-ASTERIX_API void set_I021_295_EXT19_TS(I021_295_EXT19 * item, const double value);
+ASTERIX_API void set_I021_295_EXT19_TS(I021_295_EXT19 * item, double ts);
 
 /* =============================== SUBFIELD 20 ============================== */
 
@@ -1345,9 +1355,9 @@ ASTERIX_API void set_I021_295_EXT19_TS(I021_295_EXT19 * item, const double value
  * @brief
  * 
  * @param item pointer to I021_295_EXT20 structure
- * @param value
+ * @param met
  */
-ASTERIX_API void set_I021_295_EXT20_MET(I021_295_EXT20 * item, const double value);
+ASTERIX_API void set_I021_295_EXT20_MET(I021_295_EXT20 * item, double met);
 
 /* =============================== SUBFIELD 21 ============================== */
 
@@ -1355,9 +1365,9 @@ ASTERIX_API void set_I021_295_EXT20_MET(I021_295_EXT20 * item, const double valu
  * @brief
  * 
  * @param item pointer to I021_295_EXT21 structure
- * @param value
+ * @param roa
  */
-ASTERIX_API void set_I021_295_EXT21_ROA(I021_295_EXT21 * item, const double value);
+ASTERIX_API void set_I021_295_EXT21_ROA(I021_295_EXT21 * item, double roa);
 
 /* =============================== SUBFIELD 22 ============================== */
 
@@ -1365,9 +1375,9 @@ ASTERIX_API void set_I021_295_EXT21_ROA(I021_295_EXT21 * item, const double valu
  * @brief
  * 
  * @param item pointer to I021_295_EXT22 structure
- * @param value
+ * @param ara
  */
-ASTERIX_API void set_I021_295_EXT22_ARA(I021_295_EXT22 * item, const double value);
+ASTERIX_API void set_I021_295_EXT22_ARA(I021_295_EXT22 * item, double ara);
 
 /* =============================== SUBFIELD 23 ============================== */
 
@@ -1375,9 +1385,39 @@ ASTERIX_API void set_I021_295_EXT22_ARA(I021_295_EXT22 * item, const double valu
  * @brief
  * 
  * @param item pointer to I021_295_EXT23 structure
- * @param value
+ * @param scc
  */
-ASTERIX_API void set_I021_295_EXT23_SCC(I021_295_EXT23 * item, const double value);
+ASTERIX_API void set_I021_295_EXT23_SCC(I021_295_EXT23 * item, double scc);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_295(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_295(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

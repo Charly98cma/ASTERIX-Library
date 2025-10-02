@@ -27,7 +27,7 @@ extern "C" {
 
 /**
  * @typedef I021_131
- * @brief Category 021 Item 131 - High-Resolution Position in WGS-84 Co-ordinates
+ * @brief Category 021 / Item 131 - High-Resolution Position in WGS-84 Co-ordinates
  * 
  * High-Resolution Position in WGS-84 Co-ordinates
  */
@@ -88,7 +88,7 @@ ASTERIX_API double get_I021_131_LON(const I021_131 * item);
  * @param item Pointer to I021_131 structure
  * @param lan New high-resolution latitude value in degrees's (see LSB)
  */
-ASTERIX_API void set_I021_131_LAT(I021_131 * item, const double lat);
+ASTERIX_API void set_I021_131_LAT(I021_131 * item, double lat);
 
 /**
  * @brief Set the new Longitude in High-Resolution Position in WGS-84
@@ -97,7 +97,37 @@ ASTERIX_API void set_I021_131_LAT(I021_131 * item, const double lat);
  * @param item Pointer to I021_131 structure
  * @param lan New high-resolution longitude value in degrees's (see LSB)
  */
-ASTERIX_API void set_I021_131_LON(I021_131 * item, const double lon);
+ASTERIX_API void set_I021_131_LON(I021_131 * item, double lon);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_131(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_131(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

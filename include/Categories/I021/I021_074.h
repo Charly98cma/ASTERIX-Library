@@ -69,27 +69,21 @@ typedef struct I021_074 {
  * @brief Get Full Second Indication (FSI) value from I021/074.
  *
  * @param item Pointer to I021_074 structure.
- * @return uint32_t FSI value (0: I021/073, 1: I021/073+1 sec, 2: I021/073-1 sec, 3: Reserved).
+ * @return uint8_t FSI value (0: I021/073,
+ *                            1: I021/073+1 sec;
+ *                            2: I021/073-1 sec;
+ *                            3: Reserved).
  */
 ASTERIX_API uint8_t get_I021_074_FSI(const I021_074 * item);
-
-/**
- * @brief Get Time of Message Reception of Position–High Precision (TMRP_HP)
- *        raw value from I021/074.
- *
- * @param item Pointer to I021_074 structure.
- * @return uint32_t TMRP_HP value (number of 1/2^30 seconds jumps)
- */
-ASTERIX_API uint32_t get_I021_074_TMRP_HP_raw(const I021_074 * item);
 
 /**
  * @brief Get Time of Message Reception of Position–High Precision (TMRP_HP)
  *        value in seconds from I021/074.
  *
  * @param item Pointer to I021_074 structure.
- * @return uint32_t TMRP_HP value (in seconds).
+ * @return double TMRP_HP value (in seconds).
  */
-ASTERIX_API double get_I021_074_TMRP_HP_seconds(const I021_074 * item);
+ASTERIX_API double get_I021_074_TMRP_HP(const I021_074 * item);
 
 /*******************************************************************************
  * Setters
@@ -101,27 +95,46 @@ ASTERIX_API double get_I021_074_TMRP_HP_seconds(const I021_074 * item);
  * @param item Pointer to I021_074 structure.
  * @param raw_value Raw 2-bit to store.
  */
-ASTERIX_API void set_I021_074_FSI(I021_074 * item, const uint8_t raw_value);
-
-/**
- * @brief Set the Time of Message Reception of Position–High Precision (TMRP_HP)
- *        raw value into I021/074.
- *
- * Stores the 30-bit value into the raw array.
- *
- * @param item Pointer to I021_074 structure.
- * @param raw_value Raw 30-bit time value to store (units of 1/2^30 seconds).
- */
-ASTERIX_API void set_I021_074_TMRP_HP_raw(I021_074 * item, const uint32_t raw_value);
+ASTERIX_API void set_I021_074_FSI(I021_074 * item, uint8_t fsi);
 
 /**
  * @brief Set the Time of Message Reception of Position–High Precision (TMRP_HP)
  *        value in seconds into I021/074.
  *
  * @param item Pointer to I021_074 structure.
- * @param seconds Time in seconds (will be converted to 1/2^30 second units)
+ * @param tmrp_hp_seconds Time in seconds (will be converted to 1/2^30 second units)
  */
-ASTERIX_API void set_I021_074_TMRP_HP_seconds(I021_074 * item, const double seconds);
+ASTERIX_API void set_I021_074_TMRP_HP(I021_074 * item, double tmrp_hp_seconds);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_074(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_074(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

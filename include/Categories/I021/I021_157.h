@@ -25,7 +25,7 @@ extern "C" {
 
 /**
  * @typedef I021_157
- * @brief Category 021 Item 157 - Geometric Vertical Rate
+ * @brief Category 021 / Item 157 - Geometric Vertical Rate
  * 
  * Geometric Vertical Rate, in two's complement form, with reference to WGS-84
  * 
@@ -98,16 +98,46 @@ ASTERIX_API double get_I021_157_GVR(const I021_157 * item);
  * @param item Pointer to I021_157 structure
  * @param re New RE indicator (0: within range, 1: exceeds range)
  */
-ASTERIX_API void set_I021_157_RE(I021_157 * item, const uint8_t re);
+ASTERIX_API void set_I021_157_RE(I021_157 * item, uint8_t re);
 
 /**
  * @brief Set the given Geometric Vertical Rate (GVR) value (see LSB) into
  *        I021/157
  * 
  * @param item Pointer to I021_157 structure
- * @param GVR New GVR in feets/minute (see LSB)
+ * @param gvr_ftpmin New GVR in feets/minute (see LSB)
  */
-ASTERIX_API void set_I021_157_GVR(I021_157 * item, const double GVR);
+ASTERIX_API void set_I021_157_GVR(I021_157 * item, double gvr_ftpmin);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_157(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_157(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

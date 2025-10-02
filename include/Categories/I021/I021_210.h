@@ -23,7 +23,7 @@ extern "C" {
 
 /**
  * @typedef I021_210
- * @brief Category 021 Item 210 - MOPS Version
+ * @brief Category 021 / Item 210 - MOPS Version
  * 
  * Identification of the MOPS version used by a/c to supply ADS-B information
  * 
@@ -123,7 +123,7 @@ ASTERIX_API uint8_t get_I021_210_LTT(const I021_210 * item);
  * @param item pointer to I021_210 structure
  * @param vns new Version Not Supported value to write
  */
-ASTERIX_API void set_I021_210_VNS(I021_210 * item, const uint8_t vns);
+ASTERIX_API void set_I021_210_VNS(I021_210 * item, uint8_t vns);
 
 /**
  * @brief Set the new value of Version Number (VN) into I021/210
@@ -131,7 +131,7 @@ ASTERIX_API void set_I021_210_VNS(I021_210 * item, const uint8_t vns);
  * @param item pointer to I021_210 structure
  * @param vn new Version Number value to write
  */
-ASTERIX_API void set_I021_210_VN(I021_210 * item, const uint8_t vn);
+ASTERIX_API void set_I021_210_VN(I021_210 * item, uint8_t vn);
 
 /**
  * @brief Set the new value of Link Technology Type (LTS) into I021/210
@@ -139,7 +139,37 @@ ASTERIX_API void set_I021_210_VN(I021_210 * item, const uint8_t vn);
  * @param item pointer to I021_210 structure
  * @param ltt new Link Technology Type value to write
  */
-ASTERIX_API void set_I021_210_LTT(I021_210 * item, const uint8_t ltt);
+ASTERIX_API void set_I021_210_LTT(I021_210 * item, uint8_t ltt);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_210(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_210(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

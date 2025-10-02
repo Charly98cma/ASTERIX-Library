@@ -107,7 +107,10 @@ ASTERIX_API uint8_t get_I021_008_RA(const I021_008 * item);
  * Portable access to the TC bit, independent of compiler and endianness.
  * 
  * @param item Pointer to I021_008 structure.
- * @return uint8_t Value of TC (0: no capability, 1: TC+0 reports only, 2: multiple TC reports, 3: reserved)
+ * @return uint8_t Value of TC (0: no capability,
+ *                              1: TC+0 reports only,
+ *                              2: multiple TC reports,
+ *                              3: reserved)
  */
 ASTERIX_API uint8_t get_I021_008_TC(const I021_008 * item);
 
@@ -132,7 +135,8 @@ ASTERIX_API uint8_t get_I021_008_TS(const I021_008 * item);
 ASTERIX_API uint8_t get_I021_008_ARV(const I021_008 * item);
 
 /**
- * @brief Get the Cockpit Display of Traffic Information airborne (CDTI) from I021/008.
+ * @brief Get the Cockpit Display of Traffic Information airborne (CDTI)
+ *        from I021/008.
  * 
  * Portable access to the CDTI bit, independent of compiler and endianness.
  * 
@@ -172,15 +176,16 @@ ASTERIX_API uint8_t get_I021_008_SA(const I021_008 * item);
  * @param item Pointer to I021_008 structure.
  * @param value Value of RA
  */
-ASTERIX_API void set_I021_008_RA(I021_008 * item, const uint8_t ra);
+ASTERIX_API void set_I021_008_RA(I021_008 * item, uint8_t ra);
 
 /**
- * @brief Set the Target Trajectory Change Report Capability (TC) into the raw field.
+ * @brief Set the Target Trajectory Change Report Capability (TC) into the
+ *        raw field.
  * 
  * @param item Pointer to I021_008 structure.
  * @param value Value of TC
  */
-ASTERIX_API void set_I021_008_TC(I021_008 * item, const uint8_t tc);
+ASTERIX_API void set_I021_008_TC(I021_008 * item, uint8_t tc);
 
 /**
  * @brief Set the Target State Report Capability (TS) into the raw field.
@@ -188,23 +193,25 @@ ASTERIX_API void set_I021_008_TC(I021_008 * item, const uint8_t tc);
  * @param item Pointer to I021_008 structure.
  * @param value Value of TS
  */
-ASTERIX_API void set_I021_008_TS(I021_008 * item, const uint8_t ts);
+ASTERIX_API void set_I021_008_TS(I021_008 * item, uint8_t ts);
 
 /**
- * @brief Set the Air-Referenced Velocity Report Capability (ARV) into the raw field.
+ * @brief Set the Air-Referenced Velocity Report Capability (ARV) into the
+ *        raw field.
  * 
  * @param item Pointer to I021_008 structure.
  * @param value Value of ARV
  */
-ASTERIX_API void set_I021_008_ARV(I021_008 * item, const uint8_t arv);
+ASTERIX_API void set_I021_008_ARV(I021_008 * item, uint8_t arv);
 
 /**
- * @brief Set the Cockpit Display of Traffic Information airborne (CDTI) into the raw field.
+ * @brief Set the Cockpit Display of Traffic Information airborne (CDTI)
+ *        into the raw field.
  * 
  * @param item Pointer to I021_008 structure.
  * @param value Value of CDTI
  */
-ASTERIX_API void set_I021_008_CDTI(I021_008 * item, const uint8_t cdti);
+ASTERIX_API void set_I021_008_CDTI(I021_008 * item, uint8_t cdti);
 
 /**
  * @brief Set the Not TCAS System Status (NTCAS) into the raw field.
@@ -212,7 +219,7 @@ ASTERIX_API void set_I021_008_CDTI(I021_008 * item, const uint8_t cdti);
  * @param item Pointer to I021_008 structure.
  * @param value Value of NTCAS
  */
-ASTERIX_API void set_I021_008_NTCAS(I021_008 * item, const uint8_t ntcas);
+ASTERIX_API void set_I021_008_NTCAS(I021_008 * item, uint8_t ntcas);
 
 /**
  * @brief Set the Single Antenna (SA) into the raw field.
@@ -220,7 +227,37 @@ ASTERIX_API void set_I021_008_NTCAS(I021_008 * item, const uint8_t ntcas);
  * @param item Pointer to I021_008 structure.
  * @param value Value of SA
  */
-ASTERIX_API void set_I021_008_SA(I021_008 * item, const uint8_t sa);
+ASTERIX_API void set_I021_008_SA(I021_008 * item, uint8_t sa);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_008(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_008(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

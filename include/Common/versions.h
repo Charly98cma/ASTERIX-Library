@@ -10,17 +10,27 @@
 extern "C" {
 #endif
 
-/* Category 021 - ADS-B Target Reports */
-#ifndef CAT021_ED
-    #define CAT021_ED   2
-#endif // CAT021_ED
-#ifndef CAT021_VN 
-    #define CAT021_VN   7
-#endif // CAT021_VN
+/* ================== Category 021 - ADS-B Target Reports ================== */
+
+#ifndef EDITION_NUMBER_I021
+    #define EDITION_NUMBER_I021   2
+#endif /* EDITION_NUMBER_I021 */
+#ifndef VERSION_NUMBER_I021 
+    #define VERSION_NUMBER_I021   7
+#endif /* VERSION_NUMBER_I021 */
+
+#ifndef EDITION_NUMBER_I021_RE
+    #define EDITION_NUMBER_I021_RE   2
+#endif /* EDITION_NUMBER_I021_RE */
+#ifndef VERSION_NUMBER_I021_RE
+    #define VERSION_NUMBER_I021_RE   2
+#endif /* VERSION_NUMBER_I021_RE */
+
+/* ========================================================================= */
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // VERSIONS_H
+#endif /* VERSIONS_H */

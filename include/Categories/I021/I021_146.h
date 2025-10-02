@@ -25,7 +25,7 @@ extern "C" {
 
  /**
  * @typedef I021_146
- * @brief Category 021 Item 146 - Flight Level
+ * @brief Category 021 / Item 146 - Flight Level
  * 
  * The Selected Altitude as provided by the avionics and
  * corresponding either to the MCP/FCU Selected Altitude (the ATC
@@ -35,7 +35,7 @@ extern "C" {
 typedef struct I021_146 {
     union {
         /// @brief Raw octets as received (recommended for portable access)
-        uint16_t raw;
+        uint8_t raw[2];
 
         /**
          * @note Bit-field layout is compiler and endianness dependent.
@@ -113,7 +113,7 @@ ASTERIX_API int32_t get_I021_146_ALT(const I021_146 * item);
  * @param item Pointer to I021_146 structure
  * @param value New SAS value
  */
-ASTERIX_API void set_I021_146_SAS(I021_146 * item, const uint8_t sas);
+ASTERIX_API void set_I021_146_SAS(I021_146 * item, uint8_t sas);
 
 /**
  * @brief Set the given altitude Source (SRC) value into
@@ -122,7 +122,7 @@ ASTERIX_API void set_I021_146_SAS(I021_146 * item, const uint8_t sas);
  * @param item Pointer to I021_146 structure
  * @param value New SRC value (see values correspondance)
  */
-ASTERIX_API void set_I021_146_SRC(I021_146 * item, const uint8_t src);
+ASTERIX_API void set_I021_146_SRC(I021_146 * item, uint8_t src);
 
 /**
  * @brief Set the given Altitude (ALT) value (LSB = 25 ft) into
@@ -132,6 +132,36 @@ ASTERIX_API void set_I021_146_SRC(I021_146 * item, const uint8_t src);
  * @param value New ALT value (LSB = 25 ft)
  */
 ASTERIX_API void set_I021_146_ALT(I021_146 * item, const int32_t alt);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_146(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_146(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

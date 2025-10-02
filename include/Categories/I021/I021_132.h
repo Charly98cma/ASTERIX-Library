@@ -25,7 +25,7 @@ extern "C" {
 
 /**
  * @typedef I021_132
- * @brief Category 021 Item 132 - Message Amplitude
+ * @brief Category 021 / Item 132 - Message Amplitude
  * 
  * Amplitude, in dBm, of ADS-B messages received by the ground  station,
  * coded in two's complement.
@@ -68,9 +68,39 @@ ASTERIX_API uint8_t get_I021_132_MAM(const I021_132 * item);
  * @brief Set the Message Amplitude (MAM) new value into I021/131 
  * 
  * @param item Pointer to I021_132 structure
- * @param value New MAM value in dBm's (LSB = 1 dBm)
+ * @param mam_dBm New MAM value in dBm's (LSB = 1 dBm)
  */
-ASTERIX_API void set_I021_132_MAM(I021_132 * item, const uint8_t value);
+ASTERIX_API void set_I021_132_MAM(I021_132 * item, uint8_t mam_dBm);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_132(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_132(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

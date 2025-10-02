@@ -56,16 +56,6 @@ typedef struct I021_073 {
  ******************************************************************************/
 
 /**
- * @brief Get Time of Message Reception for Position raw value from I021/073.
- *
- * Combines the 3 raw bytes into a 24-bit unsigned integer.
- *
- * @param item Pointer to I021_073 structure.
- * @return uint32_t Time in units of 1/128 s (0 = midnight).
- */
-ASTERIX_API uint32_t get_I021_073_TMRP_raw(const I021_073 * item);
-
-/**
  * @brief Get the Time of Message Reception for Position in seconds (floating-point)
  *        from I021/073.
  *
@@ -74,21 +64,11 @@ ASTERIX_API uint32_t get_I021_073_TMRP_raw(const I021_073 * item);
  * @param item Pointer to I021_073 structure.
  * @return double Time in seconds (>= 0).
  */
-ASTERIX_API double get_I021_073_TMRP_seconds(const I021_073 * item);
+ASTERIX_API double get_I021_073_TMRP(const I021_073 * item);
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
-
-/**
- * @brief Set the Time of Message Reception for Position raw value into I021/073.
- *
- * Stores the 24-bit value into the raw array.
- *
- * @param item Pointer to I021_073 structure.
- * @param raw_value Raw 24-bit time value to store (units of 1/128 s).
- */
-ASTERIX_API void set_I021_073_TMRP_raw(I021_073 * item, const uint32_t raw_value);
 
 /**
  * @brief Set the Time of Message Reception for Position in seconds into I021/073.
@@ -98,7 +78,37 @@ ASTERIX_API void set_I021_073_TMRP_raw(I021_073 * item, const uint32_t raw_value
  * @param item Pointer to I021_073 structure.
  * @param seconds Time in seconds (will be converted to 1/128-s units).
  */
-ASTERIX_API void set_I021_073_TMRP_seconds(I021_073 * item, const double seconds);
+ASTERIX_API void set_I021_073_TMRP(I021_073 * item, double seconds);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_073(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_073(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

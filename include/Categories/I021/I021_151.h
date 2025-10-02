@@ -26,7 +26,7 @@ extern "C" {
 
 /**
  * @typedef I021_151
- * @brief Category 021 Item 151 - True Air Speed
+ * @brief Category 021 / Item 151 - True Air Speed
  * 
  * True Air Speed.
  * 
@@ -40,7 +40,7 @@ extern "C" {
 typedef struct I021_151 {
     union {
         /// @brief Raw octets as received (recommended for portable access)
-        uint16_t raw;
+        uint8_t raw[2];
 
         /**
          * @note Bit-field layout is compiler and endianness dependent.
@@ -99,16 +99,46 @@ ASTERIX_API uint16_t get_I021_151_TAS(const I021_151 * item);
  * @param item Pointer to I021_151 structure
  * @param re New RE indicator (0: within range, 1: exceeds range)
  */
-ASTERIX_API void set_I021_151_RE(I021_151 * item, const uint8_t re);
+ASTERIX_API void set_I021_151_RE(I021_151 * item, uint8_t re);
 
 /**
  * @brief Set the given True Air Speed (TAS) value (LSB = 1 knot) into
  *        I021/151
  * 
  * @param item Pointer to I021_151 structure
- * @param tas New True Air Speed in knots
+ * @param tas_kts New True Air Speed in knots
  */
-ASTERIX_API void set_I021_151_TAS(I021_151 * item, const uint16_t tas);
+ASTERIX_API void set_I021_151_TAS(I021_151 * item, uint16_t tas_kts);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_151(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_151(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

@@ -49,24 +49,24 @@ const char* current_time_str(char* buffer, size_t size) {
  * 
  */
 void log_message(int level, const char* color, const char* tag, const char* fmt, ...) {
-    // Only logging messages with equal or greater criticality
+    /* Only logging messages with equal or greater criticality */
     if (level < LOG_LEVEL) return;
 
-    // Arguments list
+    /* Arguments list */
     va_list args;
 
-    // Get timestamp (multi-thread safe)
+    /* Get timestamp (multi-thread safe) */
     char timestamp[20]; 
     current_time_str(timestamp, sizeof(timestamp));
 
-    // Write log message to stderr
+    /* Write log message to stderr */
     va_start(args, fmt);
     fprintf(stderr, "%s[%s] [%s] ", color, timestamp, tag);
     vfprintf(stderr, fmt, args);
     fprintf(stderr, "%s\n", COLOR_RESET);
     va_end(args);
 
-    // Write log to file if configured previously
+    /* Write log to file if configured previously */
     if (log_output_file) {
         va_start(args, fmt);
         fprintf(log_output_file, "[%s] [%s] ", timestamp, tag);

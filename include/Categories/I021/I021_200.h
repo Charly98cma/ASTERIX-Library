@@ -23,7 +23,7 @@ extern "C" {
 
 /**
  * @typedef I021_200
- * @brief Category 021 Item 200 - Target Status
+ * @brief Category 021 / Item 200 - Target Status
  * 
  * Status of the target
  */
@@ -159,7 +159,7 @@ ASTERIX_API uint8_t get_I021_200_SS(const I021_200 * item);
  * @param icf new value to write into the item (0: No intent change active;
  *                                              1: Intent change flag raised)
  */
-ASTERIX_API void set_I021_200_ICF(I021_200 * item, const uint8_t icf);
+ASTERIX_API void set_I021_200_ICF(I021_200 * item, uint8_t icf);
 
 /**
  * @brief Set the new Lateral NAVigation Mode (LNAV) value into I021/200 
@@ -168,7 +168,7 @@ ASTERIX_API void set_I021_200_ICF(I021_200 * item, const uint8_t icf);
  * @param lnav new value to write into the item (0: LNAV Mode engaged;
  *                                               1: LNAV Mode not engaged)
  */
-ASTERIX_API void set_I021_200_LNAV(I021_200 * item, const uint8_t lnav);
+ASTERIX_API void set_I021_200_LNAV(I021_200 * item, uint8_t lnav);
 
 /**
  * @brief Set the new Military Emergency (ME) value into I021/200 
@@ -176,7 +176,7 @@ ASTERIX_API void set_I021_200_LNAV(I021_200 * item, const uint8_t lnav);
  * @param item pointer to I021_200 structure
  * @param me new value to write into the item (0: No emergency; 1: Emergency)
  */
-ASTERIX_API void set_I021_200_ME(I021_200 * item, const uint8_t me);
+ASTERIX_API void set_I021_200_ME(I021_200 * item, uint8_t me);
 
 /**
  * @brief Set the new Priority Status (PS) value into I021/200 
@@ -190,7 +190,7 @@ ASTERIX_API void set_I021_200_ME(I021_200 * item, const uint8_t me);
  *                                             5: Unlawful interference;
  *                                             6: “Downed” Aircraft)
  */
-ASTERIX_API void set_I021_200_PS(I021_200 * item, const uint8_t ps);
+ASTERIX_API void set_I021_200_PS(I021_200 * item, uint8_t ps);
 
 /**
  * @brief Set the new Surveillance Status (SS) value into I021/200 
@@ -204,7 +204,37 @@ ASTERIX_API void set_I021_200_PS(I021_200 * item, const uint8_t ps);
                                                   than emergency);
  *                                             3: SPI set)
  */
-ASTERIX_API void set_I021_200_SS(I021_200 * item, const uint8_t ss);
+ASTERIX_API void set_I021_200_SS(I021_200 * item, uint8_t ss);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_200(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_200(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

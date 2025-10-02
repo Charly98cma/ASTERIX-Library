@@ -263,73 +263,73 @@ ASTERIX_API uint8_t get_I021_110_EXT2_REP(const I021_110_EXT2 * item);
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint8_t get_I021_110_EXT2_TCA(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API uint8_t get_I021_110_EXT2_TCA(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint8_t get_I021_110_EXT2_NC(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API uint8_t get_I021_110_EXT2_NC(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint8_t get_I021_110_EXT2_TCP_NUM(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API uint8_t get_I021_110_EXT2_TCP_NUM(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API int32_t get_I021_110_EXT2_ALT(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API int32_t get_I021_110_EXT2_ALT(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API double get_I021_110_EXT2_LAT(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API double get_I021_110_EXT2_LAT(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API double get_I021_110_EXT2_LON(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API double get_I021_110_EXT2_LON(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint8_t get_I021_110_EXT2_TYPE(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API uint8_t get_I021_110_EXT2_TYPE(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint8_t get_I021_110_EXT2_TD(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API uint8_t get_I021_110_EXT2_TD(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint8_t get_I021_110_EXT2_TRA(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API uint8_t get_I021_110_EXT2_TRA(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint8_t get_I021_110_EXT2_TOA(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API uint8_t get_I021_110_EXT2_TOA(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API uint32_t get_I021_110_EXT2_TOV(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API uint32_t get_I021_110_EXT2_TOV(const I021_110_EXT2 * item, uint8_t index);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API double get_I021_110_EXT2_TTR(const I021_110_EXT2 * item, const uint8_t index);
+ASTERIX_API double get_I021_110_EXT2_TTR(const I021_110_EXT2 * item, uint8_t index);
 
 /*******************************************************************************
  * Setters
@@ -342,113 +342,143 @@ ASTERIX_API double get_I021_110_EXT2_TTR(const I021_110_EXT2 * item, const uint8
 /**
  * 
  */
-ASTERIX_API void set_I021_110_TIS(I021_110 * item, uint8_t value);
+ASTERIX_API void set_I021_110_TIS(I021_110 * item, uint8_t tis);
 
 /**
  * 
  */
-ASTERIX_API void set_I021_110_TID(I021_110 * item, uint8_t value);
+ASTERIX_API void set_I021_110_TID(I021_110 * item, uint8_t tid);
 
 /**
  * 
  */
-ASTERIX_API void set_I021_110_FX(I021_110 * item, uint8_t value);
+ASTERIX_API void set_I021_110_FX(I021_110 * item, uint8_t fx);
 
 /* ============================= FIRST EXTENSION ============================ */
 
 /**
  * 
  */
-ASTERIX_API void set_I021_110_EXT1_NAV(I021_110_EXT1 * item, uint8_t value);
+ASTERIX_API void set_I021_110_EXT1_NAV(I021_110_EXT1 * item, uint8_t nav);
 
 /**
  * 
  */
-ASTERIX_API void set_I021_110_EXT1_NVB(I021_110_EXT1 * item, uint8_t value);
+ASTERIX_API void set_I021_110_EXT1_NVB(I021_110_EXT1 * item, uint8_t nvb);
 
 /**
  * 
  */
-ASTERIX_API void set_I021_110_EXT1_FX(I021_110_EXT1 * item, uint8_t value);
+ASTERIX_API void set_I021_110_EXT1_FX(I021_110_EXT1 * item, uint8_t fx);
 
 /* ============================ SECOND EXTENSION ============================ */
 
 /**
  * 
  */
-ASTERIX_API void set_I021_110_EXT2_REP(I021_110_EXT2 * item, uint8_t value);
+ASTERIX_API void set_I021_110_EXT2_REP(I021_110_EXT2 * item, uint8_t rep);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_TCA(I021_110_EXT2 * item, const uint8_t index, uint8_t value);
+ASTERIX_API void set_I021_110_EXT2_TCA(I021_110_EXT2 * item, uint8_t index, uint8_t tca);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_NC(I021_110_EXT2 * item, const uint8_t index, uint8_t value);
+ASTERIX_API void set_I021_110_EXT2_NC(I021_110_EXT2 * item, uint8_t index, uint8_t nc);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_TCP_NUM(I021_110_EXT2 * item, const uint8_t index, uint8_t value);
+ASTERIX_API void set_I021_110_EXT2_TCP_NUM(I021_110_EXT2 * item, uint8_t index, uint8_t num);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_ALT(I021_110_EXT2 * item, const uint8_t index, double value);
+ASTERIX_API void set_I021_110_EXT2_ALT(I021_110_EXT2 * item, uint8_t index, double alt);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_LAT(I021_110_EXT2 * item, const uint8_t index, uint32_t value);
+ASTERIX_API void set_I021_110_EXT2_LAT(I021_110_EXT2 * item, uint8_t index, uint32_t lat);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_LON(I021_110_EXT2 * item, const uint8_t index, uint32_t value);
+ASTERIX_API void set_I021_110_EXT2_LON(I021_110_EXT2 * item, uint8_t index, uint32_t lon);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_PT(I021_110_EXT2 * item, const uint8_t index, uint8_t value);
+ASTERIX_API void set_I021_110_EXT2_PT(I021_110_EXT2 * item, uint8_t index, uint8_t pt);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_TD(I021_110_EXT2 * item, const uint8_t index, uint8_t value);
+ASTERIX_API void set_I021_110_EXT2_TD(I021_110_EXT2 * item, uint8_t index, uint8_t td);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_TRA(I021_110_EXT2 * item, const uint8_t index, uint8_t value);
+ASTERIX_API void set_I021_110_EXT2_TRA(I021_110_EXT2 * item, uint8_t index, uint8_t tra);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_TOA(I021_110_EXT2 * item, const uint8_t index, uint8_t value);
+ASTERIX_API void set_I021_110_EXT2_TOA(I021_110_EXT2 * item, uint8_t index, uint8_t toa);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_TOV(I021_110_EXT2 * item, const uint8_t index, uint32_t value);
+ASTERIX_API void set_I021_110_EXT2_TOV(I021_110_EXT2 * item, uint8_t index, uint32_t tov);
 
 /**
  * 
  * @param index Index of the Trajectoty Intent Data point (up-to 14 points, from 0 to 14)
  */
-ASTERIX_API void set_I021_110_EXT2_TTR(I021_110_EXT2 * item, const uint8_t index, double value);
+ASTERIX_API void set_I021_110_EXT2_TTR(I021_110_EXT2 * item, uint8_t index, double ttr);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_110(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_110(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

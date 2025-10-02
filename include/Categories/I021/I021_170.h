@@ -29,7 +29,7 @@ extern "C" {
 
 /**
  * @typedef I021_170
- * @brief Category 021 Item 170 - Target Identification
+ * @brief Category 021 / Item 170 - Target Identification
  * 
  * Target (aircraft or vehicle) identification in 8 characters, as reported
  * by the target.
@@ -78,10 +78,10 @@ typedef struct I021_170 {
  * @brief Get the Target Identification string from I021/170
  * 
  * @param item pointer to I021_170 structure
- * @param str pointer to return the Target Identification string
+ * @param code_out_str 6 chars pointer to return the Target Identification string
  */
 ASTERIX_API void get_I021_170_TI(const I021_170 * item,
-                                       unsigned char * str);
+                                 unsigned char * code_out_str);
 
 /*******************************************************************************
  * Setters
@@ -91,9 +91,40 @@ ASTERIX_API void get_I021_170_TI(const I021_170 * item,
  * @brief Set the given Target Identification string into I021/170
  * 
  * @param item pointer to I021_170 structure
- * @param str pointer to Target Identification string to write
+ * @param code_in_str 6-char pointer to the Target Identification string to write
  */
-ASTERIX_API void set_I021_170_TI(I021_170 * item, const unsigned char * str);
+ASTERIX_API void set_I021_170_TI(I021_170 * item,
+                                 const unsigned char * code_in_str);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_170(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_170(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

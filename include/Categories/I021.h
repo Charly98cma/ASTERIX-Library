@@ -6,15 +6,125 @@
 #ifndef I021_H
 #define I021_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "Common/constants.h"
 #include "Categories/Header.h"
 #include "Categories/SAC_SIC.h"
+
+#include "Categories/I021/I021_008.h"
+#include "Categories/I021/I021_010.h"
+#include "Categories/I021/I021_015.h"
+#include "Categories/I021/I021_016.h"
+#include "Categories/I021/I021_020.h"
+#include "Categories/I021/I021_040.h"
+#include "Categories/I021/I021_070.h"
+#include "Categories/I021/I021_071.h"
+#include "Categories/I021/I021_072.h"
+#include "Categories/I021/I021_073.h"
+#include "Categories/I021/I021_074.h"
+#include "Categories/I021/I021_075.h"
+#include "Categories/I021/I021_076.h"
+#include "Categories/I021/I021_077.h"
+#include "Categories/I021/I021_080.h"
+#include "Categories/I021/I021_090.h"
+#include "Categories/I021/I021_110.h"
+#include "Categories/I021/I021_130.h"
+#include "Categories/I021/I021_131.h"
+#include "Categories/I021/I021_132.h"
+#include "Categories/I021/I021_140.h"
+#include "Categories/I021/I021_145.h"
+#include "Categories/I021/I021_146.h"
+#include "Categories/I021/I021_148.h"
+#include "Categories/I021/I021_150.h"
+#include "Categories/I021/I021_151.h"
+#include "Categories/I021/I021_152.h"
+#include "Categories/I021/I021_155.h"
+#include "Categories/I021/I021_157.h"
+#include "Categories/I021/I021_160.h"
+#include "Categories/I021/I021_161.h"
+#include "Categories/I021/I021_165.h"
+#include "Categories/I021/I021_170.h"
+#include "Categories/I021/I021_200.h"
+#include "Categories/I021/I021_210.h"
+#include "Categories/I021/I021_220.h"
+#include "Categories/I021/I021_230.h"
+#include "Categories/I021/I021_250.h"
+#include "Categories/I021/I021_260.h"
+#include "Categories/I021/I021_271.h"
+#include "Categories/I021/I021_295.h"
+#include "Categories/I021/I021_400.h"
+#include "Categories/I021/I021_RE.h"
 
 /*******************************************************************************
  * Macros
  ******************************************************************************/
 
-#define I021_FSPEC_MAX_OCTETS     7       /// FSPEc max. number of octets
+/// @brief FSPEc max. number of octets
+#define I021_FSPEC_MAX_OCTETS         7
+
+/* Index of items on the lookup tables */
+
+#define I021_FSPEC_ITEM010              0
+#define I021_FSPEC_ITEM040              1
+#define I021_FSPEC_ITEM161              2
+#define I021_FSPEC_ITEM015              3
+#define I021_FSPEC_ITEM071              4
+#define I021_FSPEC_ITEM130              5
+#define I021_FSPEC_ITEM131              6
+
+#define I021_FSPEC_ITEM072              7
+#define I021_FSPEC_ITEM150              8
+#define I021_FSPEC_ITEM151              9
+#define I021_FSPEC_ITEM080              10
+#define I021_FSPEC_ITEM073              11
+#define I021_FSPEC_ITEM074              12
+#define I021_FSPEC_ITEM075              13
+
+#define I021_FSPEC_ITEM076              14
+#define I021_FSPEC_ITEM140              15
+#define I021_FSPEC_ITEM090              16
+#define I021_FSPEC_ITEM210              17
+#define I021_FSPEC_ITEM070              18
+#define I021_FSPEC_ITEM230              19
+#define I021_FSPEC_ITEM145              20
+
+#define I021_FSPEC_ITEM152              21
+#define I021_FSPEC_ITEM200              22
+#define I021_FSPEC_ITEM155              23
+#define I021_FSPEC_ITEM157              24
+#define I021_FSPEC_ITEM160              25
+#define I021_FSPEC_ITEM165              26
+#define I021_FSPEC_ITEM077              27
+
+#define I021_FSPEC_ITEM170              28
+#define I021_FSPEC_ITEM020              29
+#define I021_FSPEC_ITEM220              30
+#define I021_FSPEC_ITEM146              31
+#define I021_FSPEC_ITEM148              32
+#define I021_FSPEC_ITEM110              33
+#define I021_FSPEC_ITEM016              34
+
+#define I021_FSPEC_ITEM008              35
+#define I021_FSPEC_ITEM271              36
+#define I021_FSPEC_ITEM132              37
+#define I021_FSPEC_ITEM250              38
+#define I021_FSPEC_ITEM260              39
+#define I021_FSPEC_ITEM400              40
+#define I021_FSPEC_ITEM295              41
+
+#define I021_FSPEC_RE                   42
+
+/* Index of Field Extension fields */
+#define I021_FSPEC_FX_1                 1
+#define I021_FSPEC_FX_2                 2
+#define I021_FSPEC_FX_3                 3
+#define I021_FSPEC_FX_4                 4
+#define I021_FSPEC_FX_5                 5
+#define I021_FSPEC_FX_6                 6
+#define I021_FSPEC_FX_7                 7
 
 /*******************************************************************************
  * Structures and Types
@@ -22,7 +132,7 @@
 
 /**
  * @typedef I021_FSPEC
- * @brief FSPEC of CAT021 messages
+ * @brief FSPEC of Category 21 messages
  * 
  * Field Specification Type of CAT021 messages, spanning 7 Bytes
  */
@@ -105,14 +215,137 @@ typedef struct I021_FSPEC {
     };
 } I021_FSPEC;
 
-
 /**
+ * @typedef I021
+ * @brief Category 021 message composed of Header, FSPEC and all items
  * 
+ * This structure contains the Header (CAT and LEN), full FSPEC (all fields,
+ * 7 bytes) and all items present, since no dynamic memory is used, regardless
+ * of the content. Reading the FSPEC is necessary to know which items are used. 
+ * 
+ * @note Accesing item bitfields directly is discouraged, instead use the
+ *       defined getters/setter functions  
  */
-typedef struct cat021_data {
+typedef struct I021 {
     Header header;
     I021_FSPEC fspec;
-    
-} cat021_data_t;
+    struct {
+        I021_008 I021_008;
+        I021_010 I021_010;
+        I021_015 I021_015;
+        I021_016 I021_016;
+        I021_020 I021_020;
+        I021_040 I021_040;
+        I021_070 I021_070;
+        I021_071 I021_071;
+        I021_072 I021_072;
+        I021_073 I021_073;
+        I021_074 I021_074;
+        I021_075 I021_075;
+        I021_076 I021_076;
+        I021_077 I021_077;
+        I021_080 I021_080;
+        I021_090 I021_090;
+        I021_110 I021_110;
+        I021_130 I021_130;
+        I021_131 I021_131;
+        I021_132 I021_132;
+        I021_140 I021_140;
+        I021_145 I021_145;
+        I021_146 I021_146;
+        I021_148 I021_148;
+        I021_150 I021_150;
+        I021_151 I021_151;
+        I021_152 I021_152;
+        I021_155 I021_155;
+        I021_157 I021_157;
+        I021_160 I021_160;
+        I021_161 I021_161;
+        I021_165 I021_165;
+        I021_170 I021_170;
+        I021_200 I021_200;
+        I021_210 I021_210;
+        I021_220 I021_220;
+        I021_230 I021_230;
+        I021_250 I021_250;
+        I021_260 I021_260;
+        I021_271 I021_271;
+        I021_295 I021_295;
+        I021_400 I021_400;
+        I021_RE  I021_RE;
+    } items;
+} I021;
 
-#endif // I021_H
+/*******************************************************************************
+ * FSPEC Getters
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param
+ * @param
+ * 
+ * @return
+ */
+ASTERIX_API uint8_t has_I021_FSPEC_item(const I021_FSPEC * fspec, uint8_t item_number);
+
+/**
+ * @brief
+ * 
+ * @param
+ * @param
+ * 
+ * @return
+ */
+ASTERIX_API uint8_t has_I021_FSPEC_fx(const I021_FSPEC * fspec, uint8_t fx_number);
+
+/*******************************************************************************
+ * FSPEC Setters
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param
+ * @param
+ * 
+ * @return
+ */
+ASTERIX_API void set_I021_FSPEC_item(I021_FSPEC * fspec, uint8_t item_number, uint8_t value);
+
+/**
+ * @brief
+ * 
+ * @param
+ * @param
+ * 
+ * @return
+ */
+ASTERIX_API void set_I021_FSPEC_fx(I021_FSPEC * fspec, uint8_t fx_number, uint8_t value);
+    
+/*******************************************************************************
+ * Encode / Decode functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param
+ * @param
+ */
+ASTERIX_API uint16_t encode_I021(const I021 * msg_in, unsigned char * msg_out);
+
+/**
+ * @brief
+ * 
+ * @param
+ * @param
+ */
+ASTERIX_API uint16_t decode_I021(const unsigned char * msg_in, I021 * msg_out);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* I021_H */

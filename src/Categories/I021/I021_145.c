@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 #include "Common/constants.h"
-#include "Aux_Funcs/bitwise_funcs.h"
+#include "Aux_Funcs/aux_funcs.h"
 
 #include "Categories/I021/I021_145.h"
 
@@ -14,33 +14,51 @@
  * Getters
  ******************************************************************************/
 
-uint16_t get_I021_145_FL_raw(const I021_145 * item) {
-    return GET_BITS(item->raw, 1, MASK_16_BITS);
+int16_t get_I021_145_FL_raw(const I021_145 * item) {
+    return ((item->raw[0] << 8) | (item->raw[1]));
 }
 
 int16_t get_I021_145_FL_feet(const I021_145 * item) {
-    return (int16_t) (get_I021_145_FL_raw(item) * I021_145_LSB_FL);
+    return get_I021_145_FL_raw(item) * I021_145_LSB_FL;
 }
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
-void set_I021_145_FL_raw(I021_145 * item, const uint16_t fl_raw) {
-    // TODO: Check value is within limits
-    SET_BITS(&(item->raw), (fl_raw >> 8), MASK_08_BITS, 9);
-    SET_BITS(&(item->raw), (fl_raw     ), MASK_08_BITS, 1);
+void set_I021_145_FL_raw(I021_145 * item, const int16_t fl_raw) {
+    item->raw[0] = fl_raw >> 8;
+    item->raw[1] = fl_raw;
 }
 
 void set_I021_145_FL_feet(I021_145 * item, const int16_t fl) {
-    uint16_t fl_raw = 0;
+    int16_t fl_raw = 0;
 
-    // TODO: Check value is within limits
-    // Make the conversion only if value requiers it
+    /* TODO: Check value is within limits */
+
+    /* Make the conversion only if value requiers it */
     if (fl > 0)
-        fl_raw = (uint16_t) ((fl / I021_145_LSB_FL) + 0.5);
-    
+        fl_raw = (fl / I021_145_LSB_FL) + 0.5;
+
     set_I021_145_FL_raw(item, fl_raw);
+}
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+uint16_t encode_I021_145(void * item_in, unsigned char * msg_out, uint16_t out_index) {
+    I021_145 * item = (I021_145 *) item_in;
+    msg_out[out_index++] = item->raw[0];
+    msg_out[out_index++] = item->raw[1];
+    return out_index;
+}
+
+uint16_t decode_I021_145(void * item_out, const unsigned char * msg_in, uint16_t in_index) {
+    I021_145 * item = (I021_145 *) item_out;
+    item->raw[0] = msg_in[in_index++];
+    item->raw[1] = msg_in[in_index++];
+    return in_index;
 }
 
 /*******************************************************************************
@@ -49,6 +67,6 @@ void set_I021_145_FL_feet(I021_145 * item, const int16_t fl) {
 
 void print_I021_145(const I021_145 * item) {
     printf("Category 021 Item 145 - Flight Level\n");
-    printf("  FL (steps of 1/4 FL's) = %d\n", get_I021_145_FL_raw(item));
+    printf("  FL (steps of 1/4 FL's) = 0x%04X\n", get_I021_145_FL_raw(item));
     printf("  FL = %d\n", get_I021_145_FL_feet(item));
 }

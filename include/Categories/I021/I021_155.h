@@ -25,7 +25,7 @@ extern "C" {
 
 /**
  * @typedef I021_155
- * @brief Category 021 Item 155 - Barometric Vertical Rate
+ * @brief Category 021 / Item 155 - Barometric Vertical Rate
  * 
  * Barometric Vertical Rate, in two's complement form
  * 
@@ -39,7 +39,7 @@ extern "C" {
 typedef struct I021_155 {
     union {
         /// @brief Raw octets as received (recommended for portable access)
-        uint16_t raw;
+        uint8_t raw[2];
 
         /**
          * @note Bit-field layout is compiler and endianness dependent.
@@ -98,16 +98,46 @@ ASTERIX_API double get_I021_155_BVR(const I021_155 * item);
  * @param item Pointer to I021_155 structure
  * @param re New RE indicator (0: within range, 1: exceeds range)
  */
-ASTERIX_API void set_I021_155_RE(I021_155 * item, const uint8_t re);
+ASTERIX_API void set_I021_155_RE(I021_155 * item, uint8_t re);
 
 /**
  * @brief Set the given Barometric Vertical Rate (BVR) value (see LSB) into
  *        I021/155
  * 
  * @param item Pointer to I021_155 structure
- * @param bvr New BVR in feets/minute (see LSB)
+ * @param bvr_ftpm New BVR in feets/minute (see LSB)
  */
-ASTERIX_API void set_I021_155_BVR(I021_155 * item, const double bvr);
+ASTERIX_API void set_I021_155_BVR(I021_155 * item, double bvr_ftpmin);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_155(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_155(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

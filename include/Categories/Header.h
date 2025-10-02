@@ -30,9 +30,9 @@ extern "C" {
  */
 typedef struct Header {
     /// @brief Asterix category (range from 0 to 255)
-    uint8_t cat;
+    uint8_t CAT;
     /// @brief Full length of the message
-    uint8_t len[2];
+    uint8_t LEN[2];
 } Header;
 
 /*******************************************************************************
@@ -106,12 +106,12 @@ ASTERIX_API uint16_t get_Header_LEN_raw_data(const unsigned char * raw_data);
  * This function safely reads the category from a received data block.
  * 
  * @param data Pointer to the received Header sructure
- * @param cat Category number (CAT) of the message
+ * @param CAT Category number (CAT) of the message
  * 
  * @note The category identifies the type of ASTERIX message,
  *       such as CAT021, CAT048, etc.
  */
-ASTERIX_API void set_Header_CAT(Header * item, const uint8_t cat);
+ASTERIX_API void set_Header_CAT(Header * item, uint8_t cat);
 
 /**
  * @brief Sets the new total length of the ASTERIX message.
@@ -125,7 +125,7 @@ ASTERIX_API void set_Header_CAT(Header * item, const uint8_t cat);
  * 
  * @note The length includes the category byte and the length field itself.
  */
-ASTERIX_API void set_Header_LEN(Header * item, const uint16_t len);
+ASTERIX_API void set_Header_LEN(Header * item, uint16_t len);
 
 /*******************************************************************************
  * Other Functions
@@ -145,4 +145,4 @@ ASTERIX_API void print_Header(const Header * item);
 }
 #endif
 
-#endif // HEADER_H
+#endif /* HEADER_H */

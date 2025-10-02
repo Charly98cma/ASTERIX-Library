@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 #include "Common/constants.h"
-#include "Aux_Funcs/bitwise_funcs.h"
+#include "Aux_Funcs/aux_funcs.h"
 
 #include "Categories/I021/I021_155.h"
 
@@ -15,28 +15,48 @@
  ******************************************************************************/
 
 uint8_t get_I021_155_RE(const I021_155 * item) {
-    return GET_BITS(item->raw, 16, MASK_01_BITS);
+    return (item->raw[0] >> 7) & MASK_01_BITS;
 }
 
 double get_I021_155_BVR(const I021_155 * item) {
-    return GET_BITS(item->raw, 1, MASK_15_BITS) * I021_155_LSB_BVR;
+    int16_t bvr_raw = ((item->raw[0] & MASK_07_BITS) << 8) | item->raw[1];
+    return bvr_raw * I021_155_LSB_BVR;
 }
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
-void set_I021_155_RE(I021_155 * item, const uint8_t re) {
-    SET_BITS(&(item->raw), re, MASK_01_BITS, 16);
+void set_I021_155_RE(I021_155 * item, uint8_t re) {
+    item->raw[0] |= (re & MASK_01_BITS) >> 7;
 }
 
-void set_I021_155_BVR(I021_155 * item, const double bvr) {
-    uint16_t bvr_raw = 0;
+void set_I021_155_BVR(I021_155 * item, double bvr_ftpmin) {
+    int16_t bvr_raw = 0;
 
-    if (bvr > 0)
-        bvr_raw = (uint16_t) ((bvr / I021_155_LSB_BVR) + 0.5);
+    if (bvr_ftpmin > 0)
+        bvr_raw = (int16_t) ((bvr_ftpmin / I021_155_LSB_BVR) + 0.5);
 
-    SET_BITS(&(item->raw), bvr_raw, MASK_15_BITS, 1);
+    item->raw[0] |= (bvr_raw >> 8) & MASK_07_BITS;
+    item->raw[1] |= bvr_raw;
+}
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+uint16_t encode_I021_155(void * item_in, unsigned char * msg_out, uint16_t out_index) {
+    I021_155 * item = (I021_155 *) item_in;
+    msg_out[out_index++] = item->raw[0];
+    msg_out[out_index++] = item->raw[1];
+    return out_index;
+}
+
+uint16_t decode_I021_155(void * item_out, const unsigned char * msg_in, uint16_t in_index) {
+    I021_155 * item = (I021_155 *) item_out;
+    item->raw[0] = msg_in[in_index++];
+    item->raw[1] = msg_in[in_index++];
+    return in_index;
 }
 
 /*******************************************************************************

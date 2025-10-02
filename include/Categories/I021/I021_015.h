@@ -1,4 +1,4 @@
-/**
+/*
  * @file I021_015.h
  * @brief Definition of item 015 of CAT 021, and related functions and values
  */
@@ -32,6 +32,11 @@ typedef struct I021_015 {
         /// @brief Raw octet as received (recommended for portable access)
         uint8_t raw;
 
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+
         struct {
             /// @brief Service Identification (direct access)
             uint8_t SI;
@@ -64,7 +69,37 @@ ASTERIX_API uint8_t get_I021_015_SI(const I021_015 * item);
  * @param item Pointer to I021_015 structure.
  * @param sic_value Value of the SI
  */
-ASTERIX_API void set_I021_015_SI(I021_015 * item, const uint8_t value);
+ASTERIX_API void set_I021_015_SI(I021_015 * item, uint8_t si);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_015(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_015(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

@@ -20,16 +20,14 @@ There are some drawbacks from avoiding dynamic memory allocation, since certain 
 ├── docs/
 ├── include/
 │   ├── Aux_Funcs
-|   |   ├── aux_funcs.h             # Additional functions for better code mantainability
-|   |   ├── bitwise_funcs.h         # Functions to RW/WR values using bits and shifts
-|   |   └── char_encoding.h         # Values and converter of A/C identification characters
+|   |   ├── aircraft_ident_char_encoding.h  # Encoding of A/C identification characters
+|   |   └── aux_funcs.h                     # Additional functions
 │   ├── Categories
-│   │   ├── catXXX/                 # Folder of each category
-│   │   │   ├── catXXX.h            # Header with all items and encoding/decoding
-│   │   │   └── catXXX_itemYYY.h    # Items (types, macros and LSBs)
-│   │   ├── header.h                # Common types, macros and variables
-|   |   ├── item010.h               # Item 010 present in multiple categories
-│   │   └── repo_api.h              # Aux. header to import all categories at once
+│   │   ├── IXXX/                   # Folder of each category
+│   │   │   └── IXXX_YYY.h          # Items (types, macros and LSBs)
+│   │   ├── IXXX.h                  # Header with structure, FSPEC, items, and functions to encode/decode the category
+│   │   ├── Header.h                # Common types, macros and variables
+|   |   └── SAC_SIC.h               # Item 010 present in multiple categories
 │   └── Common
 │   │   ├── constants.h             # Useful macros and constant values
 │   │   ├── versions.h              # Configuration file to define Edition and Version Number of each category
@@ -45,7 +43,11 @@ There are some drawbacks from avoiding dynamic memory allocation, since certain 
 │   |   └── item010.h               # Getter and print function of Item 010
 │   └── Logger
 │       └── asterix_log.c           # Logger macros and functions
+├── test
+│   └── I021                        # Category 021 tests
 ├── .gitignore
+├── docker-compose.yml              # Docker Compose for compilation environment
+├── Dockerfile                      # Custom image for compilation environment
 ├── LICENSE
 ├── Makefile
 └── README.md

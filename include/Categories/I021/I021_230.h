@@ -28,7 +28,7 @@ extern "C" {
 
 /**
  * @typedef I021_230
- * @brief Category 021 Item 230 - Roll Angle
+ * @brief Category 021 / Item 230 - Roll Angle
  * 
  * The roll angle, in two's complement form, of an aircraft executing a turn.
  * 
@@ -82,9 +82,39 @@ ASTERIX_API double get_I021_230_RA(const I021_230 * item);
  * @brief Sets the given value (ra) as the new Roll Angle into I021/230
  * 
  * @param item pointer to I021_230 structure
- * @param ra new Roll Angle value (LSB = 0.01 degrees) (-180 <= ra <= 180)
+ * @param ra_deg new Roll Angle value (LSB = 0.01 degrees) (-180 <= ra <= 180)
  */
-ASTERIX_API void set_I021_230_RA(I021_230 * item, const double ra);
+ASTERIX_API void set_I021_230_RA(I021_230 * item, double ra_deg);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_230(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_230(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

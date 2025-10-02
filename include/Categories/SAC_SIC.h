@@ -43,9 +43,9 @@ typedef struct SAC_SIC {
         /// @brief Bit-field access (might be non-portable, use with caution)
         struct {
             /// @brief System Area Code (8 bits)
-            uint8_t sac;
+            uint8_t SAC;
             /// @brief System Identification Code (8 bits)
-            uint8_t sic;
+            uint8_t SIC;
         };
     };
 } SAC_SIC;
@@ -92,7 +92,33 @@ void set_SAC(SAC_SIC * item, uint8_t sac_value);
  * @param item Pointer to SAC_SIC structure.
  * @param sic_value Value of the SIC
  */
-void set_SIC(SAC_SIC * item, const uint8_t sic_value);
+void set_SIC(SAC_SIC * item, uint8_t sic_value);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+uint16_t encode_SAC_SIC(SAC_SIC * item_in, unsigned char * msg_out, uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+uint16_t decode_SAC_SIC(SAC_SIC * item_out, const unsigned char * msg_in, uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

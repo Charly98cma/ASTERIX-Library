@@ -32,7 +32,7 @@ extern "C" {
 
 /**
  * @typedef I021_250
- * @brief Category 021 Item 250 - BDS Register Data
+ * @brief Category 021 / Item 250 - BDS Register Data
  * 
  * BDS Register Data as extracted from the aircraft transponder.
  */
@@ -92,7 +92,7 @@ ASTERIX_API uint8_t get_I021_250_REP(const I021_250 * item);
  * 
  * @return uint64_t value of the BDSDATA (56-bits up-for interpretation)
  */
-ASTERIX_API uint64_t get_I021_250_BDSDATA(const I021_250 * item, const uint8_t bds_index);
+ASTERIX_API uint64_t get_I021_250_BDSDATA(const I021_250 * item, uint8_t bds_index);
 
 /**
  * @brief Get the BD Register Address 1 (BDS1) from I021/250
@@ -104,7 +104,7 @@ ASTERIX_API uint64_t get_I021_250_BDSDATA(const I021_250 * item, const uint8_t b
  * 
  * @return uint8_t value of BDS1
  */
-ASTERIX_API uint8_t get_I021_250_BDS1(const I021_250 * item, const uint8_t bds_index);
+ASTERIX_API uint8_t get_I021_250_BDS1(const I021_250 * item, uint8_t bds_index);
 
 /**
  * @brief Get the BD Register Address 2 (BDS2) from I021/250
@@ -116,7 +116,7 @@ ASTERIX_API uint8_t get_I021_250_BDS1(const I021_250 * item, const uint8_t bds_i
  * 
  * @return uint8_t value of BDS2
  */
-ASTERIX_API uint8_t get_I021_250_BDS2(const I021_250 * item, const uint8_t bds_index);
+ASTERIX_API uint8_t get_I021_250_BDS2(const I021_250 * item, uint8_t bds_index);
 
 /*******************************************************************************
  * Setters
@@ -129,7 +129,7 @@ ASTERIX_API uint8_t get_I021_250_BDS2(const I021_250 * item, const uint8_t bds_i
  * @param item pointer to I021_250 structure
  * @param rep new RP value
  */
-ASTERIX_API void set_I021_250_REP(I021_250 * item, const uint8_t rep);
+ASTERIX_API void set_I021_250_REP(I021_250 * item, uint8_t rep);
 
 /**
  * @brief Set a new BDS Register Data (BDSDATA) into I021/250
@@ -138,7 +138,7 @@ ASTERIX_API void set_I021_250_REP(I021_250 * item, const uint8_t rep);
  * @param bds_index index of the desired BDS Register Data
  * @param bds_data new BDS Register Data
  */
-ASTERIX_API void set_I021_250_BDSDATA(I021_250 * item, const uint8_t bds_index,
+ASTERIX_API void set_I021_250_BDSDATA(I021_250 * item, uint8_t bds_index,
                                             const uint64_t bds_data);
 
 /**
@@ -147,8 +147,8 @@ ASTERIX_API void set_I021_250_BDSDATA(I021_250 * item, const uint8_t bds_index,
  * @param item pointer to I021_250 structure
  * @param bds1 new BDS Register Address 1
  */
-ASTERIX_API void set_I021_250_BDS1(I021_250 * item, const uint8_t bds_index,
-                                         const uint8_t bds1);
+ASTERIX_API void set_I021_250_BDS1(I021_250 * item, uint8_t bds_index,
+                                         uint8_t bds1);
 
 /**
  * @brief Set a new BD Register Address 2 (BDS2) into I021/250
@@ -157,8 +157,38 @@ ASTERIX_API void set_I021_250_BDS1(I021_250 * item, const uint8_t bds_index,
  * @param bds2 new BDS Register Address 2
  */
 ASTERIX_API void set_I021_250_BDS2(I021_250 * item, 
-                                         const uint8_t bds_index,
-                                         const uint8_t bds2);
+                                         uint8_t bds_index,
+                                         uint8_t bds2);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_250(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_250(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

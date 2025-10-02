@@ -12,14 +12,14 @@ extern "C" {
 
 #ifdef _WIN32
     #ifdef ASTERIX_BUILD_DLL
-        // When building the DLL
+        /* When building the DLL */
         #define ASTERIX_API __declspec(dllexport)
     #else
-        // When using the DLL
+        /* When using the DLL */
         #define ASTERIX_API __declspec(dllimport)
     #endif
 #else
-    // On Linux and macOS, we use GCC visibility
+    /* On Linux and macOS, we use GCC visibility */
     #define ASTERIX_API __attribute__((visibility("default")))
 #endif
 
@@ -27,4 +27,4 @@ extern "C" {
 }
 #endif
 
-#endif // VISIBILITY_H
+#endif /* VISIBILITY_H */

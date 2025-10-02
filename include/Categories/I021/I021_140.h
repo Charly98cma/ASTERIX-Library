@@ -25,7 +25,7 @@ extern "C" {
 
 /**
  * @typedef I021_140
- * @brief Category 021 Item 140 - Geometric Height
+ * @brief Category 021 / Item 140 - Geometric Height
  * 
  * Minimum height from a plane tangent to the earth’s ellipsoid, defined by
  * WGS-84, in two's complement form.
@@ -33,7 +33,7 @@ extern "C" {
 typedef struct I021_140 {
     union {
         /// @brief Raw octets as received (recommended for portable access)
-        uint16_t raw;
+        uint8_t raw[2];
 
         /**
          * @note Bit-field layout is compiler and endianness dependent.
@@ -61,40 +61,52 @@ typedef struct I021_140 {
  * 
  * @param item Pointer to I021_140 structure
  * 
- * @return double Geometric Height in steps of 6.26 feets (see LSB)
- */
-ASTERIX_API uint16_t get_I021_140_GH_raw(const I021_140 * item);
-
-/**
- * @brief Get the Geometric Height (GH) from I021/140 
- * 
- * @param item Pointer to I021_140 structure
- * 
  * @return double Geometric Height in feets
  */
-ASTERIX_API double get_I021_140_GH_feet(const I021_140 * item);
+ASTERIX_API double get_I021_140_GH(const I021_140 * item);
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
 /**
- * @brief Set the given Geometric Height (GH) raw value (no LSB) into
- *        I021/140 
- * 
- * @param item Pointer to I021_140 structure
- * @param value New GH raw value in steps of 6.25 feets (see LSB)
- */
-ASTERIX_API void set_I021_140_GH_raw(I021_140 * item, const uint16_t gh_raw);
-
-/**
  * @brief Set the given Geometric Height (GH) real value (see LSB) into
  *        I021/140
  * 
  * @param item Pointer to I021_140 structure
- * @param value New GH value in feets (LSB = 6.25 ft)
+ * @param gh_ft New GH value in feets (LSB = 6.25 ft)
  */
-ASTERIX_API void set_I021_140_GH_feet(I021_140 * item, const double gh);
+ASTERIX_API void set_I021_140_GH(I021_140 * item, double gh_ft);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_140(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_140(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

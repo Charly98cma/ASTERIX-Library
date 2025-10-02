@@ -27,7 +27,7 @@ extern "C" {
 
 /**
  * @typedef I021_165
- * @brief Category 021 Item 165 - Track angle Rate
+ * @brief Category 021 / Item 165 - Track angle Rate
  * 
  * Rate of Turn, in two's complement form
  * 
@@ -84,10 +84,40 @@ ASTERIX_API double get_I021_165_TAR(const I021_165 * item);
  * @brief Set the given Track Angle Rate (TAR) into I021/165
  * 
  * @param item pointer to I021_165 structure
- * @param tar new Track Angle Rate in degrees/second (LSB = 1/32 deg/sec.
- *                                                    Max value = 16 deg/sec)
+ * @param tar_degpsec new Track Angle Rate in degrees/second
+ *                    (LSB = 1/32 deg/sec. Max value = 16 deg/sec)
  */
-ASTERIX_API void set_I021_165_TAR(I021_165 * item, const double tar);
+ASTERIX_API void set_I021_165_TAR(I021_165 * item, double tar_degpsec);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_165(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_165(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

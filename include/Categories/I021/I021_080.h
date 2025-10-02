@@ -73,7 +73,37 @@ ASTERIX_API uint32_t get_I021_080_TGTADDR(const I021_080 * item);
  * @param item Pointer to I021_080 structure.
  * @param addr 24-bit target address.
  */
-ASTERIX_API void set_I021_080_TGTADDR(I021_080 * item, const uint32_t addr);
+ASTERIX_API void set_I021_080_TGTADDR(I021_080 * item, uint32_t addr);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_080(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_080(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

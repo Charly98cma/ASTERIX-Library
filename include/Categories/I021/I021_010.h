@@ -68,7 +68,7 @@ ASTERIX_API uint8_t get_I021_010_SIC(const I021_010 * item);
  * @param item Pointer to I021_010 structure.
  * @param sac_value Value of the SAC
  */
-ASTERIX_API void set_I021_010_SAC(I021_010 * item, const uint8_t sac_value);
+ASTERIX_API void set_I021_010_SAC(I021_010 * item, uint8_t sac_value);
 
 /**
  * @brief Set the System Identification Code (SIC) into the raw field.
@@ -76,7 +76,37 @@ ASTERIX_API void set_I021_010_SAC(I021_010 * item, const uint8_t sac_value);
  * @param item Pointer to I021_010 structure.
  * @param sic_value Value of the SIC
  */
-ASTERIX_API void set_I021_010_SIC(I021_010 * item, const uint8_t sic_value);
+ASTERIX_API void set_I021_010_SIC(I021_010 * item, uint8_t sic_value);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_010(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_010(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

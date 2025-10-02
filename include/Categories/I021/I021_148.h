@@ -25,7 +25,7 @@ extern "C" {
 
  /**
  * @typedef I021_148
- * @brief Category 021 Item 148 - Final State Selected Altitude
+ * @brief Category 021 / Item 148 - Final State Selected Altitude
  * 
  * The vertical intent value that corresponds with the ATC cleared altitude,
  * as derived from the Altitude Control Panel (MCP/FCU).
@@ -33,7 +33,7 @@ extern "C" {
 typedef struct I021_148 {
     union {
         /// @brief Raw octets as received (recommended for portable access)
-        uint16_t raw;
+        uint8_t raw[2];
 
         /**
          * @note Bit-field layout is compiler and endianness dependent.
@@ -120,24 +120,24 @@ ASTERIX_API int32_t get_I021_148_ALT(const I021_148 * item);
  * @param item Pointer to I021_148 structure
  * @param value New MV value (0: not active / unknown, 1: active)
  */
-ASTERIX_API void set_I021_148_MV(I021_148 * item, const uint8_t sas);
+ASTERIX_API void set_I021_148_MV(I021_148 * item, uint8_t sas);
 
 /**
  * @brief Set the given Approach Hold (AH) into I021/148
  * 
  * @param item Pointer to I021_148 structure
- * @param value New AH value (0: not active / unknown, 1: active)
+ * @param ah New AH value (0: not active / unknown, 1: active)
  */
-ASTERIX_API void set_I021_148_AH(I021_148 * item, const uint8_t src);
+ASTERIX_API void set_I021_148_AH(I021_148 * item, uint8_t ah);
 
 /**
  * @brief Set the given Approach Mode (AM) into
  *        I021/148
  * 
  * @param item Pointer to I021_148 structure
- * @param value New AM value (0: not active / unknown, 1: active)
+ * @param am New AM value (0: not active / unknown, 1: active)
  */
-ASTERIX_API void set_I021_148_AM(I021_148 * item, const uint8_t src);
+ASTERIX_API void set_I021_148_AM(I021_148 * item, uint8_t am);
 
 /**
  * @brief Set the given Altitude (ALT) (LSB = 25 ft) into
@@ -147,6 +147,36 @@ ASTERIX_API void set_I021_148_AM(I021_148 * item, const uint8_t src);
  * @param value New ALT value (LSB = 25 ft)
  */
 ASTERIX_API void set_I021_148_ALT(I021_148 * item, const int32_t alt);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_148(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_148(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

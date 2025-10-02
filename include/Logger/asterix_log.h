@@ -60,7 +60,7 @@ ASTERIX_API void log_message(int level, const char* color, const char* tag, cons
     #define ASTLOG_ERROR(fmt)
     #define ASTLOG_ERRORF(fmt, ...)
 #else
-    // Logging macros to support both text-only and formatted logs
+    /* Logging macros to support both text-only and formatted logs */
     #define ASTLOG_DEBUG(fmt) log_message(LOG_LEVEL_DEBUG, COLOR_CYAN,  "DEBUG", fmt)
     #define ASTLOG_DEBUGF(fmt, ...) log_message(LOG_LEVEL_DEBUG, COLOR_CYAN,  "DEBUG", fmt, ##__VA_ARGS__)
     #define ASTLOG_INFO(fmt)  log_message(LOG_LEVEL_INFO,  COLOR_GREEN, "INFO",  fmt)
@@ -69,10 +69,10 @@ ASTERIX_API void log_message(int level, const char* color, const char* tag, cons
     #define ASTLOG_WARNF(fmt, ...)  log_message(LOG_LEVEL_WARN,  COLOR_YELLOW,"WARN",  fmt, ##__VA_ARGS__)
     #define ASTLOG_ERROR(fmt) log_message(LOG_LEVEL_ERROR, COLOR_RED,   "ERROR", fmt)
     #define ASTLOG_ERRORF(fmt, ...) log_message(LOG_LEVEL_ERROR, COLOR_RED,   "ERROR", fmt, ##__VA_ARGS__)
-#endif // DISABLE_ASTLOG
+#endif /* DISABLE_ASTLOG */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // ASTERIX_LOG_H
+#endif /* ASTERIX_LOG_H */

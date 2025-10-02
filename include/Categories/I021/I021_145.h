@@ -25,7 +25,7 @@ extern "C" {
 
 /**
  * @typedef I021_145
- * @brief Category 021 Item 145 - Flight Level
+ * @brief Category 021 / Item 145 - Flight Level
  * 
  * Flight Level from barometric measurements, not QNH corrected,
  * in two's complement form
@@ -33,7 +33,7 @@ extern "C" {
 typedef struct I021_145 {
     union {
         /// @brief Raw octets as received (recommended for portable access)
-        uint16_t raw;
+        uint8_t raw[2];
 
         /**
          * @note Bit-field layout is compiler and endianness dependent.
@@ -61,9 +61,9 @@ typedef struct I021_145 {
  * 
  * @param item Pointer to I021_145 structure
  * 
- * @return double flight level in steps of 0.25 FL's (see LSB)
+ * @return int16_t flight level in steps of 0.25 FL's (see LSB)
  */
-ASTERIX_API uint16_t get_I021_145_FL_raw(const I021_145 * item);
+ASTERIX_API int16_t get_I021_145_FL_raw(const I021_145 * item);
 
 /**
  * @brief Get the Flight Level (FL) from I021/145 
@@ -85,16 +85,46 @@ ASTERIX_API int16_t get_I021_145_FL_feet(const I021_145 * item);
  * @param item Pointer to I021_145 structure
  * @param value New FL raw value in steps of 1/4 FL (see LSB)
  */
-ASTERIX_API void set_I021_145_FL_raw(I021_145 * item, const uint16_t fl_raw);
+ASTERIX_API void set_I021_145_FL_raw(I021_145 * item, const int16_t fl_raw);
 
 /**
  * @brief Set the given Flight Level (FL) value (see LSB) into
  *        I021/145
  * 
  * @param item Pointer to I021_145 structure
- * @param value New FL value (LSB = 0.25 FL)
+ * @param value New FL value in Flight Levels
  */
 ASTERIX_API void set_I021_145_FL_feet(I021_145 * item, const int16_t fl);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_145(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_145(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

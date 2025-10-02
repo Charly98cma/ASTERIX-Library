@@ -55,49 +55,55 @@ typedef struct I021_072 {
  ******************************************************************************/
 
 /**
- * @brief Get Time of Applicability for Velocity raw value from I021/072.
- *
- * Combines the 3 raw bytes into a 24-bit unsigned integer.
- *
- * @param item Pointer to I021_072 structure.
- * @return uint32_t Time in units of 1/128 s (0 = midnight).
- */
-ASTERIX_API uint32_t get_I021_072_TAV_raw(const I021_072 * item);
-
-/**
  * @brief Get the Time of Applicability for Velocity in seconds (floating-point)
  *        from I021/072.
- *
- * Divides the raw 1/128-s units by 128.0 to return seconds since midnight.
  *
  * @param item Pointer to I021_072 structure.
  * @return double Time in seconds (>= 0).
  */
-ASTERIX_API double get_I021_072_TAV_seconds(const I021_072 * item);
+ASTERIX_API double get_I021_072_TAV(const I021_072 * item);
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
 /**
- * @brief Set the Time of Applicability for Velocity raw value into I021/072.
- *
- * Stores the 24-bit value into the raw array.
- *
- * @param item Pointer to I021_072 structure.
- * @param raw_value Raw 24-bit time value to store (units of 1/128 s).
- */
-ASTERIX_API void set_I021_072_TAV_raw(I021_072 * item, const uint32_t raw_value);
-
-/**
  * @brief Set the Time of Applicability for Velocity in seconds into I021/072.
  *
- * Converts the seconds value into 1/128-s units and stores as raw data.
- *
  * @param item Pointer to I021_072 structure.
- * @param seconds Time in seconds (will be converted to 1/128-s units).
+ * @param tav_seconds Time in seconds (will be converted to 1/128-s units).
  */
-ASTERIX_API void set_I021_072_TAV_seconds(I021_072 * item, const double seconds);
+ASTERIX_API void set_I021_072_TAV(I021_072 * item, double tav_seconds);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_072(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_072(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

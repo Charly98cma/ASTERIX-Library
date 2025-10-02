@@ -24,7 +24,7 @@ extern "C" {
 
 /**
  * @typedef I021_271_EXT1
- * @brief Category 021 Item 271 First Extension - Length / Width of Aircraft
+ * @brief Category 021 / Item 271 First Extension - Length / Width of Aircraft
  */
 typedef struct I021_271_EXT1 {
     union {
@@ -43,8 +43,8 @@ typedef struct I021_271_EXT1 {
              *        (see Specification Standard for value encoding)
              */
             uint8_t LW          :4;
-            /// @brief Spare its-4/2 set to 0
-            uint8_t spare;
+            /// @brief Spare bits-4/2 set to 0
+            uint8_t spare       :3;
             /** 
              * @brief Field Extension
              * 
@@ -59,7 +59,7 @@ typedef struct I021_271_EXT1 {
 
 /**
  * @typedef I021_271
- * @brief Category 021 Item 271 - Surface Capabilities and Characteristics
+ * @brief Category 021 / Item 271 - Surface Capabilities and Characteristics
  * 
  *  Operational capabilities of the aircraft while on the ground.
  */
@@ -219,7 +219,7 @@ ASTERIX_API uint8_t get_I021_271_EXT1_FX(const I021_271_EXT1 * item);
  * @param poa new POA value (0: pos. not ADS-B ref. point;                                                
  *                           1: pos. is ADS-B ref. point)
  */
-ASTERIX_API void set_I021_271_POA(I021_271 * item, const uint8_t poa);
+ASTERIX_API void set_I021_271_POA(I021_271 * item, uint8_t poa);
 
 /**
  * @brief Set a new value for Cockpit Display of Traffic Information Surface
@@ -228,7 +228,7 @@ ASTERIX_API void set_I021_271_POA(I021_271 * item, const uint8_t poa);
  * @param item pointer to I021_271 structure
  * @param cdtis new CDTIS value (0: not operational; 1: operational)
  */
-ASTERIX_API void set_I021_271_CDTIS(I021_271 * item, const uint8_t cdtis);
+ASTERIX_API void set_I021_271_CDTIS(I021_271 * item, uint8_t cdtis);
 
 /**
  * @brief Set a new value for Class B2 transmit power less than 70 Watts (B2)
@@ -237,7 +237,7 @@ ASTERIX_API void set_I021_271_CDTIS(I021_271 * item, const uint8_t cdtis);
  * @param item pointer to I021_271 structure
  * @param b2 New B2 value (0: >= 70 Watts; 1: < 70 Watts)
  */
-ASTERIX_API void set_I021_271_B2(I021_271 * item,const uint8_t b2);
+ASTERIX_API void set_I021_271_B2(I021_271 * item,uint8_t b2);
 
 /**
  * @brief Set a new value for Receiving ATC Services (RAS) value into
@@ -247,7 +247,7 @@ ASTERIX_API void set_I021_271_B2(I021_271 * item,const uint8_t b2);
  * @param ras new RAS value (0: A/C not rec. ATC-services;
  *                           1: A/C receiving ATC-services)
  */
-ASTERIX_API void set_I021_271_RAS(I021_271 * item, const uint8_t ras);
+ASTERIX_API void set_I021_271_RAS(I021_271 * item, uint8_t ras);
 
 /**
  * @brief Set a new value for Setting of "IDENT"-switch (IDENT) into
@@ -256,7 +256,7 @@ ASTERIX_API void set_I021_271_RAS(I021_271 * item, const uint8_t ras);
  * @param item pointer to I021_271 structure
  * @param ident new IDENT value (0: not active; 1: active)
  */
-ASTERIX_API void set_I021_271_IDENT(I021_271 * item, const uint8_t ident);
+ASTERIX_API void set_I021_271_IDENT(I021_271 * item, uint8_t ident);
 
 /**
  * @brief Set a new value for Field Extension (FX) into I021/271
@@ -264,7 +264,7 @@ ASTERIX_API void set_I021_271_IDENT(I021_271 * item, const uint8_t ident);
  * @param item pointer to I021_271 structure
  * @param fx new FX value (0: end of item; 1: first extension present)
  */
-ASTERIX_API void set_I021_271_FX(I021_271 * item, const uint8_t fx);
+ASTERIX_API void set_I021_271_FX(I021_271 * item, uint8_t fx);
 
 /* ============================ FIRST EXTENSION ============================ */
 
@@ -275,7 +275,7 @@ ASTERIX_API void set_I021_271_FX(I021_271 * item, const uint8_t fx);
  * @param item pointer to I021_271 structure
  * @param lw new LW value (see Specification Standard for value encoding)
  */
-ASTERIX_API void set_I021_271_EXT1_LW(I021_271_EXT1 * item, const uint8_t lw);
+ASTERIX_API void set_I021_271_EXT1_LW(I021_271_EXT1 * item, uint8_t lw);
 
 /**
  * @brief Set a new value for Field Extension (FX) into I021/271
@@ -284,7 +284,37 @@ ASTERIX_API void set_I021_271_EXT1_LW(I021_271_EXT1 * item, const uint8_t lw);
  * @param item pointer to I021_271 structure
  * @param lw New FX value (0: end of item; 1: second extension present)
  */
-ASTERIX_API void set_I021_271_EXT1_FX(I021_271_EXT1 * item, const uint8_t fx);
+ASTERIX_API void set_I021_271_EXT1_FX(I021_271_EXT1 * item, uint8_t fx);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_271(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_271(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions

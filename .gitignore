@@ -52,4 +52,8 @@ Mkfile.old
 dkms.conf
 
 # VSCode files
-.vscode/*
+.vscode
+
+# Bin files
+bin
+build

@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 #include "Common/constants.h"
-#include "Aux_Funcs/bitwise_funcs.h"
+#include "Aux_Funcs/aux_funcs.h"
 
 #include "Categories/I021/I021_230.h"
 
@@ -15,24 +15,39 @@
  ******************************************************************************/
 
 double get_I021_230_RA(const I021_230 * item) {
-    int16_t ra_raw = (int16_t) (
-        (GET_BITS(item->raw[0], 1, MASK_08_BITS) << 8) |
-        (GET_BITS(item->raw[1], 1, MASK_08_BITS)     ));
-    return (ra_raw * I021_230_LSB_RA);
+    return ((item->raw[0] << 8) | item->raw[1]) * I021_230_LSB_RA;
 }
 
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
-void set_I021_230_RA(I021_230 * item, const double ra) {
+void set_I021_230_RA(I021_230 * item, double ra_deg) {
     int16_t ra_raw = 0;
 
-    if (ra > 0)
-        ra_raw = (int16_t) ((ra / I021_230_LSB_RA) + 0.5);
+    if (ra_deg > 0)
+        ra_raw = (int16_t) ((ra_deg / I021_230_LSB_RA) + 0.5);
 
-    SET_BITS(&(item->raw[0]), (ra_raw >> 8), MASK_08_BITS, 1);
-    SET_BITS(&(item->raw[1]), (ra_raw     ), MASK_08_BITS, 1);
+    item->raw[0] = ra_raw >> 8;
+    item->raw[1] = ra_raw;
+}
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+uint16_t encode_I021_230(void * item_in, unsigned char * msg_out, uint16_t out_index) {
+    I021_230 * item = (I021_230 *) item_in;
+    msg_out[out_index++] = item->raw[0];
+    msg_out[out_index++] = item->raw[1];
+    return out_index;
+}
+
+uint16_t decode_I021_230(void * item_out, const unsigned char * msg_in, uint16_t in_index) {
+    I021_230 * item = (I021_230 *) item_out;
+    item->raw[0] = msg_in[in_index++];
+    item->raw[1] = msg_in[in_index++];
+    return in_index;
 }
 
 /*******************************************************************************

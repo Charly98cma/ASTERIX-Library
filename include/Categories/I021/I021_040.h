@@ -16,7 +16,63 @@ extern "C" {
 /*******************************************************************************
  * Macros
  ******************************************************************************/
- 
+
+#define I021_040_ATP_ICAO_ADDR         0 // 24-Bit ICAO address
+#define I021_040_ATP_DUP_ADDR          1 // Duplicate address
+#define I021_040_ATP_SURFACE_VEHICLE   2 // Surface vehicle address
+#define I021_040_ATP_ANON_ADDR         3 // Anonymous address
+#define I021_040_ATP_RESERVED_MIN      4 // Reserved for future use
+#define I021_040_ATP_RESERVED_MAX      7 // Reserved for future use
+
+#define I021_040_ARC_25FT              0 // 25 ft
+#define I021_040_ARC_100FT             1 // 100 ft
+#define I021_040_ARC_UNKNOWN           2 // Unknown
+#define I021_040_ARC_INVALID           3 // Invalid
+
+#define I021_040_RC_DEFAULT            0 // Default
+#define I021_040_RC_PASSED             1 // Range Check passed, pending CPR validation
+
+#define I021_040_RAB_TRANSPONDER       0 // Report from target transponder
+#define I021_040_RAB_FIELD_MONITOR     1 // Report from field
+
+#define I021_040_EXT1_DCR_NO_DIFF      0 // No differential correction (ADS-B)
+#define I021_040_EXT1_DCR_DIFF         1 // Differential correction (ADS-B)
+
+#define I021_040_EXT1_GBS_NOT_SET      0 // Ground Bit not set
+#define I021_040_EXT1_GBS_SET          1 // Ground Bit set
+
+#define I021_040_EXT1_SIM_ACTUAL       0 // Actual target report
+#define I021_040_EXT1_SIM_SIMULATED    1 // Simulated target report
+
+#define I021_040_EXT1_TST_DEFAULT      0 // Default
+#define I021_040_EXT1_TST_TEST         1 // Test Target
+
+#define I021_040_EXT1_SAA_CAPABLE      0 // Equipment capable to provide Selected Altitude
+#define I021_040_EXT1_SAA_NOT_CAPABLE  1 // Equipment not capable to provide Selected Altitude
+
+#define I021_040_EXT1_CL_VALID         0 // Report valid
+#define I021_040_EXT1_CL_SUSPECT       1 // Report suspect
+#define I021_040_EXT1_CL_NO_INFO       2 // No information
+#define I021_040_EXT1_CL_RESERVED      3 // Reserved for future use
+
+#define I021_040_EXT2_LLC_DEFAULT      0 // Default
+#define I021_040_EXT2_LLC_SUSPECT      1 // Target is suspect
+
+#define I021_040_EXT2_IPC_DEFAULT      0 // Default
+#define I021_040_EXT2_IPC_FAILED       1 // Independent Position Check failed
+
+#define I021_040_EXT2_NOGO_NOT_SET     0 // NOGO-bit not set
+#define I021_040_EXT2_NOGO_SET         1 // NOGO-bit set
+
+#define I021_040_EXT2_CPR_VALID        0 // CPR Validation correct
+#define I021_040_EXT2_CPR_FAILED       1 // CPR Validation failed
+
+#define I021_040_EXT2_LDPJ_NOT_DET     0 // LDPJ not detected
+#define I021_040_EXT2_LDPJ_DET         1 // LDPJ detected
+
+#define I021_040_EXT2_RCF_DEFAULT      0 // Default
+#define I021_040_EXT2_RCF_FAILED       1 // Range Check failed
+
 /*******************************************************************************
  * Structures and Types
  ******************************************************************************/
@@ -645,9 +701,9 @@ ASTERIX_API uint8_t get_I021_040_EXT4_MBC_VAL(const I021_040_EXT4 *item);
  * Modifies the ATP bits (bits 8-6) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040 structure.
- * @param value New ATP value (0 to 7).
+ * @param atp New ATP value (Range: 0 to 7).
  */
-ASTERIX_API void set_I021_040_ATP(I021_040 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_ATP(I021_040 *item, uint8_t atp);
 
 /**
  * @brief Set the Altitude Reporting Capability (ARC) in I021/040.
@@ -655,9 +711,9 @@ ASTERIX_API void set_I021_040_ATP(I021_040 *item, const uint8_t value);
  * Modifies the ARC bits (bits 5-4) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040 structure.
- * @param value New ARC value (0 to 3).
+ * @param arc New ARC value (Range: 0 to 3).
  */
-ASTERIX_API void set_I021_040_ARC(I021_040 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_ARC(I021_040 *item, uint8_t arc);
 
 /**
  * @brief Set the Range Check (RC) in I021/040.
@@ -665,9 +721,9 @@ ASTERIX_API void set_I021_040_ARC(I021_040 *item, const uint8_t value);
  * Modifies the RC bits (bit 3) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040 structure.
- * @param value New RC value (0 or 1).
+ * @param rc New RC value (0 or 1).
  */
-ASTERIX_API void set_I021_040_RC(I021_040 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_RC(I021_040 *item, uint8_t rc);
 
 /**
  * @brief Set the Report Type (RAB) in I021/040.
@@ -675,9 +731,9 @@ ASTERIX_API void set_I021_040_RC(I021_040 *item, const uint8_t value);
  * Modifies the RAB bits (bit 2) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040 structure.
- * @param value New RAB value (0 or 1).
+ * @param rab New RAB value (0 or 1).
  */
-ASTERIX_API void set_I021_040_RAB(I021_040 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_RAB(I021_040 *item, uint8_t rab);
 
 /**
  * @brief Set the Field Extension (FX) in I021/040.
@@ -685,9 +741,9 @@ ASTERIX_API void set_I021_040_RAB(I021_040 *item, const uint8_t value);
  * Modifies the FX bits (bit 1) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040 structure.
- * @param value New FX value (0 or 1).
+ * @param fx New FX value (0 or 1).
  */
-ASTERIX_API void set_I021_040_FX(I021_040 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_FX(I021_040 *item, uint8_t fx);
 
 /* === FIRST EXTENSION === */
 
@@ -697,9 +753,9 @@ ASTERIX_API void set_I021_040_FX(I021_040 *item, const uint8_t value);
  * Modifies the DCR bits (bits X) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT1 structure.
- * @param value New DCR value (0 or 1).
+ * @param dcr New DCR value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT1_DCR(I021_040_EXT1 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT1_DCR(I021_040_EXT1 *item, uint8_t dcr);
 
 /**
  * @brief Set the Ground Bit Setting (GBS) in I021/040 First extension.
@@ -707,9 +763,9 @@ ASTERIX_API void set_I021_040_EXT1_DCR(I021_040_EXT1 *item, const uint8_t value)
  * Modifies the GBS bits (bits X) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT1 structure.
- * @param value New GBS value (0 or 1).
+ * @param gbs New GBS value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT1_GBS(I021_040_EXT1 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT1_GBS(I021_040_EXT1 *item, uint8_t gbs);
 
 /**
  * @brief Set the Simulated Target (SIM) in I021/040 First extension.
@@ -717,9 +773,9 @@ ASTERIX_API void set_I021_040_EXT1_GBS(I021_040_EXT1 *item, const uint8_t value)
  * Modifies the SIM bits (bits X) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT1 structure.
- * @param value New SIM value (0 or 1).
+ * @param sim New SIM value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT1_SIM(I021_040_EXT1 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT1_SIM(I021_040_EXT1 *item, uint8_t sim);
 
 /**
  * @brief Set the Test Target (TST) in I021/040 First extension.
@@ -727,9 +783,9 @@ ASTERIX_API void set_I021_040_EXT1_SIM(I021_040_EXT1 *item, const uint8_t value)
  * Modifies the TST bits (bits X) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT1 structure.
- * @param value New TST value (0 or 1).
+ * @param tst New TST value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT1_TST(I021_040_EXT1 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT1_TST(I021_040_EXT1 *item, uint8_t tst);
 
 /**
  * @brief Set the Selected Altitude Available (SAA) in I021/040 First extension.
@@ -737,9 +793,9 @@ ASTERIX_API void set_I021_040_EXT1_TST(I021_040_EXT1 *item, const uint8_t value)
  * Modifies the SAA bits (bits X) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT1 structure.
- * @param value New SAA value (0 or 1).
+ * @param saa New SAA value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT1_SAA(I021_040_EXT1 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT1_SAA(I021_040_EXT1 *item, uint8_t saa);
 
 /**
  * @brief Set the Confidence Level (CL) in I021/040 First extension.
@@ -747,9 +803,9 @@ ASTERIX_API void set_I021_040_EXT1_SAA(I021_040_EXT1 *item, const uint8_t value)
  * Modifies the CL bits (bits X) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT1 structure.
- * @param value New CL value (0 to 3).
+ * @param cl New CL value (0 to 3).
  */
-ASTERIX_API void set_I021_040_EXT1_CL(I021_040_EXT1 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT1_CL(I021_040_EXT1 *item, uint8_t cl);
 
 /**
  * @brief Set the Field Extension (FX) in I021/040 First extension.
@@ -757,9 +813,9 @@ ASTERIX_API void set_I021_040_EXT1_CL(I021_040_EXT1 *item, const uint8_t value);
  * Modifies the FX bits (bits X) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT1 structure.
- * @param value New FX value (0 or 1).
+ * @param fx New FX value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT1_FX(I021_040_EXT1 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT1_FX(I021_040_EXT1 *item, uint8_t fx);
 
 /* ============================ SECOND EXTENSION ============================ */
 
@@ -769,9 +825,9 @@ ASTERIX_API void set_I021_040_EXT1_FX(I021_040_EXT1 *item, const uint8_t value);
  * Modifies the LLC bits (bit 7) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT2 structure.
- * @param value New LLC value (0 or 1).
+ * @param llc New LLC value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT2_LLC(I021_040_EXT2 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT2_LLC(I021_040_EXT2 *item, uint8_t llc);
 
 /**
  * @brief Set the Independent Position Check (IPC) in I021/040 Second extension.
@@ -779,9 +835,9 @@ ASTERIX_API void set_I021_040_EXT2_LLC(I021_040_EXT2 *item, const uint8_t value)
  * Modifies the IPC bits (bit 6) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT2 structure.
- * @param value New IPC value (0 or 1).
+ * @param ipc New IPC value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT2_IPC(I021_040_EXT2 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT2_IPC(I021_040_EXT2 *item, uint8_t ipc);
 
 /**
  * @brief Set the No-go Bit Status (NOGO) in I021/040 Second extension.
@@ -789,9 +845,9 @@ ASTERIX_API void set_I021_040_EXT2_IPC(I021_040_EXT2 *item, const uint8_t value)
  * Modifies the NOGO bits (bit 5) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT2 structure.
- * @param value New NOGO value (0 or 1).
+ * @param nogo New NOGO value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT2_NOGO(I021_040_EXT2 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT2_NOGO(I021_040_EXT2 *item, uint8_t nogo);
 
 /**
  * @brief Set the Compact Position Reporting (CPR) in I021/040 Second extension.
@@ -799,9 +855,9 @@ ASTERIX_API void set_I021_040_EXT2_NOGO(I021_040_EXT2 *item, const uint8_t value
  * Modifies the CPR bits (bit 4) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT2 structure.
- * @param value New CPR value (0 or 1).
+ * @param cpr New CPR value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT2_CPR(I021_040_EXT2 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT2_CPR(I021_040_EXT2 *item, uint8_t cpr);
 
 /**
  * @brief Set the Local Decoding Position Jump (LDPJ) in I021/040 Second extension.
@@ -809,9 +865,9 @@ ASTERIX_API void set_I021_040_EXT2_CPR(I021_040_EXT2 *item, const uint8_t value)
  * Modifies the LDPJ bits (bit 3) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT2 structure.
- * @param value New LDPJ value (0 or 1).
+ * @param ldpj New LDPJ value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT2_LDPJ(I021_040_EXT2 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT2_LDPJ(I021_040_EXT2 *item, uint8_t ldpj);
 
 /**
  * @brief Set the Range Check (RCF) in I021/040 Second extension.
@@ -819,9 +875,9 @@ ASTERIX_API void set_I021_040_EXT2_LDPJ(I021_040_EXT2 *item, const uint8_t value
  * Modifies the RCF bits (bit 2) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT2 structure.
- * @param value New RCF value (0 or 1).
+ * @param rcf New RCF value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT2_RCF(I021_040_EXT2 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT2_RCF(I021_040_EXT2 *item, uint8_t rcf);
 
 /**
  * @brief Set the Field Extension (FX) in I021/040 Second extension.
@@ -829,9 +885,9 @@ ASTERIX_API void set_I021_040_EXT2_RCF(I021_040_EXT2 *item, const uint8_t value)
  * Modifies the FX bits (bit 1) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT2 structure.
- * @param value New FX value (0 or 1).
+ * @param fx New FX value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT2_FX(I021_040_EXT2 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT2_FX(I021_040_EXT2 *item, uint8_t fx);
 
 /* ============================ THIRD EXTENSION ============================  */
 
@@ -841,9 +897,9 @@ ASTERIX_API void set_I021_040_EXT2_FX(I021_040_EXT2 *item, const uint8_t value);
  * Modifies the TBC bits (bits 8-2) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT3 structure.
- * @param value New TBC value.
+ * @param tbc New TBC value.
  */
-ASTERIX_API void set_I021_040_EXT3_TBC(I021_040_EXT3 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT3_TBC(I021_040_EXT3 *item, uint8_t tbc);
 
 /**
  * @brief Set the TBC Element populated (TBC_EP) in I021/040 Third extension.
@@ -851,9 +907,9 @@ ASTERIX_API void set_I021_040_EXT3_TBC(I021_040_EXT3 *item, const uint8_t value)
  * Modifies the TBC_EP bits (bit 8) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT3 structure.
- * @param value New TBC_EP value (0 or 1).
+ * @param tbc_ep New TBC_EP value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT3_TBC_EP(I021_040_EXT3 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT3_TBC_EP(I021_040_EXT3 *item, uint8_t tbc_ep);
 
 /**
  * @brief Set the TBC Value (TBC_VAL) in I021/040 Third extension.
@@ -861,9 +917,9 @@ ASTERIX_API void set_I021_040_EXT3_TBC_EP(I021_040_EXT3 *item, const uint8_t val
  * Modifies the TBC_VAL bits (bits 7-2) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT3 structure.
- * @param value New TBC_VAL value.
+ * @param tbc_val New TBC_VAL value.
  */
-ASTERIX_API void set_I021_040_EXT3_TBC_VAL(I021_040_EXT3 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT3_TBC_VAL(I021_040_EXT3 *item, uint8_t tbc_val);
 
 /**
  * @brief Set the Field Extension (FX) in I021/040 Third extension.
@@ -871,9 +927,9 @@ ASTERIX_API void set_I021_040_EXT3_TBC_VAL(I021_040_EXT3 *item, const uint8_t va
  * Modifies the FX bits (bit 1) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT3 structure.
- * @param value New FX value (0 or 1).
+ * @param fx New FX value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT3_FX(I021_040_EXT3 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT3_FX(I021_040_EXT3 *item, uint8_t fx);
 
 /* ============================ FOURTH EXTENSION ============================ */
 
@@ -883,9 +939,9 @@ ASTERIX_API void set_I021_040_EXT3_FX(I021_040_EXT3 *item, const uint8_t value);
  * Modifies the MBC bits (bits 8-2) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT4 structure.
- * @param value New MBC value.
+ * @param mbc New MBC value.
  */
-ASTERIX_API void set_I021_040_EXT4_MBC(I021_040_EXT4 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT4_MBC(I021_040_EXT4 *item, uint8_t mbc);
 
 /**
  * @brief Set the MBC Element populated (MBC_EP) in I021/040 Fourth extension.
@@ -893,9 +949,9 @@ ASTERIX_API void set_I021_040_EXT4_MBC(I021_040_EXT4 *item, const uint8_t value)
  * Modifies the MBC_EP bits (bit 8) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT4 structure.
- * @param value New MBC_EP value (0 or 1).
+ * @param mbc_ep New MBC_EP value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT4_MBC_EP(I021_040_EXT4 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT4_MBC_EP(I021_040_EXT4 *item, uint8_t mbc_ep);
 
 /**
  * @brief Set the MBC Value (MBC_VAL) in I021/040 Fourth extension.
@@ -903,9 +959,9 @@ ASTERIX_API void set_I021_040_EXT4_MBC_EP(I021_040_EXT4 *item, const uint8_t val
  * Modifies the MBC_VAL bits (bits 7-2) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT4 structure.
- * @param value New MBC_VAL value.
+ * @param mbc_val New MBC_VAL value.
  */
-ASTERIX_API void set_I021_040_EXT4_MBC_VAL(I021_040_EXT4 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT4_MBC_VAL(I021_040_EXT4 *item, uint8_t mbc_val);
 
 /**
  * @brief Set the Field Extension (FX) in I021/040 Fourth extension.
@@ -913,24 +969,43 @@ ASTERIX_API void set_I021_040_EXT4_MBC_VAL(I021_040_EXT4 *item, const uint8_t va
  * Modifies the FX bits (bit 1) using a safe bitmask operation.
  * 
  * @param item Pointer to I021_040_EXT4 structure.
- * @param value New FX value (0 or 1).
+ * @param fx New FX value (0 or 1).
  */
-ASTERIX_API void set_I021_040_EXT4_FX(I021_040_EXT4 *item, const uint8_t value);
+ASTERIX_API void set_I021_040_EXT4_FX(I021_040_EXT4 *item, uint8_t fx);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_out
+ * @param out_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t encode_I021_040(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/**
+ * @brief
+ * 
+ * @param item_in
+ * @param msg_in
+ * @param in_index
+ * 
+ * @return uint16_t
+ */
+ASTERIX_API uint16_t decode_I021_040(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
 
 /*******************************************************************************
  * Other Functions
  ******************************************************************************/
-
-/**
- * @brief Count the number of extensions present in the I021/040.
- * 
- * Evaluates each FX bit to determine the number of present extensions.
- * 
- * @param item Pointer to the main I021_040 structure.
- * 
- * @return uint8_t Number of present extensions (0 to 4).
- */
-ASTERIX_API uint8_t count_I021_040_extensions(const I021_040 *item);
 
 /**
  * @brief Print the contents of CAT 021 / Item 040 including its extensions.
