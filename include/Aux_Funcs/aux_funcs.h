@@ -44,7 +44,20 @@ extern "C" {
  * Read functions
  ******************************************************************************/
 
- /**
+/**
+ * @brief Read bits from a byte
+ * 
+ * @param data Pointer to the data
+ * @param mask Mask to apply
+ * @param shift Number of bits to shift
+ * @return uint8_t extracted bits
+ */
+static __inline__ uint8_t read_bits(const uint8_t *data, uint8_t mask, uint8_t shift)
+{
+    return (uint8_t)((data[0] & mask) >> shift);
+}
+
+/**
  * @brief Read signed magnitude 8-bit value
  *
  * @param data Pointer to the data
@@ -187,6 +200,19 @@ static __inline__ uint32_t read_unsigned_32bit(const uint8_t *data)
 /*******************************************************************************
  * Write functions
  ******************************************************************************/
+
+/**
+ * @brief Write bits value to given byte
+ * 
+ * @param data Pointer to the data
+ * @param mask Mask for the value relevant bits
+ * @param shift Shift to applu to write the data
+ * @param value Value to write
+ */
+static __inline__ void write_bits(uint8_t *data, uint8_t mask, uint8_t shift, uint8_t value)
+{
+    data[0] = (uint8_t)((data[0] & ~(mask << shift)) | ((value & mask) << shift));
+}
 
 /** 
  * @brief Write signed magnitude 8-bit value
