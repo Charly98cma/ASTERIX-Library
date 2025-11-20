@@ -17,7 +17,8 @@
  * 
  * @param fp FILE (object) to save log messages
  */
-void log_set_file(FILE* fp) {
+void log_set_file(FILE* fp)
+{
     log_output_file = fp;
 }
 
@@ -27,7 +28,8 @@ void log_set_file(FILE* fp) {
  * @return const char* String with the current date and time in the
  *                     format "%Y-%m-%d %H:%M:%S".
  */
-const char* current_time_str(char* buffer, size_t size) {
+const char* current_time_str(char* buffer, size_t size)
+{
     time_t t = time(NULL);
     strftime(buffer, size, "%Y-%m-%d %H:%M:%S", localtime(&t));
     return buffer;
@@ -46,7 +48,8 @@ const char* current_time_str(char* buffer, size_t size) {
  * @param fmt Format of the message
  * 
  */
-void log_message(int level, const char* color, const char* tag, const char* fmt, ...) {
+void log_message(int level, const char* color, const char* tag, const char* fmt, ...)
+{
     /* Only logging messages with equal or greater criticality */
     if (level < LOG_LEVEL) return;
 
@@ -65,7 +68,8 @@ void log_message(int level, const char* color, const char* tag, const char* fmt,
     va_end(args);
 
     /* Write log to file if configured previously */
-    if (log_output_file) {
+    if (log_output_file)
+    {
         va_start(args, fmt);
         fprintf(log_output_file, "[%s] [%s] ", timestamp, tag);
         vfprintf(log_output_file, fmt, args);
