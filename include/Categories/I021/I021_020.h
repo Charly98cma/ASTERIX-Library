@@ -1,6 +1,6 @@
 /**
  * @file I021_020.h
- * @brief Definition of item 020 of CAT 021, and related functions and values
+ * @brief Definition of I021/020, and related functions and values
  */
 
 #ifndef I021_020_H

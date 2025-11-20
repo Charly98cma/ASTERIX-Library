@@ -121,7 +121,7 @@ typedef struct I021_271 {
             uint8_t FX          :1;
         };
     };
-    /// @brief First extension of Category 021 Item 271
+    /// @brief First extension of I021/271
     I021_271_EXT1 ext1;
 } I021_271;
 

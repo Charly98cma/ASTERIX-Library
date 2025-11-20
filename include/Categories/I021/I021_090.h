@@ -681,7 +681,7 @@ ASTERIX_API uint8_t get_I021_090_EXT7_FX(const I021_090_EXT7 * item);
  * 
  * @return uint8_t value of VAL_DIST_QUAL_P2 in steps of 1 meters (LSB = 1 m)
  */
-ASTERIX_API uint8_t get_I021_090_EXT8_VALDISTQUALP2(const I021_090_EXT8 * item);
+ASTERIX_API uint16_t get_I021_090_EXT8_VALDISTQUALP2(const I021_090_EXT8 * item);
 
 /**
  * @brief Get the value of Field Extension (FX) from I021/090 Eight Extension

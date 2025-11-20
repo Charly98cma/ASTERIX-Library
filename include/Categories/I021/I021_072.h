@@ -1,6 +1,6 @@
 /**
  * @file I021_072.h
- * @brief Definition of item 072 of CAT 021, and related functions and values
+ * @brief Definition of I021/072, and related functions and values
  */
 
 #ifndef I021_072_H
@@ -17,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define I021_072_LSB_TAV    (1.0/128.0)     /// @brief LSB = 1/128 seconds
+#define I021_072_LSB_TAV    (0.0078125)     /// @brief LSB = 1/128 seconds
 
 /*******************************************************************************
  * Structures and Types

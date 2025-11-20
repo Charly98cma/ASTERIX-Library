@@ -1,6 +1,6 @@
 /**
  * @file I021_016.h
- * @brief Definition of item 016 of CAT 021, and related functions and values
+ * @brief Definition of I021/016, and related functions and values
  */
 
 #ifndef I021_016_H
@@ -23,7 +23,6 @@ extern "C" {
 #define I021_016_RP_MIN             (0.0)
 /// @brief Maximum value of RP in seconds
 #define I021_016_RP_MAX             (127.5)
-
 
 /*******************************************************************************
  * Structures and Types

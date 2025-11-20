@@ -1,6 +1,6 @@
 /**
  * @file I021_040.h
- * @brief Definition of item 040 of CAT 021, and related functions and values
+ * @brief Definition of I021/040, and related functions and values
  */
 
 #ifndef I021_040_H

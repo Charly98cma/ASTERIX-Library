@@ -127,7 +127,7 @@ ASTERIX_API uint8_t get_I021_250_BDS2(const I021_250 * item, uint8_t bds_index);
  *        I021/250
  * 
  * @param item pointer to I021_250 structure
- * @param rep new RP value
+ * @param rep new REP value
  */
 ASTERIX_API void set_I021_250_REP(I021_250 * item, uint8_t rep);
 
@@ -138,8 +138,9 @@ ASTERIX_API void set_I021_250_REP(I021_250 * item, uint8_t rep);
  * @param bds_index index of the desired BDS Register Data
  * @param bds_data new BDS Register Data
  */
-ASTERIX_API void set_I021_250_BDSDATA(I021_250 * item, uint8_t bds_index,
-                                            const uint64_t bds_data);
+ASTERIX_API void set_I021_250_BDSDATA(I021_250 * item,
+                                      uint8_t bds_index,
+                                      const uint64_t bds_data);
 
 /**
  * @brief Set a new BD Register Address 1 (BDS1) into I021/250
@@ -147,8 +148,9 @@ ASTERIX_API void set_I021_250_BDSDATA(I021_250 * item, uint8_t bds_index,
  * @param item pointer to I021_250 structure
  * @param bds1 new BDS Register Address 1
  */
-ASTERIX_API void set_I021_250_BDS1(I021_250 * item, uint8_t bds_index,
-                                         uint8_t bds1);
+ASTERIX_API void set_I021_250_BDS1(I021_250 * item,
+                                   uint8_t bds_index,
+                                   uint8_t bds1);
 
 /**
  * @brief Set a new BD Register Address 2 (BDS2) into I021/250
@@ -157,8 +159,8 @@ ASTERIX_API void set_I021_250_BDS1(I021_250 * item, uint8_t bds_index,
  * @param bds2 new BDS Register Address 2
  */
 ASTERIX_API void set_I021_250_BDS2(I021_250 * item, 
-                                         uint8_t bds_index,
-                                         uint8_t bds2);
+                                   uint8_t bds_index,
+                                   uint8_t bds2);
 
 /*******************************************************************************
  * Encoding and Decoding functions

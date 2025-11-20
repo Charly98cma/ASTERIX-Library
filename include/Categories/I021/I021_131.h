@@ -86,7 +86,7 @@ ASTERIX_API double get_I021_131_LON(const I021_131 * item);
  *        coordinates into I021/130
  * 
  * @param item Pointer to I021_131 structure
- * @param lan New high-resolution latitude value in degrees's (see LSB)
+ * @param lan New high-resolution latitude (in range -90:90) value in degrees's (see LSB)
  */
 ASTERIX_API void set_I021_131_LAT(I021_131 * item, double lat);
 
@@ -95,7 +95,7 @@ ASTERIX_API void set_I021_131_LAT(I021_131 * item, double lat);
  *        coordinates into I021/130 
  * 
  * @param item Pointer to I021_131 structure
- * @param lan New high-resolution longitude value in degrees's (see LSB)
+ * @param lan New high-resolution longitude (in range -180:180) value in degrees's (see LSB)
  */
 ASTERIX_API void set_I021_131_LON(I021_131 * item, double lon);
 

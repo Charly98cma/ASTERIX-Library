@@ -1,6 +1,6 @@
 /**
  * @file I021_071.h
- * @brief Definition of item 071 of CAT 021, and related functions and values
+ * @brief Definition of I021/071, and related functions and values
  */
 
 #ifndef I021_071_H
@@ -17,7 +17,7 @@ extern "C" {
  * Macros
  ******************************************************************************/
 
-#define I021_071_LSB_TAP             (1.0/128.0)     /// LSB = 128 seconds
+#define I021_071_LSB_TAP    (0.0078125)     /// LSB = 1/128 seconds
 
 /*******************************************************************************
  * Structures and Types
