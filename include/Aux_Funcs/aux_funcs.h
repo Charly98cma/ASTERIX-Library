@@ -109,7 +109,7 @@ static __inline__ int16_t read_signmag_16bit(const uint8_t *data)
  * @brief Read two's complement 16-bit value
  * 
  * @param data Pointer to the data
- * @return int8_t Two's complement 16-bit value
+ * @return int16_t Two's complement 16-bit value
  */
 int16_t read_twocomp_16bit(const uint8_t *data)
 {
