@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# VSCode files
+.vscode
+
+# Bin files
+bin
+build
+
+# Docs files
+docs

@@ -1,0 +1,132 @@
+/**
+ * @file I021_230.h
+ * @brief Definition of I021/230, and related functions and values
+ */
+
+#ifndef I021_230_H
+#define I021_230_H
+
+#include <stdint.h>
+#include "Common/visibility.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*******************************************************************************
+ * Macros
+ ******************************************************************************/
+
+#define I021_230_LSB_RA           (0.01)      /// LSB = 0.01 degrees
+
+#define I021_230_MIN_RA           (-180.0)    /// Min. Roll Angle = -180.0
+#define I021_230_MAX_RA           ( 180.0)    /// Min. Roll Angle =  180.0
+
+/*******************************************************************************
+ * Structures and Types
+ ******************************************************************************/
+
+/**
+ * @typedef I021_230
+ * @brief Category 021 / Item 230 - Roll Angle
+ * 
+ * The roll angle, in two's complement form, of an aircraft executing a turn.
+ * 
+ * @note 1. Negative Value indicates “Left Wing Down”.
+ * @note 2. Resolution provided by the technology "1090 MHz Extended
+ *          Squitter" is 1 degree.
+ */
+typedef struct I021_230 {
+    union {
+        /// @brief Raw octets as received (recommended for portable access)
+        uint8_t raw[2];
+
+        /**
+         * @note Bit-field layout is compiler and endianness dependent.
+         * Use raw field and provided macros for portable access.
+         */
+
+        /// @brief Bit-field access (might be non-portable, use with caution)
+        struct {
+            /**
+             * @brief Roll Angle
+             * 
+             * Range: -180 <= RA <= 180
+             * 
+             * LSB = 0.01 degree
+             */
+            uint16_t RA;
+        };
+    };
+} I021_230;
+
+
+/*******************************************************************************
+ * Getters
+ ******************************************************************************/
+
+/**
+ * @brief Get the Roll Angle value in degrees from I021/230
+ * 
+ * @param item pointer to I021_230 structure
+ * 
+ * @return double Roll Angle in degrees (LSB = 0.01 degrees)
+ */
+ASTERIX_API double get_I021_230_RA(const I021_230 * item);
+
+/*******************************************************************************
+ * Setters
+ ******************************************************************************/
+
+/**
+ * @brief Sets the given value (ra) as the new Roll Angle into I021/230
+ * 
+ * @param item pointer to I021_230 structure
+ * @param ra_deg new Roll Angle value (LSB = 0.01 degrees) (-180 <= ra <= 180)
+ */
+ASTERIX_API void set_I021_230_RA(I021_230 * item, double ra_deg);
+
+/*******************************************************************************
+ * Encoding and Decoding functions
+ ******************************************************************************/
+
+/** @brief Encode item I021/230 (Roll Angle) into a raw ASTERIX message.
+ *
+ * @param item_in Pointer to the input I021/230 structure.
+ * @param msg_out Pointer to the output ASTERIX message buffer.
+ * @param out_index Current index in the output message buffer.
+ * 
+ * @return Updated index in the output message buffer after encoding.
+ */
+ASTERIX_API uint16_t encode_I021_230(void * item_in,
+                                     unsigned char * msg_out,
+                                     uint16_t out_index);
+
+/** @brief Decode item I021/230 (Roll Angle) from a raw ASTERIX message.
+ *
+ * @param item_out Pointer to the output I021/230 structure to populate.
+ * @param msg_in Pointer to the input ASTERIX message buffer.
+ * @param in_index Current index in the input message buffer.
+ * 
+ * @return Updated index in the input message buffer after decoding.
+ */
+ASTERIX_API uint16_t decode_I021_230(void * item_out,
+                                     const unsigned char * msg_in,
+                                     uint16_t in_index);
+
+/*******************************************************************************
+ * Other Functions
+ ******************************************************************************/
+
+/**
+ * @brief Prints the Roll Angle data from I021/230
+ * 
+ * @param item pointer to I021_230 structure
+ */
+ASTERIX_API void print_I021_230(const I021_230 * item);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* I021_230_H */
