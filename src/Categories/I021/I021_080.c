@@ -4,6 +4,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 
 #include "Common/constants.h"
 #include "Aux_Funcs/aux_funcs.h"
@@ -14,46 +15,54 @@
  * Getters
  ******************************************************************************/
 
-uint32_t get_I021_080_TGTADDR(const I021_080 * item) {
-    return ((((uint32_t) item->raw[0]) << 16) |
-            (((uint32_t) item->raw[1]) <<  8) |
-            (((uint32_t) item->raw[2])      ));
+uint32_t get_I021_080_TGTADDR(const I021_080 * item)
+{
+    if (!item) return 0;
+    return read_unsigned_24bit(item->raw);
 }
 /*******************************************************************************
  * Setters
  ******************************************************************************/
 
-void set_I021_080_TGTADDR(I021_080 * item, uint32_t addr) {
-    item->raw[0] = (addr >> 16);
-    item->raw[1] = (addr >>  8);
-    item->raw[2] =addr;
+void set_I021_080_TGTADDR(I021_080 * item, uint32_t addr)
+{
+    if (!item) return;
+    write_unsigned_24bit(item->raw, addr & MASK_24_BITS);
 }
 
 /*******************************************************************************
  * Encoding and Decoding functions
  ******************************************************************************/
 
-uint16_t encode_I021_080(void * item_in, unsigned char * msg_out, uint16_t out_index) {
-    I021_080 * item = (I021_080 *) item_in;
-    msg_out[out_index++] = item->raw[0];
-    msg_out[out_index++] = item->raw[1];
-    msg_out[out_index++] = item->raw[2];
-    return out_index;
+uint16_t encode_I021_080(void * item_in, unsigned char * msg_out, uint16_t out_index)
+{
+    I021_080 *item;
+    if (!item_in || !msg_out) return out_index;
+    item = (I021_080 *) item_in;
+    memcpy(&msg_out[out_index], item->raw, 3);
+    return out_index + 3;
 }
 
-uint16_t decode_I021_080(void * item_out, const unsigned char * msg_in, uint16_t in_index) {
-    I021_080 * item = (I021_080 *) item_out;
-    item->raw[0] = msg_in[in_index++];
-    item->raw[1] = msg_in[in_index++];
-    item->raw[2] = msg_in[in_index++];
-    return in_index;
+uint16_t decode_I021_080(void * item_out, const unsigned char * msg_in, uint16_t in_index)
+{
+    I021_080 * item;
+    if (!item_out || !msg_in) return in_index;
+    item = (I021_080 *) item_out;
+    memcpy(item->raw, &msg_in[in_index], 3);
+    return in_index + 3;
 }
 
 /*******************************************************************************
  * Other Functions
  ******************************************************************************/
 
-void print_I021_080(const I021_080 * item) {
-    printf("Category 021 Item 080 - Target ICAO Address (24 bits)\n");
-    printf("  ICAO Addr = 0x%03X\n", get_I021_080_TGTADDR(item));
+void print_I021_080(const I021_080 * item)
+{
+    printf("I021/080 - Target ICAO Address (24 bits)\n");
+    if (!item)
+    {
+        printf("I021/080: <null>\n");
+        return;
+    }
+    printf("- ICAO Addr = 0x%04X\n", get_I021_080_TGTADDR(item));
 }

@@ -4,6 +4,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 
 #include "Common/constants.h"
 #include "Aux_Funcs/aircraft_ident_char_encoding.h"
@@ -15,9 +16,10 @@
  * Getters
  ******************************************************************************/
 
-void get_I021_170_TI(const I021_170 * item, unsigned char * code_out_str) {
+void get_I021_170_TI(const I021_170 * item, unsigned char * code_out_str)
+{
     uint8_t code;
-    
+    if (!item || !code_out_str) return;
     /* Char 1
      * 48 47 46 45 44 43
      * 08 07 06 05 04 03
@@ -76,8 +78,11 @@ void get_I021_170_TI(const I021_170 * item, unsigned char * code_out_str) {
  * Setters
  ******************************************************************************/
 
-void set_I021_170_TI(I021_170 * item, const unsigned char * code_in_str) {
-    uint8_t code;
+void set_I021_170_TI(I021_170 * item, const unsigned char * code_in_str)
+{
+    uint8_t code = 0;
+
+    if (!item || !code_in_str) return;
 
     /* Char 1 */
     code = char_to_encoding[code_in_str[0]];
@@ -120,36 +125,37 @@ void set_I021_170_TI(I021_170 * item, const unsigned char * code_in_str) {
  * Encoding and Decoding functions
  ******************************************************************************/
 
-uint16_t encode_I021_170(void * item_in, unsigned char * msg_out, uint16_t out_index) {
-    I021_170 * item = (I021_170 *) item_in;
-    msg_out[out_index++] = item->raw[0];
-    msg_out[out_index++] = item->raw[1];
-    msg_out[out_index++] = item->raw[2];
-    msg_out[out_index++] = item->raw[3];
-    msg_out[out_index++] = item->raw[4];
-    msg_out[out_index++] = item->raw[5];
-    return out_index;
+uint16_t encode_I021_170(void * item_in, unsigned char * msg_out, uint16_t out_index)
+{
+    I021_170 *item;
+    if (!item_in || !msg_out) return out_index;
+    item = (I021_170 *) item_in;
+    memcpy(&msg_out[out_index], item->raw, 6);
+    return out_index + 6;
 }
 
-uint16_t decode_I021_170(void * item_out, const unsigned char * msg_in, uint16_t in_index) {
-    I021_170 * item = (I021_170 *) item_out;
-    item->raw[0] = msg_in[in_index++];
-    item->raw[1] = msg_in[in_index++];
-    item->raw[2] = msg_in[in_index++];
-    item->raw[3] = msg_in[in_index++];
-    item->raw[4] = msg_in[in_index++];
-    item->raw[5] = msg_in[in_index++];
-    return in_index;
+uint16_t decode_I021_170(void * item_out, const unsigned char * msg_in, uint16_t in_index)
+{
+    I021_170 *item;
+    if (!item_out || !msg_in) return in_index;
+    item = (I021_170 *) item_out;
+    memcpy(item->raw, &msg_in[in_index], 6);
+    return in_index + 6;
 }
 
 /*******************************************************************************
  * Other Functions
  ******************************************************************************/
 
-void print_I021_170(const I021_170 * item) {
+void print_I021_170(const I021_170 * item)
+{
     unsigned char str[8];
+    if (!item)
+    {
+        printf("I021/170 <null>\n");
+        return;
+    }
     get_I021_170_TI(item, str);
-    
-    printf("Category 021 Item 170 - Target Identification\n");
+    printf("I021/170 - Target Identification\n");
     printf("  Target Identification = %s\n", str);
 }

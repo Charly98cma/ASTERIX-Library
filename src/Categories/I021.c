@@ -3,6 +3,7 @@
  * @brief Implementation of I021 functions to read FSPEC and encode/decode
  *        Category 021 messages
  */
+#include <string.h>
 
 #include "Aux_Funcs/aux_funcs.h"
 #include "Categories/I021.h"
@@ -95,24 +96,28 @@ const LT_Entry lookup_table[I021_MAX_FSPEC_ITEM+1] = {
  * FSPEC Getters
  ******************************************************************************/
 
-uint8_t has_I021_FSPEC_item(const I021_FSPEC * fspec, uint8_t item_number) {
+uint8_t has_I021_FSPEC_item(const I021_FSPEC * fspec, uint8_t item_number)
+{
     uint8_t value = -1;
     LT_Entry item_lt_data;
-    if(item_number <= I021_MAX_FSPEC_ITEM) {
+    if(item_number <= I021_MAX_FSPEC_ITEM)
+    {
         item_lt_data = lookup_table[item_number];
         value = (fspec->raw[item_lt_data.byte] >> item_lt_data.pos) & MASK_01_BITS;
     }
     return value;
 }
 
-uint8_t has_I021_FSPEC_fx(const I021_FSPEC * fspec, uint8_t fx_number) {
+uint8_t has_I021_FSPEC_fx(const I021_FSPEC * fspec, uint8_t fx_number)
+{
     uint8_t value = -1;
     if (IS_IN_RANGE(I021_MIN_FSPEC_FX, fx_number, I021_MAX_FSPEC_FX))
         value = (fspec->raw[fx_number-1]) & MASK_01_BITS;
     return value;
 }
 
-uint8_t get_I021_FSPEC_byte(const I021_FSPEC * fspec, uint8_t n_byte) {
+uint8_t get_I021_FSPEC_byte(const I021_FSPEC * fspec, uint8_t n_byte)
+{
     uint8_t byte = 0;
     if (n_byte < (I021_FSPEC_FX_7)) byte = fspec->raw[n_byte];
     return byte;
@@ -122,20 +127,24 @@ uint8_t get_I021_FSPEC_byte(const I021_FSPEC * fspec, uint8_t n_byte) {
  * FSPEC Setters
  ******************************************************************************/
 
-void set_I021_FSPEC_item(I021_FSPEC * fspec, uint8_t item_number, uint8_t value) {
+void set_I021_FSPEC_item(I021_FSPEC * fspec, uint8_t item_number, uint8_t value)
+{
     LT_Entry item_lt_data;
-    if(item_number <= I021_MAX_FSPEC_ITEM) {
+    if(item_number <= I021_MAX_FSPEC_ITEM)
+    {
         item_lt_data = lookup_table[item_number];
-        fspec->raw[item_lt_data.byte] |= (value & MASK_01_BITS) << item_lt_data.pos;
+        write_bits(&fspec->raw[item_lt_data.byte], MASK_01_BITS, item_lt_data.pos, value);
     }
 }
 
-void set_I021_FSPEC_fx(I021_FSPEC * fspec, uint8_t fx_number, uint8_t value) {
+void set_I021_FSPEC_fx(I021_FSPEC * fspec, uint8_t fx_number, uint8_t value)
+{
     if (IS_IN_RANGE(I021_MIN_FSPEC_FX, fx_number, I021_MAX_FSPEC_FX))
-        fspec->raw[fx_number-1] |= value & MASK_01_BITS;
+        write_bits(&fspec->raw[fx_number - 1], MASK_01_BITS, 0, value);
 }
 
-void set_I021_FSPEC_byte(I021_FSPEC * fspec, uint8_t n_byte, uint8_t byte) {
+void set_I021_FSPEC_byte(I021_FSPEC * fspec, uint8_t n_byte, uint8_t byte)
+{
     if (n_byte < I021_MAX_FSPEC_FX)
         fspec->raw[n_byte] = byte;
 }
@@ -144,7 +153,8 @@ void set_I021_FSPEC_byte(I021_FSPEC * fspec, uint8_t n_byte, uint8_t byte) {
  * Encode / Decode functions
  ******************************************************************************/
 
-uint16_t encode_I021(const I021 * item_in, unsigned char * msg_out) {
+uint16_t encode_I021(const I021 * item_in, unsigned char * msg_out)
+{
     uint16_t len, out_index, item_number, fx_number;
 
     fx_number = 0;
@@ -152,8 +162,7 @@ uint16_t encode_I021(const I021 * item_in, unsigned char * msg_out) {
 
     msg_out[out_index++] = get_Header_CAT(&(item_in->header));
     len = get_Header_LEN(&(item_in->header));
-    msg_out[out_index++] = (len >> 8) & MASK_08_BITS;
-    msg_out[out_index++] = len & MASK_08_BITS;
+    memcpy(&msg_out[out_index], &len, 2);
 
     /* First byte of the FSPEC */
     msg_out[out_index++] = get_I021_FSPEC_byte(&(item_in->fspec), fx_number);
@@ -166,7 +175,8 @@ uint16_t encode_I021(const I021 * item_in, unsigned char * msg_out) {
             break;
 
     /* Encode each item based on the FSPEC contents */
-    for (item_number = 0, fx_number = 1; item_number <= I021_MAX_FSPEC_ITEM; item_number++) {
+    for (item_number = 0, fx_number = 1; item_number <= I021_MAX_FSPEC_ITEM; item_number++)
+    {
         /* If item present, use its encode function from the lookup table */
         if (has_I021_FSPEC_item(&(item_in->fspec), item_number))
             out_index = lookup_table[item_number].encode((void *) item_in, msg_out, out_index);
@@ -180,21 +190,23 @@ uint16_t encode_I021(const I021 * item_in, unsigned char * msg_out) {
     return out_index;
 }
 
-uint16_t decode_I021(const unsigned char * msg_in, I021 * item_out) {
+uint16_t decode_I021(const unsigned char * msg_in, I021 * item_out)
+{
     uint16_t in_index, item_number, fx_number;
 
     in_index = 0; /* Pointer to next byte to read from "msg_in" */
 
     /* Extract message header (CAT and LEN) */
     set_Header_CAT(&(item_out->header), msg_in[in_index++]);
-    set_Header_LEN(&(item_out->header), (msg_in[in_index] << 8) | (msg_in[in_index+1]));
+    set_Header_LEN(&(item_out->header), read_unsigned_16bit(&msg_in[in_index]));
     in_index += 2;
 
     /* Write first byte of FSPEC */
     set_I021_FSPEC_byte(&(item_out->fspec), 0, msg_in[in_index++]);
 
     /* Write subsequent bytes only if corresponding FX is active */
-    for (fx_number = 1; fx_number < I021_FSPEC_MAX_OCTETS; fx_number++) {
+    for (fx_number = 1; fx_number < I021_FSPEC_MAX_OCTETS; fx_number++)
+    {
         /* Check presence of next FSPEC byte, or exit if finished FSPEC */
         if (has_I021_FSPEC_fx(&(item_out->fspec), fx_number))
             set_I021_FSPEC_byte(&(item_out->fspec), fx_number, msg_in[in_index++]);
@@ -203,7 +215,8 @@ uint16_t decode_I021(const unsigned char * msg_in, I021 * item_out) {
     }
 
     /* Decode each item if the FSPEC says its present */
-    for (item_number = 0, fx_number = 1; item_number <= I021_MAX_FSPEC_ITEM; item_number++) {
+    for (item_number = 0, fx_number = 1; item_number <= I021_MAX_FSPEC_ITEM; item_number++)
+    {
         /* If item present, use its decode function from the lookup table */
         if (has_I021_FSPEC_item(&(item_out->fspec), item_number))
             lookup_table[item_number].decode((void *) item_out, msg_in, in_index);

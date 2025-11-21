@@ -90,27 +90,25 @@ ASTERIX_API void set_I021_230_RA(I021_230 * item, double ra_deg);
  * Encoding and Decoding functions
  ******************************************************************************/
 
-/**
- * @brief
+/** @brief Encode item I021/230 (Roll Angle) into a raw ASTERIX message.
+ *
+ * @param item_in Pointer to the input I021/230 structure.
+ * @param msg_out Pointer to the output ASTERIX message buffer.
+ * @param out_index Current index in the output message buffer.
  * 
- * @param item_in
- * @param msg_out
- * @param out_index
- * 
- * @return uint16_t
+ * @return Updated index in the output message buffer after encoding.
  */
 ASTERIX_API uint16_t encode_I021_230(void * item_in,
                                      unsigned char * msg_out,
                                      uint16_t out_index);
 
-/**
- * @brief
+/** @brief Decode item I021/230 (Roll Angle) from a raw ASTERIX message.
+ *
+ * @param item_out Pointer to the output I021/230 structure to populate.
+ * @param msg_in Pointer to the input ASTERIX message buffer.
+ * @param in_index Current index in the input message buffer.
  * 
- * @param item_in
- * @param msg_in
- * @param in_index
- * 
- * @return uint16_t
+ * @return Updated index in the input message buffer after decoding.
  */
 ASTERIX_API uint16_t decode_I021_230(void * item_out,
                                      const unsigned char * msg_in,
