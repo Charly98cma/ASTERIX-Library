@@ -6,7 +6,7 @@
 #include <string.h>
 
 #include "Aux_Funcs/aux_funcs.h"
-#include "Categories/I021.h"
+#include "Categories/I021/I021.h"
 
 /*******************************************************************************
  * Private macros
