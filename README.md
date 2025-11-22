@@ -60,40 +60,40 @@ The following categories will be (or are) implemented in this project, since not
 all of them are public due. The one not public will be the last ones implemented,
 being just a wrapper with basic information.
 
-- CAT004 Safety Nets Messages
-- CAT007 Directed Interrogation Messages
-- CAT008 Monoradar Derived Weather Information
-- CAT009 Multisensor Derived Weather Information
-- CAT010 Monosensor Surface Movement Data
-- CAT011 Advanced-SMGCS Data 
-- CAT015 INCS (Independent Non-Cooperative Surveillance) Target Reports
-- CAT016 INCS Configuration Reports
-- CAT017 Mode S Surveillance Co-ordination Function messages
-- CAT018 Mode S Data-Link Function messages
-- CAT019 MLT System Status Messages
-- CAT020 MLT Messages
-- CAT021 ADS-B Target Reports 
-- CAT023 CNS/ATM Ground Station Service Messages
-- CAT025 CNS/ATM Ground System Status Report 
-- CAT032 Miniplan Reports to an SDPS
-- CAT033 ADS-B Messages
-- CAT034 Transmission of Monoradar Service Messages 
-- CAT048 Monoradar Target Reports
-- CAT061 SDPS Session and Service Control Messages
-- CAT062 System Track Data
-- CAT063 Sensor Status Messages
-- CAT065 SDPS Service Status Messages
-- CAT129 UAS Identification Reports
-- CAT150 Flight Data Messages
-- CAT151 Association Messages
-- CAT152 Time Stamp Messages
-- CAT153 Special Purpose Messages
-- CAT204 Recognised Air Picture
-- CAT205 Radio Direction Finder Reports
-- CAT237 Aeronautical Data Messages
-- CAT238 Service Prediction Reports
-- CAT239 Foreign Object Debris (FOD)
-- CAT240 Radar Video Transmission
-- CAT244 Transmission of Reference Trajectory State Vectors
-- CAT247 Version Number Exchange 
-- CAT253 Remote Station Monitoring and Control Information 
+- Category 004 - Safety Nets Messages
+- Category 007 - Directed Interrogation Messages
+- Category 008 - Monoradar Derived Weather Information
+- Category 009 - Multisensor Derived Weather Information
+- Category 010 - Monosensor Surface Movement Data
+- Category 011 - Advanced-SMGCS Data 
+- Category 015 - INCS (Independent Non-Cooperative Surveillance) Target Reports
+- Category 016 - INCS Configuration Reports
+- Category 017 - Mode S Surveillance Co-ordination Function Messages
+- Category 018 - Mode S Data-Link Function Messages
+- Category 019 - MLT System Status Messages
+- Category 020 - MLT Messages
+- Category 021 - ADS-B Target Reports 
+- Category 023 - CNS/ATM Ground Station Service Messages
+- Category 025 - CNS/ATM Ground System Status Report 
+- Category 032 - Miniplan Reports to an SDPS
+- Category 033 - ADS-B Messages
+- Category 034 - Transmission of Monoradar Service Messages 
+- Category 048 - Monoradar Target Reports
+- Category 061 - SDPS Session and Service Control Messages
+- Category 062 - System Track Data
+- Category 063 - Sensor Status Messages
+- Category 065 - SDPS Service Status Messages
+- Category 129 - UAS Identification Reports
+- Category 150 - Flight Data Messages
+- Category 151 - Association Messages
+- Category 152 - Time Stamp Messages
+- Category 153 - Special Purpose Messages
+- Category 204 - Recognised Air Picture
+- Category 205 - Radio Direction Finder Reports
+- Category 237 - Aeronautical Data Messages
+- Category 238 - Service Prediction Reports
+- Category 239 - Foreign Object Debris (FOD)
+- Category 240 - Radar Video Transmission
+- Category 244 - Transmission of Reference Trajectory State Vectors
+- Category 247 - Version Number Exchange 
+- Category 253 - Remote Station Monitoring and Control Information 
