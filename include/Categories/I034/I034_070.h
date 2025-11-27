@@ -23,6 +23,28 @@ extern "C" {
 /// @brief Octets of Message Count Values (TYP and COUNTER)
 #define I034_070_N_OCTETS               2
 
+#define I034_070_TYP_MISSES             0 /* No detection (number of misses) */
+#define I034_070_TYP_SING_PSR_REP       1 /* Single PSR target reports */
+#define I034_070_TYP_SING_SSR_REP       2 /* Single SSR target reports (Non-Mode S) */
+#define I034_070_TYP_SSR_PSR_REP        3 /* SSR+PSR target reports (Non-Mode S) */
+#define I034_070_TYP_SING_ACALL_REP     4 /* Single All-Call target reports (Mode S) */
+#define I034_070_TYP_SING_RCALL_REP     5 /* Single Roll-Call target reports (Mode S) */
+#define I034_070_TYP_ACALL_PSR_REP      6 /* All-Call + PSR (Mode S) target reports */
+#define I034_070_TYP_RCALL_PSR_REP      7 /* Roll-Call + PSR (Mode S) target reports */
+#define I034_070_TYP_FIL_WEATHER        8 /* Filter for Weather data */
+#define I034_070_TYP_FIL_JAMM_STR       9 /* Filter for Jamming Strobe */
+#define I034_070_TYP_FIL_PSR            10 /* Filter for PSR data */
+#define I034_070_TYP_FIL_SSR_MS         11 /* Filter for SSR/Mode S data */
+#define I034_070_TYP_FIL_SSR_MS_PSR     12 /* Filter for SSR/Mode S+PSR data */
+#define I034_070_TYP_FIL_ENHS           13 /* Filter for Enhanced Surveillance data */
+#define I034_070_TYP_FIL_PSR_ENHS       14 /* Filter for PSR+Enhanced Surveillance */
+#define I034_070_TYP_FIL_PSR_ENHS_SSRMS 15 /* Filter for PSR+Enhanced Surveillance + SSR/Mode S data not in Area of Prime Interest */
+#define I034_070_TYP_FIL_PSR_ENHS_MS    16 /* Filter for PSR+Enhanced Surveillance + all SSR/Mode S data */
+#define I034_070_TYP_REINT              17 /* Re-Interrogations (per sector) */
+#define I034_070_TYP_BDSSWAP_WRONGDFREP 18 /* BDS Swap and wrong DF replies (per sector) */
+#define I034_070_TYP_MODEAC_FRUIT       19 /* Mode A/C FRUIT (per sector) */
+#define I034_070_TYP_MS_FRUIT           20 /* Mode S FRUIT (per sector) */
+
 /*******************************************************************************
  * Structures and Types
  ******************************************************************************/
