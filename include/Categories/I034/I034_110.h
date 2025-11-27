@@ -19,6 +19,16 @@ extern "C"
  * Macros
  ******************************************************************************/
 
+#define I034_110_TYP_FIL_WEATHER        1 /* Filter for Weather data */
+#define I034_110_TYP_FIL_JAMM_STR       2 /* Filter for Jamming Strobe */
+#define I034_110_TYP_FIL_PSR            3 /* Filter for PSR data */
+#define I034_110_TYP_FIL_SSR_MS         4 /* Filter for SSR/Mode S data */
+#define I034_110_TYP_FIL_SSR_MS_PSR     5 /* Filter for SSR/Mode S+PSR data */
+#define I034_110_TYP_FIL_ENHS           6 /* Filter for Enhanced Surveillance data */
+#define I034_110_TYP_FIL_PSR_ENHS       7 /* Filter for PSR+Enhanced Surveillance */
+#define I034_110_TYP_FIL_PSR_ENHS_SSRMS 8 /* Filter for PSR+Enhanced Surveillance + SSR/Mode S data not in Area of Prime Interest */
+#define I034_110_TYP_FIL_PSR_ENHS_MS    9 /* Filter for PSR+Enhanced Surveillance + all SSR/Mode S data */
+
 /*******************************************************************************
  * Structures and Types
  ******************************************************************************/

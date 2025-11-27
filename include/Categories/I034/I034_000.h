@@ -7,6 +7,7 @@
 #define I034_000_H
 
 #include <stdint.h>
+#include "Common/versions.h"
 #include "Common/visibility.h"
 
 #ifdef __cplusplus
@@ -17,6 +18,17 @@ extern "C"
 /*******************************************************************************
  * Macros
  ******************************************************************************/
+
+#define I034_000_UNKNOWN            0 /* Unknown message */
+#define I034_000_NORTH_MARKER       1 /* Noth Marker message */
+#define I034_000_SECTOR_CROSSING    2 /* Sector crossing message */
+#define I034_000_GEO_FILTERING      3 /* Goegraphical Filtering message */
+#define I034_000_JAMMING_STROBE     4 /* Jamming Strobe message */
+#define I034_000_SOLAR_STORM        5 /* Solar Storm message */
+#if (EDITION_NUMBER_I034 >= 1) && (VERSION_NUMBER_I034 >= 29)
+#define I034_000_SSR_JAMMING_STROBE 6 /* SSR Jamming Strobe  */
+#define I034_000_MS_JAMMING_STROBE  7 /* Mode S Jamming Strobe */
+#endif
 
 /*******************************************************************************
  * Structures and Types
@@ -48,7 +60,7 @@ typedef struct
             uint8_t MSGTYPE;
         };
     };
-}I034_000;
+} I034_000;
 
 /*******************************************************************************
  * Getters

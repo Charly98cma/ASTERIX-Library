@@ -18,6 +18,21 @@ extern "C"
  * Macros
  ******************************************************************************/
 
+#define I034_050_PSR_CHAB_NOCHN 0 /* No channel selected */
+#define I034_050_PSR_CHAB_CHA   1 /* Channel A selected */
+#define I034_050_PSR_CHAB_CHB   2 /* Channel B selected */
+#define I034_050_PSR_CHAB_DIV   3 /* Diversity mode (both channels selected) */
+
+#define I034_050_SSR_CHAB_NOCHN 0 /* No channel selected */
+#define I034_050_SSR_CHAB_CHA   1 /* Channel A selected */
+#define I034_050_SSR_CHAB_CHB   2 /* Channel B selected */
+#define I034_050_SSR_CHAB_INV   3 /* Invalid combination */
+
+#define I034_050_MDS_CHAB_NOCHN 0 /* No channel selected */
+#define I034_050_MDS_CHAB_CHA   1 /* Channel A selected */
+#define I034_050_MDS_CHAB_CHB   2 /* Channel B selected */
+#define I034_050_MDS_CHAB_INV   3 /* Invalid combination */
+
 /*******************************************************************************
  * Structures and Types
  ******************************************************************************/

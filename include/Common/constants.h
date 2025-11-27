@@ -23,8 +23,14 @@ extern "C" {
 /**
  * Value of the Field Extension (FX) bits
  */
-#define FX_INACTIVE     0   ///< Field Extension (FX) inactive
-#define FX_ACTIVE       1   ///< Field Extension (FX) active
+#define FX_INACTIVE     0   /* Field Extension (FX) inactive */
+#define FX_ACTIVE       1   /* Field Extension (FX) active */
+
+/**
+ * Macros to check presence/absence of subfield
+ */
+#define SUBFIELD_ABSENT  0 /* Flag of absent subfield */
+#define SUBFIELD_PRESENT 1 /* Flag of present subfield */
 
 /*******************************************************************************
  * POWERS OF 2
