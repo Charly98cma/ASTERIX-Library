@@ -1,7 +1,7 @@
 # Compiler and flags
 CC 				= gcc
 CXX 			= g++
-CFLAGS 			= -Wall -Wextra -Iinclude -fPIC -pedantic -O2 #-g
+CFLAGS 			= -std=c99 -Wall -Wextra -Iinclude -fPIC -pedantic -O2 #-g
 CXXFLAGS 		= -Wall -Wextra -Iinclude -fPIC -O2 #-g
 CPPUTESTFLAGS 	= -lCppUTest -lCppUTestExt
 
