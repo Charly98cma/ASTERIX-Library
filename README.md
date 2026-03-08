@@ -30,8 +30,6 @@ The provided Makefile offers simple commands to build the static and/or dynamic 
 │   ├── Categories
 │   ├── Infra
 │   └── Logger
-├── test
-│   └── I034                        # Category 034 tests
 ├── .gitignore
 ├── LICENSE
 ├── Makefile
