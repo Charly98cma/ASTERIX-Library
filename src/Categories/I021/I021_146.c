@@ -19,14 +19,14 @@ void encode_I021_146(BitStream *bs, const I021_146 *item)
 {
     bs_serialize_u8(bs, item->SAS, 1U);
     bs_serialize_u8(bs, item->SRC, 2U);
-    bs_serialize_u16(bs, item->ALT, 13U);
+    bs_serialize_s16(bs, item->ALT, 13U);
 }
 
 void decode_I021_146(BitStream *bs, I021_146 *item)
 {
     item->SAS = bs_deserialize_u8(bs, 1U);
     item->SRC = bs_deserialize_u8(bs, 2U);
-    item->ALT = bs_deserialize_u16(bs, 13U);
+    item->ALT = bs_deserialize_s16(bs, 13U);
 }
 
 /* ============================== EXTRA FUNCS ============================== */
