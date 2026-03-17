@@ -103,7 +103,7 @@ typedef struct I021_008
  * @brief Encode the data item I021/008 (Aircraft Operational Status) into a raw ASTERIX message.
  * 
  * @param[in/out] bs Pointer to the BitStream (must not be NULL)
- * @param[in] item Pointer to the I021_010 structure (must not be NULL)
+ * @param[in] item Pointer to the I021_080 structure (must not be NULL)
  */
 ASTERIX_LIB void encode_I021_008(BitStream *bs, const I021_008 *item);
 
@@ -111,7 +111,7 @@ ASTERIX_LIB void encode_I021_008(BitStream *bs, const I021_008 *item);
  * @brief Decode the data item I021/008 (Aircraft Operational Status) from a raw ASTERIX message.
  * 
  * @param[in/out] bs Pointer to the BitStream (must not be NULL)
- * @param[in/out] item Pointer to the I021_010 structure (must not be NULL)
+ * @param[in/out] item Pointer to the I021_080 structure (must not be NULL)
  */
 ASTERIX_LIB void decode_I021_008(BitStream *bs, I021_008 *item);
 

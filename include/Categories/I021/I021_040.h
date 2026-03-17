@@ -187,7 +187,7 @@ typedef struct I021_040_EXT3
     /// @brief TBC Populated
     ePresenceFlag   TBC_EP;
     /// @brief TBC Value
-    uint8_t         TBC_VAL;
+    u8              TBC_VAL;
     /// @brief Field Extension
     ePresenceFlag   FX;
 } I021_040_EXT3;
@@ -201,7 +201,7 @@ typedef struct I021_040_EXT4
     /// @brief MBC Element populated
     ePresenceFlag   MBC_EP;
     /// @brief MBC Value
-    uint8_t         MBC_VAL;
+    u8              MBC_VAL;
     /// @brief Field Extension
     ePresenceFlag   FX;
 } I021_040_EXT4;
