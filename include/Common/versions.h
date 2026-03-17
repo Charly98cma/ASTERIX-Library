@@ -10,15 +10,33 @@
 extern "C" {
 #endif
 
+/* ================== Category 021 - ADS-B Target Reports ================== */
+
+#ifndef EDITION_NUMBER_I021
+    #define EDITION_NUMBER_I021   2
+#endif
+
+#ifndef VERSION_NUMBER_I021 
+    #define VERSION_NUMBER_I021   7
+#endif
+
+#ifndef EDITION_NUMBER_I021_RE
+    #define EDITION_NUMBER_I021_RE   2
+#endif
+
+#ifndef VERSION_NUMBER_I021_RE
+    #define VERSION_NUMBER_I021_RE   2
+#endif
+
 /* =============== Category 034 - Mono Radar Service Messages ============== */
 
 #ifndef EDITION_NUMBER_I034
     #define EDITION_NUMBER_I034   1
-#endif /* EDITION_NUMBER_I034 */
+#endif
 
 #ifndef VERSION_NUMBER_I034 
     #define VERSION_NUMBER_I034   29
-#endif /* VERSION_NUMBER_I034 */
+#endif
 
 /* ========================================================================== */
 
